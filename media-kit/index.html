@@ -1,7 +1,995 @@
 <!DOCTYPE html>
-  <html>
-  <head><title>Santiago Guy Films - Media Kit</title></head>
-  <body>
-  <h1>Media Kit</h1>
-  </body>
-  </html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santiago Guy Films | Media Kit 2026</title>
+  <meta name="description" content="UGC Creator Media Kit — Santiago Guy Films. 50+ brand partnerships, 157k+ followers, 9.9M+ likes. Miami, FL." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0b14;
+      --surface: #111220;
+      --surface-hover: #16172a;
+      --accent: #00d4ff;
+      --purple: #a855f7;
+      --pink: #ec4899;
+      --green: #34d399;
+      --white: #ffffff;
+      --body: #9ca3af;
+      --muted: #4b5072;
+      --border: rgba(255,255,255,0.06);
+      --radius: 16px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img, video { max-width: 100%; display: block; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .grad {
+      background: linear-gradient(135deg, var(--accent), var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section { padding: 80px 0; }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(10,11,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--body);
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(0,212,255,0.06) 0%, rgba(168,85,247,0.03) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--body);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .stat-number.cyan { color: var(--accent); }
+    .stat-number.purple { color: var(--purple); }
+    .stat-number.pink { color: var(--pink); }
+    .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 4px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 16px 30px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 4px 24px rgba(0,212,255,0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px rgba(0,212,255,0.35);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-text h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .about-text p {
+      color: var(--body);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .about-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--body);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .about-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .about-photo-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--bg), transparent);
+      pointer-events: none;
+    }
+    .about-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Placeholder if no image */
+    .about-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--surface) 0%, #16172a 100%);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+    .about-photo-placeholder i {
+      font-size: 48px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ── UGC PORTFOLIO (VIDEO GRID) ── */
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .portfolio-header h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .portfolio-header p {
+      color: var(--body);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .video-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      aspect-ratio: 9/16;
+      cursor: pointer;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: rgba(0,212,255,0.3);
+      box-shadow: 0 20px 60px rgba(0,212,255,0.1);
+    }
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    .video-card .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, var(--surface) 0%, #0d0e1a 100%);
+      padding: 20px;
+      text-align: center;
+    }
+    .video-card .play-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      background: rgba(0,212,255,0.1);
+      border: 2px solid rgba(0,212,255,0.3);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .video-card:hover .play-icon {
+      background: rgba(0,212,255,0.2);
+      transform: scale(1.1);
+    }
+    .play-icon i {
+      color: var(--accent);
+      font-size: 20px;
+      margin-left: 3px;
+    }
+    .video-card .brand-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .video-card .video-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 16px;
+      background: linear-gradient(to top, rgba(10,11,20,0.95), rgba(10,11,20,0.6) 60%, transparent);
+      z-index: 2;
+    }
+    .video-overlay .brand-name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .video-overlay .brand-type {
+      font-size: 11px;
+      color: var(--body);
+      margin-top: 2px;
+    }
+
+    /* ── BRAND COLLABS ── */
+    .collabs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .collab-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .collab-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,212,255,0.2);
+    }
+    .collab-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .collab-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .collab-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: rgba(0,212,255,0.08);
+      color: var(--accent);
+      border: 1px solid rgba(0,212,255,0.15);
+    }
+
+    /* ── PILLARS ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .pillar:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,212,255,0.2);
+    }
+    .pillar-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .pillar:nth-child(1) .pillar-icon {
+      background: rgba(0,212,255,0.1);
+    }
+    .pillar:nth-child(2) .pillar-icon {
+      background: rgba(168,85,247,0.1);
+    }
+    .pillar:nth-child(3) .pillar-icon {
+      background: rgba(236,72,153,0.1);
+    }
+    .pillar-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .pillar-desc {
+      color: var(--body);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .contact-section p {
+      color: var(--body);
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--body);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .contact-link:hover {
+      border-color: rgba(0,212,255,0.3);
+      color: var(--white);
+    }
+    .contact-link i {
+      font-size: 18px;
+      color: var(--accent);
+    }
+    .contact-link .fa-instagram { color: #e1306c; }
+    .contact-link .fa-tiktok { color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer a { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-wrap { max-width: 320px; margin: 0 auto; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 32px; }
+      .nav-links { display: none; }
+      .video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .video-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .video-card { border-radius: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-brand"><span class="grad">SANTIAGO GUY FILMS</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#brands">Brands</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge reveal">Media Kit 2026</div>
+      <h1 class="reveal delay-1">
+        <span class="grad">UGC Creator</span><br>
+        & AI Creative Studio
+      </h1>
+      <p class="hero-sub reveal delay-2">
+        Bilingual lifestyle creator based in Miami, FL. I craft content that connects, inspires, and converts — for brands that want real results.
+      </p>
+      <a href="#contact" class="hero-cta reveal delay-3">
+        Let's Work Together <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <div class="hero-stats reveal delay-3">
+        <div class="stat">
+          <div class="stat-number cyan">157k+</div>
+          <div class="stat-label">TikTok Followers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number purple">9.9M+</div>
+          <div class="stat-label">TikTok Likes</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number pink">7k+</div>
+          <div class="stat-label">IG Followers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" style="color:var(--green)">50+</div>
+          <div class="stat-label">Brands Served</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="label">About Me</div>
+          <h2>Real content.<br><span class="grad">Real results.</span></h2>
+          <p>
+            I'm a bilingual lifestyle creator in my 50s who's passionate about tech, wellness, and helping others live better. I've partnered with over 50 brands including Kodak, ThinOptics, HoneyBook, Kraken, and Boldify.
+          </p>
+          <p>
+            As an ultra marathon runner, father, and corporate professional, I bring real-life balance and authenticity to every project. With experience in UGC, TikTok Shop, Amazon, videography, photography, and public speaking, I craft content that connects, inspires, and converts.
+          </p>
+          <div class="about-tags">
+            <span class="about-tag">UGC</span>
+            <span class="about-tag">TikTok Shop</span>
+            <span class="about-tag">Amazon</span>
+            <span class="about-tag">Videography</span>
+            <span class="about-tag">Photography</span>
+            <span class="about-tag">Public Speaking</span>
+            <span class="about-tag">Bilingual</span>
+            <span class="about-tag">AI-Forward</span>
+          </div>
+        </div>
+        <div class="about-photo-wrap reveal delay-2">
+          <img src="franco-headshot.jpg" alt="Franco Santiago — Santiago Guy Films" style="object-position: center 15%;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- UGC PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div class="label">User Generated Content</div>
+        <h2>Work that <span class="grad">performs.</span></h2>
+        <p>Short-form UGC built for paid social, TikTok Shop, and organic placements. Click any card to play.</p>
+      </div>
+
+      <div class="video-grid">
+
+        <!-- Row 1 -->
+        <div class="video-card reveal delay-1" onclick="toggleVideo(this)">
+          <video src="videos/bull-shot-bbq.mp4" muted loop playsinline preload="metadata" poster=""></video>
+          <div class="video-overlay">
+            <div class="brand-name">Bull Shot BBQ</div>
+            <div class="brand-type">Home & Kitchen</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-2" onclick="toggleVideo(this)">
+          <video src="videos/canles-shoes.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Canles Shoes</div>
+            <div class="brand-type">Apparel</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-3" onclick="toggleVideo(this)">
+          <video src="videos/honeybook.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">HoneyBook</div>
+            <div class="brand-type">SaaS</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-1" onclick="toggleVideo(this)">
+          <video src="videos/anker.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Anker</div>
+            <div class="brand-type">Tech</div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="video-card reveal delay-2" onclick="toggleVideo(this)">
+          <video src="videos/rex-md.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Rex MD</div>
+            <div class="brand-type">Health & Wellness</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-3" onclick="toggleVideo(this)">
+          <video src="videos/thinoptics.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">ThinOptics</div>
+            <div class="brand-type">Accessories</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-1" onclick="toggleVideo(this)">
+          <video src="videos/hempvana.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Hempvana</div>
+            <div class="brand-type">Health & Wellness</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-2" onclick="toggleVideo(this)">
+          <video src="videos/boldify.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Boldify</div>
+            <div class="brand-type">Beauty & Grooming</div>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="video-card reveal delay-3" onclick="toggleVideo(this)">
+          <video src="videos/pete-pedro.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Pete & Pedro</div>
+            <div class="brand-type">Beauty & Grooming</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-1" onclick="toggleVideo(this)">
+          <video src="videos/ridge.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Ridge</div>
+            <div class="brand-type">Accessories</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-2" onclick="toggleVideo(this)">
+          <video src="videos/orii-spice-rack.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Orii Spice Rack</div>
+            <div class="brand-type">Home & Kitchen</div>
+          </div>
+        </div>
+
+        <div class="video-card reveal delay-3" onclick="toggleVideo(this)">
+          <video src="videos/reimagine-app.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="video-overlay">
+            <div class="brand-name">Reimagine App</div>
+            <div class="brand-type">Tech</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BRAND COLLABORATIONS -->
+  <section id="brands" class="section">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div class="label">Brand Collaborations</div>
+        <h2>50+ brands. <span class="grad">Every category.</span></h2>
+        <p>Creator-led UGC and IGC video content for brands, agencies, and marketing teams.</p>
+      </div>
+      <div class="collabs-grid">
+        <div class="collab-card reveal delay-1">
+          <div class="collab-title">Health, Wellness & Supplements</div>
+          <div class="collab-tags">
+            <span class="collab-tag">Rex MD</span>
+            <span class="collab-tag">Buzz RX</span>
+            <span class="collab-tag">Seven Cells</span>
+            <span class="collab-tag">Ageless RX</span>
+            <span class="collab-tag">Clean Nutra</span>
+            <span class="collab-tag">Dose</span>
+            <span class="collab-tag">Rugiet</span>
+            <span class="collab-tag">Frog Fuel</span>
+            <span class="collab-tag">Hempvana</span>
+            <span class="collab-tag">Rizen</span>
+            <span class="collab-tag">Density Hair</span>
+          </div>
+        </div>
+        <div class="collab-card reveal delay-2">
+          <div class="collab-title">Technology & Electronics</div>
+          <div class="collab-tags">
+            <span class="collab-tag">Anker</span>
+            <span class="collab-tag">Eufy</span>
+            <span class="collab-tag">Psync</span>
+            <span class="collab-tag">Kodak</span>
+            <span class="collab-tag">Blaze AI</span>
+            <span class="collab-tag">Kraken</span>
+            <span class="collab-tag">Crypto.com</span>
+            <span class="collab-tag">Yaber</span>
+            <span class="collab-tag">YNAB</span>
+          </div>
+        </div>
+        <div class="collab-card reveal delay-3">
+          <div class="collab-title">Apparel & Accessories</div>
+          <div class="collab-tags">
+            <span class="collab-tag">Ridge</span>
+            <span class="collab-tag">Skechers</span>
+            <span class="collab-tag">ThinOptics</span>
+            <span class="collab-tag">Freebird</span>
+            <span class="collab-tag">Njord Watch</span>
+            <span class="collab-tag">Hushed Socks</span>
+            <span class="collab-tag">Canles Shoes</span>
+          </div>
+        </div>
+        <div class="collab-card reveal delay-1">
+          <div class="collab-title">Home, Kitchen & Lifestyle</div>
+          <div class="collab-tags">
+            <span class="collab-tag">Orii Spice Rack</span>
+            <span class="collab-tag">Bull Shot BBQ</span>
+            <span class="collab-tag">Kerdom</span>
+            <span class="collab-tag">Pocket Hose</span>
+            <span class="collab-tag">Nuzzle Pillow</span>
+            <span class="collab-tag">Upkeep</span>
+          </div>
+        </div>
+        <div class="collab-card reveal delay-2">
+          <div class="collab-title">Beauty & Grooming</div>
+          <div class="collab-tags">
+            <span class="collab-tag">Boldify</span>
+            <span class="collab-tag">Pete & Pedro</span>
+            <span class="collab-tag">Trimmer</span>
+            <span class="collab-tag">Usmile</span>
+          </div>
+        </div>
+        <div class="collab-card reveal delay-3">
+          <div class="collab-title">Finance, SaaS & Platforms</div>
+          <div class="collab-tags">
+            <span class="collab-tag">HoneyBook</span>
+            <span class="collab-tag">SelectQuote</span>
+            <span class="collab-tag">Wise Bank</span>
+            <span class="collab-tag">Stash</span>
+            <span class="collab-tag">Workleap</span>
+          </div>
+        </div>
+        <div class="collab-card reveal delay-1">
+          <div class="collab-title">Food, Beverage & Pet</div>
+          <div class="collab-tags">
+            <span class="collab-tag">Ka Chava</span>
+            <span class="collab-tag">Yak Foods</span>
+            <span class="collab-tag">Joymode</span>
+            <span class="collab-tag">Yak Chews</span>
+            <span class="collab-tag">SafeDog</span>
+          </div>
+        </div>
+        <div class="collab-card reveal delay-2">
+          <div class="collab-title">Nonprofit & Education</div>
+          <div class="collab-tags">
+            <span class="collab-tag">Operation Smile</span>
+            <span class="collab-tag">Penn State</span>
+            <span class="collab-tag">Driscoll Children</span>
+            <span class="collab-tag">Reimagine App</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHY SGF -->
+  <section class="section">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div class="label">Why Work With Me</div>
+        <h2>One creator. <span class="grad">Three advantages.</span></h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar reveal delay-1">
+          <div class="pillar-icon">⚡</div>
+          <div class="pillar-title">AI-First Workflow</div>
+          <p class="pillar-desc">Every project is built with the latest AI tools — faster delivery, better output, and systems that keep improving.</p>
+        </div>
+        <div class="pillar reveal delay-2">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-title">Strategy + Creativity</div>
+          <p class="pillar-desc">I don't just create content — I build content that converts. Every piece is tied to a goal, a metric, a result.</p>
+        </div>
+        <div class="pillar reveal delay-3">
+          <div class="pillar-icon">🤝</div>
+          <div class="pillar-title">Direct Partnership</div>
+          <p class="pillar-desc">No account managers, no middlemen. You work directly with me — fast communication, genuine investment in your success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="reveal">
+        <div class="label">Get In Touch</div>
+        <h2>Ready to create something<br><span class="grad">extraordinary?</span></h2>
+        <p>Whether you need UGC, brand content, or AI-driven creative — let's talk. I respond within 24 hours.</p>
+      </div>
+      <div class="contact-links reveal delay-1">
+        <a href="mailto:welcome@santiagoguyfilms.com" class="contact-link">
+          <i class="fa-regular fa-envelope"></i>
+          welcome@santiagoguyfilms.com
+        </a>
+        <a href="https://www.instagram.com/santiagoguyfilms" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-brands fa-instagram"></i>
+          @santiagoguyfilms
+        </a>
+        <a href="https://www.tiktok.com/@santiagoguyfilms" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-brands fa-tiktok"></i>
+          @santiagoguyfilms
+        </a>
+      </div>
+      <a href="mailto:welcome@santiagoguyfilms.com" class="hero-cta reveal delay-2">
+        Let's Work Together <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">
+        <span class="grad">SANTIAGO GUY FILMS</span>
+      </p>
+      <p>Miami, FL · <a href="https://santiagoguyfilms.github.io" target="_blank">santiagoguyfilms.github.io</a></p>
+      <p style="margin-top:8px;">© 2026 Santiago Guy Films. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Video Hover Play ──
+    document.querySelectorAll('.video-card').forEach(card => {
+      const video = card.querySelector('video');
+      if (!video) return;
+
+      // Handle missing video gracefully
+      video.addEventListener('error', function() {
+        this.style.display = 'none';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'video-placeholder';
+        placeholder.innerHTML = `
+          <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+          <div class="brand-label">${card.querySelector('.brand-name')?.textContent || 'UGC'}</div>
+        `;
+        card.insertBefore(placeholder, card.querySelector('.video-overlay'));
+      });
+
+      card.addEventListener('mouseenter', () => {
+        video.play().catch(() => {});
+      });
+      card.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
+
+    // ── Toggle Video (click to play/pause with sound) ──
+    function toggleVideo(card) {
+      const video = card.querySelector('video');
+      if (!video || video.style.display === 'none') return;
+
+      if (video.paused) {
+        video.muted = false;
+        video.play().catch(() => {});
+      } else {
+        video.muted = true;
+        video.pause();
+      }
+    }
+
+    // ── Smooth nav scroll ──
+    document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
