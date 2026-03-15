@@ -1,1 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BizAudit Miami — Know Exactly Where You Stand Online | Santiago Guy Films</title>
+  <meta name="description" content="Get a full social media audit for your Miami business. Find out what's working, what's broken, and exactly what to fix — for $97."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #0a0b14;
+      --surface: #111220;
+      --surface-hover: #16172a;
+      --cyan: #00d4ff;
+      --purple: #a855f7;
+      --pink: #ec4899;
+      --green: #34d399;
+      --text: #ffffff;
+      --body: #9ca3af;
+      --muted: #4b5072;
+      --border: rgba(255,255,255,0.06);
+      --gradient: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 1rem;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,11,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 64px;
+    }
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-cta {
+      background: var(--cyan);
+      color: var(--bg);
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(0,212,255,0.2);
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,212,255,0.35); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .container-wide { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(0,212,255,0.06) 0%, rgba(168,85,247,0.03) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    h1 {
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 24px;
+    }
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--body);
+      max-width: 580px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--cyan);
+      color: var(--bg);
+      padding: 18px 40px;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 28px rgba(0,212,255,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(0,212,255,0.45); }
+    .hero-price-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .hero-price-note strong { color: var(--body); }
+
+    /* ── SOCIAL PROOF BAR ── */
+    .proof-bar {
+      padding: 28px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .proof-bar .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--body);
+    }
+    .proof-item .icon { font-size: 1.1rem; }
+    .proof-item strong { color: var(--text); }
+
+    /* ── PROBLEM ── */
+    .problem { background: var(--surface); }
+    .problem h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+    .problem p { color: var(--body); font-size: 1.05rem; margin-bottom: 16px; max-width: 680px; }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .pain-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .pain-card .pain-icon { font-size: 1.5rem; margin-bottom: 12px; }
+    .pain-card p { font-size: 0.95rem; color: var(--body); line-height: 1.6; }
+    .pain-card p strong { color: var(--text); }
+
+    /* ── WHAT YOU GET ── */
+    .deliverables h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .deliverables .sub { color: var(--body); font-size: 1.05rem; margin-bottom: 48px; max-width: 580px; }
+
+    .deliverable-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .deliverable-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: all 0.2s;
+    }
+    .deliverable-card:hover { transform: translateY(-3px); border-color: rgba(0,212,255,0.2); }
+    .deliverable-card .d-num {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .cyan-bg { background: rgba(0,212,255,0.1); color: var(--cyan); }
+    .purple-bg { background: rgba(168,85,247,0.1); color: var(--purple); }
+    .pink-bg { background: rgba(236,72,153,0.1); color: var(--pink); }
+    .green-bg { background: rgba(52,211,153,0.1); color: var(--green); }
+
+    .deliverable-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .deliverable-card p { font-size: 0.9rem; color: var(--body); line-height: 1.65; }
+
+    /* ── PLATFORMS ── */
+    .platforms { background: var(--surface); }
+    .platforms h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .platforms .sub { color: var(--body); margin-bottom: 40px; }
+    .platform-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .platform-tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--body);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .platform-tag .tag-icon { font-size: 1.1rem; }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .how-it-works .sub { color: var(--body); margin-bottom: 48px; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .step {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 24px;
+    }
+    .step-num {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 0.9rem; color: var(--body); }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--surface); text-align: center; }
+    .pricing h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .pricing .sub { color: var(--body); margin-bottom: 48px; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    .price-card {
+      background: var(--bg);
+      border: 1px solid rgba(0,212,255,0.3);
+      border-radius: 24px;
+      padding: 48px 40px;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,212,255,0.06);
+    }
+    .price-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .price-amount {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .price-amount sup { font-size: 2rem; letter-spacing: 0; vertical-align: top; margin-top: 12px; }
+    .price-desc { color: var(--body); font-size: 0.95rem; margin-bottom: 32px; }
+    .price-includes {
+      text-align: left;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .include-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--body);
+    }
+    .include-item .check {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .include-item strong { color: var(--text); }
+
+    .paypal-btn-wrap {
+      margin-bottom: 16px;
+    }
+
+    /* PayPal button override to match brand */
+    .paypal-btn-wrap form { display: flex; justify-content: center; }
+
+    .price-guarantee {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+    .price-guarantee a { color: var(--body); }
+
+    /* ── FAQ ── */
+    .faq h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+    }
+    .faq-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .faq-item p { font-size: 0.92rem; color: var(--body); line-height: 1.65; }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      text-align: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(0,212,255,0.05) 0%, transparent 70%);
+    }
+    .final-cta h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .final-cta p { color: var(--body); max-width: 500px; margin: 0 auto 40px; position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+    footer p { font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--body); text-decoration: none; }
+    footer a:hover { color: var(--cyan); }
+
+    /* ── SUCCESS STATE ── */
+    #success-section {
+      display: none;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    #success-section.visible { display: block; }
+    .success-icon { font-size: 4rem; margin-bottom: 24px; }
+    #success-section h2 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    #success-section p { color: var(--body); max-width: 540px; margin: 0 auto 40px; }
+
+    .intake-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .intake-form h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .intake-form .form-sub { font-size: 0.9rem; color: var(--body); margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--body);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--cyan); }
+    .form-group textarea { min-height: 90px; resize: vertical; }
+    .form-group select option { background: var(--surface); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--cyan);
+      color: var(--bg);
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(0,212,255,0.25);
+    }
+    .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(0,212,255,0.4); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .proof-bar .container { gap: 20px; }
+      .price-card { padding: 40px 24px; }
+      .intake-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════ NAV ══════════════════════════════════ -->
+<nav>
+  <div class="nav-brand">Santiago Guy Films</div>
+  <a href="#pricing" class="nav-cta">Get My Audit — $97</a>
+</nav>
+
+<!-- ══════════════════════════════════ SUCCESS (shown after PayPal payment) ══ -->
+<div id="success-section">
+  <div class="container" style="max-width:700px;">
+    <div class="success-icon">🎉</div>
+    <h2>Payment Confirmed — <span class="gradient-text">You're In.</span></h2>
+    <p>Your BizAudit is on its way. Fill out the short form below so I can get started on your report. You'll hear from me within 24 hours.</p>
+    <div class="intake-form">
+      <h3>Tell me about your business</h3>
+      <p class="form-sub">Takes 2 minutes — this is everything I need to run your audit.</p>
+      <!-- Replace ACTION_URL with your Formspree endpoint: https://formspree.io/f/YOUR_ID -->
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <input type="hidden" name="_subject" value="New BizAudit Order — $97"/>
+        <input type="hidden" name="_next" value="thank-you"/>
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" name="name" placeholder="e.g. Maria Gonzalez" required/>
+        </div>
+        <div class="form-group">
+          <label>Business Name *</label>
+          <input type="text" name="business_name" placeholder="e.g. Café Brickell" required/>
+        </div>
+        <div class="form-group">
+          <label>Business Website or Instagram Handle *</label>
+          <input type="text" name="website_or_instagram" placeholder="e.g. cafebrickell.com or @cafebrickell" required/>
+        </div>
+        <div class="form-group">
+          <label>Your Email *</label>
+          <input type="email" name="email" placeholder="you@yourbusiness.com" required/>
+        </div>
+        <div class="form-group">
+          <label>Your Phone (optional)</label>
+          <input type="tel" name="phone" placeholder="(305) 000-0000"/>
+        </div>
+        <div class="form-group">
+          <label>What's your biggest marketing challenge right now?</label>
+          <textarea name="challenge" placeholder="e.g. We're not getting engagement on Instagram and don't know why..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit My Business Info →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ MAIN PAGE ══════════════════════════════ -->
+<div id="main-content">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Miami Local Business Audits
+    </div>
+    <h1>
+      Your Miami Competitors<br/>
+      Are Winning Online.<br/>
+      <span class="gradient-text">Find Out Why — And Fix It.</span>
+    </h1>
+    <p class="hero-sub">
+      Get a full social media audit for your local business — every platform, every gap,
+      every opportunity — delivered in 48 hours with a live strategy call included.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Get My BizAudit — $97 →</a>
+      <p class="hero-price-note">
+        <strong>Report + 30-min strategy call.</strong> Delivered in 48 hours or less.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="proof-item"><span class="icon">✅</span> <span><strong>50+ brands</strong> worked with</span></div>
+    <div class="proof-item"><span class="icon">⚡</span> <span><strong>AI-powered</strong> research</span></div>
+    <div class="proof-item"><span class="icon">📍</span> <span><strong>Miami-based</strong> specialist</span></div>
+    <div class="proof-item"><span class="icon">🕐</span> <span>Delivered in <strong>48 hours</strong></span></div>
+    <div class="proof-item"><span class="icon">📞</span> <span>Includes a <strong>live strategy call</strong></span></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2>Most Miami Businesses Are<br/>Invisible Online — And Don't Know It.</h2>
+    <p>You're open, you're great at what you do, your customers love you — but online, your competitors are eating your lunch. Inconsistent posting, a dead Facebook page, zero TikTok presence, bad reviews going unanswered. It adds up.</p>
+    <p>The worst part? You can't fix what you can't see. And most business owners don't have the time or the tools to dig into every platform and figure out exactly where the holes are.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😤</div>
+        <p><strong>"We post but nothing happens."</strong> No likes, no shares, no new customers — and no idea why.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🤷</div>
+        <p><strong>"We're on 4 platforms but growing on none."</strong> Spread thin, inconsistent, and invisible everywhere.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😤</div>
+        <p><strong>"A competitor opened up and blew past us online."</strong> They have half our history and 10x the followers.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💸</div>
+        <p><strong>"We paid someone but nothing changed."</strong> Vague reports, no clear actions, money wasted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="deliverables">
+  <div class="container">
+    <div class="section-label">What You Get</div>
+    <h2>Two Things That Will Change<br/>How You See Your Business Online</h2>
+    <p class="sub">No fluff, no 40-page reports you'll never read. Just a clear picture of where you stand and a direct conversation about what to do next.</p>
+    <div class="deliverable-grid">
+      <div class="deliverable-card">
+        <div class="d-num cyan-bg">📊</div>
+        <h3>Your Full BizAudit Report</h3>
+        <p>A detailed breakdown of your presence on every major platform — Instagram, Facebook, TikTok, Google, Yelp, and more. What's working, what's broken, and what to fix first. Delivered as a clean, shareable report.</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-num purple-bg">📞</div>
+        <h3>30-Minute Strategy Call</h3>
+        <p>We get on a call and I walk you through your report in plain English. I'll tell you exactly what I'd prioritize if I were you, what quick wins are available, and where the biggest growth opportunity is. No sales pressure — just real talk.</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-num pink-bg">🎯</div>
+        <h3>Competitor Snapshot</h3>
+        <p>I'll pull up 2-3 of your direct Miami competitors and show you how your online presence stacks up against theirs. Know who's beating you, where, and why.</p>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-num green-bg">🚀</div>
+        <h3>Top 3 Action Items</h3>
+        <p>Every report ends with three specific, prioritized things you can do immediately — even before you hire anyone — to improve your online presence. Concrete. Actionable. No guessing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="platforms">
+  <div class="container">
+    <div class="section-label">Platforms Covered</div>
+    <h2>Every Platform. Every Gap.</h2>
+    <p class="sub">I check every place a Miami customer might look you up — and report back on all of it.</p>
+    <div class="platform-tags">
+      <div class="platform-tag"><span class="tag-icon">📸</span> Instagram</div>
+      <div class="platform-tag"><span class="tag-icon">👥</span> Facebook</div>
+      <div class="platform-tag"><span class="tag-icon">🎵</span> TikTok</div>
+      <div class="platform-tag"><span class="tag-icon">🗺️</span> Google Business Profile</div>
+      <div class="platform-tag"><span class="tag-icon">⭐</span> Yelp</div>
+      <div class="platform-tag"><span class="tag-icon">🐦</span> X / Twitter</div>
+      <div class="platform-tag"><span class="tag-icon">💼</span> LinkedIn</div>
+      <div class="platform-tag"><span class="tag-icon">🌐</span> Your Website</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2>Simple. Fast. Actionable.</h2>
+    <p class="sub">From payment to strategy call in 48 hours — here's the exact process.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num cyan-bg">1</div>
+        <h3>You Pay & Submit</h3>
+        <p>Click the button below, pay securely via PayPal, and fill out a 2-minute form with your business name and a few basic details.</p>
+      </div>
+      <div class="step">
+        <div class="step-num purple-bg">2</div>
+        <h3>I Run the Audit</h3>
+        <p>I research your business across all 8 platforms using AI-powered tools, then put together your full report. Delivered within 48 hours.</p>
+      </div>
+      <div class="step">
+        <div class="step-num pink-bg">3</div>
+        <h3>We Get on a Call</h3>
+        <p>We schedule your 30-minute strategy call. I walk you through everything and tell you exactly what I'd focus on first if I were running your marketing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num green-bg">4</div>
+        <h3>You Take Action</h3>
+        <p>Walk away with a clear picture of your digital presence, a competitor snapshot, and 3 immediate action items you can implement right away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label">Simple Pricing</div>
+    <h2>One Price. Everything Included.</h2>
+    <p class="sub">No subscriptions, no retainers, no upsell surprises. Pay once, get everything.</p>
+
+    <div class="price-card">
+      <div class="price-badge">🔥 Most Popular</div>
+      <div class="price-amount"><sup>$</sup>97</div>
+      <p class="price-desc">One-time · No monthly fees · No contracts</p>
+
+      <div class="price-includes">
+        <div class="include-item">
+          <span class="check">✓</span>
+          <span><strong>Full BizAudit Report</strong> — 8-platform deep dive into your online presence</span>
+        </div>
+        <div class="include-item">
+          <span class="check">✓</span>
+          <span><strong>30-Minute Strategy Call</strong> — 1-on-1 with Franco to walk through your results</span>
+        </div>
+        <div class="include-item">
+          <span class="check">✓</span>
+          <span><strong>Competitor Snapshot</strong> — See how you stack up against 2-3 local competitors</span>
+        </div>
+        <div class="include-item">
+          <span class="check">✓</span>
+          <span><strong>Top 3 Priority Action Items</strong> — Clear, specific next steps you can start today</span>
+        </div>
+        <div class="include-item">
+          <span class="check">✓</span>
+          <span><strong>Delivered in 48 Hours</strong> — Fast turnaround, no waiting weeks for results</span>
+        </div>
+      </div>
+
+      <!-- ════ PAYPAL BUTTON ════
+           Replace the two instances of welcome@santiagoguyfilms.com with your actual PayPal email.
+           Replace https://santiagoguyfilms.github.io/bizaudit with the URL where this page is hosted.
+           That's it — no other changes needed. -->
+      <div class="paypal-btn-wrap">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick"/>
+          <input type="hidden" name="business" value="welcome@santiagoguyfilms.com"/>
+          <input type="hidden" name="lc" value="US"/>
+          <input type="hidden" name="item_name" value="BizAudit Miami — Report + Strategy Call"/>
+          <input type="hidden" name="item_number" value="BIZAUDIT-97"/>
+          <input type="hidden" name="amount" value="97.00"/>
+          <input type="hidden" name="currency_code" value="USD"/>
+          <input type="hidden" name="no_shipping" value="1"/>
+          <input type="hidden" name="return" value="https://santiagoguyfilms.github.io/bizaudit?paid=true"/>
+          <input type="hidden" name="cancel_return" value="https://santiagoguyfilms.github.io/bizaudit"/>
+          <input type="hidden" name="bn" value="PP-BuyNowBF"/>
+          <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-family:inherit;">
+            Pay $97 with PayPal — Get My Audit →
+          </button>
+        </form>
+      </div>
+
+      <p class="price-guarantee">
+        🔒 Secure payment via PayPal &nbsp;·&nbsp;
+        Questions? <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2>Common Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What kinds of businesses is this for?</h3>
+        <p>Any local Miami business — restaurants, salons, gyms, retail stores, service businesses, real estate agents, contractors, medical offices. If you have a physical presence in Miami and customers who look you up online, this audit is for you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I get my report?</h3>
+        <p>After payment, you'll fill out a short form with your business name and contact info. I'll email your report within 48 hours and reach out to schedule the strategy call at a time that works for you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I'm only on a few platforms?</h3>
+        <p>That's actually part of what the audit reveals. If you're not on a platform you should be on, I'll flag that — and tell you whether it's worth your time to get on it based on your specific business type.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you manage social media after the audit?</h3>
+        <p>The audit itself is a standalone service. After the strategy call, if you want help implementing what we discussed — content creation, social management, AI automation — we can talk about that. But there's zero obligation.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Who am I actually working with?</h3>
+        <p>Me — Franco. I'm the owner of Santiago Guy Films, an AI creative studio based in Miami. I've worked with 50+ brands on content and digital marketing. This isn't outsourced to a team overseas. You work directly with me.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to See Where You Actually Stand?</h2>
+    <p>97 dollars. 48 hours. A clear picture of your online presence and a real conversation about what to do next.</p>
+    <a href="#pricing" class="btn-primary">Get My BizAudit — $97 →</a>
+  </div>
+</section>
+
+</div><!-- /main-content -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Santiago Guy Films</div>
+  <p>Miami, FL &nbsp;·&nbsp; <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a> &nbsp;·&nbsp; <a href="https://santiagoguyfilms.github.io" target="_blank">santiagoguyfilms.github.io</a></p>
+  <p style="margin-top:8px;">"Content that works as hard as you do."</p>
+</footer>
+
+<script>
+  // Show the success/intake form if the buyer was redirected back after PayPal payment
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('paid') === 'true') {
+    document.getElementById('success-section').classList.add('visible');
+    document.getElementById('main-content').style.display = 'none';
+    document.querySelector('nav .nav-cta').style.display = 'none';
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
