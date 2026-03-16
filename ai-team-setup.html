@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your AI Team in a Day — Santiago Guy Films</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0b14;
+            color: #ffffff;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-brand {
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        .nav-cta {
+            background: #00d4ff;
+            color: #0a0b14;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 18px rgba(0,212,255,0.2);
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,212,255,0.35); }
+
+        /* ── HERO ── */
+        .hero {
+            text-align: center;
+            padding: 80px 24px 60px;
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse at center, rgba(0,212,255,0.06) 0%, rgba(168,85,247,0.03) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero > * { position: relative; z-index: 1; }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-weight: 900;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            letter-spacing: -1.5px;
+            line-height: 1.08;
+            margin-bottom: 20px;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 36px;
+            line-height: 1.75;
+        }
+
+        /* ── SOCIAL PROOF BAR ── */
+        .proof-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 24px;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        .proof-item {
+            text-align: center;
+        }
+        .proof-number {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .proof-label {
+            color: #4b5072;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        /* ── SECTION SHARED ── */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section-label {
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-weight: 800;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            letter-spacing: -0.5px;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+        .section-subtitle {
+            color: #9ca3af;
+            text-align: center;
+            max-width: 580px;
+            margin: 0 auto 48px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ── WHAT YOU GET (STEPS) ── */
+        .steps-section { padding-top: 40px; padding-bottom: 60px; }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .step-card {
+            background: #111220;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 28px 24px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .step-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0,212,255,0.2);
+        }
+        .step-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        .step-icon.cyan { background: rgba(0,212,255,0.1); color: #00d4ff; }
+        .step-icon.purple { background: rgba(168,85,247,0.1); color: #a855f7; }
+        .step-icon.pink { background: rgba(236,72,153,0.1); color: #ec4899; }
+        .step-icon.green { background: rgba(52,211,153,0.1); color: #34d399; }
+        .step-card h3 {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .step-card p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        /* ── PRICING TIERS ── */
+        .pricing-section { padding-top: 60px; padding-bottom: 80px; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            align-items: start;
+        }
+        .tier-card {
+            background: #111220;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 36px 30px;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .tier-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,212,255,0.15);
+        }
+        .tier-card.featured {
+            border-color: rgba(0,212,255,0.3);
+            box-shadow: 0 0 40px rgba(0,212,255,0.08);
+        }
+        .tier-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 20px 20px 0 0;
+            background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+        }
+        .popular-tag {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            color: #0a0b14;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 18px;
+            border-radius: 100px;
+        }
+        .tier-name {
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00d4ff;
+            margin-bottom: 6px;
+        }
+        .tier-headline {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.3px;
+            margin-bottom: 14px;
+        }
+        .tier-price {
+            font-weight: 900;
+            font-size: 2.8rem;
+            letter-spacing: -1.5px;
+            margin-bottom: 4px;
+        }
+        .tier-price-note {
+            color: #4b5072;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+        .tier-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.06);
+            margin-bottom: 24px;
+        }
+        .tier-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        .tier-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.92rem;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+        .tier-features li .check {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 1px;
+        }
+        .check.cyan { background: rgba(0,212,255,0.1); color: #00d4ff; }
+        .check.purple { background: rgba(168,85,247,0.1); color: #a855f7; }
+        .check.pink { background: rgba(236,72,153,0.1); color: #ec4899; }
+
+        .tier-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px 0;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .tier-cta.primary {
+            background: #00d4ff;
+            color: #0a0b14;
+            box-shadow: 0 4px 24px rgba(0,212,255,0.25);
+        }
+        .tier-cta.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(0,212,255,0.35); }
+        .tier-cta.outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #ffffff;
+        }
+        .tier-cta.outline:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-1px); }
+
+        /* ── WHO IT'S FOR ── */
+        .who-section { padding-top: 20px; padding-bottom: 60px; }
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .who-card {
+            background: #111220;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 28px 24px;
+        }
+        .who-card h3 {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .who-card p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+        .who-emoji {
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+        }
+
+        /* ── ABOUT / TRUST ── */
+        .about-section {
+            padding-top: 40px;
+            padding-bottom: 60px;
+        }
+        .about-box {
+            background: #111220;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 48px 40px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 16px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid rgba(0,212,255,0.15);
+        }
+        .about-text h3 {
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+        }
+        .about-text p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 12px;
+        }
+        .about-brands {
+            color: #4b5072;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* ── FAQ ── */
+        .faq-section { padding-top: 20px; padding-bottom: 60px; }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 24px 0;
+        }
+        .faq-q {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .faq-a {
+            color: #9ca3af;
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ── FINAL CTA ── */
+        .final-cta {
+            text-align: center;
+            padding: 60px 24px 80px;
+        }
+        .final-cta h2 {
+            font-weight: 800;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+        .final-cta p {
+            color: #9ca3af;
+            max-width: 500px;
+            margin: 0 auto 32px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .final-cta a {
+            display: inline-block;
+            background: #00d4ff;
+            color: #0a0b14;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(0,212,255,0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .final-cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,255,0.35); }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #4b5072;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        footer a { color: #00d4ff; text-decoration: none; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav { padding: 16px 20px; }
+            .hero { padding: 60px 20px 40px; }
+            .proof-bar { gap: 24px; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+            .about-box { flex-direction: column; text-align: center; padding: 32px 24px; }
+            .about-photo { width: 140px; height: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-brand">Santiago Guy Films</div>
+        <a href="#pricing" class="nav-cta">Get Started</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="badge">New Service</div>
+        <h1>Get <span class="gradient-text">Your AI Team</span><br>Set Up in a Day</h1>
+        <p>I'll personally set up Claude AI as your virtual team — connected to your email, calendar, spreadsheets, and workflows. One Zoom session. You walk away with a working AI-powered business.</p>
+        <a href="#pricing" class="nav-cta" style="padding: 16px 32px; font-size: 0.95rem;">See the Plans</a>
+
+        <!-- SOCIAL PROOF -->
+        <div class="proof-bar">
+            <div class="proof-item">
+                <div class="proof-number">50+</div>
+                <div class="proof-label">Brands Served</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">157k+</div>
+                <div class="proof-label">Community</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">100%</div>
+                <div class="proof-label">AI-Powered</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT YOU GET -->
+    <section class="steps-section">
+        <div class="section-label">What Happens in Your Session</div>
+        <div class="section-title">From Zero to AI-Powered in One Sitting</div>
+        <div class="section-subtitle">No tech skills needed. I handle everything while you watch, learn, and ask questions.</div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-icon cyan">1</div>
+                <h3>Account & Install</h3>
+                <p>We get Claude downloaded, your account created, and your workspace configured for your specific business.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon purple">2</div>
+                <h3>Connect Your Tools</h3>
+                <p>Gmail, Google Sheets, Calendar, Slack — we connect the tools you already use so AI plugs right into your workflow.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon pink">3</div>
+                <h3>Build Your AI Team</h3>
+                <p>Custom personas for your business — an assistant, a project manager, a sales lead — whatever roles you need, built and ready.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon green">4</div>
+                <h3>Train & Handoff</h3>
+                <p>You'll know how to talk to your AI team, give commands, and get real work done. Plus a cheat sheet to keep you going.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-label">Choose Your Level</div>
+        <div class="section-title">Three Ways to Get Started</div>
+        <div class="section-subtitle">Every tier includes a live 1-on-1 Zoom session with me. Pick the level of support that fits your business.</div>
+
+        <div class="pricing-grid">
+
+            <!-- TIER 1 -->
+            <div class="tier-card">
+                <div class="tier-name">Setup</div>
+                <div class="tier-headline">AI Team in a Day</div>
+                <div class="tier-price">$497</div>
+                <div class="tier-price-note">One-time investment</div>
+                <div class="tier-divider"></div>
+                <ul class="tier-features">
+                    <li><span class="check cyan">&#10003;</span> 2-3 hour live Zoom setup session</li>
+                    <li><span class="check cyan">&#10003;</span> Claude account creation & install</li>
+                    <li><span class="check cyan">&#10003;</span> Connect email, calendar & sheets</li>
+                    <li><span class="check cyan">&#10003;</span> Custom AI personas for your business</li>
+                    <li><span class="check cyan">&#10003;</span> Quick-start command cheat sheet</li>
+                    <li><span class="check cyan">&#10003;</span> Session recording for your reference</li>
+                </ul>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=welcome%40santiagoguyfilms.com&amount=497.00&currency_code=USD&item_name=AI%20Team%20Setup%20-%20Santiago%20Guy%20Films&return=https%3A%2F%2Fsantiagoguyfilms.github.io%2Fai-team-thankyou.html" target="_blank" class="tier-cta outline">Book Your Setup — $497</a>
+            </div>
+
+            <!-- TIER 2 — FEATURED -->
+            <div class="tier-card featured">
+                <div class="popular-tag">Most Popular</div>
+                <div class="tier-name">Setup + 90-Day Support</div>
+                <div class="tier-headline">AI Team + Ongoing Guidance</div>
+                <div class="tier-price">$997</div>
+                <div class="tier-price-note">Setup + 90 days of support</div>
+                <div class="tier-divider"></div>
+                <ul class="tier-features">
+                    <li><span class="check purple">&#10003;</span> Everything in the Setup tier</li>
+                    <li><span class="check purple">&#10003;</span> 90 days of async support (email/chat)</li>
+                    <li><span class="check purple">&#10003;</span> 2 monthly check-in calls</li>
+                    <li><span class="check purple">&#10003;</span> Email marketing campaign setup</li>
+                    <li><span class="check purple">&#10003;</span> Additional automations & workflows</li>
+                    <li><span class="check purple">&#10003;</span> Priority response within 24 hours</li>
+                </ul>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=welcome%40santiagoguyfilms.com&amount=997.00&currency_code=USD&item_name=AI%20Team%20Setup%20%2B%2090-Day%20Support%20-%20Santiago%20Guy%20Films&return=https%3A%2F%2Fsantiagoguyfilms.github.io%2Fai-team-thankyou.html" target="_blank" class="tier-cta primary">Get Started — Best Value</a>
+            </div>
+
+            <!-- TIER 3 -->
+            <div class="tier-card">
+                <div class="tier-name">Full Build VIP</div>
+                <div class="tier-headline">AI Team + Website + 90 Days</div>
+                <div class="tier-price">$2,497</div>
+                <div class="tier-price-note">The complete transformation</div>
+                <div class="tier-divider"></div>
+                <ul class="tier-features">
+                    <li><span class="check pink">&#10003;</span> Everything in Setup + 90-Day Support</li>
+                    <li><span class="check pink">&#10003;</span> Full website refresh or new build</li>
+                    <li><span class="check pink">&#10003;</span> Weekly strategy calls for 90 days</li>
+                    <li><span class="check pink">&#10003;</span> Systems & process buildout</li>
+                    <li><span class="check pink">&#10003;</span> Employee onboarding to AI tools</li>
+                    <li><span class="check pink">&#10003;</span> Direct access to Franco (Slack/text)</li>
+                </ul>
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=welcome%40santiagoguyfilms.com&amount=2497.00&currency_code=USD&item_name=AI%20Team%20Full%20Build%20VIP%20-%20Santiago%20Guy%20Films&return=https%3A%2F%2Fsantiagoguyfilms.github.io%2Fai-team-thankyou.html" target="_blank" class="tier-cta outline">Apply for VIP — $2,497</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <section class="who-section">
+        <div class="section-label">Who This Is For</div>
+        <div class="section-title">Built for Business Owners Like You</div>
+        <div class="section-subtitle">You don't need to be tech-savvy. You just need to be tired of doing everything manually.</div>
+        <div class="who-grid">
+            <div class="who-card">
+                <div class="who-emoji">&#127961;</div>
+                <h3>Local Business Owners</h3>
+                <p>You're running a restaurant, salon, law firm, or agency in Miami and you know AI could help — you just don't know where to start.</p>
+            </div>
+            <div class="who-card">
+                <div class="who-emoji">&#128640;</div>
+                <h3>Solo Entrepreneurs</h3>
+                <p>You're wearing every hat — sales, marketing, admin, operations. An AI team gives you the bandwidth of a full staff without the payroll.</p>
+            </div>
+            <div class="who-card">
+                <div class="who-emoji">&#128188;</div>
+                <h3>Small Teams (2-10 People)</h3>
+                <p>Your team is lean but growing. AI handles the repetitive work so your people can focus on what actually grows the business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / TRUST -->
+    <section class="about-section">
+        <div class="about-box">
+            <img src="franco-headshot.jpg" alt="Franco Santiago — Santiago Guy Films" class="about-photo" onerror="this.style.display='none'">
+            <div class="about-text">
+                <h3>You Work Directly With Me</h3>
+                <p>I'm Franco — founder of Santiago Guy Films, bilingual UGC creator, and the guy who built his entire business on AI. I use Claude every single day to run my admin, manage projects, handle sales, review contracts, and create content for 50+ brands. This isn't theory for me. It's how I work.</p>
+                <p>I built this service because I kept getting the same question: <em>"How did you set all this up?"</em> Now I'll set it up for you.</p>
+                <div class="about-brands">Trusted by brands like Anker, Crypto.com, Ridge, Skechers & more</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-label">Common Questions</div>
+        <div class="section-title">Before You Book</div>
+        <div class="section-subtitle"></div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">Do I need any tech experience?</div>
+                <div class="faq-a">Not at all. If you can use email and hop on a Zoom call, you have everything you need. I handle the technical setup — you just tell me about your business and what you need help with.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What do I need before the session?</div>
+                <div class="faq-a">A laptop or desktop computer, a stable internet connection, and access to the tools you want to connect (Gmail, Google Calendar, etc.). I'll send you a short prep checklist after you book.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Is the session live or pre-recorded?</div>
+                <div class="faq-a">100% live, 1-on-1 with me on Zoom. I record it so you can refer back to it anytime. Every session is customized to your business — no cookie-cutter templates.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What happens after the setup session?</div>
+                <div class="faq-a">You walk away with a fully working AI-powered workspace. If you're on the Setup tier, you'll have your cheat sheet and recording. If you're on the 90-Day tier, I'm right there with you as you put it to work — answering questions, building new automations, and making sure everything runs smoothly.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I upgrade my tier later?</div>
+                <div class="faq-a">Absolutely. Most people who start with the Setup tier upgrade to 90-Day Support within the first week once they see what's possible. You'll just pay the difference.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <div class="final-cta">
+        <h2>Ready to Build <span class="gradient-text">Your AI Team</span>?</h2>
+        <p>One session. Real results. Stop Googling how AI works and let someone who uses it every day set it up for you.</p>
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=welcome%40santiagoguyfilms.com&amount=997.00&currency_code=USD&item_name=AI%20Team%20Setup%20%2B%2090-Day%20Support%20-%20Santiago%20Guy%20Films&return=https%3A%2F%2Fsantiagoguyfilms.github.io%2Fai-team-thankyou.html" target="_blank">Let's Do This — $997</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Santiago Guy Films &nbsp;|&nbsp; <a href="https://santiagoguyfilms.github.io/">santiagoguyfilms.github.io</a> &nbsp;|&nbsp; <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a></p>
+    </footer>
+
+    <!-- Smooth scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+
+</body>
+</html>
