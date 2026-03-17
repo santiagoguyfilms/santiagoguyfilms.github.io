@@ -59,31 +59,55 @@
         .form-success p { color: #9ca3af; font-size: 0.9rem; }
         footer { text-align: center; padding: 28px 24px; border-top: 1px solid rgba(255,255,255,0.06); color: #4b5072; font-size: 0.8rem; }
         footer a { color: #00d4ff; text-decoration: none; }
-        @media (max-width: 600px) { nav { padding: 16px 20px; } .steps-card, .book-card, .form-card { padding: 28px 20px; } .form-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) {
+            nav { padding: 16px 20px; }
+            .steps-card, .book-card, .form-card { padding: 28px 20px; }
+            .form-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <nav><div class="nav-brand">Santiago Guy Films</div></nav>
+    <nav>
+        <div class="nav-brand">Santiago Guy Films</div>
+    </nav>
     <div class="hero">
-        <div class="success-icon">✓</div>
+        <div class="success-icon">&#10003;</div>
         <div class="badge">Payment Confirmed</div>
         <h1>You're <span class="gradient-text">officially in.</span></h1>
-        <p>Welcome to the team. Your AI setup session is secured — let's get your business running smarter.</p>
+        <p>Welcome to the team. Your AI setup session is secured &#8212; let's get your business running smarter.</p>
         <p style="font-size:0.88rem; margin-top:8px;">A confirmation email is on its way to your inbox from PayPal.</p>
     </div>
     <div class="steps-section">
         <div class="steps-card">
             <h2>Here's what happens next</h2>
-            <div class="step-row"><div class="step-num cyan">1</div><div class="step-text"><h3>Book your Zoom session below</h3><p>Pick a time that works for you. Sessions are 2-3 hours — block out a morning or afternoon where you can focus.</p></div></div>
-            <div class="step-row"><div class="step-num purple">2</div><div class="step-text"><h3>Fill out the quick form</h3><p>Tell me a bit about your business so I can customize your AI team before we even hop on the call. Takes 2 minutes.</p></div></div>
-            <div class="step-row"><div class="step-num pink">3</div><div class="step-text"><h3>Show up ready to go</h3><p>Have your laptop, your Google login, and any tools you already use ready. I handle everything else.</p></div></div>
+            <div class="step-row">
+                <div class="step-num cyan">1</div>
+                <div class="step-text">
+                    <h3>Book your Zoom session below</h3>
+                    <p>Pick a time that works for you. Sessions are 2-3 hours &#8212; block out a morning or afternoon where you can focus.</p>
+                </div>
+            </div>
+            <div class="step-row">
+                <div class="step-num purple">2</div>
+                <div class="step-text">
+                    <h3>Fill out the quick form</h3>
+                    <p>Tell me a bit about your business so I can customize your AI team before we even hop on the call. Takes 2 minutes.</p>
+                </div>
+            </div>
+            <div class="step-row">
+                <div class="step-num pink">3</div>
+                <div class="step-text">
+                    <h3>Show up ready to go</h3>
+                    <p>Have your laptop, your Google login, and any tools you already use ready. I handle everything else.</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="book-section">
         <div class="book-card">
-            <h2>Step 1 — Book Your Session</h2>
+            <h2>Step 1 &#8212; Book Your Session</h2>
             <p>Pick a date and time that works for you. You'll get a Zoom link and prep checklist automatically.</p>
-            <a href="https://calendly.com/santiagoguyfilms/ai-team-setup-session" target="_blank" class="book-btn">📅 Book My Session Now</a>
+            <a href="https://calendly.com/santiagoguyfilms/ai-team-setup-session" target="_blank" class="book-btn">&#128197; Book My Session Now</a>
             <div class="book-note">Can't find a time? Email us at <a href="mailto:welcome@santiagoguyfilms.com" style="color:#00d4ff;">welcome@santiagoguyfilms.com</a></div>
         </div>
     </div>
@@ -95,22 +119,53 @@
             <form id="clientForm" action="https://store.us9.list-manage.com/subscribe/post" method="POST" target="_blank" onsubmit="handleSubmit(event)">
                 <input type="hidden" name="u" value="80feb7aac1d59654571739d9f">
                 <input type="hidden" name="id" value="8c2550ba3f">
-                <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_80feb7aac1d59654571739d9f_8c2550ba3f" tabindex="-1" value=""></div>
-                <div class="form-grid">
-                    <div class="form-group"><label>First Name</label><input type="text" name="FNAME" placeholder="Maria" required></div>
-                    <div class="form-group"><label>Last Name</label><input type="text" name="LNAME" placeholder="Garcia" required></div>
-                    <div class="form-group full"><label>Email Address</label><input type="email" name="EMAIL" placeholder="maria@yourbusiness.com" required></div>
-                    <div class="form-group full"><label>Business Name</label><input type="text" name="MMERGE3" placeholder="Garcia & Associates"></div>
-                    <div class="form-group full"><label>What tier did you purchase?</label><select name="MMERGE4"><option value="">Select your plan...</option><option value="Setup - $497">AI Team Setup — $497</option><option value="Setup + 90-Day Support - $997">Setup + 90-Day Support — $997</option><option value="Full Build VIP - $2497">Full Build VIP — $2,497</option></select></div>
-                    <div class="form-group full"><label>What's your biggest challenge right now?</label><input type="text" name="MMERGE5" placeholder="Too much admin, no time to focus on growth..."></div>
+                <div style="position:absolute;left:-5000px;" aria-hidden="true">
+                    <input type="text" name="b_80feb7aac1d59654571739d9f_8c2550ba3f" tabindex="-1" value="">
                 </div>
-                <button type="submit" class="submit-btn">Submit My Info →</button>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="FNAME" placeholder="Maria" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="LNAME" placeholder="Garcia" required>
+                    </div>
+                    <div class="form-group full">
+                        <label>Email Address</label>
+                        <input type="email" name="EMAIL" placeholder="maria@yourbusiness.com" required>
+                    </div>
+                    <div class="form-group full">
+                        <label>Business Name</label>
+                        <input type="text" name="MMERGE3" placeholder="Garcia &amp; Associates">
+                    </div>
+                    <div class="form-group full">
+                        <label>What tier did you purchase?</label>
+                        <select name="MMERGE4">
+                            <option value="">Select your plan...</option>
+                            <option value="Setup - $497">AI Team Setup &#8212; $497</option>
+                            <option value="Setup + 90-Day Support - $997">Setup + 90-Day Support &#8212; $997</option>
+                            <option value="Full Build VIP - $2497">Full Build VIP &#8212; $2,497</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label>What's your biggest challenge right now?</label>
+                        <input type="text" name="MMERGE5" placeholder="Too much admin, no time to focus on growth...">
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Submit My Info &#8594;</button>
                 <div class="form-note">Your info is never shared or sold. Ever.</div>
             </form>
-            <div class="form-success" id="formSuccess"><div class="check-big">🎯</div><h3>Got it — you're all set!</h3><p>Franco will review your info before the session. See you on Zoom.</p></div>
+            <div class="form-success" id="formSuccess">
+                <div class="check-big">&#127919;</div>
+                <h3>Got it &#8212; you're all set!</h3>
+                <p>Franco will review your info before the session. See you on Zoom.</p>
+            </div>
         </div>
     </div>
-    <footer><p>© 2026 Santiago Guy Films  |  <a href="https://santiagoguyfilms.github.io/">santiagoguyfilms.github.io</a>  |  <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a></p></footer>
+    <footer>
+        <p>&copy; 2026 Santiago Guy Films &nbsp;|&nbsp; <a href="https://santiagoguyfilms.com/">santiagoguyfilms.com</a> &nbsp;|&nbsp; <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a></p>
+    </footer>
     <script>
         const params = new URLSearchParams(window.location.search);
         const item = params.get('item_name') || '';
@@ -122,7 +177,10 @@
         }
         function handleSubmit(e) {
             const form = document.getElementById('clientForm');
-            setTimeout(() => { form.style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; }, 500);
+            setTimeout(() => {
+                form.style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+            }, 500);
         }
     </script>
 </body>
