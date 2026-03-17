@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Things Your Business Can Run on Autopilot with Claude Cowork</title>
+<style>
+  /* System fonts — no external dependencies */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #0a0b14;
+    color: #ffffff;
+    font-size: 10.5pt;
+    line-height: 1.6;
+  }
+
+  /* ─── COVER PAGE ─── */
+  .cover {
+    width: 100%;
+    height: 10.5in;
+    background: #0a0b14;
+    text-align: center;
+    padding: 140px 50px 60px;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .cover-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, rgba(0,212,255,0.08) 0%, rgba(168,85,247,0.04) 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1.5px solid #00d4ff;
+    color: #00d4ff;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 8px 22px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+  }
+
+  .cover-accent-bar {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #00d4ff, #a855f7, #ec4899);
+    border-radius: 2px;
+    margin: 0 auto 28px;
+  }
+
+  .cover h1 {
+    font-size: 30pt;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.08;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  .cover h1 .gradient {
+    color: #00d4ff;
+  }
+
+  .cover-subtitle {
+    font-size: 12pt;
+    color: #9ca3af;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    margin: 0 auto 28px;
+  }
+
+  .cover-byline {
+    font-size: 9pt;
+    color: #4b5072;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .cover-brand {
+    font-size: 10pt;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-top: 6px;
+  }
+
+  /* ─── INTRO PAGE ─── */
+  .intro-page {
+    padding: 60px 50px;
+    page-break-after: always;
+  }
+
+  .section-label {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-size: 22pt;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .intro-text {
+    font-size: 11pt;
+    color: #9ca3af;
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 20px;
+  }
+
+  .intro-text strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+  }
+
+  .stat-card {
+    flex: 1;
+    background: #111220;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 22px 18px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 22pt;
+    font-weight: 900;
+    color: #00d4ff;
+    letter-spacing: -1px;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 8.5pt;
+    color: #9ca3af;
+    font-weight: 500;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .callout-box {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-top: 24px;
+  }
+
+  .callout-box p {
+    font-size: 10.5pt;
+    color: #9ca3af;
+    line-height: 1.7;
+  }
+
+  .callout-box strong {
+    color: #00d4ff;
+  }
+
+  /* ─── AUTOMATION PAGES ─── */
+  .automations-page {
+    padding: 50px 50px;
+    page-break-after: always;
+  }
+
+  .page-header {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 16px;
+    margin-bottom: 28px;
+  }
+
+  .automation-card {
+    background: #111220;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .automation-card:hover {
+    border-color: rgba(0,212,255,0.15);
+  }
+
+  .card-number {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14pt;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .card-number.cyan { background: rgba(0,212,255,0.1); color: #00d4ff; }
+  .card-number.purple { background: rgba(168,85,247,0.1); color: #a855f7; }
+  .card-number.pink { background: rgba(236,72,153,0.1); color: #ec4899; }
+  .card-number.green { background: rgba(52,211,153,0.1); color: #34d399; }
+
+  .card-body { flex: 1; }
+
+  .card-title {
+    font-size: 12pt;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    font-size: 9.5pt;
+    color: #9ca3af;
+    line-height: 1.65;
+  }
+
+  .card-example {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #00d4ff;
+    border-radius: 0 8px 8px 0;
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-size: 9pt;
+    color: #9ca3af;
+    font-style: italic;
+  }
+
+  .card-example strong {
+    color: #00d4ff;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ─── CTA PAGE ─── */
+  .cta-page {
+    padding: 60px 50px;
+    text-align: center;
+    height: 10.5in;
+    position: relative;
+  }
+
+  .cta-glow {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(ellipse at center, rgba(168,85,247,0.07) 0%, rgba(0,212,255,0.04) 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-badge {
+    display: inline-block;
+    border: 1.5px solid rgba(168,85,247,0.5);
+    color: #a855f7;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .cta-title {
+    font-size: 26pt;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 16px;
+    max-width: 480px;
+  }
+
+  .cta-gradient {
+    color: #00d4ff;
+  }
+
+  .cta-sub {
+    font-size: 11pt;
+    color: #9ca3af;
+    max-width: 440px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .cta-sub strong {
+    color: #ffffff;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #00d4ff;
+    color: #0a0b14;
+    font-size: 12pt;
+    font-weight: 800;
+    padding: 16px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    letter-spacing: -0.2px;
+    margin-bottom: 14px;
+  }
+
+  .cta-email {
+    font-size: 9.5pt;
+    color: #4b5072;
+    margin-bottom: 40px;
+  }
+
+  .cta-email a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .what-you-get {
+    background: #111220;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 28px 32px;
+    max-width: 480px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 36px;
+  }
+
+  .what-you-get h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+
+  .what-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .check-icon {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    background: rgba(52,211,153,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .check-icon svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .what-item-text {
+    font-size: 10pt;
+    color: #9ca3af;
+    line-height: 1.5;
+  }
+
+  .what-item-text strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: 20px 50px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-size: 8pt;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d4ff;
+  }
+
+  .footer-url {
+    font-size: 8pt;
+    color: #4b5072;
+  }
+
+  /* ─── GRADIENT BAR ─── */
+  .gradient-bar {
+    height: 3px;
+    background: linear-gradient(90deg, #00d4ff, #a855f7, #ec4899);
+    width: 100%;
+  }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- GRADIENT BAR TOP -->
+<div class="gradient-bar"></div>
+
+<!-- ═══ COVER PAGE ═══ -->
+<div class="cover">
+  <div class="cover-glow"></div>
+  <div class="cover-badge">Free Guide</div>
+  <div class="cover-accent-bar"></div>
+  <h1>
+    10 Things Your Business<br>
+    Can Run <span class="gradient">On Autopilot</span><br>
+    with AI
+  </h1>
+  <p class="cover-subtitle">
+    A plain-English guide for business owners who want to save hours every week — without hiring more people or learning complicated software.
+  </p>
+  <div class="cover-divider"></div>
+  <p class="cover-byline">Presented by</p>
+  <p class="cover-brand">Santiago Guy Films</p>
+</div>
+
+<!-- ═══ INTRO PAGE ═══ -->
+<div class="intro-page">
+  <div class="section-label">The Big Picture</div>
+  <h2 class="page-title">You're already doing the work.<br>AI should handle the repetition.</h2>
+  <p class="intro-text">
+    Most business owners I talk to in Miami are running hard — but they're spending hours every week on tasks that <strong>shouldn't require a human brain.</strong> Writing the same follow-up email for the 40th time. Hunting through inboxes. Manually creating invoices. Posting content from scratch every single day.
+  </p>
+  <p class="intro-text">
+    That's not entrepreneurship. That's administration.
+  </p>
+  <p class="intro-text">
+    AI tools like <strong>Claude Cowork</strong> are built to absorb exactly this kind of work — so you can focus on the things only you can do: relationships, strategy, and growth.
+  </p>
+  <p class="intro-text">
+    This guide shows you <strong>10 concrete things</strong> you can automate right now. No tech background needed.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="stat-number">11 hrs</span>
+      <p class="stat-label">Saved per week by<br>small businesses using AI</p>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">3×</span>
+      <p class="stat-label">Faster first-draft<br>turnaround with AI writing</p>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">$0</span>
+      <p class="stat-label">Extra headcount needed<br>to handle more volume</p>
+    </div>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>What is Claude Cowork?</strong> It's an AI-powered desktop tool that connects to your email, calendar, documents, spreadsheets, and more — then acts on your behalf. Think of it as a virtual team member who never sleeps, never misses a follow-up, and can work across every app you already use.</p>
+  </div>
+</div>
+
+<!-- ═══ AUTOMATIONS PAGE 1 (1–5) ═══ -->
+<div class="automations-page">
+  <div class="page-header">
+    <div class="section-label">Automations 1–5</div>
+    <h2 class="page-title" style="font-size: 18pt; margin-bottom: 0;">The Daily Grind — Handled</h2>
+  </div>
+
+  <!-- Card 1 -->
+  <div class="automation-card">
+    <div class="card-number cyan">1</div>
+    <div class="card-body">
+      <p class="card-title">Email Triage & Smart Replies</p>
+      <p class="card-desc">Every morning, AI scans your inbox, flags what's urgent, archives the noise, and drafts replies to routine messages — all waiting for your quick approval. No more spending 45 minutes just to feel "caught up."</p>
+      <p class="card-example"><strong>Example:</strong> "Here are 3 emails that need your attention today. I've drafted replies for all of them — just review and send."</p>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="automation-card">
+    <div class="card-number purple">2</div>
+    <div class="card-body">
+      <p class="card-title">Invoice Creation & Payment Follow-Up</p>
+      <p class="card-desc">Say a client's name and the amount — your AI builds a branded invoice with payment links, saves it to your files, and sends it. No template hunting, no formatting. And if they haven't paid in 7 days? It drafts the follow-up automatically.</p>
+      <p class="card-example"><strong>Example:</strong> "Create an invoice for Miami Glow Studio — $1,200 for the UGC package. Done."</p>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="automation-card">
+    <div class="card-number pink">3</div>
+    <div class="card-body">
+      <p class="card-title">Social Media Content Drafts</p>
+      <p class="card-desc">Give your AI a topic, a product, or even just a mood — it produces ready-to-post captions, hooks, and hashtag sets for Instagram, TikTok, and LinkedIn. In seconds. Every day. Without creative block.</p>
+      <p class="card-example"><strong>Example:</strong> "Write 3 Instagram captions for my new fall menu. One funny, one emotional, one direct offer."</p>
+    </div>
+  </div>
+
+  <!-- Card 4 --?
+  <div class="automation-card">
+    <div class="card-number green">4</div>
+    <div class="card-body">
+      <p class="card-title">Morning Business Briefing</p>
+      <p class="card-desc">Every morning, your AI pulls together a quick summary: what's on your calendar, what emails need action, what tasks are overdue. A 60-second read instead of 30 minutes of clicking around trying to orient yourself.</p>
+      <p class="card-example"><strong>Example:</strong> "Good morning. You have 2 calls today, 4 emails to handle, and 1 overdue follow-up from last week."</p>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="automation-card">
+    <div class="card-number cyan">5</div>
+    <div class="card-body">
+      <p class="card-title">Meeting Scheduling & Calendar Management</p>
+      <p class="card-desc">No more back-and-forth emails to find a time. AI checks your calendar, finds open windows, sends scheduling links, and adds confirmed meetings — including location, agenda, and reminders — without you lifting a finger.</p>
+      <p class="card-example"><strong>Example:</strong> "Find a 30-minute slot this week for a call with a new client and send them a booking link."</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AUTOMATIONS PAGE 2 (6–10) ═══ -->
+<div class="automations-page">
+  <div class="page-header">
+    <div class="section-label">Automations 6–10</div>
+    <h2 class="page-title" style="font-size: 18pt; margin-bottom: 0;">Growth Work — Without the Grind</h2>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="automation-card">
+    <div class="card-number purple">6</div>
+    <div class="card-body">
+      <p class="card-title">Cold Outreach — Personalized at Scale</p>
+      <p class="card-desc">Your AI researches a business, drafts a personalized cold email that references their specific situation, and queues it up as a Gmail draft — ready to send in one click. No cookie-cutter blasts. Actual personalization, fast.</p>
+      <p class="card-example"><strong>Example:</strong> "Draft a cold email to Brickell Dental. They're a med spa and I want to pitch my UGC video package."</p>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="automation-card">
+    <div class="card-number pink">7</div>
+    <div class="card-body">
+      <p class="card-title">Document & Proposal Creation</p>
+      <p class="card-desc">Need a client proposal? A service agreement? A one-pager? Describe what you need in plain English and your AI produces a polished, branded document ready to send — in minutes, not hours. No more staring at a blank Word doc.</p>
+      <p class="card-example"><strong>Example:</strong> "Create a 1-page proposal for a 3-month social media retainer — $2,500/month — for a local restaurant client."</p>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="automation-card">
+    <div class="card-number green">8</div>
+    <div class="card-body">
+      <p class="card-title">Follow-Up Email Sequences</p>
+      <p class="card-desc">After a meeting, a quote, or a new lead — AI drafts the full follow-up sequence. Day 1, Day 3, Day 7. Each one personalized, timed right, and ready to go. Deals close faster when the follow-up never drops.</p>
+      <p class="card-example"><strong>Example:</strong> "Write a 3-part follow-up sequence after a free consultation. Goal is to convert them into a paying client."</p>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="automation-card">
+    <div class="card-number cyan">9</div>
+    <div class="card-body">
+      <p class="card-title">CRM & Lead Tracker Updates</p>
+      <p class="card-desc">Instead of manually logging every conversation, AI updates your spreadsheet or CRM: who you contacted, what was said, what the next step is. Your pipeline stays current without you ever opening a spreadsheet voluntarily.</p>
+      <p class="card-example"><strong>Example:</strong> "Log that I spoke with Verde Kitchen today. They're interested. Follow up in 5 days."</p>
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="automation-card">
+    <div class="card-number purple">10</div>
+    <div class="card-body">
+      <p class="card-title">Content Repurposing Engine</p>
+      <p class="card-desc">Write one piece of content — a blog post, a video script, a client email — and AI turns it into five things: a caption, a short-form video script, a story, an email, and a Tweet. One idea. Maximum reach. Zero extra time.</p>
+      <p class="card-example"><strong>Example:</strong> "Take this client case study and turn it into an Instagram caption, a LinkedIn post, and an email I can send to my list."</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CTA PAGE ═══ -->
+<div class="cta-page">
+  <div class="cta-glow"></div>
+
+  <div class="cta-badge">Ready to Set This Up?</div>
+
+  <h2 class="cta-title">
+    Let's get your business<br>
+    <span class="cta-gradient">running on autopilot.</span>
+  </h2>
+
+  <p class="cta-sub">
+    I set up Claude Cowork for business owners who are tired of doing everything manually. <strong>One session. Real automations. Running in days — not months.</strong>
+  </p>
+
+  <div class="what-you-get">
+    <h3>What's included in a setup call</h3>
+
+    <div class="what-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="what-item-text"><strong>Free 15-minute strategy call</strong> — we map out your biggest time-wasters and which automations would hit hardest for your specific business</p>
+    </div>
+
+    <div class="what-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="what-item-text"><strong>Custom automation blueprint</strong> — a clear plan for exactly what gets automated, connected, and built for you</p>
+    </div>
+
+    <div class="what-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="what-item-text"><strong>Done-for-you setup</strong> — I connect your tools (email, calendar, Drive, CRM) and configure your AI workflows so everything just works</p>
+    </div>
+
+    <div class="what-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="what-item-text"><strong>Running in days</strong> — not months. No learning curve. You just use it.</p>
+    </div>
+  </div>
+
+  <a class="cta-button" href="mailto:welcome@santiagoguyfilms.com?subject=Claude Cowork Setup Call">
+    Book Your Free Strategy Call →
+  </a>
+
+  <p class="cta-email">
+    Or email me directly: <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a>
+  </p>
+
+  <!-- Footer -->
+  <div style="width: 100%; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+    <p class="footer-brand">Santiago Guy Films</p>
+    <p class="footer-url" style="font-size: 8pt; color: #4b5072;">santiagoguyfilms.github.io</p>
+  </div>
+</div>
+
+<!-- GRADIENT BAR BOTTOM -->
+<div class="gradient-bar"></div>
+
+</body>
+</html>
