@@ -549,33 +549,31 @@
     <div class="intake-form">
       <h3>Tell me about your business</h3>
       <p class="form-sub">Takes 2 minutes — this is everything I need to run your audit.</p>
-      <!-- Replace ACTION_URL with your Formspree endpoint: https://formspree.io/f/YOUR_ID -->
-      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-        <input type="hidden" name="_subject" value="New BizAudit Order — $97"/>
-        <input type="hidden" name="_next" value="thank-you"/>
+      <!-- Intake form — submits via mailto (zero-dependency, works on any static host) -->
+      <form id="intakeForm">
         <div class="form-group">
           <label>Your Name *</label>
-          <input type="text" name="name" placeholder="e.g. Maria Gonzalez" required/>
+          <input type="text" id="f_name" placeholder="e.g. Maria Gonzalez" required/>
         </div>
         <div class="form-group">
           <label>Business Name *</label>
-          <input type="text" name="business_name" placeholder="e.g. Café Brickell" required/>
+          <input type="text" id="f_biz" placeholder="e.g. Café Brickell" required/>
         </div>
         <div class="form-group">
           <label>Business Website or Instagram Handle *</label>
-          <input type="text" name="website_or_instagram" placeholder="e.g. cafebrickell.com or @cafebrickell" required/>
+          <input type="text" id="f_web" placeholder="e.g. cafebrickell.com or @cafebrickell" required/>
         </div>
         <div class="form-group">
           <label>Your Email *</label>
-          <input type="email" name="email" placeholder="you@yourbusiness.com" required/>
+          <input type="email" id="f_email" placeholder="you@yourbusiness.com" required/>
         </div>
         <div class="form-group">
           <label>Your Phone (optional)</label>
-          <input type="tel" name="phone" placeholder="(305) 000-0000"/>
+          <input type="tel" id="f_phone" placeholder="(305) 000-0000"/>
         </div>
         <div class="form-group">
           <label>What's your biggest marketing challenge right now?</label>
-          <textarea name="challenge" placeholder="e.g. We're not getting engagement on Instagram and don't know why..."></textarea>
+          <textarea id="f_challenge" placeholder="e.g. We're not getting engagement on Instagram and don't know why..."></textarea>
         </div>
         <button type="submit" class="btn-submit">Submit My Business Info →</button>
       </form>
@@ -766,10 +764,6 @@
         </div>
       </div>
 
-      <!-- ════ PAYPAL BUTTON ════
-           Replace the two instances of welcome@santiagoguyfilms.com with your actual PayPal email.
-           Replace https://santiagoguyfilms.github.io/bizaudit with the URL where this page is hosted.
-           That's it — no other changes needed. -->
       <div class="paypal-btn-wrap">
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_xclick"/>
@@ -780,8 +774,8 @@
           <input type="hidden" name="amount" value="97.00"/>
           <input type="hidden" name="currency_code" value="USD"/>
           <input type="hidden" name="no_shipping" value="1"/>
-          <input type="hidden" name="return" value="https://santiagoguyfilms.github.io/bizaudit?paid=true"/>
-          <input type="hidden" name="cancel_return" value="https://santiagoguyfilms.github.io/bizaudit"/>
+          <input type="hidden" name="return" value="https://santiagoguyfilms.com/bizaudit?paid=true"/>
+          <input type="hidden" name="cancel_return" value="https://santiagoguyfilms.com/bizaudit"/>
           <input type="hidden" name="bn" value="PP-BuyNowBF"/>
           <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-family:inherit;">
             Pay $97 with PayPal — Get My Audit →
@@ -840,7 +834,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Santiago Guy Films</div>
-  <p>Miami, FL &nbsp;·&nbsp; <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a> &nbsp;·&nbsp; <a href="https://santiagoguyfilms.github.io" target="_blank">santiagoguyfilms.github.io</a></p>
+  <p>Miami, FL &nbsp;·&nbsp; <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a> &nbsp;·&nbsp; <a href="https://santiagoguyfilms.com" target="_blank">santiagoguyfilms.com</a></p>
   <p style="margin-top:8px;">"Content that works as hard as you do."</p>
 </footer>
 
@@ -852,6 +846,35 @@
     document.getElementById('main-content').style.display = 'none';
     document.querySelector('nav .nav-cta').style.display = 'none';
     window.scrollTo(0, 0);
+  }
+
+  // Intake form — builds a mailto: link from form fields and opens email client
+  const intakeForm = document.getElementById('intakeForm');
+  if (intakeForm) {
+    intakeForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name      = document.getElementById('f_name').value.trim();
+      const biz       = document.getElementById('f_biz').value.trim();
+      const web       = document.getElementById('f_web').value.trim();
+      const email     = document.getElementById('f_email').value.trim();
+      const phone     = document.getElementById('f_phone').value.trim() || 'Not provided';
+      const challenge = document.getElementById('f_challenge').value.trim() || 'Not provided';
+
+      const subject = encodeURIComponent('New BizAudit Order — $97 | ' + biz);
+      const body = encodeURIComponent(
+        'NEW BIZAUDIT ORDER\n' +
+        '==================\n\n' +
+        'Name: ' + name + '\n' +
+        'Business: ' + biz + '\n' +
+        'Website / Instagram: ' + web + '\n' +
+        'Email: ' + email + '\n' +
+        'Phone: ' + phone + '\n\n' +
+        'Biggest challenge:\n' + challenge + '\n\n' +
+        '-- Submitted via BizAudit intake form'
+      );
+
+      window.location.href = 'mailto:welcome@santiagoguyfilms.com?subject=' + subject + '&body=' + body;
+    });
   }
 </script>
 
