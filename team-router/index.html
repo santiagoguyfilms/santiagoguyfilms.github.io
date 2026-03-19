@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGF Team Router — Santiago Guy Films</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0b14;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    padding: 2rem 1.5rem 1rem;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+  }
+
+  header p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
+  }
+
+  main {
+    width: 100%;
+    max-width: 640px;
+    padding: 1rem 1.5rem 3rem;
+  }
+
+  .search-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    background: #111220;
+    border: 1.5px solid #222;
+    border-radius: 12px;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-box input:focus {
+    border-color: #00d4ff;
+  }
+
+  .search-box input::placeholder {
+    color: #555;
+  }
+
+  .result-card {
+    background: #111220;
+    border: 1px solid #1e1f30;
+    border-radius: 14px;
+    padding: 1.75rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s, transform 0.35s;
+    display: none;
+  }
+
+  .result-card.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .result-card .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .result-card .name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .result-card .role {
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #00d4ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.15rem;
+  }
+
+  .result-card .personality {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.5;
+  }
+
+  .result-card .keywords {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .result-card .keywords span {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 20px;
+    color: #00d4ff;
+  }
+
+  .result-card .cta {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  .result-card .cta strong {
+    color: #00d4ff;
+    font-style: normal;
+  }
+
+  .multi-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .team-grid-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #555;
+    margin-bottom: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+
+  .team-chip {
+    background: #111220;
+    border: 1px solid #1e1f30;
+    border-radius: 10px;
+    padding: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .team-chip:hover {
+    border-color: #00d4ff;
+    background: #151628;
+  }
+
+  .team-chip .chip-emoji {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .team-chip .chip-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .team-chip .chip-role {
+    font-size: 0.65rem;
+    color: #666;
+    margin-top: 0.1rem;
+  }
+
+  @media (max-width: 480px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    header h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SGF Team Router</h1>
+  <p>Tell me what you need — I'll find the right person.</p>
+</header>
+
+<main>
+  <div class="search-box">
+    <input type="text" id="query" placeholder="e.g. I need to review a brand contract..." autofocus>
+  </div>
+
+  <div id="results" class="multi-results"></div>
+
+  <div class="team-grid-title">Your Team</div>
+  <div class="team-grid" id="teamGrid"></div>
+</main>
+
+<script>
+const team = [
+  {
+    name: "Carmen",
+    emoji: "\ud83d\udccb",
+    color: "#ec4899",
+    role: "Admin & Executive Assistant",
+    personality: "Efficient, warm, proactive \u2014 full Gmail & Calendar access, anticipates your needs before you ask.",
+    keywords: ["email", "inbox", "calendar", "schedule", "meeting", "rsvp", "appointment", "reminder", "briefing", "morning brief", "draft email", "reply", "follow-up", "admin", "reschedule", "cancel meeting", "what's on my calendar", "check my email", "send email"],
+    trigger: 'Say "Carmen" to activate'
+  },
+  {
+    name: "Regina",
+    emoji: "\ud83d\udcca",
+    color: "#a855f7",
+    role: "Project Manager",
+    personality: "Direct, organized, unflappable \u2014 accountability without guilt, dry humor. Keeps the train on the tracks.",
+    keywords: ["deadline", "deliverable", "content calendar", "project", "timeline", "task", "what's due", "overdue", "priority", "workflow", "schedule", "daily plan", "weekly plan", "what should I work on", "behind", "pipeline", "organize", "to-do", "status"],
+    trigger: 'Say "Regina" to activate'
+  },
+  {
+    name: "Rafa",
+    emoji: "\ud83d\udcb0",
+    color: "#f59e0b",
+    role: "Sales & Business Development",
+    personality: "Charismatic, high-energy, strategic closer \u2014 Miami energy. Knows your worth and won't let you leave money on the table.",
+    keywords: ["pitch", "rate", "negotiate", "cold outreach", "brand partnership", "close", "upsell", "revenue", "income", "monetize", "pricing", "retainer", "affiliate", "sponsorship", "client", "dm strategy", "media kit", "follow-up", "deal", "money", "business development", "raise rates"],
+    trigger: 'Say "Rafa" to activate'
+  },
+  {
+    name: "Sonny",
+    emoji: "\ud83c\udfac",
+    color: "#00d4ff",
+    role: "Creative Director",
+    personality: "Artistic, perceptive, brutally honest about creative work \u2014 passionate about craft. Pushes your content to the next level.",
+    keywords: ["content", "video", "hook", "pacing", "thumbnail", "editing", "storytelling", "creative", "framing", "lighting", "audio", "caption", "transition", "b-roll", "composition", "color grading", "aesthetic", "trend", "storyboard", "creative brief", "ideation", "shoot", "review my video"],
+    trigger: 'Say "Sonny" to activate'
+  },
+  {
+    name: "Anna",
+    emoji: "\ud83d\udcc8",
+    color: "#10b981",
+    role: "Marketing Director & Media Buyer",
+    personality: "Sharp, data-driven, numbers-first \u2014 slightly impatient energy, dry humor. Always on call.",
+    keywords: ["ad", "advertising", "media buy", "ad spend", "cpm", "roas", "ctr", "cpc", "paid social", "audience", "targeting", "campaign", "meta ads", "tiktok ads", "youtube ads", "google ads", "retargeting", "pixel", "conversion", "a/b test", "budget", "media plan", "brand positioning"],
+    trigger: 'Say "Anna" to activate'
+  },
+  {
+    name: "Andrew",
+    emoji: "\ud83e\uddee",
+    color: "#6366f1",
+    role: "Finance Manager & Accountant",
+    personality: "Calm, precise, reassuring \u2014 firm when it matters. Trusted family accountant vibe. Always watching the numbers.",
+    keywords: ["money", "expense", "income", "tax", "1099", "schedule c", "quarterly", "write-off", "deduction", "bookkeeping", "invoice", "profit", "loss", "cash flow", "budget", "savings", "retirement", "sep ira", "receipt", "irs", "self-employment", "accounting", "mileage", "home office", "depreciation", "financial"],
+    trigger: 'Say "Andrew" to activate'
+  },
+  {
+    name: "Dante",
+    emoji: "\u2696\ufe0f",
+    color: "#ef4444",
+    role: "Legal & Contracts Advisor",
+    personality: "Measured, authoritative, protective \u2014 formal but not cold. Reads every clause. Protects your interests.",
+    keywords: ["contract", "agreement", "nda", "usage rights", "licensing", "exclusivity", "intellectual property", "copyright", "ownership", "payment terms", "kill fee", "revision clause", "deliverable scope", "indemnification", "liability", "non-compete", "termination", "talent release", "model release", "legal", "brand deal terms"],
+    trigger: 'Say "Dante" to activate'
+  },
+  {
+    name: "Rina",
+    emoji: "\ud83d\udc9c",
+    color: "#c084fc",
+    role: "Encourager & Tough Love Mentor",
+    personality: "Warm but firm, deeply wise, poetic \u2014 never dismissive. Absorbs frustration with grace and redirects with love.",
+    keywords: ["frustrated", "stuck", "overwhelmed", "burnout", "doubt", "imposter", "creative block", "angry", "quit", "not working", "comparing", "struggling", "venting", "stressed", "tired", "lost", "motivation", "confidence", "tough day", "need encouragement", "feeling down"],
+    trigger: 'Say "Rina" or just vent to activate'
+  },
+  {
+    name: "Felix",
+    emoji: "\ud83d\ude80",
+    color: "#06b6d4",
+    role: "Web Deployment Specialist",
+    personality: "Calm, methodical, resourceful \u2014 deploys sites to GitHub Pages. The bridge between building it and the world seeing it.",
+    keywords: ["deploy", "github", "push", "publish", "site live", "github pages", "upload", "git", "website", "repo", "go live", "hosting", "put online", "get this live"],
+    trigger: 'Say "Felix" to activate'
+  }
+];
+
+const input = document.getElementById('query');
+const resultsContainer = document.getElementById('results');
+const teamGrid = document.getElementById('teamGrid');
+
+team.forEach(member => {
+  const chip = document.createElement('div');
+  chip.className = 'team-chip';
+  chip.innerHTML = `
+    <div class="chip-emoji">${member.emoji}</div>
+    <div class="chip-name">${member.name}</div>
+    <div class="chip-role">${member.role.split('&')[0].trim()}</div>
+  `;
+  chip.addEventListener('click', () => showResult([member]));
+  teamGrid.appendChild(chip);
+});
+
+function scoreMatch(query, member) {
+  const q = query.toLowerCase();
+  let score = 0;
+  if (q.includes(member.name.toLowerCase())) score += 100;
+  for (const kw of member.keywords) {
+    if (q.includes(kw)) {
+      score += 10;
+    } else {
+      const words = kw.split(' ');
+      for (const w of words) {
+        if (w.length > 3 && q.includes(w)) score += 4;
+      }
+    }
+  }
+  const roleWords = member.role.toLowerCase().split(/\W+/);
+  for (const rw of roleWords) {
+    if (rw.length > 3 && q.includes(rw)) score += 6;
+  }
+  return score;
+}
+
+function findMatches(query) {
+  if (!query.trim()) return [];
+  const scored = team.map(m => ({ member: m, score: scoreMatch(query, m) }))
+    .filter(s => s.score > 0)
+    .sort((a, b) => b.score - a.score);
+  if (scored.length === 0) return [];
+  const top = scored[0];
+  const results = [top];
+  if (scored.length > 1 && scored[1].score >= top.score * 0.5) {
+    results.push(scored[1]);
+  }
+  return results.map(r => r.member);
+}
+
+function showResult(members) {
+  resultsContainer.innerHTML = '';
+  if (members.length === 0) {
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.innerHTML = `
+      <div class="name">No exact match</div>
+      <div class="personality" style="margin-top:0.5rem;">Try describing your task differently, or tap a team member below to see what they handle.</div>
+    `;
+    resultsContainer.appendChild(card);
+    requestAnimationFrame(() => card.classList.add('visible'));
+    return;
+  }
+  members.forEach((member, i) => {
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.innerHTML = `
+      <div class="avatar" style="background:${member.color}">${member.emoji}</div>
+      <div class="name">${member.name}</div>
+      <div class="role">${member.role}</div>
+      <div class="personality">${member.personality}</div>
+      <div class="keywords">${member.keywords.slice(0, 8).map(k => `<span>${k}</span>`).join('')}</div>
+      <div class="cta">To activate &rarr; <strong>${member.trigger}</strong></div>
+    `;
+    resultsContainer.appendChild(card);
+    setTimeout(() => card.classList.add('visible'), i * 100);
+  });
+}
+
+let debounce;
+input.addEventListener('input', () => {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => {
+    const q = input.value.trim();
+    if (q.length < 2) {
+      resultsContainer.innerHTML = '';
+      return;
+    }
+    const matches = findMatches(q);
+    showResult(matches);
+  }, 250);
+});
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    clearTimeout(debounce);
+    const q = input.value.trim();
+    if (q.length < 2) return;
+    const matches = findMatches(q);
+    showResult(matches);
+  }
+});
+</script>
+
+</body>
+</html>
