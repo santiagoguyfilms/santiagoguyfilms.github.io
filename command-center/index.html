@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0b14">
+<title>SGF Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0b14;
+    color: #fff;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ambient {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse at 20% 10%, rgba(0,212,255,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 90%, rgba(168,85,247,0.03) 0%, transparent 50%);
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; position: relative; z-index: 1; }
+  @media (max-width: 640px) { .container { padding: 24px 16px 60px; } }
+  .brand-line { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .brand-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #00d4ff; }
+  .brand-dot { width: 4px; height: 4px; border-radius: 50%; background: #4b5072; }
+  .brand-sub { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #4b5072; }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -2px; line-height: 1.05;
+    background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px; margin: 32px 0 28px;
+  }
+  .stat-card {
+    background: #111220; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+    padding: 14px 16px; text-align: center;
+  }
+  .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #4b5072; margin-bottom: 4px; }
+  .stat-value { font-size: 22px; font-weight: 900; letter-spacing: -1px; }
+  .team-section { margin-bottom: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4b5072; margin-bottom: 10px; }
+  .team-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+  .team-chip {
+    display: flex; align-items: center; gap: 8px; border-radius: 10px; padding: 8px 14px;
+    font-size: 12px; font-weight: 700;
+  }
+  .team-chip-count { font-size: 11px; color: #4b5072; font-weight: 600; }
+  .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+  .filter-group { display: flex; gap: 6px; }
+  .filter-btn {
+    background: #111220; color: #9ca3af; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 8px 16px; font-size: 12px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s ease; font-family: inherit; letter-spacing: 0.5px;
+  }
+  .filter-btn.active { background: #00d4ff; color: #0a0b14; border-color: #00d4ff; }
+  .add-btn {
+    background: linear-gradient(135deg, #00d4ff, #a855f7); color: #0a0b14; border: none;
+    border-radius: 8px; padding: 8px 20px; font-size: 12px; font-weight: 800;
+    cursor: pointer; font-family: inherit; letter-spacing: 0.5px;
+  }
+  .add-form {
+    background: #111220; border: 1px solid rgba(0,212,255,0.2); border-radius: 14px;
+    padding: 20px; margin-bottom: 18px; display: none; flex-direction: column; gap: 10px;
+  }
+  .add-form.visible { display: flex; }
+  .add-form input {
+    background: #0a0b14; color: #fff; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 12px 16px; font-size: 14px; font-weight: 600;
+    font-family: inherit; outline: none;
+  }
+  .add-form input:focus { border-color: #00d4ff; }
+  .add-form input::placeholder { color: #4b5072; }
+  .form-actions { display: flex; gap: 8px; }
+  .form-btn-primary {
+    background: #00d4ff; color: #0a0b14; border: none; border-radius: 8px;
+    padding: 10px 24px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  }
+  .form-btn-cancel {
+    background: transparent; color: #4b5072; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 10px 24px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .projects { display: flex; flex-direction: column; gap: 14px; }
+  .project-card {
+    background: #111220; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px;
+    overflow: hidden; transition: all 0.3s ease;
+    animation: fadeUp 0.5s ease both;
+  }
+  .project-header { padding: 22px 24px 18px; cursor: pointer; transition: background 0.2s ease; }
+  .project-header:hover { background: #16172a; }
+  .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .project-name { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+  .project-desc { font-size: 13px; color: #4b5072; margin-top: 3px; }
+  .project-pct {
+    font-size: 22px; font-weight: 900; letter-spacing: -1px;
+    background: linear-gradient(135deg, #00d4ff, #a855f7);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    white-space: nowrap;
+  }
+  .project-pct.complete { background: #34d399; -webkit-background-clip: text; background-clip: text; }
+  .chevron { color: #4b5072; font-size: 18px; transition: transform 0.3s ease; margin-left: 10px; }
+  .chevron.open { transform: rotate(180deg); }
+  .progress-bar { width: 100%; height: 5px; background: #1a1b2e; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #00d4ff, #a855f7); transition: width 0.6s ease; }
+  .progress-fill.complete { background: #34d399; }
+  .project-meta { display: flex; align-items: center; gap: 14px; margin-top: 12px; flex-wrap: wrap; }
+  .stage-counts { display: flex; gap: 10px; }
+  .stage-count { font-size: 11px; font-weight: 600; }
+  .stage-count.zero { opacity: 0.3; }
+  .next-up { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+  .next-up-label { font-size: 10px; color: #4b5072; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px;
+    border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+    white-space: nowrap; max-width: 280px; overflow: hidden; text-overflow: ellipsis;
+  }
+  @media (max-width: 640px) { .next-up { margin-left: 0; margin-top: 6px; } .badge { max-width: 260px; } }
+  .task-list { padding: 0 24px 22px; display: none; flex-direction: column; gap: 6px; }
+  .task-list.visible { display: flex; }
+  .task-divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 8px; }
+  .task-row {
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+    background: #0e0f1a; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px; transition: all 0.2s ease;
+  }
+  .task-row:hover { background: #13142a; border-color: rgba(0,212,255,0.1); }
+  .stage-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .task-name { flex: 1; color: #ccc; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .task-name.done { color: #4b5072; text-decoration: line-through; }
+  .task-emoji { font-size: 14px; flex-shrink: 0; }
+  .task-assignee { font-size: 12px; font-weight: 600; min-width: 60px; flex-shrink: 0; }
+  .task-stage-select {
+    background: #111220; border-radius: 6px; padding: 4px 8px; font-size: 11px;
+    font-weight: 600; cursor: pointer; outline: none; font-family: inherit;
+    min-width: 95px; flex-shrink: 0; appearance: none; -webkit-appearance: none;
+  }
+  select option { background: #111220; color: #9ca3af; }
+  .add-task-row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .add-task-input {
+    flex: 1; min-width: 140px; background: #0a0b14; color: #fff;
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+    padding: 8px 12px; font-size: 12px; font-family: inherit; outline: none;
+  }
+  .add-task-input:focus { border-color: #00d4ff; }
+  .add-task-input::placeholder { color: #4b5072; }
+  .add-task-select {
+    background: #0a0b14; color: #9ca3af; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 8px 10px; font-size: 12px; font-family: inherit;
+    outline: none; cursor: pointer; appearance: none; -webkit-appearance: none; min-width: 100px;
+  }
+  .add-task-btn {
+    background: #00d4ff; color: #0a0b14; border: none; border-radius: 8px;
+    padding: 8px 16px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit;
+  }
+  .footer {
+    text-align: center; margin-top: 48px; color: #4b5072;
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .empty { text-align: center; padding: 60px 20px; color: #4b5072; font-size: 14px; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #1a1b2e; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="container" id="app"></div>
+<script>
+const TEAM={Marco:{role:"Web Design",color:"#00d4ff",emoji:"\u{1F3A8}"},Felix:{role:"Deployment",color:"#a855f7",emoji:"\u{1F680}"},Sonny:{role:"Creative Director",color:"#ec4899",emoji:"\u{1F3AC}"},Regina:{role:"Project Manager",color:"#34d399",emoji:"\u{1F4CB}"},Quentin:{role:"Content Strategy",color:"#f59e0b",emoji:"\u{1F4CA}"},Carmen:{role:"Admin & EA",color:"#818cf8",emoji:"\u{1F4E7}"},Rafa:{role:"Sales & Biz Dev",color:"#fb923c",emoji:"\u{1F4B0}"},Anna:{role:"Marketing & Ads",color:"#f472b6",emoji:"\u{1F4E3}"},Andrew:{role:"Finance",color:"#22d3ee",emoji:"\u{1F9FE}"},Dante:{role:"Legal & Contracts",color:"#a78bfa",emoji:"\u2696\uFE0F"},Rina:{role:"Encourager",color:"#fbbf24",emoji:"\u{1F4AA}"}};
+const TEAM_NAMES=Object.keys(TEAM);
+const STAGES=["Backlog","In Progress","Review","Done"];
+const STAGE_COLORS={Backlog:"#4b5072","In Progress":"#00d4ff",Review:"#a855f7",Done:"#34d399"};
+const STORAGE_KEY="sgf_command_center_v1";
+const DEFAULT_PROJECTS=[{id:"prj_1",name:"BizAudit Report Engine",description:"HTML/DOCX audit reports for local Miami businesses",tasks:[{id:"t1",name:"Web scraping pipeline",assignee:"Felix",stage:"Done"},{id:"t2",name:"Report template (HTML)",assignee:"Marco",stage:"Done"},{id:"t3",name:"DOCX export format",assignee:"Marco",stage:"Review"},{id:"t4",name:"Slack delivery workflow",assignee:"Carmen",stage:"In Progress"},{id:"t5",name:"Email automation upsell flow",assignee:"Rafa",stage:"Backlog"},{id:"t6",name:"Sample audit content pieces",assignee:"Quentin",stage:"Backlog"}]},{id:"prj_2",name:"IG Carousel Launch Tool",description:"One prompt to branded 5 slide carousel posted to Instagram",tasks:[{id:"t7",name:"Carousel design system",assignee:"Marco",stage:"Done"},{id:"t8",name:"SVG slide generator",assignee:"Felix",stage:"Done"},{id:"t9",name:"Instagram API posting",assignee:"Felix",stage:"In Progress"},{id:"t10",name:"Creative review checklist",assignee:"Sonny",stage:"Backlog"},{id:"t11",name:"Offer launch integration",assignee:"Regina",stage:"Backlog"}]},{id:"prj_3",name:"SGF CRM & Pipeline",description:"Brand tracking, email sequences, and pipeline management",tasks:[{id:"t12",name:"Google Sheets CRM tracker",assignee:"Regina",stage:"Done"},{id:"t13",name:"Email sequence engine",assignee:"Carmen",stage:"Done"},{id:"t14",name:"Apollo prospecting integration",assignee:"Rafa",stage:"In Progress"},{id:"t15",name:"Pipeline briefing skill",assignee:"Regina",stage:"Done"},{id:"t16",name:"Automated follow up triggers",assignee:"Carmen",stage:"Review"}]},{id:"prj_4",name:"Soccer Club Automation",description:"Tiered service packages for youth soccer clubs",tasks:[{id:"t17",name:"Package tier definitions",assignee:"Rafa",stage:"Done"},{id:"t18",name:"Social media automation",assignee:"Quentin",stage:"In Progress"},{id:"t19",name:"Registration/calendar system",assignee:"Carmen",stage:"Backlog"},{id:"t20",name:"Pricing and proposal doc",assignee:"Rafa",stage:"Review"}]},{id:"prj_5",name:"Offer Launch Pipeline",description:"One prompt to live offer page, terms, deploy, carousel, and Slack confirmation",tasks:[{id:"t21",name:"Offer page generator",assignee:"Marco",stage:"Done"},{id:"t22",name:"Terms auto updater",assignee:"Dante",stage:"Done"},{id:"t23",name:"GitHub Pages deploy",assignee:"Felix",stage:"Done"},{id:"t24",name:"Carousel auto generation",assignee:"Sonny",stage:"In Progress"},{id:"t25",name:"Slack confirmation post",assignee:"Carmen",stage:"Done"}]}];
+let state={projects:[],expandedId:null,filter:"All",showAdd:false};
+function load(){try{const d=localStorage.getItem(STORAGE_KEY);if(d){state.projects=JSON.parse(d);return;}}catch(e){}state.projects=JSON.parse(JSON.stringify(DEFAULT_PROJECTS));}
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state.projects));}catch(e){}}
+function getProgress(tasks){return tasks.length?Math.round(tasks.filter(t=>t.stage==="Done").length/tasks.length*100):0;}
+function getNextUp(tasks){for(const s of["In Progress","Review","Backlog"]){const t=tasks.find(t=>t.stage===s);if(t)return t;}return null;}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function render(){const app=document.getElementById('app');const ps=state.projects;const totalTasks=ps.reduce((a,p)=>a+p.tasks.length,0);const doneTasks=ps.reduce((a,p)=>a+p.tasks.filter(t=>t.stage==="Done").length,0);const inProgress=ps.reduce((a,p)=>a+p.tasks.filter(t=>t.stage==="In Progress").length,0);const reviewTasks=ps.reduce((a,p)=>a+p.tasks.filter(t=>t.stage==="Review").length,0);const overallPct=totalTasks?Math.round(doneTasks/totalTasks*100):0;const activeProjects=ps.filter(p=>getProgress(p.tasks)<100).length;const teamLoad={};ps.forEach(p=>p.tasks.forEach(t=>{if(t.stage!=="Done")teamLoad[t.assignee]=(teamLoad[t.assignee]||0)+1;}));const activeMembers=Object.entries(teamLoad).sort((a,b)=>b[1]-a[1]);let filtered=ps;if(state.filter==="Active")filtered=ps.filter(p=>{const pg=getProgress(p.tasks);return pg>0&&pg<100;});else if(state.filter==="Complete")filtered=ps.filter(p=>getProgress(p.tasks)===100);let html=`<div class="brand-line"><span class="brand-label">Santiago Guy Films</span><span class="brand-dot"></span><span class="brand-sub">Command Center</span></div><h1>Project Dashboard</h1><div class="stats-grid"><div class="stat-card"><div class="stat-label">Total Progress</div><div class="stat-value" style="color:#00d4ff">${overallPct}%</div></div><div class="stat-card"><div class="stat-label">In Progress</div><div class="stat-value" style="color:#00d4ff">${inProgress}</div></div><div class="stat-card"><div class="stat-label">In Review</div><div class="stat-value" style="color:#a855f7">${reviewTasks}</div></div><div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value" style="color:#34d399">${doneTasks}/${totalTasks}</div></div><div class="stat-card"><div class="stat-label">Active Projects</div><div class="stat-value" style="color:#ec4899">${activeProjects}</div></div></div>`;if(activeMembers.length){html+=`<div class="team-section"><div class="section-label">Active Team Workload</div><div class="team-grid">`;activeMembers.forEach(([name,count])=>{const m=TEAM[name];html+=`<div class="team-chip" style="background:${m.color}10;border:1px solid ${m.color}25"><span style="font-size:16px">${m.emoji}</span><span style="color:${m.color}">${name}</span><span class="team-chip-count">${count} task${count>1?'s':''}</span></div>`;});html+=`</div></div>`;}html+=`<div class="toolbar"><div class="filter-group">${["All","Active","Complete"].map(f=>`<button class="filter-btn ${state.filter===f?'active':''}" onclick="setFilter('${f}')">${f}</button>`).join('')}</div><button class="add-btn" onclick="toggleAdd()">+ Add Project</button></div>`;html+=`<div class="add-form ${state.showAdd?'visible':''}" id="addForm"><input id="newName" placeholder="Project name" value=""><input id="newDesc" placeholder="Short description" value=""><div class="form-actions"><button class="form-btn-primary" onclick="addProject()">Create</button><button class="form-btn-cancel" onclick="toggleAdd()">Cancel</button></div></div>`;html+=`<div class="projects">`;if(!filtered.length){html+=`<div class="empty">No projects match this filter.</div>`;}filtered.forEach((p,i)=>{const pct=getProgress(p.tasks);const nextUp=getNextUp(p.tasks);const nextM=nextUp?TEAM[nextUp.assignee]:null;const isOpen=state.expandedId===p.id;const stageCounts=STAGES.map(s=>({stage:s,count:p.tasks.filter(t=>t.stage===s).length}));html+=`<div class="project-card" style="animation-delay:${i*0.08}s"><div class="project-header" onclick="toggleProject('${p.id}')"><div class="project-top"><div style="flex:1;min-width:0"><div class="project-name">${esc(p.name)}</div><div class="project-desc">${esc(p.description)}</div></div><div style="display:flex;align-items:center"><span class="project-pct ${pct===100?'complete':''}">${pct}%</span><span class="chevron ${isOpen?'open':''}">&#9662;</span></div></div><div class="progress-bar"><div class="progress-fill ${pct===100?'complete':''}" style="width:${pct}%"></div></div><div class="project-meta"><div class="stage-counts">${stageCounts.map(sc=>`<span class="stage-count ${sc.count?'':'zero'}" style="color:${STAGE_COLORS[sc.stage]}">${sc.count} ${sc.stage}</span>`).join('')}</div>${nextUp?`<div class="next-up"><span class="next-up-label">Next up:</span><span class="badge" style="background:${nextM.color}18;color:${nextM.color};border:1px solid ${nextM.color}30">${nextM.emoji} ${nextUp.assignee} &rarr; ${esc(nextUp.name)}</span></div>`:''}</div></div><div class="task-list ${isOpen?'visible':''}" id="tasks_${p.id}"><div class="task-divider"></div>`;p.tasks.forEach(t=>{const m=TEAM[t.assignee];html+=`<div class="task-row"><span class="stage-dot" style="background:${STAGE_COLORS[t.stage]};box-shadow:0 0 6px ${STAGE_COLORS[t.stage]}60"></span><span class="task-name ${t.stage==='Done'?'done':''}">${esc(t.name)}</span><span class="task-emoji">${m.emoji}</span><span class="task-assignee" style="color:${m.color}">${t.assignee}</span><select class="task-stage-select" style="color:${STAGE_COLORS[t.stage]};border:1px solid ${STAGE_COLORS[t.stage]}40" onchange="changeStage('${p.id}','${t.id}',this.value)">${STAGES.map(s=>`<option value="${s}" ${t.stage===s?'selected':''}>${s}</option>`).join('')}</select></div>`;});html+=`<div class="add-task-row"><input class="add-task-input" id="newTask_${p.id}" placeholder="New task name..."><select class="add-task-select" id="newTaskAssignee_${p.id}">${TEAM_NAMES.map(n=>`<option value="${n}">${TEAM[n].emoji} ${n}</option>`).join('')}</select><button class="add-task-btn" onclick="addTask('${p.id}')">Add</button></div>`;html+=`</div></div>`;});html+=`</div>`;html+=`<div class="footer">Santiago Guy Films &middot; Command Center &middot; ${new Date().getFullYear()}</div>`;app.innerHTML=html;}
+function setFilter(f){state.filter=f;render();}
+function toggleAdd(){state.showAdd=!state.showAdd;render();}
+function toggleProject(id){state.expandedId=state.expandedId===id?null:id;render();}
+function changeStage(pid,tid,newStage){const p=state.projects.find(p=>p.id===pid);if(!p)return;const t=p.tasks.find(t=>t.id===tid);if(!t)return;t.stage=newStage;save();render();}
+function addProject(){const nameEl=document.getElementById('newName');const descEl=document.getElementById('newDesc');if(!nameEl||!nameEl.value.trim())return;const id='prj_'+Date.now();state.projects.push({id,name:nameEl.value.trim(),description:descEl?descEl.value.trim():'',tasks:[]});state.showAdd=false;state.expandedId=id;save();render();}
+function addTask(pid){const nameEl=document.getElementById('newTask_'+pid);const assigneeEl=document.getElementById('newTaskAssignee_'+pid);if(!nameEl||!nameEl.value.trim())return;const p=state.projects.find(p=>p.id===pid);if(!p)return;p.tasks.push({id:'t_'+Date.now(),name:nameEl.value.trim(),assignee:assigneeEl.value,stage:'Backlog'});save();render();}
+load();render();
+</script>
+</body>
+</html>
