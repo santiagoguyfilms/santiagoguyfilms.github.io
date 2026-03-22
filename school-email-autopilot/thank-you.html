@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In — School Email Autopilot Setup | Santiago Guy Films</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #0a0b14; --surface: #111220; --accent: #00d4ff;
+  --gradient: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+  --text: #ffffff; --text-body: #9ca3af; --text-muted: #4b5072;
+  --border: rgba(255,255,255,0.06); --success: #34d399;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+nav {
+  padding: 20px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-weight: 800; font-size: 13px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text); text-decoration: none;
+}
+.container { max-width: 720px; margin: 0 auto; padding: 80px 40px 120px; }
+.success-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(52,211,153,0.1); color: var(--success);
+  padding: 10px 20px; border-radius: 100px;
+  font-size: 0.85rem; font-weight: 700; margin-bottom: 24px;
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 16px;
+}
+h1 .gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.intro {
+  font-size: 1.1rem; color: var(--text-body);
+  line-height: 1.75; margin-bottom: 48px; max-width: 600px;
+}
+.download-box {
+  background: var(--surface);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 20px;
+  padding: 36px 32px; margin-bottom: 48px;
+  position: relative; overflow: hidden;
+}
+.download-box::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: var(--gradient);
+}
+.download-box h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
+.download-box p { color: var(--text-body); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.7; }
+.download-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--bg);
+  padding: 16px 32px; border-radius: 12px;
+  font-weight: 700; font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(0,212,255,0.25);
+  transition: all 0.3s ease;
+}
+.download-btn:hover { transform: translateY(-2px); }
+.download-note { margin-top: 12px; font-size: 0.8rem; color: var(--text-muted); }
+.setup-section { margin-bottom: 48px; }
+.setup-section h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 32px; letter-spacing: -0.5px; }
+.setup-step {
+  display: grid; grid-template-columns: 48px 1fr;
+  gap: 20px; margin-bottom: 32px; padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.setup-step:last-child { border-bottom: none; }
+.step-num {
+  width: 48px; height: 48px;
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1.1rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.step-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.step-body p { color: var(--text-body); font-size: 0.95rem; line-height: 1.7; }
+.step-body code {
+  background: rgba(0,212,255,0.1); color: var(--accent);
+  padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;
+}
+.step-body .tip {
+  margin-top: 12px; background: rgba(52,211,153,0.08);
+  border-left: 3px solid var(--success);
+  padding: 12px 16px; border-radius: 0 8px 8px 0;
+  font-size: 0.85rem; color: var(--text-body);
+}
+.help-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px; text-align: center;
+}
+.help-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.help-box p { color: var(--text-body); font-size: 0.95rem; margin-bottom: 16px; }
+.help-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.upsell {
+  margin-top: 48px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 16px; padding: 32px;
+}
+.upsell h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.upsell p { color: var(--text-body); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px; }
+.upsell-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--accent); color: var(--accent);
+  padding: 12px 24px; border-radius: 10px;
+  font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; transition: all 0.3s;
+}
+.upsell-btn:hover { background: rgba(0,212,255,0.1); }
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 40px; text-align: center;
+  font-size: 0.8rem; color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .container { padding: 60px 20px 80px; }
+  .setup-step { grid-template-columns: 1fr; }
+  .step-num { margin-bottom: -12px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://santiagoguyfilms.com" class="nav-brand">Santiago Guy Films</a>
+</nav>
+<div class="container">
+  <div class="success-badge">✓ PURCHASE CONFIRMED</div>
+  <h1>You're In. Let's Get Your <span class="gradient">School Email Autopilot</span> Running.</h1>
+  <p class="intro">Your purchase was successful. Below is everything you need to get set up — the skill file, step-by-step instructions, and where to get help if you need it. Total setup time: about 5 minutes.</p>
+  <div class="download-box">
+    <h2>Download Your Skill File</h2>
+    <p>This is the automation file you'll install in Claude Cowork. Save it somewhere you can find it — your Desktop or Downloads folder works.</p>
+    <a href="#" class="download-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download school-email-autopilot.skill
+    </a>
+    <p class="download-note">A copy has also been sent to your email. Check spam if you don't see it within 5 minutes.</p>
+  </div>
+  <div class="setup-section">
+    <h2>Setup Guide (5 Minutes)</h2>
+    <div class="setup-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Install the Skill in Claude Cowork</h3>
+        <p>Open Claude Cowork on your desktop. Go to <strong>Settings → Skills</strong>. Drag the <code>school-email-autopilot.skill</code> file into the window, or click "Add Skill" and browse to the file.</p>
+        <div class="tip">Don't have Claude Cowork yet? Download it at <strong>claude.ai</strong> — it's Anthropic's desktop AI assistant.</div>
+      </div>
+    </div>
+    <div class="setup-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Connect Your Gmail, Google Calendar, and Slack</h3>
+        <p>In Cowork settings, connect these three free MCP connectors:</p>
+        <p><strong>Gmail</strong> — so the skill can read your school emails<br>
+        <strong>Google Calendar</strong> — so it can add events and deadlines<br>
+        <strong>Slack</strong> — so it can post your daily digest (share the channel with family!)</p>
+        <div class="tip">Each connector takes about 60 seconds to set up. Just click "Connect" and authorize with your Google/Slack account.</div>
+      </div>
+    </div>
+    <div class="setup-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Run It and Enter Your School's Domain</h3>
+        <p>In Cowork, just say: <code>"Run the school email digest"</code></p>
+        <p>The first time you run it, the skill will ask for your school's email domain — something like <code>@lincolnelementary.org</code> or <code>@miamidadeschools.net</code>. Enter it, and the skill configures everything automatically.</p>
+        <div class="tip">After the first run, you can schedule it to run automatically every morning. Just say: "Schedule the school digest to run every day at 7am."</div>
+      </div>
+    </div>
+    <div class="setup-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Share With Your Family (Optional)</h3>
+        <p>Invite your co-parent, nanny, or grandparents to the Slack channel. Everyone gets the same daily digest — no more forwarding emails or texting "did you see the school email about..."</p>
+      </div>
+    </div>
+  </div>
+  <div class="help-box">
+    <h3>Need Help Getting Set Up?</h3>
+    <p>If anything isn't working or you get stuck during setup, reach out directly.</p>
+    <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a>
+  </div>
+  <div class="upsell">
+    <h3>Want More AI Automations for Your Business?</h3>
+    <p>Santiago Guy Films builds custom AI automations, content systems, and digital workflows for businesses and busy professionals. If you liked what the School Email Autopilot does for your family — imagine what we can build for your business.</p>
+    <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="upsell-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Book a Free Consultation
+    </a>
+  </div>
+</div>
+<footer>
+  © 2026 Santiago Guy Films. All rights reserved. · <a href="mailto:welcome@santiagoguyfilms.com" style="color:var(--text-muted);">welcome@santiagoguyfilms.com</a>
+</footer>
+</body>
+</html>
