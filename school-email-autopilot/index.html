@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Email Autopilot — Never Miss a School Email Again | Santiago Guy Films</title>
+<meta name="description" content="AI-powered automation that scans your inbox for school emails, extracts deadlines and events, adds them to your calendar, and delivers a daily digest. Works with any school.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #0a0b14;
+  --surface: #111220;
+  --surface-hover: #16172a;
+  --accent: #00d4ff;
+  --gradient: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+  --text: #ffffff;
+  --text-body: #9ca3af;
+  --text-muted: #4b5072;
+  --border: rgba(255,255,255,0.06);
+  --success: #34d399;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  padding: 20px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(10,11,20,0.85);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-weight: 800; font-size: 13px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text);
+  text-decoration: none;
+}
+.nav-cta {
+  background: var(--accent); color: var(--bg);
+  padding: 12px 28px; border-radius: 10px;
+  font-weight: 700; font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0,212,255,0.25);
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(0,212,255,0.35); }
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 40px 80px;
+  position: relative;
+  max-width: 1200px; margin: 0 auto;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 10%; left: -10%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 20%; right: -5%; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  border: 1px solid var(--accent); color: var(--accent);
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 24px; border-radius: 100px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  font-weight: 900; letter-spacing: -2px;
+  line-height: 1.05; margin-bottom: 24px;
+  max-width: 800px;
+}
+.hero h1 .gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1.15rem; color: var(--text-body);
+  max-width: 560px; line-height: 1.75;
+  margin-bottom: 40px;
+}
+.hero-cta-group { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--bg);
+  padding: 18px 36px; border-radius: 12px;
+  font-weight: 700; font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(0,212,255,0.25);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(0,212,255,0.4); }
+.hero-trust {
+  margin-top: 12px;
+  font-size: 0.85rem; color: var(--text-muted); font-weight: 400;
+}
+.hero-price {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900; margin-bottom: 8px;
+}
+.hero-price .amount {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-price .detail {
+  font-size: 1rem; font-weight: 400; color: var(--text-muted);
+  display: block; margin-top: 4px;
+}
+section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800; letter-spacing: -1px;
+  margin-bottom: 20px; line-height: 1.1;
+}
+.section-sub {
+  font-size: 1.05rem; color: var(--text-body);
+  max-width: 600px; line-height: 1.75;
+  margin-bottom: 48px;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.problem-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: all 0.3s ease;
+}
+.problem-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,212,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.problem-icon { font-size: 2rem; margin-bottom: 16px; }
+.problem-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+.problem-card p { color: var(--text-body); font-size: 0.95rem; line-height: 1.7; }
+.steps-container { display: grid; gap: 32px; }
+.step-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.step-number {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; font-weight: 900;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border: 1px solid rgba(0,212,255,0.15);
+}
+.step-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+.step-content p { color: var(--text-body); font-size: 0.95rem; line-height: 1.7; }
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: start;
+}
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  border-color: rgba(0,212,255,0.15);
+  transform: translateY(-2px);
+}
+.feature-card .icon { font-size: 1.5rem; margin-bottom: 12px; }
+.feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.feature-card p { color: var(--text-body); font-size: 0.9rem; line-height: 1.7; }
+.feature-highlight {
+  background: var(--surface);
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 20px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.feature-highlight::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--gradient);
+}
+.feature-highlight h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; }
+.digest-preview {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+.digest-preview .highlight { color: var(--accent); }
+.digest-preview .warning { color: #f59e0b; }
+.digest-preview .success { color: var(--success); }
+.use-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.use-case {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+.use-case .persona {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 12px;
+}
+.use-case h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.use-case p { color: var(--text-body); font-size: 0.9rem; line-height: 1.7; }
+.req-list { display: flex; flex-direction: column; gap: 16px; }
+.req-item {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.req-check {
+  width: 32px; height: 32px; flex-shrink: 0;
+  background: rgba(52,211,153,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--success); font-weight: 800; font-size: 14px;
+}
+.req-item p { color: var(--text-body); font-size: 0.95rem; }
+.req-item strong { color: var(--text); }
+.pricing-card {
+  max-width: 520px; margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 24px;
+  padding: 48px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pricing-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--gradient);
+}
+.pricing-amount {
+  font-size: 4rem; font-weight: 900;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 16px 0;
+}
+.pricing-detail { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; }
+.pricing-includes { text-align: left; margin-bottom: 32px; }
+.pricing-includes .item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; }
+.pricing-includes .check { color: var(--success); font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+.pricing-includes .item span { color: var(--text-body); font-size: 0.95rem; }
+.faq-list { max-width: 720px; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+.faq-q {
+  font-size: 1.05rem; font-weight: 700;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.faq-q::after {
+  content: '+'; font-size: 1.5rem; font-weight: 300;
+  color: var(--accent); transition: transform 0.3s ease;
+}
+.faq-item.open .faq-q::after { content: '-'; }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  color: var(--text-body); font-size: 0.95rem; line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+.final-cta {
+  text-align: center;
+  padding: 120px 40px;
+  position: relative;
+}
+.final-cta::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.final-cta h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900; letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.final-cta .sub {
+  color: var(--text-body); font-size: 1.1rem;
+  margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto;
+}
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1200px; margin: 0 auto;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-brand {
+  font-weight: 800; font-size: 11px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  color: var(--text-muted); font-size: 0.85rem;
+  text-decoration: none; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--accent); }
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.workflow-visual {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+  margin-top: 48px; margin-bottom: 48px;
+}
+.workflow-node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.85rem; font-weight: 600;
+  text-align: center;
+  min-width: 120px;
+  animation: nodePulse 3s ease-in-out infinite;
+}
+.workflow-node:nth-child(3) { animation-delay: 0.3s; }
+.workflow-node:nth-child(5) { animation-delay: 0.6s; }
+.workflow-node:nth-child(7) { animation-delay: 0.9s; }
+.workflow-node:nth-child(9) { animation-delay: 1.2s; }
+.workflow-arrow { color: var(--accent); font-size: 1.2rem; font-weight: 300; }
+@keyframes nodePulse {
+  0%, 100% { border-color: var(--border); box-shadow: none; }
+  50% { border-color: rgba(0,212,255,0.3); box-shadow: 0 0 20px rgba(0,212,255,0.08); }
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .hero, section { padding-left: 20px; padding-right: 20px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .step-item { grid-template-columns: 1fr; }
+  .step-number { margin-bottom: -16px; }
+  footer { flex-direction: column; text-align: center; }
+  .pricing-card { padding: 36px 24px; }
+  .workflow-visual { flex-direction: column; }
+  .workflow-arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://santiagoguyfilms.com" class="nav-brand">Santiago Guy Films</a>
+  <a href="https://buy.stripe.com/cNi4gz6PI860do88Bves00h" class="nav-cta">Get It — $197</a>
+</nav>
+<section class="hero">
+  <div class="hero-badge">AI AUTOMATION FOR PARENTS</div>
+  <h1>Your Kid's School Sends <span class="gradient-text">Too Many Emails.</span> This Reads Them All For You.</h1>
+  <p class="hero-sub">School Email Autopilot scans your inbox every day, pulls out what actually matters — homework deadlines, permission slips, events, grade reports — adds them to your calendar, and sends you one clean daily digest. You just enter your school's email domain. It handles the rest.</p>
+  <div class="hero-price">
+    <span class="amount">$197</span>
+    <span class="detail">one-time purchase · works with any school</span>
+  </div>
+  <div class="hero-cta-group">
+    <a href="https://buy.stripe.com/cNi4gz6PI860do88Bves00h" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      Get School Email Autopilot
+    </a>
+  </div>
+  <p class="hero-trust">Instant delivery · 30-day money-back guarantee · Works with Gmail + Google Calendar + Slack</p>
+</section>
+<div class="workflow-visual reveal">
+  <div class="workflow-node">📧 School Emails</div>
+  <span class="workflow-arrow">→</span>
+  <div class="workflow-node">🤖 AI Scans</div>
+  <span class="workflow-arrow">→</span>
+  <div class="workflow-node">📋 Extracts Dates</div>
+  <span class="workflow-arrow">→</span>
+  <div class="workflow-node">📅 Adds to Calendar</div>
+  <span class="workflow-arrow">→</span>
+  <div class="workflow-node">💬 Daily Digest</div>
+</div>
+<section>
+  <div class="reveal">
+    <div class="section-label">THE PROBLEM</div>
+    <h2 class="section-title">You're a Great Parent. Your Inbox Is Working Against You.</h2>
+    <p class="section-sub">Schools send dozens of emails a week. Important deadlines hide between newsletters and lunch menus. And when you miss one, your kid pays the price.</p>
+  </div>
+  <div class="problem-grid">
+    <div class="problem-card reveal">
+      <div class="problem-icon">📬</div>
+      <h3>Buried in Email Noise</h3>
+      <p>Permission slips, field trip forms, and grade alerts mixed in with 47 other emails. The important stuff gets lost, and by the time you find it, the deadline already passed.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">📅</div>
+      <h3>Forgotten Deadlines</h3>
+      <p>Early dismissals you didn't know about. Picture day you forgot to dress for. The science fair project due tomorrow that you just found out about tonight.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">⏰</div>
+      <h3>20 Minutes You Don't Have</h3>
+      <p>Every morning, you're scanning emails, copying dates to your calendar, and trying to figure out what needs action today. That's time you could spend with your family.</p>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="reveal">
+    <div class="section-label">HOW IT WORKS</div>
+    <h2 class="section-title">Three Steps. Then It Runs Itself.</h2>
+    <p class="section-sub">Setup takes 5 minutes. After that, the Autopilot runs daily — no input needed.</p>
+  </div>
+  <div class="steps-container">
+    <div class="step-item reveal">
+      <div class="step-number">01</div>
+      <div class="step-content">
+        <h3>Enter Your School's Email Domain</h3>
+        <p>Tell the system your school's domain (like @lincolnelementary.org or @miamidadeschools.net). That's the only setup. The skill configures itself to scan for emails from that domain plus common school keywords.</p>
+      </div>
+    </div>
+    <div class="step-item reveal">
+      <div class="step-number">02</div>
+      <div class="step-content">
+        <h3>Install the Skill in Claude Cowork</h3>
+        <p>One click to install. Connect your Gmail, Google Calendar, and Slack (all free connectors). The skill creates a dedicated school calendar and Slack channel automatically.</p>
+      </div>
+    </div>
+    <div class="step-item reveal">
+      <div class="step-number">03</div>
+      <div class="step-content">
+        <h3>Wake Up to a Clean Daily Digest</h3>
+        <p>Every morning, you get a structured summary: what emails came in, what needs action, what events were added to your calendar, and any urgent deadlines flagged with warnings. No more digging through your inbox.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="reveal">
+    <div class="section-label">WHAT'S INSIDE</div>
+    <h2 class="section-title">Four Automations Running Every Day</h2>
+    <p class="section-sub">Each one replaces a manual task you're currently doing by hand — or forgetting to do at all.</p>
+  </div>
+  <div class="features-grid">
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <div class="feature-card reveal">
+        <div class="icon">🔍</div>
+        <h3>Smart Email Scanner</h3>
+        <p>Searches Gmail for emails from your school's domain AND common school keywords — catches emails even from third-party platforms schools use (ParentSquare, Remind, ClassDojo).</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">📋</div>
+        <h3>Action Item Extractor</h3>
+        <p>AI reads every email and pulls out what matters: things you need to sign, money you need to send, replies you need to write, and supplies you need to buy. Urgent items get flagged.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">📅</div>
+        <h3>Auto Calendar Sync</h3>
+        <p>Every date, deadline, event, early dismissal, holiday, and field trip automatically lands on your Google Calendar. Duplicate detection means no clutter — just clean, accurate scheduling.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">💬</div>
+        <h3>Daily Slack Digest</h3>
+        <p>One organized message every morning with everything you need to know. Share the Slack channel with your co-parent, nanny, or grandparents so everyone stays in the loop.</p>
+      </div>
+    </div>
+    <div class="feature-highlight reveal">
+      <h3>Sample Daily Digest</h3>
+      <div class="digest-preview">
+        <span class="highlight">📅 Monday, March 22 — School Email Autopilot</span><br><br>
+        <strong>Summary</strong><br>
+        3 school emails reviewed. 2 action items found.<br><br>
+        <strong>📋 Action Items</strong><br>
+        <span class="warning">⚠️</span> Permission slip for Science Museum field trip — due TOMORROW<br>
+        • Bring $5 lunch money for pizza Friday<br><br>
+        <strong>📌 Events Found</strong><br>
+        • Spring Concert — April 3 at 6:00 PM<br>
+        • Early Dismissal — March 28 at 12:30 PM<br><br>
+        <strong>📅 Added to Calendar</strong><br>
+        <span class="success">✓</span> Spring Concert — April 3<br>
+        <span class="success">✓</span> Early Dismissal — March 28<br>
+        ↳ Field Trip already on calendar (skipped)<br><br>
+        <strong>📬 Emails Reviewed</strong><br>
+        • Principal Torres — "March Newsletter" — overview<br>
+        • Ms. Garcia — "Field Trip Reminder" — action needed<br>
+        • Lunch Services — "Pizza Friday" — send money
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="reveal">
+    <div class="section-label">WHO THIS IS FOR</div>
+    <h2 class="section-title">Built for Busy Parents Who Refuse to Miss Another Deadline</h2>
+  </div>
+  <div class="use-cases">
+    <div class="use-case reveal">
+      <div class="persona">WORKING PARENTS</div>
+      <h3>"I can't check emails during the workday"</h3>
+      <p>You're in meetings until 5pm and school emails pile up. By the time you read them, the deadline was 3pm. Autopilot catches everything while you work and puts it where you'll see it.</p>
+    </div>
+    <div class="use-case reveal">
+      <div class="persona">CO-PARENTING FAMILIES</div>
+      <h3>"We both need to know what's happening"</h3>
+      <p>Share the Slack channel with your co-parent. Both of you see the same digest every morning — no more "did you see the email about..." conversations. Everyone's on the same page.</p>
+    </div>
+    <div class="use-case reveal">
+      <div class="persona">MULTI-KID HOUSEHOLDS</div>
+      <h3>"Three kids, three schools, three inboxes"</h3>
+      <p>Set up one Autopilot per school domain. Each one runs independently with its own calendar and digest. All the chaos, organized into clean daily summaries.</p>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="reveal">
+    <div class="section-label">WHAT YOU NEED</div>
+    <h2 class="section-title">Setup Requirements</h2>
+    <p class="section-sub">Everything you need is free except Claude Cowork itself. Total setup time: about 5 minutes.</p>
+  </div>
+  <div class="req-list">
+    <div class="req-item reveal">
+      <div class="req-check">✓</div>
+      <div><strong>Claude Cowork</strong> — The desktop app from Anthropic (where the skill runs)<br><p>Available at claude.ai — this is the platform that powers the automation.</p></div>
+    </div>
+    <div class="req-item reveal">
+      <div class="req-check">✓</div>
+      <div><strong>Gmail Account</strong> — Where your school emails arrive<br><p>Connect via the free Gmail MCP connector in Cowork settings.</p></div>
+    </div>
+    <div class="req-item reveal">
+      <div class="req-check">✓</div>
+      <div><strong>Google Calendar</strong> — Where events get added<br><p>Connect via the free Google Calendar MCP connector. A dedicated "School" calendar is created automatically.</p></div>
+    </div>
+    <div class="req-item reveal">
+      <div class="req-check">✓</div>
+      <div><strong>Slack</strong> — Where your daily digest lands<br><p>Free Slack workspace works fine. Connect via the Slack MCP connector. Great for sharing with family members.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="reveal">
+    <div class="section-label">PRICING</div>
+    <h2 class="section-title" style="text-align:center;">One Price. Runs Forever.</h2>
+    <p class="section-sub" style="text-align:center; margin-left:auto; margin-right:auto;">No subscription. No monthly fees. Buy it once, use it every school day for the rest of your kid's academic career.</p>
+  </div>
+  <div class="pricing-card reveal">
+    <div style="font-size:0.9rem; font-weight:600; color:var(--accent); margin-bottom:8px;">SCHOOL EMAIL AUTOPILOT</div>
+    <div class="pricing-amount">$197</div>
+    <div class="pricing-detail">one-time purchase</div>
+    <div class="pricing-includes">
+      <div class="item"><span class="check">✓</span><span>The complete School Email Autopilot skill file</span></div>
+      <div class="item"><span class="check">✓</span><span>Works with ANY school domain — not locked to one school</span></div>
+      <div class="item"><span class="check">✓</span><span>Daily automated email scanning and digest</span></div>
+      <div class="item"><span class="check">✓</span><span>Automatic Google Calendar event creation</span></div>
+      <div class="item"><span class="check">✓</span><span>Slack daily digest with action items and urgency flags</span></div>
+      <div class="item"><span class="check">✓</span><span>Step-by-step setup guide included</span></div>
+      <div class="item"><span class="check">✓</span><span>Email support from Franco at Santiago Guy Films</span></div>
+    </div>
+    <a href="https://buy.stripe.com/cNi4gz6PI860do88Bves00h" class="btn-primary" style="width:100%; justify-content:center;">
+      Get School Email Autopilot — $197
+    </a>
+    <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">30-day money-back guarantee · Instant delivery</p>
+  </div>
+</section>
+<section>
+  <div class="reveal">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q">What is Claude Cowork?</div>
+      <div class="faq-a">Claude Cowork is a desktop app from Anthropic that lets you run AI automations (called "skills") on your computer. Think of it as your AI assistant that can connect to Gmail, Google Calendar, Slack, and more. You install the School Email Autopilot skill inside Cowork, and it runs the automation for you.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Does this work with any school?</div>
+      <div class="faq-a">Yes. You enter your school's email domain during setup (like @yourschool.org) and the skill configures itself. It also scans for common school keywords, so it catches emails from platforms like ParentSquare, Remind, and ClassDojo that schools use.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">How do I install it?</div>
+      <div class="faq-a">After purchase, you'll receive the .skill file via email. In Claude Cowork, go to Settings → Skills → drag the file in. Connect your Gmail, Calendar, and Slack connectors (free, takes 2 minutes each). Enter your school domain, and you're done.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Can I use it for multiple kids at different schools?</div>
+      <div class="faq-a">Absolutely. You can set up the skill with multiple school domains, or install separate instances for each school. Each one maintains its own calendar and digest, so nothing gets mixed up.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What if my school uses a different email system?</div>
+      <div class="faq-a">The skill scans your Gmail inbox — so as long as school emails arrive in your Gmail (or are forwarded there), it works. It doesn't matter what system the school uses to send the emails.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What's your refund policy?</div>
+      <div class="faq-a">30-day money-back guarantee, no questions asked. If the skill doesn't work for your setup or you're not happy with it, email welcome@santiagoguyfilms.com and you'll get a full refund.</div>
+    </div>
+  </div>
+</section>
+<section class="final-cta">
+  <div class="reveal">
+    <h2>Stop Digging Through<br><span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">School Emails.</span></h2>
+    <p class="sub">Let the Autopilot read them, sort them, calendar them, and digest them — so you can be the parent, not the secretary.</p>
+    <a href="https://buy.stripe.com/cNi4gz6PI860do88Bves00h" class="btn-primary">
+      Get School Email Autopilot — $197
+    </a>
+    <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">One-time purchase · 30-day guarantee · Works with any school</p>
+  </div>
+</section>
+<footer>
+  <div class="footer-brand">© 2026 Santiago Guy Films. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://santiagoguyfilms.com/offers/terms.html">Terms</a>
+    <a href="mailto:welcome@santiagoguyfilms.com">Contact</a>
+    <a href="https://santiagoguyfilms.com">Home</a>
+  </div>
+</footer>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+    item.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
