@@ -62,13 +62,45 @@ h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-2px;line-heigh
 .mockup-panel{display:none;margin-top:14px;padding:16px;background:#0a0b14;border:1px solid rgba(168,85,247,.2);border-radius:12px;animation:slideDown .3s ease}
 .mockup-panel.open{display:block}
 .mockup-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a855f7;margin-bottom:10px}
-.mockup-slides{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
-.mockup-slide{flex:0 0 120px;height:150px;background:#111220;border:1px solid rgba(255,255,255,.08);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;position:relative}
-.mockup-slide-num{position:absolute;top:6px;left:8px;font-size:9px;font-weight:800;color:#4b5072;letter-spacing:1px}
-.mockup-slide:first-child{border-color:rgba(0,212,255,.3)}
-.mockup-slide:last-child{border-color:rgba(236,72,153,.3)}
-.mockup-slide-text{font-size:9px;color:#9ca3af;line-height:1.4}
-.mockup-slide-title{font-size:10px;font-weight:800;color:#fff;margin-bottom:4px}
+.mockup-slides{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.ms{flex:0 0 130px;height:130px;background:#0a0b14;border:1px solid rgba(255,255,255,.08);border-radius:8px;position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+.ms-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00d4ff,#a855f7,#ec4899)}
+.ms-glow{position:absolute;inset:0;pointer-events:none;opacity:.6}
+.ms-brand{position:absolute;bottom:5px;left:8px;font-size:5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#2d3050}
+.ms-num{position:absolute;bottom:5px;right:7px;font-size:5.5px;font-weight:700;letter-spacing:1px;color:#2d3050}
+.ms-body{position:relative;padding:14px 10px 16px;height:100%;display:flex;flex-direction:column;justify-content:center}
+/* Slide 1 - Hook */
+.ms1 .ms-badge{display:inline-block;background:#00d4ff;color:#0a0b14;font-size:5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-bottom:6px;width:fit-content}
+.ms1 .ms-h1{font-size:11px;font-weight:900;line-height:1.05;letter-spacing:-.5px;color:#fff;margin-bottom:4px}
+.ms1 .ms-h1 em{font-style:normal;background:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ms1 .ms-sub{font-size:5.5px;color:#9ca3af;line-height:1.4}
+/* Slide 2 - Problem */
+.ms2 .ms-label{font-size:5.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#00d4ff;margin-bottom:3px}
+.ms2 .ms-h1{font-size:11px;font-weight:900;letter-spacing:-.5px;color:#fff;line-height:1.0;margin-bottom:6px}
+.ms2 .ms-problems{display:flex;flex-direction:column;gap:3px}
+.ms2 .ms-pi{display:flex;align-items:center;gap:5px;background:#111220;border:1px solid rgba(255,255,255,.07);border-radius:5px;padding:4px 6px}
+.ms2 .ms-pn{font-size:6px;font-weight:900;color:#2d3050;flex-shrink:0}
+.ms2 .ms-pt{font-size:5.5px;font-weight:600;color:#e5e7eb;line-height:1.2}
+/* Slide 3 - Solution */
+.ms3 .ms-label{font-size:5.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#00d4ff;margin-bottom:3px}
+.ms3 .ms-h1{font-size:10px;font-weight:900;letter-spacing:-.5px;line-height:1.0;margin-bottom:3px;background:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ms3 .ms-sub{font-size:5px;color:#9ca3af;margin-bottom:5px}
+.ms3 .ms-dlist{display:flex;flex-direction:column;gap:3px}
+.ms3 .ms-di{display:flex;align-items:center;gap:5px;background:#111220;border:1px solid rgba(255,255,255,.07);border-radius:5px;padding:4px 6px}
+.ms3 .ms-dicon{font-size:7px;color:#00d4ff;font-weight:900;width:10px;flex-shrink:0;text-align:center}
+.ms3 .ms-dt{font-size:5.5px;font-weight:600;color:#e5e7eb}
+/* Slide 4 - Offer */
+.ms4 .ms-price{font-size:28px;font-weight:900;color:#00d4ff;letter-spacing:-2px;line-height:1;text-shadow:0 0 12px rgba(0,212,255,.25);margin-bottom:2px}
+.ms4 .ms-plabel{font-size:5.5px;font-weight:700;color:#fff;letter-spacing:.5px;margin-bottom:5px}
+.ms4 .ms-checks{display:flex;flex-direction:column;gap:2px}
+.ms4 .ms-ci{display:flex;align-items:center;gap:4px;font-size:5px;color:#d1d5db}
+.ms4 .ms-ck{color:#34d399;font-weight:800;font-size:5.5px}
+/* Slide 5 - CTA */
+.ms5 .ms-body{align-items:center;text-align:center}
+.ms5 .ms-top{font-size:5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#4b5072;margin-bottom:4px}
+.ms5 .ms-h1{font-size:9px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:3px}
+.ms5 .ms-bigp{font-size:22px;font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:5px;background:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ms5 .ms-cta{background:#00d4ff;color:#0a0b14;font-size:5.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:4px;box-shadow:0 2px 8px rgba(0,212,255,.25)}
 
 /* Payment Link Input */
 .payment-panel{display:none;margin-top:10px;animation:slideDown .3s ease}
@@ -120,18 +152,45 @@ h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-2px;line-heigh
 <script>
 const briefs = [
   { num: "01", title: "Why Your Content Gets Zero Engagement", hook: "You're posting every day and getting nothing back. Here's why.", src: "Google Trends", vol: "12K/mo", type: "Pain Point", slides: ["THE HOOK", "The real problem: you're creating for yourself, not your audience", "3 signs your content strategy is broken", "What high-performing creators do differently", "CTA: Let SGF build content that actually converts"] },
-  { num: "02", title: "AI Won't Replace You \u2014 But Someone Using AI Will", hook: "The threat isn't the tool. It's the person who learned it first.", src: "Google Search", vol: "9.5K/mo", type: "Fear/Urgency", slides: ["THE HOOK", "AI adoption is accelerating \u2014 here's the data", "What your competitors are already automating", "The 3 AI tools every business needs now", "CTA: Get ahead with SGF's AI automation"] },
+  { num: "02", title: "AI Won't Replace You — But Someone Using AI Will", hook: "The threat isn't the tool. It's the person who learned it first.", src: "Google Search", vol: "9.5K/mo", type: "Fear/Urgency", slides: ["THE HOOK", "AI adoption is accelerating — here's the data", "What your competitors are already automating", "The 3 AI tools every business needs now", "CTA: Get ahead with SGF's AI automation"] },
   { num: "03", title: "Stop Paying Agencies $5K/mo for Templated Work", hook: "That 'custom strategy' they sold you? It's a Canva template.", src: "Google Trends", vol: "7.8K/mo", type: "Contrarian", slides: ["THE HOOK", "How agencies recycle the same playbook for every client", "What $5K/mo actually gets you (vs. what it should)", "The alternative: AI-powered, custom-built systems", "CTA: See what real custom work looks like"] },
   { num: "04", title: "Your Brand Looks Like Everyone Else's", hook: "Same fonts. Same stock photos. Same 'we're passionate about' copy.", src: "Google Search", vol: "6.2K/mo", type: "Pain Point", slides: ["THE HOOK", "The template trap: why most brands look identical", "What actually makes a brand memorable", "Real examples of brands that broke the mold", "CTA: Build a brand people actually remember"] },
   { num: "05", title: "UGC Is Dead (The Way You're Doing It)", hook: "Brands don't want more UGC. They want content that converts.", src: "Google Trends", vol: "11K/mo", type: "Hot Take", slides: ["THE HOOK", "The old UGC model is saturated and ignored", "What brands actually need in 2026", "How conversion-focused content outperforms generic UGC 4:1", "CTA: Create content that sells, not just fills feeds"] },
   { num: "06", title: "Small Businesses Are Bleeding Money on Bad Ads", hook: "You boosted a post for $50 and got 3 likes. Let's fix that.", src: "Google Search", vol: "8.4K/mo", type: "Pain Point", slides: ["THE HOOK", "Why boosting posts is burning your budget", "The difference between boosting and real ad strategy", "3 things to fix before you spend another dollar", "CTA: Let SGF build ads that actually convert"] },
   { num: "07", title: "The Real Reason Your Videos Don't Go Viral", hook: "It's not the algorithm. It's the first 3 seconds.", src: "Google Trends", vol: "14K/mo", type: "Education", slides: ["THE HOOK", "The 3-second rule: hook or lose them forever", "What the algorithm actually rewards (data-backed)", "Framework: the SGF hook formula", "CTA: Get hooks that stop the scroll"] },
   { num: "08", title: "Miami Businesses Are Sleeping on AI Automation", hook: "Your competitor is doing in 10 minutes what takes you all week.", src: "Local Search", vol: "3.2K/mo", type: "Local/Urgency", slides: ["THE HOOK", "Miami's competitive landscape is shifting fast", "What local businesses are automating right now", "Real ROI: time saved, leads generated, revenue gained", "CTA: Automate your business with SGF"] },
-  { num: "09", title: "You Don't Need More Followers \u2014 You Need Better Content", hook: "10K followers and zero sales? The problem isn't reach.", src: "Google Search", vol: "5.8K/mo", type: "Reframe", slides: ["THE HOOK", "Vanity metrics vs. revenue metrics", "Why 500 engaged followers beat 50K passive ones", "The content framework that turns followers into buyers", "CTA: Build a content engine that drives revenue"] },
-  { num: "10", title: "What a $500 Brand Video Actually Gets You in 2026", hook: "Let's break down what you're really paying for \u2014 and what you should expect.", src: "Google Trends", vol: "4.1K/mo", type: "Transparency", slides: ["THE HOOK", "The real cost breakdown: gear, editing, strategy", "What cheap video gets you vs. strategic video", "$500 vs $2K vs $5K \u2014 what changes at each level", "CTA: Invest smart \u2014 see SGF's packages"] }
+  { num: "09", title: "You Don't Need More Followers — You Need Better Content", hook: "10K followers and zero sales? The problem isn't reach.", src: "Google Search", vol: "5.8K/mo", type: "Reframe", slides: ["THE HOOK", "Vanity metrics vs. revenue metrics", "Why 500 engaged followers beat 50K passive ones", "The content framework that turns followers into buyers", "CTA: Build a content engine that drives revenue"] },
+  { num: "10", title: "What a $500 Brand Video Actually Gets You in 2026", hook: "Let's break down what you're really paying for — and what you should expect.", src: "Google Trends", vol: "4.1K/mo", type: "Transparency", slides: ["THE HOOK", "The real cost breakdown: gear, editing, strategy", "What cheap video gets you vs. strategic video", "$500 vs $2K vs $5K — what changes at each level", "CTA: Invest smart — see SGF's packages"] }
 ];
 
 const grid = document.getElementById('briefs-grid');
+
+function renderMockupSlides(b) {
+  const hookWords = b.hook.split(' ');
+  const hookFirst = hookWords.slice(0, Math.ceil(hookWords.length / 2)).join(' ');
+  const hookSecond = hookWords.slice(Math.ceil(hookWords.length / 2)).join(' ');
+  const problems = b.slides.slice(1, 4).map(s => s.length > 40 ? s.substring(0, 38) + '\u2026' : s);
+  const glows = [
+    'radial-gradient(ellipse at 30% 60%,rgba(0,212,255,.07) 0%,transparent 60%)',
+    'radial-gradient(ellipse at 70% 30%,rgba(168,85,247,.07) 0%,transparent 60%)',
+    'radial-gradient(ellipse at 50% 40%,rgba(168,85,247,.08) 0%,transparent 65%)',
+    'radial-gradient(ellipse at 80% 20%,rgba(0,212,255,.08) 0%,transparent 55%)',
+    'radial-gradient(ellipse at 50% 50%,rgba(0,212,255,.08) 0%,rgba(168,85,247,.05) 40%,transparent 70%)'
+  ];
+  const footer = (n) => '<div class="ms-brand">Santiago Guy Films</div><div class="ms-num">0' + n + ' / 05</div>';
+
+  const s1 = '<div class="ms ms1"><div class="ms-bar"></div><div class="ms-glow" style="background:' + glows[0] + '"></div><div class="ms-body"><div class="ms-badge">' + b.type + '</div><div class="ms-h1">' + hookFirst + '<br><em>' + hookSecond + '</em></div><div class="ms-sub">' + b.title.substring(0, 50) + '</div></div>' + footer(1) + '</div>';
+
+  const s2 = '<div class="ms ms2"><div class="ms-bar"></div><div class="ms-glow" style="background:' + glows[1] + '"></div><div class="ms-body"><div class="ms-label">The Problem</div><div class="ms-h1">Sound<br>familiar?</div><div class="ms-problems">' + problems.map(function(p, i) { return '<div class="ms-pi"><span class="ms-pn">0' + (i+1) + '</span><span class="ms-pt">' + p + '</span></div>'; }).join('') + '</div></div>' + footer(2) + '</div>';
+
+  const s3 = '<div class="ms ms3"><div class="ms-bar"></div><div class="ms-glow" style="background:' + glows[2] + '"></div><div class="ms-body"><div class="ms-label">The Solution</div><div class="ms-h1">SGF</div><div class="ms-sub">Content that converts</div><div class="ms-dlist"><div class="ms-di"><span class="ms-dicon">&#9654;</span><span class="ms-dt">Strategy</span></div><div class="ms-di"><span class="ms-dicon">&#9881;</span><span class="ms-dt">AI Systems</span></div><div class="ms-di"><span class="ms-dicon">&#9733;</span><span class="ms-dt">Production</span></div></div></div>' + footer(3) + '</div>';
+
+  const s4 = '<div class="ms ms4"><div class="ms-bar"></div><div class="ms-glow" style="background:' + glows[3] + '"></div><div class="ms-body"><div class="ms-price">$97</div><div class="ms-plabel">Full Package</div><div class="ms-checks"><div class="ms-ci"><span class="ms-ck">&#10003;</span> Custom strategy</div><div class="ms-ci"><span class="ms-ck">&#10003;</span> AI automation</div><div class="ms-ci"><span class="ms-ck">&#10003;</span> Content creation</div><div class="ms-ci"><span class="ms-ck">&#10003;</span> Performance report</div></div></div>' + footer(4) + '</div>';
+
+  const s5 = '<div class="ms ms5"><div class="ms-bar"></div><div class="ms-glow" style="background:' + glows[4] + '"></div><div class="ms-body"><div class="ms-top">Limited Spots Available</div><div class="ms-h1">Get Yours Now</div><div class="ms-bigp">$97</div><div class="ms-cta">Link in Bio &rarr;</div></div>' + footer(5) + '</div>';
+
+  return s1 + s2 + s3 + s4 + s5;
+}
 
 briefs.forEach((b, i) => {
   const savedLink = localStorage.getItem('payment_' + b.num) || '';
@@ -165,12 +224,7 @@ briefs.forEach((b, i) => {
     <div class="mockup-panel" id="mockup-${b.num}">
       <div class="mockup-label">5-Slide Preview</div>
       <div class="mockup-slides">
-        ${b.slides.map((s, si) => `
-          <div class="mockup-slide">
-            <div class="mockup-slide-num">${si + 1}/5</div>
-            ${si === 0 ? `<div class="mockup-slide-title" style="color:#00d4ff">${s}</div><div class="mockup-slide-text">${b.hook.substring(0, 50)}...</div>` : si === 4 ? `<div class="mockup-slide-title" style="color:#ec4899">CTA</div><div class="mockup-slide-text">${s.replace('CTA: ', '')}</div>` : `<div class="mockup-slide-title">Slide ${si + 1}</div><div class="mockup-slide-text">${s}</div>`}
-          </div>
-        `).join('')}
+        ${renderMockupSlides(b)}
       </div>
     </div>
 
