@@ -1,561 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Never Read Email Again — AI Email Assistant | Santiago Guy Films</title>
-<meta name="description" content="Stop spending 3.1 hours a day on email. Your AI Email Assistant sorts, prioritizes, drafts, and follows up — so you never have to. $297 one-time setup.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --bg-deep: #0a0b14;
-  --bg-surface: #111220;
-  --bg-elevated: #16172a;
-  --accent: #00d4ff;
-  --accent-purple: #a855f7;
-  --accent-pink: #ec4899;
-  --gradient-sgf: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
-  --text-primary: #ffffff;
-  --text-body: #9ca3af;
-  --text-muted: #4b5072;
-  --border: rgba(255,255,255,0.06);
-  --success: #34d399;
-}
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-deep);
-  color: var(--text-body);
-  line-height: 1.75;
-  overflow-x: hidden;
-}
-a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
-a:hover { opacity: 0.85; }
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 20px 40px;
-  background: rgba(10,11,20,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.nav-brand {
-  font-weight: 800; font-size: 13px; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--text-primary);
-}
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a { color: var(--text-body); font-size: 14px; font-weight: 500; }
-.nav-links a:hover { color: var(--text-primary); }
-.nav-cta {
-  background: var(--accent); color: var(--bg-deep) !important;
-  padding: 10px 24px; border-radius: 8px; font-weight: 700; font-size: 13px;
-}
-.nav-cta:hover { box-shadow: 0 4px 24px rgba(0,212,255,0.3); transform: translateY(-1px); opacity: 1 !important; }
-.hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 140px 40px 80px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(0,212,255,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(168,85,247,0.05) 0%, transparent 50%);
-  pointer-events: none;
-}
-.hero-inner {
-  max-width: 1200px; margin: 0 auto; width: 100%;
-  position: relative; z-index: 1;
-}
-.hero-badge {
-  display: inline-block;
-  border: 1px solid var(--accent); color: var(--accent);
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; padding: 10px 24px;
-  border-radius: 100px; margin-bottom: 32px;
-}
-.hero h1 {
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 900; letter-spacing: -2px;
-  line-height: 1.05; color: var(--text-primary);
-  margin-bottom: 24px; max-width: 800px;
-}
-.hero h1 .gradient-text {
-  background: var(--gradient-sgf);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  max-width: 560px; margin-bottom: 48px;
-  line-height: 1.7;
-}
-.hero-ctas { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-block;
-  background: var(--accent); color: var(--bg-deep);
-  padding: 20px 40px; border-radius: 12px;
-  font-weight: 700; font-size: 1.05rem;
-  box-shadow: 0 4px 24px rgba(0,212,255,0.25);
-  transition: all 0.3s ease; cursor: pointer; border: none;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(0,212,255,0.35); color: var(--bg-deep); opacity: 1; }
-.btn-secondary {
-  color: var(--text-body); font-size: 0.95rem; font-weight: 500;
-  transition: color 0.3s ease;
-}
-.btn-secondary:hover { color: var(--text-primary); }
-.hero-micro { font-size: 0.85rem; color: var(--text-muted); margin-top: 16px; font-weight: 300; }
-.pain {
-  padding: 120px 40px;
-  position: relative;
-}
-.pain::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
-}
-.section-inner { max-width: 1200px; margin: 0 auto; }
-.section-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
-}
-.section-title {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 800; letter-spacing: -1px;
-  color: var(--text-primary); margin-bottom: 24px;
-  line-height: 1.15;
-}
-.section-desc {
-  max-width: 600px; margin-bottom: 64px;
-  font-size: 1.05rem;
-}
-.pain-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 48px; align-items: start;
-}
-.pain-stats {
-  display: flex; flex-direction: column; gap: 24px;
-}
-.stat-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 16px; padding: 32px 28px;
-  transition: all 0.4s ease;
-}
-.stat-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0,212,255,0.15);
-  box-shadow: 0 8px 40px rgba(0,212,255,0.06);
-}
-.stat-number {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900; letter-spacing: -1px;
-  margin-bottom: 8px;
-}
-.stat-number.cyan { color: var(--accent); }
-.stat-number.purple { color: var(--accent-purple); }
-.stat-number.pink { color: var(--accent-pink); }
-.stat-label {
-  font-size: 0.95rem; color: var(--text-body); line-height: 1.6;
-}
-.pain-narrative {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 20px; padding: 48px 40px;
-  position: relative; overflow: hidden;
-}
-.pain-narrative::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--gradient-sgf);
-}
-.pain-narrative h3 {
-  font-size: 1.5rem; font-weight: 800;
-  color: var(--text-primary); margin-bottom: 20px;
-  letter-spacing: -0.5px;
-}
-.pain-narrative p {
-  margin-bottom: 16px; font-size: 1.05rem; line-height: 1.8;
-}
-.pain-narrative p:last-child { margin-bottom: 0; }
-.included {
-  padding: 120px 40px;
-  background: var(--bg-surface);
-  position: relative;
-}
-.included::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 70% 20%, rgba(168,85,247,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(0,212,255,0.04) 0%, transparent 50%);
-  pointer-events: none;
-}
-.included .section-inner { position: relative; z-index: 1; }
-.features-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.feature-card {
-  background: var(--bg-deep);
-  border: 1px solid var(--border);
-  border-radius: 16px; padding: 36px 32px;
-  transition: all 0.4s ease;
-  position: relative; overflow: hidden;
-}
-.feature-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0,212,255,0.12);
-}
-.feature-card.large {
-  grid-column: span 2;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-  align-items: center;
-}
-.feature-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 20px;
-}
-.feature-icon.cyan { background: rgba(0,212,255,0.1); }
-.feature-icon.purple { background: rgba(168,85,247,0.1); }
-.feature-icon.pink { background: rgba(236,72,153,0.1); }
-.feature-icon.green { background: rgba(52,211,153,0.1); }
-.feature-card h3 {
-  font-size: 1.2rem; font-weight: 700;
-  color: var(--text-primary); margin-bottom: 10px;
-  letter-spacing: -0.3px;
-}
-.feature-card p { font-size: 0.95rem; line-height: 1.7; }
-.pricing {
-  padding: 120px 40px;
-  position: relative;
-}
-.pricing-card {
-  max-width: 640px; margin: 0 auto;
-  background: var(--bg-surface);
-  border: 1px solid rgba(0,212,255,0.15);
-  border-radius: 24px; padding: 56px 48px;
-  text-align: center; position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 80px rgba(0,212,255,0.06), 0 0 40px rgba(168,85,247,0.04);
-}
-.pricing-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--gradient-sgf);
-}
-.pricing-amount {
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  font-weight: 900; color: var(--text-primary);
-  letter-spacing: -2px; margin-bottom: 8px;
-}
-.pricing-label {
-  font-size: 1rem; color: var(--text-body); margin-bottom: 8px;
-}
-.pricing-sub {
-  font-size: 0.9rem; color: var(--text-muted); margin-bottom: 40px;
-}
-.pricing-features {
-  text-align: left; margin-bottom: 40px;
-  display: flex; flex-direction: column; gap: 14px;
-}
-.pricing-feature {
-  display: flex; align-items: flex-start; gap: 12px;
-  font-size: 0.95rem;
-}
-.pricing-check {
-  color: var(--success); font-weight: 700; font-size: 1.1rem;
-  flex-shrink: 0; margin-top: 2px;
-}
-.pricing-cta { width: 100%; text-align: center; font-size: 1.1rem; padding: 22px 40px; }
-.pricing-micro {
-  font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; font-weight: 300;
-}
-.pricing-maintenance {
-  margin-top: 32px; padding-top: 32px;
-  border-top: 1px solid var(--border);
-}
-.pricing-maintenance p {
-  font-size: 0.95rem; color: var(--text-body);
-}
-.maintenance-price {
-  font-weight: 700; color: var(--accent);
-}
-.upsell {
-  padding: 120px 40px;
-  background: var(--bg-surface);
-  position: relative;
-}
-.upsell::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent);
-}
-.upsell .section-inner { position: relative; z-index: 1; }
-.upsell-heading {
-  text-align: center; margin-bottom: 64px;
-}
-.upsell-cards {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-  max-width: 900px; margin: 0 auto;
-}
-.upsell-card {
-  background: var(--bg-deep);
-  border: 1px solid var(--border);
-  border-radius: 20px; padding: 40px 32px;
-  transition: all 0.4s ease; display: flex;
-  flex-direction: column;
-}
-.upsell-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(168,85,247,0.2);
-  box-shadow: 0 12px 48px rgba(168,85,247,0.08);
-}
-.upsell-card .tag {
-  display: inline-block; width: fit-content;
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; padding: 6px 14px;
-  border-radius: 100px; margin-bottom: 20px;
-}
-.tag.purple { background: rgba(168,85,247,0.1); color: var(--accent-purple); border: 1px solid rgba(168,85,247,0.2); }
-.tag.pink { background: rgba(236,72,153,0.1); color: var(--accent-pink); border: 1px solid rgba(236,72,153,0.2); }
-.upsell-card h3 {
-  font-size: 1.4rem; font-weight: 800;
-  color: var(--text-primary); margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-.upsell-card p {
-  font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px;
-  flex-grow: 1;
-}
-.upsell-link {
-  font-weight: 600; font-size: 0.95rem;
-  display: inline-flex; align-items: center; gap: 8px;
-}
-.upsell-link.purple { color: var(--accent-purple); }
-.upsell-link.pink { color: var(--accent-pink); }
-footer {
-  padding: 48px 40px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-.footer-brand {
-  font-weight: 800; font-size: 12px; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--text-primary);
-  margin-bottom: 12px;
-}
-.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
-.footer-links a { color: var(--text-muted); font-size: 13px; }
-.footer-links a:hover { color: var(--text-primary); }
-.footer-copy { font-size: 12px; color: var(--text-muted); }
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-@media (max-width: 768px) {
-  nav { padding: 16px 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 120px 24px 60px; }
-  .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
-  .hero-sub { font-size: 1rem; }
-  .btn-primary { padding: 18px 32px; font-size: 1rem; width: 100%; text-align: center; }
-  .pain, .included, .pricing, .upsell { padding: 80px 24px; }
-  .pain-grid { grid-template-columns: 1fr; }
-  .features-layout { grid-template-columns: 1fr; }
-  .feature-card.large { grid-column: span 1; grid-template-columns: 1fr; }
-  .upsell-cards { grid-template-columns: 1fr; }
-  .pricing-card { padding: 40px 28px; }
-  .pricing-amount { font-size: 3rem; }
-  .section-title { font-size: clamp(1.6rem, 5vw, 2.4rem); }
-  .pain-narrative { padding: 32px 24px; }
-  .stat-number { font-size: 2rem; }
-  footer { padding: 40px 24px; }
-  .footer-links { gap: 16px; }
-}
-@media (max-width: 480px) {
-  .hero { min-height: auto; padding-top: 100px; }
-  .hero-ctas { flex-direction: column; width: 100%; }
-  .btn-secondary { text-align: center; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Employee: Email Assistant</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: #0a0e27; color: #fff; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { padding: 40px 0; text-align: center; }
+        h1 { font-size: 3.5rem; margin-bottom: 20px; background: linear-gradient(135deg, #00d4ff, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .subtitle { font-size: 1.3rem; color: #9ca3af; margin-bottom: 30px; }
+        .hero-image { width: 100%; max-width: 600px; margin: 40px auto; display: block; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
+        .feature { background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(168,85,247,0.05)); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; transition: all 0.3s; }
+        .feature:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
+        .feature-icon { font-size: 2rem; margin-bottom: 10px; }
+        .feature h3 { margin: 10px 0; color: #00d4ff; }
+        .cta-button { background: linear-gradient(135deg, #00d4ff, #a855f7); color: #000; padding: 15px 40px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; margin: 20px 10px; }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0,212,255,0.4); }
+        .testimonials { margin: 60px 0; }
+        .testimonial { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; margin: 20px 0; }
+        .testimonial p { margin-bottom: 10px; color: #d1d5db; }
+        .testimonial-author { color: #00d4ff; font-weight: 700; }
+        .pricing { background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(168,85,247,0.08)); border: 1px solid rgba(0,212,255,0.2); border-radius: 16px; padding: 40px; max-width: 700px; margin: 40px auto; text-align: center; }
+        .pricing h2 { font-size: 2rem; margin-bottom: 20px; }
+        .price { font-size: 3.5rem; font-weight: 800; color: #00d4ff; margin: 20px 0; }
+        .price-desc { font-size: 1rem; color: #9ca3af; margin-bottom: 20px; }
+        .setup-included { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.3); border-radius: 8px; padding: 16px; margin: 20px 0; color: #34d399; }
+        footer { text-align: center; padding: 40px 0; color: #6b7280; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 60px; }
+        .faq { max-width: 700px; margin: 40px auto; }
+        .faq-item { margin: 20px 0; }
+        .faq-question { color: #00d4ff; font-weight: 700; margin-bottom: 10px; }
+    </style>
 </head>
 <body>
-<nav>
-  <a href="https://santiagoguyfilms.github.io/" class="nav-brand">Santiago Guy Films</a>
-  <div class="nav-links">
-    <a href="https://santiagoguyfilms.github.io/ai-employees/">All AI Employees</a>
-    <a href="https://santiagoguyfilms.github.io/ai-employees/architect/">AI Team Architect</a>
-    <a href="https://buy.stripe.com/00wfZh2zs5XS97SeZTes008" class="nav-cta">Make It Mine — $297</a>
-  </div>
-</nav>
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge reveal">AI Email Assistant</div>
-    <h1 class="reveal reveal-delay-1">Never Read <span class="gradient-text">Email Again.</span></h1>
-    <p class="hero-sub reveal reveal-delay-2">Your inbox runs on autopilot. An AI assistant that reads, sorts, prioritizes, drafts responses, and follows up — while you focus on actually running your business.</p>
-    <div class="hero-ctas reveal reveal-delay-3">
-      <a href="https://buy.stripe.com/00wfZh2zs5XS97SeZTes008" class="btn-primary">Make It Mine — $297</a>
-      <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="btn-secondary">or book a free call first →</a>
+    <div class="container">
+        <header>
+            <h1>📧 Email Assistant</h1>
+            <p class="subtitle">Your AI team member who manages your inbox, responds to clients, and handles your email</p>
+        </header>
+
+        <section class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Smart Responses</h3>
+                <p>Automatically drafts professional responses to client emails based on your communication style</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Priority Management</h3>
+                <p>Learns to identify urgent emails and flags them so you never miss important messages</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔄</div>
+                <h3>Workflow Integration</h3>
+                <p>Connects with your existing email system and works seamlessly with your tools</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics Dashboard</h3>
+                <p>Track email volume, response times, and communication metrics in real-time</p>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">What Customers Say</h2>
+            <div class="testimonial">
+                <p>"The Email Assistant has saved me 15 hours per week. I can focus on strategy while it handles the routine communications."</p>
+                <p class="testimonial-author">— Sarah Chen, Agency Owner</p>
+            </div>
+            <div class="testimonial">
+                <p>"Finally, a solution that actually understands our tone and responds like a team member, not a robot."</p>
+                <p class="testimonial-author">— Marcus Rodriguez, CEO</p>
+            </div>
+            <div class="testimonial">
+                <p>"The setup was seamless and it started providing value on day one. Highly recommend."</p>
+                <p class="testimonial-author">— Jennifer Park, Founder</p>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="price">$297</div>
+            <p class="price-desc">One-time setup fee for your custom AI Employee</p>
+            <div style="max-width:700px;width:100%;background:#111220;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px 28px;position:relative;overflow:hidden;margin:24px auto">
+            <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,#00d4ff,#a855f7,transparent);opacity:0.5"></div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span style="font-size:16px;font-weight:800;color:#fff">Before You Start</span>
+            </div>
+            <div style="font-size:14px;color:#9ca3af;line-height:1.7;margin-bottom:16px">Your AI employee runs on <strong style="color:#00d4ff">Claude Pro</strong> ($20/mo from Anthropic). We set it up with you on the kickoff call.</div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.08);border-radius:8px;padding:12px 14px;margin-bottom:8px"><span style="color:#34d399;font-weight:800;font-size:14px">&#10003;</span><span style="font-size:13px;color:#d1d5db"><b style="color:#fff">Claude Pro account</b> — $20/mo, we help you set it up</span></div>
+            </div>
+            <div class="setup-included">
+                ✓ Custom setup & training on your workflows<br>
+                ✓ Integration with your email system<br>
+                ✓ 30 days of optimization & fine-tuning
+            </div>
+            <button class="cta-button">Get Started with Email Assistant</button>
+        </section>
+
+        <section class="faq">
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem;">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">How long does setup take?</p>
+                <p>Setup typically takes 2-3 hours on the kickoff call. We'll connect your email, train it on your communication style, and get it running.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">What if I don't like the way it responds?</p>
+                <p>We spend the first 30 days optimizing and fine-tuning based on your feedback. Most customers see dramatic improvements by day 3.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Can it handle sensitive client information?</p>
+                <p>Yes. We ensure all communications remain confidential and follow enterprise-grade security protocols. Your data never leaves secure servers.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">What email providers do you support?</p>
+                <p>We integrate with Gmail, Outlook, and most IMAP-compatible email systems. During setup we'll confirm compatibility with your specific setup.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Do I own the AI employee after setup?</p>
+                <p>Yes — once set up, the AI employee is yours. The $297 is a one-time fee. You only pay Anthropic the $20/month Claude Pro subscription.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">What if I want to cancel?</p>
+                <p>Simply discontinue your Claude Pro subscription. No additional fees. You can always restart anytime.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 AI Employees. All rights reserved.</p>
+            <p>Questions? <a href="mailto:hello@aiemployees.com" style="color: #00d4ff; text-decoration: none;">Contact us</a></p>
+        </footer>
     </div>
-    <p class="hero-micro reveal reveal-delay-3">One-time setup. You own it forever. No monthly fees required.</p>
-  </div>
-</section>
-<section class="pain">
-  <div class="section-inner">
-    <div class="section-label reveal">The Problem</div>
-    <h2 class="section-title reveal">Email Is Stealing<br>Your Best Hours.</h2>
-    <p class="section-desc reveal">You didn't start a business to manage an inbox. But that's exactly what's happening — and the data proves it.</p>
-    <div class="pain-grid">
-      <div class="pain-stats">
-        <div class="stat-card reveal">
-          <div class="stat-number cyan">3.1 hrs</div>
-          <div class="stat-label">The average business owner spends 3.1 hours a day reading and responding to email. That's 775 hours a year — gone.</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-1">
-          <div class="stat-number purple">88%</div>
-          <div class="stat-label">of business owners check email outside work hours. Dinner with the family? Your inbox is still on your mind.</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-2">
-          <div class="stat-number pink">$1,250/mo</div>
-          <div class="stat-label">The hidden cost of email management — in lost productivity, missed opportunities, and mental overhead.</div>
-        </div>
-      </div>
-      <div class="pain-narrative reveal">
-        <h3>Sound familiar?</h3>
-        <p>You wake up, grab your phone, and before your feet hit the floor — you're scanning emails. Spam. Vendor follow-ups. A client asking for something you already sent. A newsletter you'll never read.</p>
-        <p>By the time you get to the work that actually moves the needle, you've burned your best energy on the lowest-value task in your business.</p>
-        <p style="color: var(--text-primary); font-weight: 600;">What if you woke up to a briefing instead of a backlog? What if your inbox managed itself?</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="included">
-  <div class="section-inner">
-    <div class="section-label reveal">What You Get</div>
-    <h2 class="section-title reveal">Your Inbox, <span style="background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Fully Automated.</span></h2>
-    <p class="section-desc reveal">Every feature designed to eliminate email as a task in your day.</p>
-    <div class="features-layout">
-      <div class="feature-card large reveal">
-        <div>
-          <div class="feature-icon cyan">📬</div>
-          <h3>Intelligent Sort & Prioritize</h3>
-          <p>Your AI reads every incoming email and categorizes it by urgency, sender importance, and action required. The stuff that matters floats to the top. The noise disappears.</p>
-        </div>
-        <div>
-          <div class="feature-icon purple">✍️</div>
-          <h3>Smart Draft Responses</h3>
-          <p>AI drafts replies in your voice — matching your tone, your style, your way of saying things. Review with one tap or let it send automatically for routine messages.</p>
-        </div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon green">☀️</div>
-        <h3>Daily Briefing</h3>
-        <p>Every morning, you get a 2-minute digest: what needs your attention, what's been handled, what's coming up. Your inbox in 30 seconds instead of 30 minutes.</p>
-      </div>
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon pink">🔁</div>
-        <h3>Follow-Up Tracking</h3>
-        <p>Never let a conversation slip. AI tracks threads waiting for replies and nudges contacts automatically — or alerts you when it's time to step in.</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon cyan">⚡</div>
-        <h3>Auto-Responses</h3>
-        <p>FAQ questions, scheduling requests, confirmations — your AI handles the repetitive stuff instantly so you never have to type the same reply twice.</p>
-      </div>
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon purple">🔗</div>
-        <h3>Works With Your Stack</h3>
-        <p>Gmail, Outlook, Google Calendar, Slack, your CRM — your AI assistant integrates with the tools you already use. No new apps to learn.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="pricing">
-  <div class="section-inner" style="text-align: center;">
-    <div class="section-label reveal" style="text-align: center;">Pricing</div>
-    <h2 class="section-title reveal" style="text-align: center; margin-left: auto; margin-right: auto;">One Price. Yours Forever.</h2>
-    <p class="section-desc reveal" style="text-align: center; margin-left: auto; margin-right: auto;">No subscriptions. No per-seat fees. You pay once, you own it.</p>
-    <div class="pricing-card reveal">
-      <div class="pricing-amount">$297</div>
-      <div class="pricing-label" style="color: var(--text-primary); font-weight: 600;">One-time setup</div>
-      <div class="pricing-sub">Custom-built for your business in 48 hours</div>
-      <div class="pricing-features">
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>AI email sorting, prioritization & categorization</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Smart draft responses in your voice</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Daily morning email briefing</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Auto-responses for routine messages</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Follow-up tracking & automatic nudges</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Integration with Gmail, Calendar, Slack & more</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>1-on-1 kickoff call + training walkthrough</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>14 days of post-setup support</span></div>
-      </div>
-      <a href="https://buy.stripe.com/00wfZh2zs5XS97SeZTes008" class="btn-primary pricing-cta">Make It Mine — $297</a>
-      <p class="pricing-micro">Secure checkout via Stripe. Setup begins within 24 hours.</p>
-      <div class="pricing-maintenance">
-        <p>Want ongoing optimization? Add <span class="maintenance-price">$29/mo</span> for monthly tuning, new automations, and priority support.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="upsell">
-  <div class="section-inner">
-    <div class="upsell-heading">
-      <div class="section-label reveal" style="text-align: center;">Ready For More Than Just Email?</div>
-      <h2 class="section-title reveal" style="text-align: center; margin-left: auto; margin-right: auto;">Email Is Just the Beginning.</h2>
-      <p class="section-desc reveal" style="text-align: center; margin-left: auto; margin-right: auto;">Your inbox was the first bottleneck. But there are more. We build AI employees for every part of your business.</p>
-    </div>
-    <div class="upsell-cards">
-      <div class="upsell-card reveal">
-        <span class="tag purple">Explore</span>
-        <h3>Build Your Full AI Team</h3>
-        <p>Browse individual AI employees — from social media managers to customer service reps to admin assistants. Pick what you need, skip what you don't.</p>
-        <a href="https://santiagoguyfilms.github.io/ai-employees/" class="upsell-link purple">See All AI Employees →</a>
-      </div>
-      <div class="upsell-card reveal reveal-delay-1">
-        <span class="tag pink">Premium</span>
-        <h3>Go All In — AI Team Architect</h3>
-        <p>Skip the menu. Get a fully custom AI workforce built for your business — 3 to 7 AI employees, integrated and trained on your workflows. One investment, total transformation.</p>
-        <a href="https://santiagoguyfilms.github.io/ai-employees/architect/" class="upsell-link pink">Learn About the Architect Package →</a>
-      </div>
-    </div>
-  </div>
-</section>
-<footer>
-  <div class="footer-brand">Santiago Guy Films</div>
-  <div class="footer-links">
-    <a href="https://santiagoguyfilms.github.io/">Home</a>
-    <a href="https://santiagoguyfilms.github.io/ai-employees/">AI Employees</a>
-    <a href="https://santiagoguyfilms.github.io/ai-employees/architect/">AI Team Architect</a>
-    <a href="mailto:welcome@santiagoguyfilms.com">Contact</a>
-  </div>
-  <div class="footer-copy">© 2026 Santiago Guy Films. Miami, FL.</div>
-</footer>
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
