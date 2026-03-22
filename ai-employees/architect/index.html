@@ -1,584 +1,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Team Architect — Your Business, Fully Automated | Santiago Guy Films</title>
-<meta name="description" content="Stop hiring. Start building. Get 3-7 custom AI employees integrated into your business for $2,500 one-time. Replace $15K+/mo in labor costs.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --bg-deep: #0a0b14;
-  --bg-surface: #111220;
-  --bg-elevated: #16172a;
-  --accent: #00d4ff;
-  --accent-purple: #a855f7;
-  --accent-pink: #ec4899;
-  --gradient-sgf: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
-  --text-primary: #ffffff;
-  --text-body: #9ca3af;
-  --text-muted: #4b5072;
-  --border: rgba(255,255,255,0.06);
-  --success: #34d399;
-}
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-deep);
-  color: var(--text-body);
-  line-height: 1.75;
-  overflow-x: hidden;
-}
-a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
-a:hover { opacity: 0.85; }
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 20px 40px;
-  background: rgba(10,11,20,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.nav-brand {
-  font-weight: 800; font-size: 13px; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--text-primary);
-}
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a { color: var(--text-body); font-size: 14px; font-weight: 500; }
-.nav-links a:hover { color: var(--text-primary); }
-.nav-cta {
-  background: var(--accent-pink); color: var(--text-primary) !important;
-  padding: 10px 24px; border-radius: 8px; font-weight: 700; font-size: 13px;
-}
-.nav-cta:hover { box-shadow: 0 4px 24px rgba(236,72,153,0.3); transform: translateY(-1px); opacity: 1 !important; }
-.hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 140px 40px 80px;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 25% 25%, rgba(168,85,247,0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 75%, rgba(236,72,153,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.05) 0%, transparent 40%);
-  pointer-events: none;
-}
-.hero-inner {
-  max-width: 1200px; margin: 0 auto; width: 100%;
-  position: relative; z-index: 1;
-  text-align: center;
-}
-.hero-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(236,72,153,0.15));
-  border: 1px solid rgba(168,85,247,0.3);
-  color: var(--accent-purple);
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; padding: 10px 24px;
-  border-radius: 100px; margin-bottom: 32px;
-}
-.hero h1 {
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 900; letter-spacing: -2px;
-  line-height: 1.05; color: var(--text-primary);
-  margin-bottom: 24px; max-width: 900px;
-  margin-left: auto; margin-right: auto;
-}
-.gradient-text {
-  background: var(--gradient-sgf);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  max-width: 620px; margin: 0 auto 48px;
-  line-height: 1.7;
-}
-.hero-ctas { display: flex; gap: 20px; align-items: center; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-block;
-  background: var(--gradient-sgf); color: var(--text-primary);
-  padding: 22px 44px; border-radius: 14px;
-  font-weight: 700; font-size: 1.1rem;
-  box-shadow: 0 4px 30px rgba(168,85,247,0.25);
-  transition: all 0.3s ease; cursor: pointer; border: none;
-}
-.btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 50px rgba(168,85,247,0.35); color: var(--text-primary); opacity: 1; }
-.btn-secondary {
-  color: var(--text-body); font-size: 0.95rem; font-weight: 500;
-  transition: color 0.3s ease;
-}
-.btn-secondary:hover { color: var(--text-primary); }
-.hero-micro { font-size: 0.85rem; color: var(--text-muted); margin-top: 16px; font-weight: 300; }
-.comparison {
-  padding: 120px 40px;
-  position: relative;
-}
-.comparison::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent);
-}
-.section-inner { max-width: 1200px; margin: 0 auto; }
-.section-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--accent-purple); margin-bottom: 20px;
-}
-.section-title {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 800; letter-spacing: -1px;
-  color: var(--text-primary); margin-bottom: 24px;
-  line-height: 1.15;
-}
-.section-desc {
-  max-width: 600px; margin-bottom: 64px; font-size: 1.05rem;
-}
-.compare-grid {
-  display: grid; grid-template-columns: 1fr 80px 1fr; gap: 0;
-  align-items: stretch; max-width: 1000px; margin: 0 auto;
-}
-.compare-col {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 20px; padding: 48px 36px;
-}
-.compare-col.bad { opacity: 0.7; }
-.compare-col.good {
-  border-color: rgba(168,85,247,0.2);
-  box-shadow: 0 0 60px rgba(168,85,247,0.06);
-  position: relative; overflow: hidden;
-}
-.compare-col.good::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--gradient-sgf);
-}
-.compare-vs {
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; font-weight: 800; color: var(--text-muted);
-}
-.compare-header {
-  font-size: 0.9rem; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; margin-bottom: 12px;
-}
-.compare-col.bad .compare-header { color: var(--accent-pink); }
-.compare-col.good .compare-header { color: var(--accent-purple); }
-.compare-price {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 900; color: var(--text-primary);
-  letter-spacing: -1px; margin-bottom: 8px;
-}
-.compare-period { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 32px; }
-.compare-list { display: flex; flex-direction: column; gap: 14px; }
-.compare-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 0.9rem; line-height: 1.5;
-}
-.compare-item .icon { flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
-.compare-col.bad .compare-item .icon { color: var(--accent-pink); }
-.compare-col.good .compare-item .icon { color: var(--success); }
-.included {
-  padding: 120px 40px;
-  background: var(--bg-surface);
-  position: relative;
-}
-.included::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 30%, rgba(0,212,255,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 70%, rgba(168,85,247,0.04) 0%, transparent 50%);
-  pointer-events: none;
-}
-.included .section-inner { position: relative; z-index: 1; }
-.process-steps {
-  display: grid; grid-template-columns: 1fr; gap: 0;
-  max-width: 800px; margin: 0 auto; position: relative;
-}
-.process-steps::before {
-  content: '';
-  position: absolute; left: 28px; top: 40px; bottom: 40px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent), var(--accent-purple), var(--accent-pink));
-  opacity: 0.3;
-}
-.step {
-  display: grid; grid-template-columns: 56px 1fr; gap: 24px;
-  padding: 32px 0; position: relative;
-}
-.step-num {
-  width: 56px; height: 56px; border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 1.2rem;
-  position: relative; z-index: 1;
-}
-.step:nth-child(1) .step-num { background: rgba(0,212,255,0.1); color: var(--accent); }
-.step:nth-child(2) .step-num { background: rgba(168,85,247,0.1); color: var(--accent-purple); }
-.step:nth-child(3) .step-num { background: rgba(236,72,153,0.1); color: var(--accent-pink); }
-.step:nth-child(4) .step-num { background: rgba(52,211,153,0.1); color: var(--success); }
-.step-content h3 {
-  font-size: 1.3rem; font-weight: 800;
-  color: var(--text-primary); margin-bottom: 8px;
-  letter-spacing: -0.3px;
-}
-.step-content p { font-size: 0.95rem; line-height: 1.7; }
-.audience {
-  padding: 120px 40px;
-  position: relative;
-}
-.audience-cards {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-  max-width: 900px; margin: 0 auto;
-}
-.audience-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 16px; padding: 36px 28px;
-  transition: all 0.4s ease;
-}
-.audience-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0,212,255,0.12);
-}
-.audience-card .emoji { font-size: 2rem; margin-bottom: 16px; }
-.audience-card h3 {
-  font-size: 1.1rem; font-weight: 700;
-  color: var(--text-primary); margin-bottom: 8px;
-}
-.audience-card p { font-size: 0.9rem; line-height: 1.7; }
-.pricing {
-  padding: 120px 40px;
-  background: var(--bg-surface);
-  position: relative;
-}
-.pricing::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(168,85,247,0.06) 0%, transparent 60%);
-  pointer-events: none;
-}
-.pricing .section-inner { position: relative; z-index: 1; }
-.pricing-card {
-  max-width: 700px; margin: 0 auto;
-  background: var(--bg-deep);
-  border: 1px solid rgba(168,85,247,0.2);
-  border-radius: 28px; padding: 64px 52px;
-  text-align: center; position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 100px rgba(168,85,247,0.08), 0 0 50px rgba(236,72,153,0.04);
-}
-.pricing-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: var(--gradient-sgf);
-}
-.pricing-eyebrow {
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--accent-purple);
-  margin-bottom: 16px;
-}
-.pricing-amount {
-  font-size: clamp(3.5rem, 8vw, 5.5rem);
-  font-weight: 900; letter-spacing: -3px;
-  margin-bottom: 8px;
-  background: var(--gradient-sgf);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.pricing-label {
-  font-size: 1.1rem; color: var(--text-primary); font-weight: 600;
-  margin-bottom: 8px;
-}
-.pricing-sub {
-  font-size: 0.9rem; color: var(--text-muted); margin-bottom: 48px;
-}
-.pricing-features {
-  text-align: left; margin-bottom: 48px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-}
-.pricing-feature {
-  display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem;
-}
-.pricing-check { color: var(--success); font-weight: 700; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
-.btn-premium {
-  display: inline-block; width: 100%;
-  background: var(--gradient-sgf); color: var(--text-primary);
-  padding: 24px 44px; border-radius: 14px;
-  font-weight: 700; font-size: 1.15rem;
-  box-shadow: 0 4px 30px rgba(168,85,247,0.25);
-  transition: all 0.3s ease; cursor: pointer; border: none;
-  text-align: center;
-}
-.btn-premium:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 50px rgba(168,85,247,0.35); color: var(--text-primary); opacity: 1; }
-.pricing-micro { font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; font-weight: 300; }
-.pricing-calendly { margin-top: 24px; }
-.pricing-calendly a { color: var(--accent-purple); font-weight: 600; font-size: 0.95rem; }
-.downsell {
-  padding: 100px 40px;
-  text-align: center;
-  position: relative;
-}
-.downsell::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
-}
-.downsell-inner {
-  max-width: 640px; margin: 0 auto;
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 20px; padding: 48px 40px;
-}
-.downsell h3 {
-  font-size: 1.5rem; font-weight: 800;
-  color: var(--text-primary); margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-.downsell p { margin-bottom: 24px; font-size: 1rem; }
-.btn-outline {
-  display: inline-block;
-  border: 1px solid var(--accent); color: var(--accent);
-  padding: 16px 32px; border-radius: 12px;
-  font-weight: 700; font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-.btn-outline:hover { background: rgba(0,212,255,0.08); transform: translateY(-2px); color: var(--accent); opacity: 1; }
-footer {
-  padding: 48px 40px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-.footer-brand {
-  font-weight: 800; font-size: 12px; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--text-primary);
-  margin-bottom: 12px;
-}
-.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
-.footer-links a { color: var(--text-muted); font-size: 13px; }
-.footer-links a:hover { color: var(--text-primary); }
-.footer-copy { font-size: 12px; color: var(--text-muted); }
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-@media (max-width: 768px) {
-  nav { padding: 16px 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 120px 24px 60px; }
-  .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
-  .btn-primary, .btn-premium { padding: 18px 32px; font-size: 1rem; width: 100%; text-align: center; }
-  .comparison, .included, .audience, .pricing, .downsell { padding: 80px 24px; }
-  .compare-grid { grid-template-columns: 1fr; gap: 16px; }
-  .compare-vs { padding: 16px 0; transform: rotate(90deg); }
-  .pricing-features { grid-template-columns: 1fr; }
-  .pricing-card { padding: 40px 28px; }
-  .pricing-amount { font-size: 3.5rem; }
-  .audience-cards { grid-template-columns: 1fr; }
-  .section-title { font-size: clamp(1.6rem, 5vw, 2.4rem); }
-  .downsell-inner { padding: 32px 24px; }
-  footer { padding: 40px 24px; }
-}
-@media (max-width: 480px) {
-  .hero { min-height: auto; padding-top: 100px; }
-  .hero-ctas { flex-direction: column; width: 100%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Team Architect - AI Employee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: rgba(15, 15, 30, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #00d4ff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        .comparison {
+            margin: 4rem 0;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        th {
+            background: rgba(0, 212, 255, 0.05);
+            font-weight: 700;
+            color: #00d4ff;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .feature-card p {
+            color: #9ca3af;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .step {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #a855f7;
+            margin-bottom: 1rem;
+        }
+        
+        .step h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+        
+        .audience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .audience-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(168, 85, 247, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .audience-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .audience-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .audience-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        
+        .audience-card p {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-section {
+            margin: 4rem 0;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #00d4ff;
+            margin: 1.5rem 0;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 2rem 0;
+        }
+        
+        .pricing-card li {
+            padding: 0.75rem 0;
+            color: #9ca3af;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .pricing-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .btn-premium {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .downsell {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .downsell h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        
+        .downsell p {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        
+        footer {
+            background: rgba(15, 15, 30, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #9ca3af;
+            margin-top: 4rem;
+        }
+        
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav a {
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav>
-  <a href="https://santiagoguyfilms.github.io/" class="nav-brand">Santiago Guy Films</a>
-  <div class="nav-links">
-    <a href="https://santiagoguyfilms.github.io/ai-employees/email-assistant/">Email Assistant</a>
-    <a href="https://santiagoguyfilms.github.io/ai-employees/">All AI Employees</a>
-    <a href="https://buy.stripe.com/aFa28r6PI4TO5VG193es00g" class="nav-cta">Go All In — $2,500</a>
-  </div>
-</nav>
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge reveal">AI Team Architect</div>
-    <h1 class="reveal reveal-delay-1">Your Business.<br><span class="gradient-text">Fully Automated.</span></h1>
-    <p class="hero-sub reveal reveal-delay-2">Stop hiring humans for tasks AI handles better. Get 3 to 7 custom AI employees — built, integrated, and trained on your specific workflows. One investment. Total transformation.</p>
-    <div class="hero-ctas reveal reveal-delay-3">
-      <a href="https://buy.stripe.com/aFa28r6PI4TO5VG193es00g" class="btn-primary">Go All In — $2,500</a>
-      <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="btn-secondary">or book a free discovery call →</a>
-    </div>
-    <p class="hero-micro reveal reveal-delay-3">One-time buildout. No monthly retainers. Your AI team works 24/7.</p>
-  </div>
-</section>
-<section class="comparison">
-  <div class="section-inner">
-    <div class="section-label reveal" style="text-align: center;">The Math</div>
-    <h2 class="section-title reveal" style="text-align: center; margin-left: auto; margin-right: auto;">A Human Team vs. <span class="gradient-text">Your AI Team.</span></h2>
-    <p class="section-desc reveal" style="text-align: center; margin-left: auto; margin-right: auto;">The numbers don't lie. Here's what it costs to staff these roles with people — and what it costs with AI.</p>
-    <div class="compare-grid reveal">
-      <div class="compare-col bad">
-        <div class="compare-header">Human Team</div>
-        <div class="compare-price">$15,000+</div>
-        <div class="compare-period">per month, every month</div>
-        <div class="compare-list">
-          <div class="compare-item"><span class="icon">✕</span><span>Admin assistant: $3,500/mo</span></div>
-          <div class="compare-item"><span class="icon">✕</span><span>Social media manager: $4,000/mo</span></div>
-          <div class="compare-item"><span class="icon">✕</span><span>Customer service rep: $3,200/mo</span></div>
-          <div class="compare-item"><span class="icon">✕</span><span>Bookkeeper: $2,500/mo</span></div>
-          <div class="compare-item"><span class="icon">✕</span><span>Email marketing: $2,000/mo</span></div>
-          <div class="compare-item"><span class="icon">✕</span><span>Works 40 hrs/week max</span></div>
-          <div class="compare-item"><span class="icon">✕</span><span>Sick days, turnover, training</span></div>
-        </div>
-      </div>
-      <div class="compare-vs">VS</div>
-      <div class="compare-col good">
-        <div class="compare-header">AI Team Architect</div>
-        <div class="compare-price">$2,500</div>
-        <div class="compare-period">one time — yours forever</div>
-        <div class="compare-list">
-          <div class="compare-item"><span class="icon">✓</span><span>3-7 custom AI employees</span></div>
-          <div class="compare-item"><span class="icon">✓</span><span>Built for YOUR workflows</span></div>
-          <div class="compare-item"><span class="icon">✓</span><span>Full integrations (email, CRM, socials)</span></div>
-          <div class="compare-item"><span class="icon">✓</span><span>Training & documentation</span></div>
-          <div class="compare-item"><span class="icon">✓</span><span>60-day optimization period</span></div>
-          <div class="compare-item"><span class="icon">✓</span><span>Works 24/7/365 — no breaks</span></div>
-          <div class="compare-item"><span class="icon">✓</span><span>Gets smarter over time</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="included">
-  <div class="section-inner">
-    <div class="section-label reveal" style="text-align: center;">How It Works</div>
-    <h2 class="section-title reveal" style="text-align: center; margin-left: auto; margin-right: auto;">From Kickoff to <span class="gradient-text">Fully Operational.</span></h2>
-    <p class="section-desc reveal" style="text-align: center; margin-left: auto; margin-right: auto;">Four phases. Two weeks. Your entire business runs differently.</p>
-    <div class="process-steps">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <div class="step-content">
-          <h3>Discovery Call</h3>
-          <p>We map your business processes, identify bottlenecks, and design your custom AI team. You'll know exactly which AI employees you're getting and what they'll handle — before you spend a dollar.</p>
-        </div>
-      </div>
-      <div class="step reveal reveal-delay-1">
-        <div class="step-num">02</div>
-        <div class="step-content">
-          <h3>Build & Integrate</h3>
-          <p>I build each AI employee, train it on your business data, and integrate it with your existing tools — Gmail, Slack, your CRM, social accounts, whatever you use. Everything talks to everything.</p>
-        </div>
-      </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step-num">03</div>
-        <div class="step-content">
-          <h3>Training & Handoff</h3>
-          <p>You get a full walkthrough of every AI employee, documentation for your team, and hands-on training so you're confident running the show. No black boxes — you understand everything.</p>
-        </div>
-      </div>
-      <div class="step reveal reveal-delay-3">
-        <div class="step-num">04</div>
-        <div class="step-content">
-          <h3>60-Day Optimization</h3>
-          <p>For two months after launch, I monitor, refine, and optimize your AI team. Workflows get tighter. Responses get sharper. By day 60, your AI team runs better than most human teams.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="audience">
-  <div class="section-inner">
-    <div class="section-label reveal" style="text-align: center;">Who This Is For</div>
-    <h2 class="section-title reveal" style="text-align: center; margin-left: auto; margin-right: auto;">Built for Businesses Going <span class="gradient-text">All In.</span></h2>
-    <p class="section-desc reveal" style="text-align: center; margin-left: auto; margin-right: auto;">The Architect package isn't for everyone. It's for business owners who are done doing everything themselves.</p>
-    <div class="audience-cards">
-      <div class="audience-card reveal">
-        <div class="emoji">🏪</div>
-        <h3>Small Business Owners</h3>
-        <p>Running a team of 2-20 and drowning in operations? Your AI team handles the admin, support, and marketing so you can focus on growth.</p>
-      </div>
-      <div class="audience-card reveal reveal-delay-1">
-        <div class="emoji">📈</div>
-        <h3>Scaling Founders</h3>
-        <p>Revenue is growing but you can't hire fast enough? AI employees scale instantly — no recruiting, no onboarding, no overhead.</p>
-      </div>
-      <div class="audience-card reveal reveal-delay-2">
-        <div class="emoji">🏥</div>
-        <h3>Service-Based Businesses</h3>
-        <p>Clinics, agencies, consultants, law firms — if client communication and scheduling eat your day, AI takes it off your plate.</p>
-      </div>
-      <div class="audience-card reveal reveal-delay-3">
-        <div class="emoji">🛒</div>
-        <h3>E-Commerce Operators</h3>
-        <p>Customer support, order updates, inventory alerts, review management — automate the repetitive so you can focus on product and sales.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="pricing">
-  <div class="section-inner">
-    <div class="section-label reveal" style="text-align: center;">Investment</div>
-    <h2 class="section-title reveal" style="text-align: center; margin-left: auto; margin-right: auto;">One Investment. An Entire Team.</h2>
-    <div class="pricing-card reveal">
-      <div class="pricing-eyebrow">AI Team Architect</div>
-      <div class="pricing-amount">$2,500</div>
-      <div class="pricing-label">One-time custom buildout</div>
-      <div class="pricing-sub">Your AI workforce — designed, built, and deployed in ~2 weeks</div>
-      <div class="pricing-features">
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>3-7 custom AI employees</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Full tool & platform integrations</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Trained on your business data</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>1-on-1 kickoff & discovery call</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Documentation & team training</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>60-day optimization & support</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Works 24/7 — no breaks, no PTO</span></div>
-        <div class="pricing-feature"><span class="pricing-check">✓</span><span>Pays for itself in month one</span></div>
-      </div>
-      <a href="https://buy.stripe.com/aFa28r6PI4TO5VG193es00g" class="btn-premium">Go All In — $2,500</a>
-      <p class="pricing-micro">Secure checkout via Stripe. Discovery call within 48 hours of purchase.</p>
-      <div class="pricing-calendly">
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call">Want to talk first? Book a free discovery call →</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="downsell">
-  <div class="downsell-inner reveal">
-    <h3>Not Ready for the Full Buildout?</h3>
-    <p>No pressure. Start with a single AI employee and scale when you're ready. Most people begin with the Email Assistant — it's the fastest win.</p>
-    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="https://santiagoguyfilms.github.io/ai-employees/" class="btn-outline">Browse Individual AI Employees</a>
-      <a href="https://santiagoguyfilms.github.io/ai-employees/email-assistant/" class="btn-outline" style="border-color: var(--accent-purple); color: var(--accent-purple);">Start With Email — $297</a>
-    </div>
-  </div>
-</section>
-<footer>
-  <div class="footer-brand">Santiago Guy Films</div>
-  <div class="footer-links">
-    <a href="https://santiagoguyfilms.github.io/">Home</a>
-    <a href="https://santiagoguyfilms.github.io/ai-employees/">AI Employees</a>
-    <a href="https://santiagoguyfilms.github.io/ai-employees/email-assistant/">Email Assistant</a>
-    <a href="mailto:welcome@santiagoguyfilms.com">Contact</a>
-  </div>
-  <div class="footer-copy">© 2026 Santiago Guy Films. Miami, FL.</div>
-</footer>
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+    <header>
+        <nav>
+            <div class="logo">AI Employees</div>
+            <div>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>AI Team Architect</h1>
+            <p>Your expert VP of Engineering who never sleeps, never takes vacation, and scales with your team.</p>
+            <a href="#pricing" class="btn btn-primary">Get Started</a>
+        </section>
+        
+        <!-- What is an AI Employee? -->
+        <section>
+            <h2 class="section-title">What is an AI Employee?</h2>
+            <p style="text-align: center; color: #9ca3af; max-width: 800px; margin: 0 auto 3rem;">
+                An AI Employee is a Claude AI instance that becomes a true member of your team. It attends meetings, reviews code, writes documentation, mentors junior developers, and helps with strategic planning—all with deep knowledge of your codebase and culture.
+            </p>
+        </section>
+        
+        <!-- Comparison Table -->
+        <section class="comparison">
+            <h2 class="section-title">How It Compares</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Capability</th>
+                        <th>Hiring a Contractor</th>
+                        <th>AI Team Architect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Start-up time</td>
+                        <td>4-6 weeks</td>
+                        <td>Same day</td>
+                    </tr>
+                    <tr>
+                        <td>Onboarding effort</td>
+                        <td>Significant</td>
+                        <td>Minimal—one kickoff call</td>
+                    </tr>
+                    <tr>
+                        <td>Deep codebase knowledge</td>
+                        <td>Takes weeks to develop</td>
+                        <td>Built in immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Meeting attendance</td>
+                        <td>Limited by timezone</td>
+                        <td>Always available</td>
+                    </tr>
+                    <tr>
+                        <td>Code review expertise</td>
+                        <td>Varies by hire</td>
+                        <td>Consistent best practices</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation writing</td>
+                        <td>Often neglected</td>
+                        <td>Automatic and thorough</td>
+                    </tr>
+                    <tr>
+                        <td>Cost</td>
+                        <td>$8,000–$15,000+/month</td>
+                        <td>$2,500/month setup + $20/mo Claude Pro</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Features -->
+        <section id="features">
+            <h2 class="section-title">What Your AI Team Architect Does</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h3>Architecture Reviews</h3>
+                    <p>Analyzes system design, identifies bottlenecks, and proposes scalable solutions based on your codebase.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👀</div>
+                    <h3>Expert Code Review</h3>
+                    <p>Reviews every pull request with architectural perspective, catching issues before they ship.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Auto Documentation</h3>
+                    <p>Generates and maintains system documentation, API specs, and runbooks—always in sync with reality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Mentor & Guide</h3>
+                    <p>Helps junior developers understand architecture decisions and best practices specific to your codebase.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Technical Planning</h3>
+                    <p>Participates in sprint planning, breaks down technical tasks, and flags risks early.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>System Knowledge</h3>
+                    <p>Maintains complete understanding of your entire tech stack and how everything fits together.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works -->
+        <section>
+            <h2 class="section-title">How It Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Kickoff Call</h4>
+                    <p>Tell us about your team, tech stack, and biggest challenges. We set up your AI employee and grant it access to your repos.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Integration</h4>
+                    <p>Your AI Team Architect joins your Slack, reads your codebase, and participates in meetings from day one.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Collaboration</h4>
+                    <p>Your team works with the AI architect on code review, planning, documentation, and strategic decisions.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Who Is This For? -->
+        <section>
+            <h2 class="section-title">Who Is This For?</h2>
+            <div class="audience-cards">
+                <div class="audience-card">
+                    <div class="audience-emoji">🚀</div>
+                    <h3>Early-Stage Startups</h3>
+                    <p>You need architectural guidance without the senior hire cost. Get an expert VP of Engineering immediately.</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-emoji">🏢</div>
+                    <h3>Growing Teams</h3>
+                    <p>Your team is expanding faster than your senior engineers can scale. An AI architect eases the bottleneck.</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-emoji">🔄</div>
+                    <h3>Legacy Modernization</h3>
+                    <p>You're refactoring old systems and need expert analysis without bias. AI brings fresh architectural perspective.</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-emoji">🌍</div>
+                    <h3>Distributed Teams</h3>
+                    <p>Your team spans timezones. An AI architect reviews code, mentors juniors, and documents decisions 24/7.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pricing -->
+        <section id="pricing" class="pricing-section">
+            <h2 class="section-title">Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <p style="color: #9ca3af; font-size: 0.95rem;">For teams just getting started</p>
+                    <div class="price">$1,500</div>
+                    <p style="color: #9ca3af; font-size: 0.85rem;">Setup fee only</p>
+                    <ul>
+                        <li>✓ Initial architecture review</li>
+                        <li>✓ Codebase analysis</li>
+                        <li>✓ 30 days of support</li>
+                        <li>✓ Slack integration</li>
+                        <li>✓ Documentation starter pack</li>
+                    </ul>
+                    <a href="mailto:hello@ai-employees.com?subject=AI%20Team%20Architect%20-%20Starter&body=I'm%20interested%20in%20the%20Starter%20plan." class="btn btn-secondary" style="color: #00d4ff; border-color: #00d4ff; padding: 10px 20px; font-size: 0.9rem;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Professional</h3>
+                    <p style="color: #9ca3af; font-size: 0.95rem;">Most popular</p>
+                    <div class="price">$2,000</div>
+                    <p style="color: #9ca3af; font-size: 0.85rem;">Setup fee only</p>
+                    <ul>
+                        <li>✓ Everything in Starter</li>
+                        <li>✓ Ongoing code review</li>
+                        <li>✓ Architecture consultation</li>
+                        <li>✓ Weekly strategy meetings</li>
+                        <li>✓ Slack & GitHub integration</li>
+                    </ul>
+                    <a href="mailto:hello@ai-employees.com?subject=AI%20Team%20Architect%20-%20Professional&body=I'm%20interested%20in%20the%20Professional%20plan." class="btn btn-secondary" style="color: #00d4ff; border-color: #00d4ff; padding: 10px 20px; font-size: 0.9rem;">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>All In</h3>
+                    <p style="color: #9ca3af; font-size: 0.95rem;">For serious scaling</p>
+                    <div class="price">$2,500</div>
+                    <p style="color: #9ca3af; font-size: 0.85rem;">Setup fee only</p>
+                    <ul>
+                        <li>✓ Everything in Professional</li>
+                        <li>✓ Meeting attendance</li>
+                        <li>✓ Mentoring program</li>
+                        <li>✓ Full automation setup</li>
+                        <li>✓ Priority support</li>
+                    </ul>
+                    <!-- Before You Start -->
+                    <div style="max-width:700px;width:100%;background:#111220;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px 28px;position:relative;overflow:hidden;margin:24px auto">
+                    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,#00d4ff,#a855f7,transparent);opacity:0.5"></div>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    <span style="font-size:16px;font-weight:800;color:#fff">Before You Start</span>
+                    </div>
+                    <div style="font-size:14px;color:#9ca3af;line-height:1.7;margin-bottom:16px">Your AI employee runs on <strong style="color:#00d4ff">Claude Pro</strong> ($20/mo from Anthropic). We set it up with you on the kickoff call.</div>
+                    <div style="display:flex;align-items:center;gap:10px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.08);border-radius:8px;padding:12px 14px;margin-bottom:8px"><span style="color:#34d399;font-weight:800;font-size:14px">&#10003;</span><span style="font-size:13px;color:#d1d5db"><b style="color:#fff">Claude Pro account</b> — $20/mo, we help you set it up</span></div>
+                    <div style="display:flex;align-items:center;gap:10px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.08);border-radius:8px;padding:12px 14px;margin-bottom:8px"><span style="color:#34d399;font-weight:800;font-size:14px">&#10003;</span><span style="font-size:13px;color:#d1d5db"><b style="color:#fff">15 min kickoff call</b> — we handle everything</span></div>
+                    <div style="font-size:12px;color:#4b5072;margin-top:12px">That's it. $20/mo is your only ongoing cost.</div>
+                    </div>
+                    <a href="mailto:hello@ai-employees.com?subject=AI%20Team%20Architect%20-%20All%20In&body=I'm%20interested%20in%20the%20All%20In%20plan." class="btn btn-premium">Go All In — $2,500</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Downsell -->
+        <section class="downsell">
+            <h2>Not Ready Yet?</h2>
+            <p>We also offer hourly consulting if you want to start smaller. Perfect for a single architecture review or technical audit.</p>
+            <a href="mailto:hello@ai-employees.com?subject=Hourly%20Consulting&body=I'm%20interested%20in%20hourly%20consulting." class="btn btn-secondary">Learn About Hourly Rates</a>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 AI Employees. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Questions? Email us at <a href="mailto:hello@ai-employees.com">hello@ai-employees.com</a></p>
+    </footer>
 </body>
 </html>
