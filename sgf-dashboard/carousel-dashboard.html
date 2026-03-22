@@ -2,548 +2,570 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SGF Pain Point Carousel Pipeline — March 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0a0b14">
+<title>Content Dashboard — SGF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0b14;
-    --card: #111220;
-    --card2: #161828;
-    --border: #1e2035;
-    --accent: #00d4ff;
-    --purple: #a855f7;
-    --pink: #ec4899;
-    --gold: #fbbf24;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --green: #10b981;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:#0a0b14;color:#fff;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.ambient{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 10%,rgba(0,212,255,.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(168,85,247,.03) 0%,transparent 50%)}
+.c{max-width:960px;margin:0 auto;padding:40px 20px 80px;position:relative;z-index:1}
+@media(max-width:640px){.c{padding:24px 16px 60px}}
+.bl{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.bl span:first-child{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#00d4ff}
+.bl .d{width:4px;height:4px;border-radius:50%;background:#4b5072}
+.bl span:last-child{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#4b5072}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-2px;line-height:1.05;background:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{font-size:14px;color:#4b5072;margin-top:6px;font-weight:500}
+.back{display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;font-size:12px;font-weight:600;color:#4b5072;text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.back:hover{color:#00d4ff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:28px 0}
+.st{background:#111220;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px 16px;text-align:center}
+.st-l{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#4b5072;margin-bottom:4px}
+.st-v{font-size:22px;font-weight:900;letter-spacing:-1px}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
 
-  /* HEADER */
-  .header { padding: 48px 24px 32px; text-align: center; position: relative; }
-  .header::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), var(--purple), var(--pink), transparent);
-  }
-  .header-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
-    border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--accent);
-    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; margin-bottom: 20px;
-  }
-  .header-badge::before { content: '●'; font-size: 8px; animation: pulse-dot 2s infinite; }
-  @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  .header h1 {
-    font-size: clamp(28px, 5vw, 52px); font-weight: 900; line-height: 1.1;
-    background: linear-gradient(135deg, var(--accent), var(--purple), var(--pink));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    margin-bottom: 12px;
-  }
-  .header p { color: var(--muted); font-size: 15px; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+/* Brief Cards */
+.brief{background:#111220;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:22px 24px;animation:fu .5s ease both;transition:border-color .25s,transform .25s;display:flex;flex-direction:column}
+.brief:hover{border-color:rgba(0,212,255,.2);transform:translateY(-2px)}
+.brief.is-new{border-color:rgba(251,191,36,.15)}
+.brief.is-new:hover{border-color:rgba(251,191,36,.35)}
+.brief-num{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#4b5072;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.brief-title{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:4px}
+.brief-hook{font-size:13px;color:#9ca3af;line-height:1.5;margin-bottom:12px}
+.brief-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag{padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.tag-src{color:#00d4ff;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2)}
+.tag-vol{color:#a855f7;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2)}
+.tag-type{color:#ec4899;background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.2)}
+.tag-ready{color:#34d399;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2)}
+.tag-new{color:#fbbf24;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);animation:pulse-gold 2s ease infinite}
+@keyframes pulse-gold{0%,100%{box-shadow:0 0 0 0 rgba(251,191,36,0)}50%{box-shadow:0 0 8px 2px rgba(251,191,36,.15)}}
 
-  /* STATS BAR */
-  .stats-bar {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 16px; padding: 0 24px 32px; max-width: 1200px; margin: 0 auto;
-  }
-  .stat-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-    padding: 20px; text-align: center;
-  }
-  .stat-num { font-size: 32px; font-weight: 800; color: var(--accent); line-height: 1; }
-  .stat-num.gold { color: var(--gold); }
-  .stat-num.green { color: var(--green); }
-  .stat-label { font-size: 12px; color: var(--muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+/* Offer Badge */
+.offer-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;margin-bottom:4px;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:.3px}
+.offer-badge.existing{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:#00d4ff}
+.offer-badge.new-product{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);color:#fbbf24}
+.offer-badge .offer-icon{font-size:13px}
 
-  /* GRID */
-  .grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 20px; padding: 0 24px 60px; max-width: 1200px; margin: 0 auto;
-  }
-  @media(max-width: 768px) { .grid { grid-template-columns: 1fr; } .stats-bar { grid-template-columns: repeat(2,1fr); } }
+/* Divider */
+.brief-divider{height:1px;background:rgba(255,255,255,.06);margin:16px 0}
 
-  /* BRIEF CARD */
-  .brief-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-    overflow: hidden; transition: border-color 0.2s, transform 0.2s;
-  }
-  .brief-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
-  .brief-card.new-opp { border-color: rgba(251,191,36,0.2); }
-  .brief-card.new-opp:hover { border-color: rgba(251,191,36,0.5); }
-  @keyframes pulse-gold { 0%,100%{box-shadow: 0 0 0 0 rgba(251,191,36,0.3)} 50%{box-shadow: 0 0 20px 4px rgba(251,191,36,0.15)} }
-  .brief-card.new-opp { animation: pulse-gold 3s ease-in-out infinite; }
+/* Action Buttons Row */
+.brief-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:auto}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:12px;font-weight:700;letter-spacing:.3px;cursor:pointer;border:none;transition:all .25s ease;text-decoration:none;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-preview{background:rgba(168,85,247,.12);color:#a855f7;border:1px solid rgba(168,85,247,.25)}
+.btn-preview:hover{background:rgba(168,85,247,.2);border-color:rgba(168,85,247,.4);box-shadow:0 4px 16px rgba(168,85,247,.15)}
+.btn-payment{background:rgba(52,211,153,.12);color:#34d399;border:1px solid rgba(52,211,153,.25)}
+.btn-payment:hover{background:rgba(52,211,153,.2);border-color:rgba(52,211,153,.4);box-shadow:0 4px 16px rgba(52,211,153,.15)}
+.btn-payment.has-link{background:rgba(52,211,153,.2);border-color:rgba(52,211,153,.4)}
 
-  .card-header { padding: 20px 20px 0; }
-  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-  .brief-num {
-    font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.12em;
-    text-transform: uppercase; background: var(--bg); border: 1px solid var(--border);
-    padding: 4px 10px; border-radius: 6px; flex-shrink: 0;
-  }
-  .type-badge {
-    font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px;
-    text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0;
-  }
-  .type-pain { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
-  .type-fear { background: rgba(249,115,22,0.12); color: #fb923c; border: 1px solid rgba(249,115,22,0.2); }
-  .type-edu { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
-  .type-contra { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.2); }
-  .type-reframe { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
+/* Run Carousel CTA */
+.btn-run{background:#00d4ff;color:#0a0b14;padding:10px 20px;border:none;font-size:12px;font-weight:800;letter-spacing:.5px;box-shadow:0 4px 20px rgba(0,212,255,.25);width:100%;justify-content:center;margin-top:10px}
+.btn-run:hover{box-shadow:0 6px 28px rgba(0,212,255,.35);transform:translateY(-2px)}
+.btn-run.new-offer{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#0a0b14;box-shadow:0 4px 20px rgba(251,191,36,.25)}
+.btn-run.new-offer:hover{box-shadow:0 6px 28px rgba(251,191,36,.35)}
 
-  .card-title { font-size: 17px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; color: #f1f5f9; }
-  .card-hook { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+/* Mockup Preview Panel */
+.mockup-panel{display:none;margin-top:14px;padding:16px;background:#0a0b14;border:1px solid rgba(168,85,247,.2);border-radius:12px;animation:slideDown .3s ease}
+.mockup-panel.open{display:block}
+.mockup-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a855f7;margin-bottom:10px}
+.mockup-slides{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
 
-  /* META TAGS */
-  .meta-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-  .meta-tag {
-    font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted);
-  }
-  .meta-tag.source { color: var(--accent); border-color: rgba(0,212,255,0.2); background: rgba(0,212,255,0.05); }
-  .meta-tag.vol { color: var(--green); border-color: rgba(16,185,129,0.2); background: rgba(16,185,129,0.05); }
-  .meta-tag.ready { color: #818cf8; border-color: rgba(129,140,248,0.2); background: rgba(129,140,248,0.05); }
+/* === MINI MOCKUP SLIDES — On-Brand SGF === */
+.ms{flex:0 0 104px;height:130px;background:#0a0b14;border:1px solid rgba(255,255,255,.1);border-radius:6px;position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+.ms-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#00d4ff,#a855f7,#ec4899);z-index:2}
+.ms-glow{position:absolute;inset:0;pointer-events:none;z-index:0}
+.ms-footer{position:absolute;bottom:5px;left:7px;right:7px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.ms-brand{font-size:3.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#2d3050}
+.ms-slidenum{font-size:3.5px;font-weight:700;letter-spacing:.8px;color:#2d3050}
+.ms-content{position:relative;z-index:1;padding:10px 8px 16px;height:100%;display:flex;flex-direction:column}
 
-  /* OFFER BADGE */
-  .offer-badge {
-    margin: 0 20px 16px;
-    border-radius: 10px; padding: 12px 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .offer-badge.existing {
-    background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2);
-  }
-  .offer-badge.new {
-    background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.3);
-  }
-  .offer-badge-icon { font-size: 18px; flex-shrink: 0; }
-  .offer-badge-text { flex: 1; }
-  .offer-badge-label {
-    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-    margin-bottom: 2px;
-  }
-  .offer-badge.existing .offer-badge-label { color: var(--accent); }
-  .offer-badge.new .offer-badge-label { color: var(--gold); }
-  .offer-badge-name { font-size: 13px; font-weight: 600; color: #f1f5f9; }
+/* Slide 1 — Hook */
+.ms1 .ms-badge{display:inline-block;background:#00d4ff;color:#0a0b14;font-size:4px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 5px;border-radius:3px;margin-bottom:7px;align-self:flex-start}
+.ms1 .ms-headline{font-size:11px;font-weight:900;letter-spacing:-.5px;line-height:1.1;color:#fff;flex:1}
+.ms1 .ms-headline em{font-style:normal;background:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ms1 .ms-sub{font-size:4px;color:#9ca3af;line-height:1.4;margin-top:auto}
 
-  /* PAYMENT LINK INPUT */
-  .payment-section { padding: 0 20px 12px; }
-  .payment-input-wrap { display: flex; gap: 8px; align-items: center; }
-  .payment-input {
-    flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-    padding: 8px 12px; font-size: 12px; color: var(--text); font-family: inherit;
-    outline: none; transition: border-color 0.2s;
-  }
-  .payment-input:focus { border-color: var(--accent); }
-  .payment-input::placeholder { color: var(--muted); }
-  .btn-save-link {
-    background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2);
-    color: var(--accent); border-radius: 8px; padding: 8px 14px; font-size: 12px;
-    font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit;
-    white-space: nowrap;
-  }
-  .btn-save-link:hover { background: rgba(0,212,255,0.2); }
-  .btn-save-link.saved { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--green); }
+/* Slide 2 — Problem */
+.ms2 .ms-label{font-size:4px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#00d4ff;margin-bottom:3px}
+.ms2 .ms-heading{font-size:10px;font-weight:900;letter-spacing:-.3px;color:#fff;line-height:1.1;margin-bottom:6px}
+.ms2 .ms-cards{display:flex;flex-direction:column;gap:3px;flex:1}
+.ms2 .ms-card{display:flex;align-items:flex-start;gap:4px;background:#111220;border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:3px 5px}
+.ms2 .ms-cardnum{font-size:5px;font-weight:900;color:#2d3050;flex-shrink:0;padding-top:1px}
+.ms2 .ms-cardtext{font-size:4.5px;font-weight:600;color:#e5e7eb;line-height:1.3}
 
-  /* MOCKUP TOGGLE */
-  .mockup-section { padding: 0 20px 12px; }
-  .mockup-slides { display: none; gap: 8px; margin-top: 10px; overflow-x: auto; padding-bottom: 6px; }
-  .mockup-slides.open { display: flex; }
-  .slide-mini {
-    flex-shrink: 0; width: 130px; height: 130px; border-radius: 10px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 10px; text-align: center; position: relative; overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .slide-mini .slide-num {
-    position: absolute; top: 5px; left: 7px; font-size: 9px; font-weight: 700;
-    opacity: 0.5; text-transform: uppercase; letter-spacing: 0.08em;
-  }
-  .slide-mini .slide-label { font-size: 8px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 4px; opacity: 0.6; }
-  .slide-mini .slide-headline { font-size: 11px; font-weight: 700; line-height: 1.25; }
-  .slide-mini .slide-sub { font-size: 9px; opacity: 0.6; margin-top: 4px; line-height: 1.3; }
-  .slide-mini .slide-price { font-size: 16px; font-weight: 900; margin-bottom: 2px; }
-  .slide-mini .check-list { font-size: 8px; text-align: left; margin-top: 4px; line-height: 1.6; }
-  .slide-1 { background: linear-gradient(135deg, #0d1117, #1a0533); color: #fff; }
-  .slide-2 { background: linear-gradient(135deg, #1a0a0a, #2d1515); color: #fff; }
-  .slide-3 { background: linear-gradient(135deg, #0a1a2d, #0d2040); color: #fff; }
-  .slide-4 { background: linear-gradient(135deg, #0d1a0d, #132013); color: #fff; }
-  .slide-5 { background: linear-gradient(135deg, #1a1a0a, #2a2010); color: #fff; }
+/* Slide 3 — Solution */
+.ms3 .ms-label{font-size:4px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#00d4ff;margin-bottom:2px}
+.ms3 .ms-name{font-size:9px;font-weight:900;letter-spacing:-.3px;line-height:1.1;background:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:3px}
+.ms3 .ms-tagline{font-size:4px;color:#9ca3af;margin-bottom:5px;line-height:1.3}
+.ms3 .ms-dlist{display:flex;flex-direction:column;gap:3px;flex:1}
+.ms3 .ms-dcard{display:flex;align-items:center;gap:4px;background:#111220;border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:3px 5px}
+.ms3 .ms-dicon{font-size:6px;color:#00d4ff;flex-shrink:0}
+.ms3 .ms-dtext{font-size:4.5px;font-weight:600;color:#e5e7eb;line-height:1.3}
 
-  /* ACTION BUTTONS */
-  .card-actions { display: flex; gap: 8px; padding: 12px 20px 20px; }
-  .btn-mockup {
-    flex: 1; background: var(--card2); border: 1px solid var(--border);
-    color: var(--muted); border-radius: 10px; padding: 10px 14px; font-size: 13px;
-    font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit;
-  }
-  .btn-mockup:hover { border-color: rgba(0,212,255,0.3); color: var(--accent); }
-  .btn-run {
-    flex: 2; border-radius: 10px; padding: 10px 14px; font-size: 13px;
-    font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: inherit;
-    border: none;
-  }
-  .btn-run.existing {
-    background: linear-gradient(135deg, var(--accent), #0099cc);
-    color: #000;
-  }
-  .btn-run.new {
-    background: linear-gradient(135deg, var(--gold), #f59e0b);
-    color: #000;
-  }
-  .btn-run:hover { opacity: 0.9; transform: translateY(-1px); }
+/* Slide 4 — Offer */
+.ms4 .ms-content{justify-content:center;align-items:center;text-align:center}
+.ms4 .ms-price{font-size:34px;font-weight:900;color:#00d4ff;letter-spacing:-2px;line-height:1;text-shadow:0 0 18px rgba(0,212,255,.45);margin-bottom:3px}
+.ms4 .ms-plabel{font-size:4.5px;font-weight:700;color:#fff;letter-spacing:.3px;margin-bottom:6px}
+.ms4 .ms-checklist{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
+.ms4 .ms-check{display:flex;align-items:center;gap:4px;font-size:4px;color:#d1d5db}
+.ms4 .ms-checkmark{color:#34d399;font-weight:900;font-size:5px;flex-shrink:0}
 
-  /* TOAST */
-  .toast {
-    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
-    background: #1e2035; border: 1px solid var(--accent); border-radius: 10px;
-    padding: 12px 24px; font-size: 13px; font-weight: 600; color: var(--accent);
-    transition: transform 0.3s ease; z-index: 999; white-space: nowrap;
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
+/* Slide 5 — CTA */
+.ms5 .ms-content{align-items:center;justify-content:center;text-align:center;gap:4px}
+.ms5 .ms-top{font-size:4px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#4b5072}
+.ms5 .ms-name{font-size:8px;font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.1}
+.ms5 .ms-bigprice{font-size:28px;font-weight:900;letter-spacing:-1.5px;line-height:1;background:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ms5 .ms-ctabtn{background:#00d4ff;color:#0a0b14;font-size:4.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:3px;box-shadow:0 2px 10px rgba(0,212,255,.3)}
 
-  /* FOOTER */
-  .footer { text-align: center; padding: 20px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); }
-  .footer span { color: var(--accent); }
+/* Payment Link Input */
+.payment-panel{display:none;margin-top:10px;animation:slideDown .3s ease}
+.payment-panel.open{display:block}
+.payment-input-row{display:flex;gap:8px}
+.payment-input{flex:1;background:#0a0b14;border:1px solid rgba(52,211,153,.25);border-radius:8px;padding:8px 12px;color:#fff;font-family:'Inter',sans-serif;font-size:12px;outline:none;transition:border-color .2s}
+.payment-input::placeholder{color:#4b5072}
+.payment-input:focus{border-color:rgba(52,211,153,.5)}
+.payment-save{background:#34d399;color:#0a0b14;border:none;border-radius:8px;padding:8px 14px;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.payment-save:hover{box-shadow:0 4px 12px rgba(52,211,153,.3)}
+.payment-saved{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);border-radius:8px}
+.payment-saved-link{font-size:11px;color:#34d399;word-break:break-all;flex:1}
+.payment-edit{background:none;border:1px solid rgba(52,211,153,.25);color:#34d399;border-radius:6px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.payment-edit:hover{background:rgba(52,211,153,.1)}
+.payment-remove{background:none;border:1px solid rgba(236,72,153,.25);color:#ec4899;border-radius:6px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.payment-remove:hover{background:rgba(236,72,153,.1)}
+
+/* Copied Toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:#111220;border:1px solid rgba(0,212,255,.3);color:#00d4ff;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:700;opacity:0;transition:all .3s ease;pointer-events:none;z-index:100;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.ft{text-align:center;margin-top:48px;color:#4b5072;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
+<div class="ambient"></div>
+<div class="c">
+<a href="./" class="back">&larr; Back to Dashboard</a>
+<div class="bl"><span>Santiago Guy Films</span><span class="d"></span><span>Content Pipeline</span></div>
+<h1>Pain Point Carousel Pipeline</h1>
+<div class="sub">Search-driven carousel briefs mapped to real SGF offers — or flagged as new product opportunities.</div>
 
-<div class="header">
-  <div class="header-badge">
-    <span>Monthly Refresh — March 2026</span>
-  </div>
-  <h1>Pain Point Carousel Pipeline</h1>
-  <p>10 real search-driven briefs from what small business owners are Googling right now — mapped to SGF offers or flagged as new opportunities.</p>
+<div class="stats">
+<div class="st"><div class="st-l">Total Briefs</div><div class="st-v" style="color:#00d4ff">10</div></div>
+<div class="st"><div class="st-l">Existing Offers</div><div class="st-v" style="color:#34d399">6</div></div>
+<div class="st"><div class="st-l">New Opportunities</div><div class="st-v" style="color:#fbbf24">4</div></div>
+<div class="st"><div class="st-l">Avg Search Vol</div><div class="st-v" style="color:#a855f7">9.1K</div></div>
 </div>
 
-<div class="stats-bar">
-  <div class="stat-card">
-    <div class="stat-num">10</div>
-    <div class="stat-label">Total Briefs</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num green">6</div>
-    <div class="stat-label">Existing Offers</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num gold">4</div>
-    <div class="stat-label">New Opportunities</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num">285K</div>
-    <div class="stat-label">Avg Search Volume</div>
-  </div>
+<div class="grid" id="briefs-grid"></div>
+
+<div class="ft">Santiago Guy Films &middot; Content Pipeline &middot; 2026</div>
 </div>
 
-<div class="grid" id="grid"></div>
-
-<div class="toast" id="toast">✓ Copied to clipboard!</div>
-
-<div class="footer">SGF Pain Point Pipeline — Auto-refreshed monthly &nbsp;|&nbsp; Built by <span>Claude × Santiago Guy Films</span></div>
+<div class="toast" id="toast"></div>
 
 <script>
-const BRIEFS = [
+const briefs = [
   {
-    id: 1,
-    title: "I Post Every Day and Get Nothing Back",
-    hook: "You're showing up consistently and the algorithm is ghosting you. The problem isn't your effort — it's your content strategy.",
-    type: "Contrarian",
-    typeCls: "contra",
-    source: "Social Media Pain",
-    volume: "400K+/mo",
+    num: "01",
+    title: "Why Your Content Gets Zero Engagement",
+    hook: "You're posting every day and getting nothing back. Here's why.",
+    src: "Google Trends", vol: "12K/mo", type: "Pain Point",
     isNew: false,
     offer: {
-      name: "Monthly Content Partner",
-      price: "$797/mo",
-      tagline: "Done-for-you UGC content that actually converts",
-      deliverables: ["4 UGC-style videos per month", "Custom captions + hashtags", "Posting schedule", "Monthly performance review", "Brand voice guide"]
+      name: "AI Social Media Manager",
+      price: "$147/mo",
+      priceBig: "$147",
+      priceLabel: "Monthly AI-Powered Coaching",
+      tagline: "Your AI-powered social media coach",
+      deliverables: ["AI analysis of your last 30 posts", "Content ranking report", "Personalized coaching video", "Action plan with real moves", "Hashtag & cadence optimization"],
+      icons: ["&#9881;", "&#9733;", "&#9654;"]
     },
-    problems: ["Posting daily with no engagement", "Algorithm keeps suppressing reach", "No idea what content actually works"],
-    cta: "Monthly Content Partner"
+    problems: ["93% of small businesses struggle with social media", "Posting without a strategy = shouting into the void", "You're creating for yourself, not your audience"]
   },
   {
-    id: 2,
-    title: "My Business Is Invisible on Google Maps",
-    hook: "97% of people search online before visiting a local business. If you're not in the top 3 on Maps, you're basically not open.",
-    type: "Fear/Urgency",
-    typeCls: "fear",
-    source: "Local SEO Pain",
-    volume: "320K+/mo",
-    isNew: true,
-    offer: {
-      name: "Local Authority Sprint",
-      price: "$397",
-      tagline: "Get found on Google Maps in 30 days or less",
-      deliverables: ["Google Business Profile full audit + overhaul", "Local keyword strategy", "Citation cleanup (5 directories)", "Review generation playbook", "30-day visibility checklist"]
-    },
-    problems: ["Not showing up in Google Maps results", "Competitors outranking on local searches", "Google Business Profile incomplete or unclaimed"],
-    cta: "Launch Local Authority Sprint + Carousel"
-  },
-  {
-    id: 3,
-    title: "I Can't Afford a Social Media Manager",
-    hook: "At $750-$1,500/month, most social media managers are out of reach. But your content still needs to get made — here's the smarter option.",
-    type: "Pain Point",
-    typeCls: "pain",
-    source: "Budget Pain",
-    volume: "250K+/mo",
+    num: "02",
+    title: "Your Competitor Is Using AI — You're Still Doing It By Hand",
+    hook: "They're automating in 10 minutes what takes you all week. Here's how.",
+    src: "Google Trends", vol: "14K/mo", type: "Fear/Urgency",
     isNew: false,
     offer: {
-      name: "Content Starter Pack",
-      price: "$297",
-      tagline: "3 pro UGC videos — no agency required",
-      deliverables: ["3 short-form UGC videos (15\u201360 sec)", "Script + talking points provided", "Ready for Instagram, TikTok, and Reels", "1 revision round", "Usage rights for ads included"]
-    },
-    problems: ["Agency quotes are $1,000+ per month", "DIY content looks unprofessional", "No time to film and edit consistently"],
-    cta: "Content Starter Pack"
-  },
-  {
-    id: 4,
-    title: "One Bad Google Review Is Costing Me Customers",
-    hook: "One negative review on the first page of Google can drive away 22% of potential customers before they ever contact you.",
-    type: "Fear/Urgency",
-    typeCls: "fear",
-    source: "Reputation Pain",
-    volume: "165K+/mo",
-    isNew: true,
-    offer: {
-      name: "Reputation Recovery Kit",
-      price: "$247",
-      tagline: "Bury the bad, amplify the good — in 2 weeks",
-      deliverables: ["Done-for-you review request templates (email + text)", "QR code review card (print-ready)", "Response scripts for negative reviews", "5-platform review monitoring setup", "30-day review generation action plan"]
-    },
-    problems: ["Negative review showing up first on Google", "Don't know how to respond professionally", "No system to consistently generate positive reviews"],
-    cta: "Launch Reputation Recovery Kit + Carousel"
-  },
-  {
-    id: 5,
-    title: "I Know AI Is a Thing But I Don't Know Where to Start",
-    hook: "62% of small businesses are accelerating AI investment — but most owners don't know which tools actually save time vs. create more work.",
-    type: "Education",
-    typeCls: "edu",
-    source: "AI Adoption Pain",
-    volume: "510K+/mo",
-    isNew: true,
-    offer: {
-      name: "AI Content Kickstart",
-      price: "$197",
-      tagline: "Your AI content engine — built and running in one day",
-      deliverables: ["Custom AI prompt library for your business", "Content workflow setup (ChatGPT + Canva)", "30-day content calendar template", "Captions batch workshop (1 hour recorded)", "Done-with-you onboarding call"]
-    },
-    problems: ["Overwhelmed by AI tool options", "Tried ChatGPT but got generic results", "Spending 4+ hours per week on content manually"],
-    cta: "Launch AI Content Kickstart + Carousel"
-  },
-  {
-    id: 6,
-    title: "My Ads Are Running But Nobody Is Buying",
-    hook: "Most small business ads fail not because of the targeting — it's because the creative is weak. Bad content wastes good budget.",
-    type: "Pain Point",
-    typeCls: "pain",
-    source: "Ads + Creative Pain",
-    volume: "215K+/mo",
-    isNew: false,
-    offer: {
-      name: "The Brand Film",
+      name: "AI Setup with Claude",
       price: "$497",
-      tagline: "One cinematic video that sells while you sleep",
-      deliverables: ["1 hero brand video (60\u201390 seconds)", "2 short-form cut-downs (15 sec each)", "Scripted and directed by SGF", "Optimized for paid social ads", "Full usage rights — run it anywhere"]
+      priceBig: "$497",
+      priceLabel: "One-Time AI Installation",
+      tagline: "Full Claude AI setup + custom workflows",
+      deliverables: ["Claude AI installed & configured", "Custom workflow automations", "1-on-1 training session", "7-day follow-up support", "Prompt & shortcut cheat sheet"],
+      icons: ["&#9881;", "&#9654;", "&#9733;"]
     },
-    problems: ["Ad spend is draining with no ROI", "Creative assets look amateur vs competitors", "No professional brand video to anchor campaigns"],
-    cta: "The Brand Film"
+    problems: ["98% of small businesses now use AI daily", "Competitors are automating customer service, content & ops", "Manual work is costing you 20+ hours per month"]
   },
   {
-    id: 7,
-    title: "I Need a Professional Website But Can't Pay $10,000",
-    hook: "Agencies charge $10,000\u2013$35,000 for a small business site. Most owners overpay for templates or underpay for something that loses customers.",
-    type: "Education",
-    typeCls: "edu",
-    source: "Website Cost Pain",
-    volume: "360K+/mo",
+    num: "03",
+    title: "Stop Paying Agencies $5K/mo for Templated Work",
+    hook: "That 'custom strategy' they sold you? It's a Canva template.",
+    src: "Google Trends", vol: "7.8K/mo", type: "Contrarian",
     isNew: false,
     offer: {
-      name: "Full Presence Build",
-      price: "$697",
-      tagline: "Website video + brand content — your online presence done right",
-      deliverables: ["Hero website video (60 sec)", "4 social media posts (launch ready)", "Brand voice + content guide", "Google Business Profile setup", "Competitor presence audit"]
+      name: "AI Social Media Manager",
+      price: "$247/mo",
+      priceBig: "$247",
+      priceLabel: "Biweekly Deep Analysis",
+      tagline: "Agency-level insights without the agency price",
+      deliverables: ["Deep analysis across TikTok & IG", "Content ranking — what's working vs. dead", "Coaching video walkthrough", "Specific action plan for YOUR brand", "2 reports per month"],
+      icons: ["&#9881;", "&#9733;", "&#9654;"]
     },
-    problems: ["Website looks outdated or DIY", "No professional video content to build trust", "No clear online presence strategy"],
-    cta: "Full Presence Build"
+    problems: ["Agencies recycle the same playbook for every client", "$5K/mo gets you a junior running templates", "62% of owners say digital marketing is too complex"]
   },
   {
-    id: 8,
-    title: "How Do I Ask for Google Reviews Without Being Awkward?",
-    hook: "80% of reviews come from just one well-timed email — but most business owners never send it. Here's the exact system to make asking effortless.",
-    type: "Education",
-    typeCls: "edu",
-    source: "Review Generation Pain",
-    volume: "110K+/mo",
+    num: "04",
+    title: "Your Website Is a Digital Brochure Collecting Dust",
+    hook: "90% of small business websites get zero traffic. Yours might be one of them.",
+    src: "Google Search", vol: "8.5K/mo", type: "Pain Point",
+    isNew: false,
+    offer: {
+      name: "Website in a Day",
+      price: "$797",
+      priceBig: "$797",
+      priceLabel: "Custom Site — Live by EOD",
+      tagline: "Dark-themed, mobile-first, deployed same day",
+      deliverables: ["Custom cinematic website design", "Mobile-first responsive layout", "Domain connection + deployment", "SEO-optimized structure", "Free hosting — zero monthly fees"],
+      icons: ["&#9654;", "&#9881;", "&#9733;"]
+    },
+    problems: ["70% of small business sites lack basic SEO", "Template sites all look the same — zero differentiation", "No mobile optimization = losing half your traffic"]
+  },
+  {
+    num: "05",
+    title: "You Don't Know What People Say About You Online",
+    hook: "93% of customers read reviews before buying. What are yours saying?",
+    src: "Google Search", vol: "11K/mo", type: "Pain Point",
+    isNew: false,
+    offer: {
+      name: "BizAudit Miami",
+      price: "$97",
+      priceBig: "$97",
+      priceLabel: "Full Online Presence Audit",
+      tagline: "8-platform audit + strategy call",
+      deliverables: ["Audit across Google, Yelp, IG, FB, TikTok, YT, LinkedIn & web", "30-min strategy call with Franco", "Competitor snapshot vs. 2-3 locals", "Top 3 priority action items", "48-hour delivery"],
+      icons: ["&#9733;", "&#9881;", "&#9654;"]
+    },
+    problems: ["Most owners have no idea how they show up online", "Bad reviews you don't know about are costing you customers", "Your competitors are managing their reputation — you're not"]
+  },
+  {
+    num: "06",
+    title: "Small Businesses Are Bleeding Money on Bad Ads",
+    hook: "You boosted a post for $50 and got 3 likes. Let's fix that.",
+    src: "Google Search", vol: "8.4K/mo", type: "Pain Point",
     isNew: true,
     offer: {
-      name: "Google Review Accelerator",
-      price: "$147",
-      tagline: "The done-for-you system to get 10+ reviews in 30 days",
-      deliverables: ["Review request email sequence (3-part)", "SMS follow-up templates", "Print-ready QR code review card", "Step-by-step ask training (video)", "Tracking spreadsheet + monthly targets"]
+      name: "Ad Creative Audit",
+      price: "$197",
+      priceBig: "$197",
+      priceLabel: "Ad Performance Teardown",
+      tagline: "Stop burning money — fix your ads",
+      deliverables: ["Full audit of current ad campaigns", "Targeting & audience analysis", "Creative teardown with fix recommendations", "Landing page review", "30-min strategy call"],
+      icons: ["&#9654;", "&#9733;", "&#9881;"]
     },
-    problems: ["Awkward asking happy customers for reviews", "No system to consistently collect reviews", "Happy customers leave without leaving a review"],
-    cta: "Launch Google Review Accelerator + Carousel"
+    problems: ["58% of small businesses don't know where ad dollars go", "Boosting posts is NOT an ad strategy", "Wrong targeting = paying to show ads to nobody"]
   },
   {
-    id: 9,
-    title: "Big Brands Are Crushing Me Online — I Can't Compete",
-    hook: "You don't beat big brands by matching their ad budget. You win by being more human, more local, and more real — exactly what big brands can't fake.",
-    type: "Reframe",
-    typeCls: "reframe",
-    source: "Competition Pain",
-    volume: "130K+/mo",
-    isNew: false,
+    num: "07",
+    title: "How Do I Get More Google Reviews?",
+    hook: "70% of customers will leave a review — if you just ask. Most businesses never do.",
+    src: "Google Search", vol: "15K/mo", type: "Education",
+    isNew: true,
     offer: {
-      name: "Monthly Content Partner",
-      price: "$797/mo",
-      tagline: "Done-for-you UGC content that actually converts",
-      deliverables: ["4 UGC-style videos per month", "Custom captions + hashtags", "Posting schedule", "Monthly performance review", "Brand voice guide"]
+      name: "Reputation Starter Kit",
+      price: "$247",
+      priceBig: "$247",
+      priceLabel: "Review System Setup",
+      tagline: "Automated review collection system",
+      deliverables: ["Google Business Profile optimization", "QR code + review link system", "Automated follow-up email templates", "Review response playbook", "30-min setup call"],
+      icons: ["&#9733;", "&#9881;", "&#9654;"]
     },
-    problems: ["Big competitors dominating search and social", "Can't match their ad spend", "Content feels generic compared to big brands"],
-    cta: "Monthly Content Partner"
+    problems: ["88% of consumers trust businesses that respond to reviews", "Most businesses have no system to collect reviews", "Your Google profile is your new homepage — and it's empty"]
   },
   {
-    id: 10,
-    title: "I Post Sporadically and Feel Guilty Every Time I Miss",
-    hook: "Consistency isn't willpower — it's systems. When content requires daily decisions, it always loses to your actual business. Let's fix that.",
-    type: "Pain Point",
-    typeCls: "pain",
-    source: "Consistency Pain",
-    volume: "185K+/mo",
+    num: "08",
+    title: "Should I Hire a Social Media Manager or DIY?",
+    hook: "A full-time hire costs $50K/yr. There's a smarter way.",
+    src: "Google Trends", vol: "6.8K/mo", type: "Reframe",
     isNew: false,
     offer: {
-      name: "Content Starter Pack",
-      price: "$297",
-      tagline: "3 pro UGC videos — no agency required",
-      deliverables: ["3 short-form UGC videos (15\u201360 sec)", "Script + talking points provided", "Ready for Instagram, TikTok, and Reels", "1 revision round", "Usage rights for ads included"]
+      name: "AI Social Media Manager",
+      price: "$147/mo",
+      priceBig: "$147",
+      priceLabel: "Monthly AI Coaching",
+      tagline: "AI-powered alternative to hiring",
+      deliverables: ["AI analysis of your content", "What's driving engagement vs. dead weight", "Coaching video with findings", "Specific action plan — not generic advice", "Hashtag & posting optimization"],
+      icons: ["&#9881;", "&#9654;", "&#9733;"]
     },
-    problems: ["Posting 3x per week then disappearing", "Guilt cycle kills motivation to post again", "No content batching system in place"],
-    cta: "Content Starter Pack"
+    problems: ["Freelancers cost $1K-$3K/mo with inconsistent results", "Doing it yourself = 20hrs/week of guesswork", "51% of owners spend most of their time on content creation"]
+  },
+  {
+    num: "09",
+    title: "How to Get More Customers for My Local Business",
+    hook: "You're relying on word of mouth alone. In 2026, that's not enough.",
+    src: "Google Search", vol: "9.2K/mo", type: "Pain Point",
+    isNew: true,
+    offer: {
+      name: "Local Growth Blueprint",
+      price: "$347",
+      priceBig: "$347",
+      priceLabel: "Full Local Marketing Plan",
+      tagline: "Custom acquisition strategy for local businesses",
+      deliverables: ["Local SEO audit + Google Business optimization", "Competitor analysis — who's winning locally", "Content calendar for local audience", "Review generation strategy", "90-day action roadmap"],
+      icons: ["&#9654;", "&#9733;", "&#9881;"]
+    },
+    problems: ["73% of owners are unsure if their marketing works", "Spray-and-pray ads waste money targeting wrong people", "No online presence = invisible to modern customers"]
+  },
+  {
+    num: "10",
+    title: "I Need a Website But I Don't Want to Pay Monthly",
+    hook: "WordPress hosting, plugins, themes — it adds up fast. There's a better way.",
+    src: "Google Search", vol: "5.4K/mo", type: "Pain Point",
+    isNew: false,
+    offer: {
+      name: "Website in a Day",
+      price: "$797",
+      priceBig: "$797",
+      priceLabel: "One-Time — No Monthly Fees",
+      tagline: "Custom site, free hosting forever",
+      deliverables: ["Custom-designed cinematic website", "Mobile-first responsive design", "Domain + deployment same day", "SEO-optimized structure", "GitHub Pages hosting — $0/mo forever"],
+      icons: ["&#9654;", "&#9881;", "&#9733;"]
+    },
+    problems: ["Average WordPress site costs $200-$500/yr in hosting", "Templates make your brand look generic", "Plugin bloat slows your site and kills SEO"]
   }
 ];
 
-function getStoredLinks() {
-  try { return JSON.parse(localStorage.getItem('sgf_payment_links') || '{}'); } catch(e) { return {}; }
-}
-function saveLink(id, val) {
-  const d = getStoredLinks(); d[id] = val; localStorage.setItem('sgf_payment_links', JSON.stringify(d));
-}
+const grid = document.getElementById('briefs-grid');
 
-function buildSlides(b) {
-  const d = b.offer.deliverables;
-  return `
-  <div class="slide-mini slide-1">
-    <span class="slide-num">1</span>
-    <div class="slide-label">Hook</div>
-    <div class="slide-headline">${b.title.split(' ').slice(0,5).join(' ')}...</div>
-    <div class="slide-sub">${b.isNew ? 'NEW: ' : ''}${b.offer.name}</div>
-  </div>
-  <div class="slide-mini slide-2">
-    <span class="slide-num">2</span>
-    <div class="slide-label">Problem</div>
-    <div class="check-list">${b.problems.map(p=>`- ${p}`).join('<br>')}</div>
-  </div>
-  <div class="slide-mini slide-3">
-    <span class="slide-num">3</span>
-    <div class="slide-label">Solution</div>
-    <div class="slide-headline">${b.offer.name}</div>
-    <div class="slide-sub">${b.offer.tagline}</div>
-  </div>
-  <div class="slide-mini slide-4">
-    <span class="slide-num">4</span>
-    <div class="slide-label">Offer</div>
-    <div class="slide-price" style="color:${b.isNew?'#fbbf24':'#00d4ff'}">${b.offer.price}</div>
-    <div class="check-list">${d.slice(0,3).map(x=>`+ ${x.substring(0,28)}`).join('<br>')}</div>
-  </div>
-  <div class="slide-mini slide-5">
-    <span class="slide-num">5</span>
-    <div class="slide-label">CTA</div>
-    <div style="font-size:9px;font-weight:700;color:#fbbf24;margin-bottom:3px">LIMITED SPOTS</div>
-    <div class="slide-headline" style="font-size:10px">${b.offer.name}</div>
-    <div class="slide-sub">${b.offer.price} - Link in Bio</div>
+function renderMockupSlides(b) {
+  const hookWords = b.hook.split(' ');
+  const mid = Math.ceil(hookWords.length * 0.55);
+  const hookL1 = hookWords.slice(0, mid).join(' ');
+  const hookL2 = hookWords.slice(mid).join(' ');
+  const o = b.offer;
+  const glows = [
+    'radial-gradient(ellipse at 25% 60%,rgba(0,212,255,.12) 0%,transparent 65%)',
+    'radial-gradient(ellipse at 75% 25%,rgba(168,85,247,.12) 0%,transparent 65%)',
+    'radial-gradient(ellipse at 50% 40%,rgba(168,85,247,.14) 0%,transparent 65%)',
+    'radial-gradient(ellipse at 80% 15%,rgba(0,212,255,.14) 0%,transparent 60%)',
+    'radial-gradient(ellipse at 50% 55%,rgba(0,212,255,.1) 0%,rgba(168,85,247,.08) 45%,transparent 70%)'
+  ];
+  const ft = (n) => `<div class="ms-footer"><span class="ms-brand">Santiago Guy Films</span><span class="ms-slidenum">0${n} / 05</span></div>`;
+
+  const s1 = `<div class="ms ms1">
+    <div class="ms-bar"></div>
+    <div class="ms-glow" style="background:${glows[0]}"></div>
+    <div class="ms-content">
+      <span class="ms-badge">${b.type}</span>
+      <div class="ms-headline">${hookL1}<br><em>${hookL2}</em></div>
+      <div class="ms-sub">${b.title.length>46?b.title.substring(0,44)+'...':b.title}</div>
+    </div>
+    ${ft(1)}
   </div>`;
-}
 
-function buildCard(b) {
-  const links = getStoredLinks();
-  const savedLink = links[b.id] || '';
-  const cls = b.isNew ? 'new-opp' : '';
-  const badgeCls = b.isNew ? 'new' : 'existing';
-  const badgeLabel = b.isNew ? 'New Offer Concept' : 'Pushes Existing Offer';
-  const btnCls = b.isNew ? 'new' : 'existing';
-  const btnText = b.isNew ? `Launch ${b.offer.name} + Carousel` : `Run Carousel - ${b.offer.name}`;
-
-  return `<div class="brief-card ${cls}" id="card-${b.id}">
-    <div class="card-header">
-      <div class="card-top">
-        <span class="brief-num">BRIEF #${String(b.id).padStart(2,'0')}</span>
-        <span class="type-badge type-${b.typeCls}">${b.type}</span>
-      </div>
-      <div class="card-title">${b.title}</div>
-      <div class="card-hook">${b.hook}</div>
-      <div class="meta-tags">
-        <span class="meta-tag source">${b.source}</span>
-        <span class="meta-tag vol">${b.volume}</span>
-        <span class="meta-tag">${b.type}</span>
-        <span class="meta-tag ready">Ready</span>
+  const s2 = `<div class="ms ms2">
+    <div class="ms-bar"></div>
+    <div class="ms-glow" style="background:${glows[1]}"></div>
+    <div class="ms-content">
+      <div class="ms-label">THE PROBLEM</div>
+      <div class="ms-heading">Sound<br>familiar?</div>
+      <div class="ms-cards">
+        ${b.problems.map((p,i)=>`<div class="ms-card"><span class="ms-cardnum">0${i+1}</span><span class="ms-cardtext">${p.length>38?p.substring(0,36)+'...':p}</span></div>`).join('')}
       </div>
     </div>
-    <div class="offer-badge ${badgeCls}">
-      <span class="offer-badge-icon">${b.isNew ? '?' : 'o'}</span>
-      <div class="offer-badge-text">
-        <div class="offer-badge-label">${badgeLabel}</div>
-        <div class="offer-badge-name">${b.offer.name} - ${b.offer.price}</div>
-      </div>
-    </div>
-    <div class="payment-section">
-      <div class="payment-input-wrap">
-        <input class="payment-input" id="link-${b.id}" type="url" placeholder="Add payment link (Stripe, etc.)" value="${savedLink}">
-        <button class="btn-save-link${savedLink?' saved':''}" id="save-${b.id}" onclick="handleSave(${b.id})">
-          ${savedLink ? 'Saved' : 'Save'}
-        </button>
-      </div>
-    </div>
-    <div class="mockup-section">
-      <div class="mockup-slides" id="slides-${b.id}">${buildSlides(b)}</div>
-    </div>
-    <div class="card-actions">
-      <button class="btn-mockup" onclick="toggleMockup(${b.id})">Preview Mockup</button>
-      <button class="btn-run ${btnCls}" onclick="copyPrompt(${b.id})">${btnText}</button>
-    </div>
+    ${ft(2)}
   </div>`;
+
+  const dels = o.deliverables.slice(0,3);
+  const s3 = `<div class="ms ms3">
+    <div class="ms-bar"></div>
+    <div class="ms-glow" style="background:${glows[2]}"></div>
+    <div class="ms-content">
+      <div class="ms-label">THE SOLUTION</div>
+      <div class="ms-name">${o.name.length>22?o.name.substring(0,20)+'...':o.name}</div>
+      <div class="ms-tagline">${o.tagline.length>42?o.tagline.substring(0,40)+'...':o.tagline}</div>
+      <div class="ms-dlist">
+        ${dels.map((d,i)=>`<div class="ms-dcard"><span class="ms-dicon">${o.icons[i]}</span><span class="ms-dtext">${d.length>26?d.substring(0,24)+'...':d}</span></div>`).join('')}
+      </div>
+    </div>
+    ${ft(3)}
+  </div>`;
+
+  const checks = o.deliverables.slice(0,5);
+  const s4 = `<div class="ms ms4">
+    <div class="ms-bar"></div>
+    <div class="ms-glow" style="background:${glows[3]}"></div>
+    <div class="ms-content">
+      <div class="ms-price">${o.priceBig}</div>
+      <div class="ms-plabel">${o.priceLabel.length>28?o.priceLabel.substring(0,26)+'...':o.priceLabel}</div>
+      <div class="ms-checklist">
+        ${checks.map(c=>`<div class="ms-check"><span class="ms-checkmark">&#10003;</span><span>${c.length>28?c.substring(0,26)+'...':c}</span></div>`).join('')}
+      </div>
+    </div>
+    ${ft(4)}
+  </div>`;
+
+  const shortName = o.name.length>16?o.name.substring(0,14)+'...':o.name;
+  const s5 = `<div class="ms ms5">
+    <div class="ms-bar"></div>
+    <div class="ms-glow" style="background:${glows[4]}"></div>
+    <div class="ms-content">
+      <div class="ms-top">Limited Spots</div>
+      <div class="ms-name">${shortName}</div>
+      <div class="ms-bigprice">${o.priceBig}</div>
+      <div class="ms-ctabtn">Link in Bio &#8594;</div>
+    </div>
+    ${ft(5)}
+  </div>`;
+
+  return s1 + s2 + s3 + s4 + s5;
 }
 
-function toggleMockup(id) {
-  const el = document.getElementById('slides-'+id);
-  el.classList.toggle('open');
+briefs.forEach((b, i) => {
+  const savedLink = localStorage.getItem('payment_' + b.num) || '';
+  const hasLink = savedLink.length > 0;
+
+  const card = document.createElement('div');
+  card.className = 'brief' + (b.isNew ? ' is-new' : '');
+  card.style.animationDelay = (i * 0.04) + 's';
+  card.innerHTML = `
+    <div class="brief-num">
+      Brief ${b.num}
+      ${b.isNew ? '<span class="tag tag-new">&#x1F4A1; New Product Opportunity</span>' : ''}
+    </div>
+    <div class="brief-title">${b.title}</div>
+    <div class="brief-hook">Hook: "${b.hook}"</div>
+    <div class="brief-meta">
+      <span class="tag tag-src">${b.src}</span>
+      <span class="tag tag-vol">${b.vol}</span>
+      <span class="tag tag-type">${b.type}</span>
+      <span class="tag tag-ready">Ready</span>
+    </div>
+
+    <div class="offer-badge ${b.isNew ? 'new-product' : 'existing'}">
+      <span class="offer-icon">${b.isNew ? '&#x1F680;' : '&#x2705;'}</span>
+      <span>${b.isNew ? 'New Offer Concept: ' : 'Pushes: '}<strong>${b.offer.name} — ${b.offer.price}</strong></span>
+    </div>
+
+    <div class="brief-divider"></div>
+
+    <div class="brief-actions">
+      <button class="btn btn-preview" onclick="toggleMockup('${b.num}')">
+        <span>&#x1F50D;</span> Preview Mockup
+      </button>
+      <button class="btn btn-payment ${hasLink ? 'has-link' : ''}" onclick="togglePayment('${b.num}')" id="pay-btn-${b.num}">
+        <span>${hasLink ? '&#x2705;' : '&#x1F517;'}</span> ${hasLink ? 'Payment Link Added' : 'Add Payment Link'}
+      </button>
+    </div>
+
+    <div class="mockup-panel" id="mockup-${b.num}">
+      <div class="mockup-label">5-Slide Preview — ${b.offer.name}</div>
+      <div class="mockup-slides">
+        ${renderMockupSlides(b)}
+      </div>
+    </div>
+
+    <div class="payment-panel" id="payment-${b.num}">
+      ${hasLink ? `
+        <div class="payment-saved" id="payment-saved-${b.num}">
+          <span class="payment-saved-link">${savedLink}</span>
+          <button class="payment-edit" onclick="editPayment('${b.num}')">Edit</button>
+          <button class="payment-remove" onclick="removePayment('${b.num}')">Remove</button>
+        </div>
+        <div class="payment-input-row" id="payment-edit-${b.num}" style="display:none">
+          <input class="payment-input" id="input-${b.num}" type="url" placeholder="Paste Stripe or payment link..." value="${savedLink}">
+          <button class="payment-save" onclick="savePayment('${b.num}')">Save</button>
+        </div>
+      ` : `
+        <div class="payment-input-row" id="payment-edit-${b.num}">
+          <input class="payment-input" id="input-${b.num}" type="url" placeholder="Paste Stripe or payment link...">
+          <button class="payment-save" onclick="savePayment('${b.num}')">Save</button>
+        </div>
+        <div class="payment-saved" id="payment-saved-${b.num}" style="display:none">
+          <span class="payment-saved-link" id="link-display-${b.num}"></span>
+          <button class="payment-edit" onclick="editPayment('${b.num}')">Edit</button>
+          <button class="payment-remove" onclick="removePayment('${b.num}')">Remove</button>
+        </div>
+      `}
+    </div>
+
+    <button class="btn btn-run ${b.isNew ? 'new-offer' : ''}" onclick="runCarousel('${b.num}', \`${b.title.replace(/`/g, "'")}\`, \`${b.hook.replace(/`/g, "'")}\`, \`${b.offer.name.replace(/`/g, "'")}\`, '${b.offer.price}', ${b.isNew})">
+      ${b.isNew ? '&#x1F680; Launch New Offer + Carousel' : '&#x1F3AC; Run Carousel'}
+    </button>
+  `;
+  grid.appendChild(card);
+});
+
+function toggleMockup(num) {
+  const panel = document.getElementById('mockup-' + num);
+  panel.classList.toggle('open');
 }
 
-function handleSave(id) {
-  const val = document.getElementById('link-'+id).value.trim();
-  saveLink(id, val);
-  const btn = document.getElementById('save-'+id);
-  btn.textContent = val ? 'Saved' : 'Save';
-  btn.classList.toggle('saved', !!val);
-  showToast(val ? 'Payment link saved!' : 'Link cleared');
+function togglePayment(num) {
+  const panel = document.getElementById('payment-' + num);
+  panel.classList.toggle('open');
 }
 
-function copyPrompt(id) {
-  const b = BRIEFS.find(x=>x.id===id);
-  if(!b) return;
-  const link = (getStoredLinks()[id] || '[ADD PAYMENT LINK]');
-  const prompt = b.isNew
-    ? `Launch a new offer called "${b.offer.name}" at ${b.offer.price}. Tagline: "${b.offer.tagline}". Deliverables: ${b.offer.deliverables.join(', ')}. Payment link: ${link}. Then create a 5-slide Instagram carousel targeting the pain point: "${b.title}". Use the SGF brand guide.`
-    : `Create a 5-slide SGF Instagram carousel for the offer "${b.offer.name}" (${b.offer.price}). Target pain point: "${b.title}". Hook: "${b.hook}". Tagline: "${b.offer.tagline}". Payment link: ${link}. Deliverables to highlight: ${b.offer.deliverables.slice(0,3).join(', ')}.`;
-  navigator.clipboard.writeText(prompt).then(()=>showToast('Cowork prompt copied!')).catch(()=>{
-    const ta=document.createElement('textarea');ta.value=prompt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-    showToast('Prompt copied!');
+function savePayment(num) {
+  const input = document.getElementById('input-' + num);
+  const link = input.value.trim();
+  if (!link) return;
+  localStorage.setItem('payment_' + num, link);
+  const savedDiv = document.getElementById('payment-saved-' + num);
+  const editDiv = document.getElementById('payment-edit-' + num);
+  const linkDisplay = savedDiv.querySelector('.payment-saved-link') || document.getElementById('link-display-' + num);
+  linkDisplay.textContent = link;
+  savedDiv.style.display = 'flex';
+  editDiv.style.display = 'none';
+  const btn = document.getElementById('pay-btn-' + num);
+  btn.classList.add('has-link');
+  btn.innerHTML = '<span>&#x2705;</span> Payment Link Added';
+  showToast('Payment link saved for Brief ' + num);
+}
+
+function editPayment(num) {
+  const savedDiv = document.getElementById('payment-saved-' + num);
+  const editDiv = document.getElementById('payment-edit-' + num);
+  savedDiv.style.display = 'none';
+  editDiv.style.display = 'flex';
+  document.getElementById('input-' + num).focus();
+}
+
+function removePayment(num) {
+  localStorage.removeItem('payment_' + num);
+  const savedDiv = document.getElementById('payment-saved-' + num);
+  const editDiv = document.getElementById('payment-edit-' + num);
+  const input = document.getElementById('input-' + num);
+  savedDiv.style.display = 'none';
+  editDiv.style.display = 'flex';
+  input.value = '';
+  const btn = document.getElementById('pay-btn-' + num);
+  btn.classList.remove('has-link');
+  btn.innerHTML = '<span>&#x1F517;</span> Add Payment Link';
+  showToast('Payment link removed');
+}
+
+function runCarousel(num, title, hook, offerName, offerPrice, isNew) {
+  const paymentLink = localStorage.getItem('payment_' + num) || '';
+  let prompt;
+  if (isNew) {
+    prompt = `Launch new offer and carousel for Brief ${num}: "${title}" — Hook: "${hook}" — New Offer: ${offerName} at ${offerPrice}${paymentLink ? ' — Payment Link: ' + paymentLink : ''}`;
+  } else {
+    prompt = `Run the carousel for Brief ${num}: "${title}" — Hook: "${hook}" — Offer: ${offerName} at ${offerPrice}${paymentLink ? ' — Payment Link: ' + paymentLink : ''}`;
+  }
+  navigator.clipboard.writeText(prompt).then(() => {
+    showToast(isNew ? 'New offer brief copied — paste into Cowork to launch' : 'Carousel brief copied — paste into Cowork to run');
+  }).catch(() => {
+    showToast('Brief ' + num + ' ready — copy into Cowork to run');
   });
 }
 
@@ -551,11 +573,8 @@ function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2800);
+  setTimeout(() => t.classList.remove('show'), 2500);
 }
-
-const grid = document.getElementById('grid');
-grid.innerHTML = BRIEFS.map(buildCard).join('');
 </script>
 </body>
 </html>
