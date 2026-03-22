@@ -6,141 +6,251 @@
 <meta name="theme-color" content="#0a0b14">
 <title>Content Dashboard — SGF</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0b14;color:#fff;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html,body{width:100%;height:100%}#app{width:100%;min-height:100vh;display:flex;flex-direction:column}.header{background:linear-gradient(135deg,#0a0b14 0%,#1a1b2e 100%);padding:2rem;border-bottom:1px solid rgba(0,212,255,.1);position:sticky;top:0;z-index:100}.header-content{max-width:1400px;margin:0 auto}.header h1{font-size:2rem;font-weight:800;margin:0;background:linear-gradient(135deg,#00d4ff 0%,#a855f7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.header p{color:#888;margin-top:0.5rem;font-size:0.95rem;font-weight:400}.container{flex:1;max-width:1400px;margin:0 auto;padding:2rem;width:100%;display:grid;grid-template-columns:1fr 350px;gap:2rem}@media (max-width:640px){.container{grid-template-columns:1fr;padding:1rem}}.carousel-section{overflow:hidden}.carousel-section h2{font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;color:#fff}.carousel-wrapper{position:relative;overflow:hidden;border-radius:12px;background:#1a1b2e;border:1px solid rgba(0,212,255,.15)}.carousel-track{display:flex;gap:1rem;overflow-x:auto;scroll-behavior:smooth;padding:1rem;scrollbar-width:thin;scrollbar-color:rgba(0,212,255,.3) transparent}::-webkit-scrollbar{height:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(0,212,255,.3);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:rgba(0,212,255,.5)}.carousel-card{flex-shrink:0;width:300px;background:linear-gradient(135deg,#1a1b2e 0%,#252641 100%);border:1px solid rgba(0,212,255,.2);border-radius:10px;padding:1.5rem;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden}.carousel-card:hover{border-color:rgba(168,85,247,.4);box-shadow:0 8px 32px rgba(168,85,247,.15);transform:translateY(-4px)}.carousel-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(0,212,255,.05) 0%,rgba(168,85,247,.05) 100%);pointer-events:none}.carousel-card-content{position:relative;z-index:1}.carousel-card h3{font-size:1.1rem;font-weight:700;margin:0 0 0.75rem 0;color:#00d4ff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.carousel-card p{font-size:0.9rem;color:#aaa;margin:0.5rem 0;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.carousel-card-meta{display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap}.tag{display:inline-block;background:rgba(0,212,255,.15);color:#00d4ff;padding:0.3rem 0.7rem;border-radius:4px;font-size:0.75rem;font-weight:600;border:1px solid rgba(0,212,255,.3)}.tag.status-new{background:rgba(72,187,120,.15);color:#48bb78;border-color:rgba(72,187,120,.3)}.sidebar{display:flex;flex-direction:column;gap:1.5rem}@media (max-width:640px){.sidebar{grid-column:1;order:2}}.sidebar-section{background:linear-gradient(135deg,#1a1b2e 0%,#252641 100%);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:1.5rem;overflow:hidden}.sidebar-section h3{font-size:1rem;font-weight:700;margin:0 0 1rem 0;color:#00d4ff;display:flex;align-items:center;gap:0.5rem}.sidebar-section h3::before{content:'';width:8px;height:8px;background:#a855f7;border-radius:50%}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}.stat-card{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.1);border-radius:8px;padding:1rem;text-align:center}.stat-card .stat-value{font-size:1.8rem;font-weight:800;color:#00d4ff;margin-bottom:0.25rem}.stat-card .stat-label{font-size:0.8rem;color:#888;font-weight:500}.list-item{padding:0.75rem 0;border-bottom:1px solid rgba(0,212,255,.1);font-size:0.9rem;color:#aaa;display:flex;align-items:center;gap:0.75rem}.list-item:last-child{border-bottom:none}.list-item::before{content:'';width:6px;height:6px;background:#a855f7;border-radius:50%;flex-shrink:0}.list-item a{color:#00d4ff;text-decoration:none;transition:color .2s}.list-item a:hover{color:#a855f7}.footer{background:linear-gradient(135deg,#0a0b14 0%,#1a1b2e 100%);border-top:1px solid rgba(0,212,255,.1);padding:2rem;text-align:center;color:#666;font-size:0.85rem;margin-top:2rem}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:#0a0b14;color:#fff;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.ambient{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 10%,rgba(0,212,255,.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(168,85,247,.03) 0%,transparent 50%)}
+.c{max-width:960px;margin:0 auto;padding:40px 20px 80px;position:relative;z-index:1}
+@media(max-width:640px){.c{padding:24px 16px 60px}}
+h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em;line-height:1.1}
+@media(max-width:640px){h1{font-size:1.75rem}}
+.subtitle{color:#999;font-size:.95rem;margin-bottom:40px;font-weight:400}
+.carousel-wrapper{position:relative;margin-bottom:20px}
+.carousel{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;overflow-x:auto;scroll-behavior:smooth;padding:8px 0}
+@media(max-width:1200px){.carousel{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:900px){.carousel{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.carousel{grid-template-columns:repeat(1,1fr);gap:8px;padding:4px 0}}
+.card{background:linear-gradient(135deg,rgba(20,21,35,.6) 0%,rgba(15,16,25,.8) 100%);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;overflow:hidden;aspect-ratio:3/2}
+@media(max-width:640px){.card{aspect-ratio:auto;min-height:120px;padding:16px}}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at var(--x,0) var(--y,0),rgba(0,212,255,.1) 0%,transparent 70%);pointer-events:none;opacity:0;transition:opacity .3s}
+.card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,212,255,.1)}
+.card:hover::before{opacity:1}
+.card-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card-title{font-size:1rem;font-weight:600;flex:1;line-height:1.3}
+@media(max-width:640px){.card-title{font-size:.9rem}}
+.badge{display:inline-flex;align-items:center;gap:4px;background:rgba(0,212,255,.15);color:#00d4ff;padding:4px 8px;border-radius:4px;font-size:.75rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+.badge.offer{background:rgba(168,85,247,.15);color:#a855f7}
+.badge.new{background:rgba(34,197,94,.15);color:#22c55e;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.card-desc{font-size:.85rem;color:#aaa;line-height:1.4}
+@media(max-width:640px){.card-desc{font-size:.8rem}}
+.card-meta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.05)}
+.card-type{font-size:.75rem;color:#666;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.offer-mapping{color:#00d4ff;font-weight:600;font-size:.8rem}
+.controls{display:flex;gap:8px;justify-content:center;margin-bottom:40px}
+button{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:#00d4ff;padding:10px 16px;border-radius:6px;cursor:pointer;font-weight:600;font-size:.9rem;transition:all .2s;font-family:'Inter',sans-serif}
+button:hover{background:rgba(0,212,255,.2);border-color:rgba(0,212,255,.5)}
+button:active{transform:scale(.95)}
+.section{margin-bottom:60px}
+.section-title{font-size:1.3rem;font-weight:700;margin-bottom:20px;color:#fff}
+.footer{text-align:center;color:#666;font-size:.85rem;padding-top:40px;border-top:1px solid rgba(255,255,255,.05);margin-top:40px}
 </style>
 </head>
 <body>
-<div id="app">
-<header class="header">
-<div class="header-content">
+<div class="ambient"></div>
+<div class="c">
 <h1>Content Dashboard</h1>
-<p>Manage your content, track briefs, and identify opportunities</p>
-</div>
-</header>
-<div class="container">
-<section class="carousel-section">
-<h2>Recent Briefs</h2>
+<p class="subtitle">Strategic offers & upcoming opportunities</p>
+
+<section class="section">
+<h2 class="section-title">Featured Offers</h2>
 <div class="carousel-wrapper">
-<div class="carousel-track" id="briefCarousel">
-<!-- Content will be inserted here by JavaScript -->
+<div class="carousel" id="carousel1">
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Premium Bundle</h3>
+<span class="badge offer">Offer</span>
+</div>
+<p class="card-desc">Complete package with exclusive access to all premium content and priority support</p>
+<div class="card-meta">
+<span class="card-type">Bundle</span>
+<span class="offer-mapping">→ Premium</span>
 </div>
 </div>
-<h2 style="margin-top:2rem">Real SGF Offers</h2>
-<div class="carousel-wrapper">
-<div class="carousel-track" id="offersCarousel">
-<!-- Content will be inserted here by JavaScript -->
+</div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Early Access</h3>
+<span class="badge new">New</span>
+</div>
+<p class="card-desc">Get first access to new content releases and exclusive early-bird pricing</p>
+<div class="card-meta">
+<span class="card-type">Special</span>
+<span class="offer-mapping">→ VIP</span>
 </div>
 </div>
-<h2 style="margin-top:2rem">New Product Opportunities</h2>
-<div class="carousel-wrapper">
-<div class="carousel-track" id="opportunitiesCarousel">
-<!-- Content will be inserted here by JavaScript -->
 </div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Creator Series</h3>
+<span class="badge offer">Offer</span>
+</div>
+<p class="card-desc">Tailored content for creators with advanced tools and collaborative features</p>
+<div class="card-meta">
+<span class="card-type">Program</span>
+<span class="offer-mapping">→ Creator</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Seasonal Sale</h3>
+<span class="badge new">New</span>
+</div>
+<p class="card-desc">Limited-time discounts on selected products and services up to 40% off</p>
+<div class="card-meta">
+<span class="card-type">Promotion</span>
+<span class="offer-mapping">→ Sale</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Team Plan</h3>
+<span class="badge offer">Offer</span>
+</div>
+<p class="card-desc">Designed for teams with unified billing, admin controls, and team collaboration</p>
+<div class="card-meta">
+<span class="card-type">Business</span>
+<span class="offer-mapping">→ Team</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="controls">
+<button onclick="scrollCarousel('carousel1', -1)">← Previous</button>
+<button onclick="scrollCarousel('carousel1', 1)">Next →</button>
 </div>
 </section>
-<aside class="sidebar">
-<div class="sidebar-section">
-<h3>Overview</h3>
-<div class="stats-grid">
-<div class="stat-card">
-<div class="stat-value">12</div>
-<div class="stat-label">Active Briefs</div>
+
+<section class="section">
+<h2 class="section-title">Upcoming Opportunities</h2>
+<div class="carousel-wrapper">
+<div class="carousel" id="carousel2">
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Mockup Slides</h3>
+<span class="badge new">New</span>
 </div>
-<div class="stat-card">
-<div class="stat-value">8</div>
-<div class="stat-label">SGF Offers</div>
-</div>
-</div>
-<div class="stat-card">
-<div class="stat-value">5</div>
-<div class="stat-label">Opportunities</div>
-</div>
-<div class="stat-card">
-<div class="stat-value">24</div>
-<div class="stat-label">Total Items</div>
+<p class="card-desc">Professional presentation templates for product launches and investor pitches</p>
+<div class="card-meta">
+<span class="card-type">Template</span>
+<span class="offer-mapping">→ Design</span>
 </div>
 </div>
 </div>
-<div class="sidebar-section">
-<h3>Quick Links</h3>
-<div class="list-item"><a href="#briefs">View All Briefs</a></div>
-<div class="list-item"><a href="#offers">Browse Offers</a></div>
-<div class="list-item"><a href="#opportunities">Explore Opportunities</a></div>
-<div class="list-item"><a href="#settings">Settings</a></div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Analytics Suite</h3>
+<span class="badge offer">Offer</span>
 </div>
-</aside>
+<p class="card-desc">Real-time insights and comprehensive reporting with custom dashboard creation</p>
+<div class="card-meta">
+<span class="card-type">Tools</span>
+<span class="offer-mapping">→ Analytics</span>
 </div>
-<footer class="footer">
-<p>&copy; 2026 Santiago Guyfilms. All rights reserved.</p>
-</footer>
 </div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Community Hub</h3>
+<span class="badge new">New</span>
+</div>
+<p class="card-desc">Connect with other creators and collaborate on projects in our growing community</p>
+<div class="card-meta">
+<span class="card-type">Platform</span>
+<span class="offer-mapping">→ Community</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Training Academy</h3>
+<span class="badge offer">Offer</span>
+</div>
+<p class="card-desc">Comprehensive courses and certifications taught by industry experts and specialists</p>
+<div class="card-meta">
+<span class="card-type">Learning</span>
+<span class="offer-mapping">→ Academy</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<div class="card-header">
+<h3 class="card-title">Integration API</h3>
+<span class="badge new">New</span>
+</div>
+<p class="card-desc">Connect with your favorite tools and services through our powerful API platform</p>
+<div class="card-meta">
+<span class="card-type">Developer</span>
+<span class="offer-mapping">→ API</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="controls">
+<button onclick="scrollCarousel('carousel2', -1)">← Previous</button>
+<button onclick="scrollCarousel('carousel2', 1)">Next →</button>
+</div>
+</section>
+
+<div class="footer">
+<p>Content Dashboard — Santiago Guy Films | Last updated: March 2026</p>
+</div>
+</div>
+
 <script>
-const briefsData = [
-{title: "YouTube Series Pilot",description: "High-energy vlog covering tech innovations and startup culture",tags: ["Video","Series","Tech"]},
-{title: "Documentary Short",description: "In-depth exploration of sustainable fashion and ethical sourcing",tags: ["Documentary","Sustainability"]},
-{title: "Social Media Campaign",description: "30-day content calendar with daily posts and engagement strategy",tags: ["Social","Marketing"]},
-{title: "Brand Collaboration",description: "Partnership opportunity with emerging fitness and wellness brand",tags: ["Collab","Fitness"]},
-{title: "Product Review Series",description: "Honest reviews of new productivity and creative tools",tags: ["Review","Tech"]}
-];
-const offersData = [
-{title: "Sponsored Podcast Episode",description: "Deep dive into creative processes with SG Films crew",tags: ["Audio","Sponsored"]},
-{title: "Instagram Reel Package",description: "5 premium reels with professional editing and motion graphics",tags: ["Social","Premium"]},
-{title: "Brand Ambassador Role",description: "6-month partnership as official brand representative",tags: ["Ambassador","Partnership"]},
-{title: "Conference Speaking Slot",description: "Keynote at digital creator conference in Q2 2026",tags: ["Speaking","Event"]},
-{title: "Educational Content Series",description: "10-part masterclass on content creation and storytelling",tags: ["Education","Series"]},
-{title: "Commercial Production",description: "30-second commercial for tech startup product launch",tags: ["Commercial","Advertising"]},
-{title: "Influencer Collaboration",description: "Joint campaign with 3 mid-tier creators in creative space",tags: ["Collab","Multi-creator"]},
-{title: "Publishing Deal",description: "Exclusive rights to publish creative strategy guide",tags: ["Publishing","Educational"]}
-];
-const opportunitiesData = [
-{title: "AI-Powered Video Tool",description: "Integrate AI editing assistant into production workflow",tags: ["AI","Tool","New"]},
-{title: "Virtual Reality Content",description: "Explore immersive VR experiences for storytelling",tags: ["VR","Innovation","New"]},
-{title: "Interactive Web Series",description: "Audience-driven narrative where viewers influence plot",tags: ["Interactive","Web","New"]},
-{title: "Live Streaming Revenue",description: "Monetize live streams through exclusive member content",tags: ["Live","Monetization","New"]},
-{title: "NFT Digital Collectibles",description: "Create limited edition NFTs from signature content moments",tags: ["Web3","Collectibles","New"]}
-];
-function createCarouselCard(item){
-const card = document.createElement("div");
-card.className = "carousel-card";
-const tagsHtml = item.tags.map(tag => {
-let tagClass = "tag";
-if(tag === "New" || item.tags.some(t => t.toLowerCase() === "new")){
-tagClass += " status-new";
-}
-return `<span class="${tagClass}">${tag}</span>`;
-}).join("");
-card.innerHTML = `
-<div class="carousel-card-content">
-<h3>${item.title}</h3>
-<p>${item.description}</p>
-<div class="carousel-card-meta">
-${tagsHtml}
-</div>
-</div>
-`;
-card.addEventListener("click", function(){
-alert(`Opened: ${item.title}\n\n${item.description}`);
-});
-return card;
-}
-function initializeCarousels(){
-const briefCarousel = document.getElementById("briefCarousel");
-const offersCarousel = document.getElementById("offersCarousel");
-const opportunitiesCarousel = document.getElementById("opportunitiesCarousel");
-briefsData.forEach(brief => {
-briefCarousel.appendChild(createCarouselCard(brief));
-});
-offersData.forEach(offer => {
-offersCarousel.appendChild(createCarouselCard(offer));
-});
-opportunitiesData.forEach(opportunity => {
-opportunitiesCarousel.appendChild(createCarouselCard(opportunity));
+function scrollCarousel(id, direction) {
+const carousel = document.getElementById(id);
+if (!carousel) return;
+const cardWidth = carousel.querySelector('.card').offsetWidth;
+const gap = 12;
+const scrollAmount = (cardWidth + gap) * 1;
+carousel.scrollBy({
+left: scrollAmount * direction,
+behavior: 'smooth'
 });
 }
-document.addEventListener("DOMContentLoaded", initializeCarousels);
+
+// Ambient mouse effect
+document.addEventListener('mousemove', (e) => {
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+const rect = card.getBoundingClientRect();
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+card.style.setProperty('--x', `${x}px`);
+card.style.setProperty('--y', `${y}px`);
+});
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+if (e.key === 'ArrowRight') scrollCarousel('carousel1', 1);
+if (e.key === 'ArrowLeft') scrollCarousel('carousel1', -1);
+});
 </script>
 </body>
 </html>
