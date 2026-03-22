@@ -26,7 +26,7 @@
       --radius-lg: 24px;
       --radius-xl: 32px;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       background: var(--bg-deep);
       color: var(--text-primary);
@@ -48,7 +48,7 @@
     .trust-item { text-align: center; }
     .trust-number { font-size: 2rem; font-weight: 800; color: var(--accent-cyan); }
     .trust-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
-    .offers-section { position: relative; padding: 40px 24px 100px; max-width: 1200px; margin: 0 auto; }
+    .offers-section { position: relative; padding: 40px 24px 100px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
     .offers-section .glow-cyan { top: 100px; right: -200px; }
     .offers-section .glow-purple { bottom: 200px; left: -200px; }
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); text-align: center; margin-bottom: 16px; }
@@ -90,7 +90,7 @@
     .tag-value { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
     .tier-cta { display: none; }
     .tier-cta.active { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-    .how-it-works { position: relative; padding: 80px 24px 100px; max-width: 900px; margin: 0 auto; }
+    .how-it-works { position: relative; padding: 80px 24px 100px; max-width: 900px; margin: 0 auto; overflow: hidden; }
     .how-it-works .glow-cyan { top: -100px; left: 50%; transform: translateX(-50%); }
     .hiw-header { text-align: center; margin-bottom: 60px; }
     .hiw-header h2 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; margin-bottom: 8px; }
@@ -111,6 +111,7 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
     .reveal-delay-5 { transition-delay: 0.5s; }
+
     @media (max-width: 768px) {
       .trust-bar { gap: 32px; }
       .steps { grid-template-columns: 1fr; gap: 20px; }
