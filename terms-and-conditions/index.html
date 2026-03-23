@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms &amp; Conditions — Santiago Guy Films</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0b14;
+            color: #e0e0e0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Header ── */
+        header {
+            position: relative;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+            background: linear-gradient(180deg, #111220 0%, #0a0b14 100%);
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #a855f7, #ec4899);
+            border-radius: 2px;
+        }
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+        header h1 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #888;
+            font-weight: 400;
+        }
+
+        /* ── Main ── */
+        main {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        /* ── Sections ── */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        .section-number {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            margin-bottom: 0.75rem;
+        }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 0.85rem;
+            color: #c0c0c0;
+            font-size: 0.95rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #c0c0c0;
+            font-size: 0.95rem;
+        }
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00d4ff;
+        }
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* ── SMS Highlight Box ── */
+        .sms-highlight {
+            background: #111220;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-left: 3px solid #00d4ff;
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
+        }
+        .sms-highlight h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sms-highlight p,
+        .sms-highlight ul li {
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.12);
+            color: #00d4ff;
+            font-weight: 700;
+            padding: 0.15rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Contact Card ── */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(168, 85, 247, 0.06));
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .contact-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        .contact-card a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            background: #0a0b14;
+        }
+        .footer-brand {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .footer-copy {
+            font-size: 0.8rem;
+            color: #555;
+        }
+        .footer-links {
+            margin-top: 0.75rem;
+        }
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin: 0 0.75rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            header { padding: 2rem 1.25rem 2rem; }
+            main { padding: 2rem 1.25rem 3rem; }
+            .sms-highlight { padding: 1.25rem; }
+            .contact-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-text">Santiago Guy Films</div>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="subtitle">Last Updated: March 22, 2026</p>
+</header>
+
+<main>
+
+    <!-- 1. Agreement -->
+    <div class="section">
+        <span class="section-number">Section 1</span>
+        <h2>Agreement to Terms</h2>
+        <p>These Terms and Conditions ("Terms") govern your use of services provided by <strong>Santiago Guy Films</strong> ("SGF," "we," "us," or "our"), a business operated by Franco Lopez and located in Miami, Florida. By engaging our services, accessing our website at <strong>santiagoguyfilms.com</strong>, or opting in to receive SMS messages from us, you agree to be bound by these Terms in their entirety.</p>
+        <p>If you do not agree with any part of these Terms, please do not use our services or opt in to our messaging program.</p>
+    </div>
+
+    <!-- 2. Services -->
+    <div class="section">
+        <span class="section-number">Section 2</span>
+        <h2>Services</h2>
+        <p>Santiago Guy Films provides professional services including but not limited to:</p>
+        <ul>
+            <li>User-generated content (UGC) creation for brands</li>
+            <li>Video production and creative content services</li>
+            <li>AI setup and consulting services</li>
+            <li>Web design and development services</li>
+            <li>Contractor coordination and project management</li>
+        </ul>
+        <p>Service deliverables, timelines, and pricing are agreed upon on a per-project basis and may be outlined in a separate service agreement, statement of work, or invoice.</p>
+    </div>
+
+    <!-- 3. SMS Messaging Program -->
+    <div class="section">
+        <span class="section-number">Section 3</span>
+        <h2>SMS Messaging Program</h2>
+
+        <div class="sms-highlight">
+            <h3>SGF Contractor Coordination — SMS Program</h3>
+            <p><strong>Program Name:</strong> SGF Contractor Coordination</p>
+            <p><strong>Program Description:</strong> By opting in to the SGF Contractor Coordination SMS program, you consent to receive text messages from Santiago Guy Films at the phone number you provide. Messages may include contractor coordination communications, service quotes, appointment scheduling and reminders, project updates, and general business communications related to our services.</p>
+            <p><strong>Message Frequency:</strong> Message frequency varies based on project needs. You may receive multiple messages per week during active projects, or less frequently when no projects are in progress.</p>
+            <p><strong>Message &amp; Data Rates:</strong> Message and data rates may apply. Your mobile carrier's standard messaging and data rates will apply to all SMS messages sent and received. Santiago Guy Films is not responsible for any fees charged by your carrier.</p>
+        </div>
+
+        <div class="sms-highlight">
+            <h3>Opt-Out &amp; Support</h3>
+            <p>You may opt out of receiving SMS messages at any time:</p>
+            <ul>
+                <li>Reply <span class="keyword">STOP</span> to any message to unsubscribe from all future SMS communications. You will receive a one-time confirmation message acknowledging your opt-out request.</li>
+                <li>Reply <span class="keyword">HELP</span> to any message to receive support information, including our contact email and instructions for opting out.</li>
+            </ul>
+            <p>For additional support, contact us at <strong><a href="mailto:santiagoguyfilms@gmail.com" style="color:#00d4ff;text-decoration:none;">santiagoguyfilms@gmail.com</a></strong> or call <strong>+1 (786) 791-5111</strong>.</p>
+        </div>
+
+        <p><strong>Consent:</strong> By providing your phone number and opting in to our SMS program, you expressly consent to receive recurring automated text messages from Santiago Guy Films at the number provided. Consent is not a condition of purchase or service.</p>
+
+        <p><strong>Carrier Liability:</strong> Carriers (e.g., T-Mobile, AT&amp;T, Verizon) are not liable for delayed or undelivered messages. Message delivery is subject to effective transmission by your mobile carrier and network availability.</p>
+
+        <p><strong>Privacy:</strong> Your phone number and personal information will not be shared with or sold to third parties for marketing purposes. We may share information with service providers (such as our SMS platform) solely for the purpose of delivering messages to you.</p>
+    </div>
+
+    <!-- 4. User Responsibilities -->
+    <div class="section">
+        <span class="section-number">Section 4</span>
+        <h2>User Responsibilities</h2>
+        <p>When engaging with Santiago Guy Films, you agree to:</p>
+        <ul>
+            <li>Provide accurate and complete information when requested</li>
+            <li>Respond to communications in a timely manner to avoid project delays</li>
+            <li>Provide all necessary materials, access, and approvals required for project completion</li>
+            <li>Use our services and deliverables in accordance with applicable laws</li>
+            <li>Make payments in accordance with agreed-upon terms and invoices</li>
+            <li>Not misrepresent your identity or authorization to engage our services</li>
+        </ul>
+    </div>
+
+    <!-- 5. Payment Terms -->
+    <div class="section">
+        <span class="section-number">Section 5</span>
+        <h2>Payment Terms</h2>
+        <p>Payment terms are Net 30 unless otherwise specified in a separate agreement or invoice. Accepted payment methods include PayPal and Stripe. Late payments may incur additional fees or result in suspension of services.</p>
+        <p>All prices are quoted in U.S. Dollars (USD). Refund policies, if applicable, will be outlined in the specific service agreement or invoice for each project.</p>
+    </div>
+
+    <!-- 6. Intellectual Property -->
+    <div class="section">
+        <span class="section-number">Section 6</span>
+        <h2>Intellectual Property</h2>
+        <p>Unless otherwise agreed in writing, Santiago Guy Films retains ownership of all creative work, content, and deliverables until full payment is received. Upon receipt of full payment, usage rights are transferred to the client as outlined in the applicable service agreement.</p>
+        <p>Santiago Guy Films reserves the right to use completed work in its portfolio, website, social media, and promotional materials unless a separate confidentiality or exclusivity agreement is in place.</p>
+    </div>
+
+    <!-- 7. Limitation of Liability -->
+    <div class="section">
+        <span class="section-number">Section 7</span>
+        <h2>Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, Santiago Guy Films, its owner, agents, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to your use of our services, website, or SMS messaging program.</p>
+        <p>Our total liability for any claim arising from our services shall not exceed the total amount paid by you to Santiago Guy Films for the specific service giving rise to the claim.</p>
+        <p>Santiago Guy Films makes no guarantees regarding specific results, outcomes, or performance metrics from our services, including but not limited to content engagement, brand deals, or revenue generation.</p>
+    </div>
+
+    <!-- 8. Disclaimers -->
+    <div class="section">
+        <span class="section-number">Section 8</span>
+        <h2>Disclaimers</h2>
+        <p>Services are provided on an "as is" and "as available" basis. Santiago Guy Films makes no warranties, express or implied, regarding the merchantability, fitness for a particular purpose, or non-infringement of any services or deliverables.</p>
+        <p>We do not guarantee uninterrupted or error-free delivery of SMS messages. Message delivery depends on your carrier's network and is outside our control.</p>
+    </div>
+
+    <!-- 9. Termination -->
+    <div class="section">
+        <span class="section-number">Section 9</span>
+        <h2>Termination</h2>
+        <p>Either party may terminate a service engagement with written notice, subject to the terms outlined in the applicable service agreement. Upon termination, all outstanding invoices become immediately due.</p>
+        <p>You may opt out of our SMS messaging program at any time by replying <span class="keyword">STOP</span> to any message.</p>
+    </div>
+
+    <!-- 10. Governing Law -->
+    <div class="section">
+        <span class="section-number">Section 10</span>
+        <h2>Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the <strong>State of Florida</strong>, without regard to its conflict of law provisions. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts located in Miami-Dade County, Florida.</p>
+    </div>
+
+    <!-- 11. Changes to Terms -->
+    <div class="section">
+        <span class="section-number">Section 11</span>
+        <h2>Changes to These Terms</h2>
+        <p>Santiago Guy Films reserves the right to update or modify these Terms at any time. Changes will be posted on this page with an updated "Last Updated" date. Continued use of our services or SMS program after changes are posted constitutes acceptance of the revised Terms.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-card">
+        <h3>Questions About These Terms?</h3>
+        <p style="margin-bottom:0.5rem;">
+            <strong>Santiago Guy Films</strong><br>
+            Franco Lopez — Miami, FL
+        </p>
+        <p style="margin-bottom:0.5rem;">
+            Email: <a href="mailto:santiagoguyfilms@gmail.com">santiagoguyfilms@gmail.com</a>
+        </p>
+        <p style="margin-bottom:0.5rem;">
+            Phone: <a href="tel:+17867915111">+1 (786) 791-5111</a>
+        </p>
+        <p style="margin-bottom:0;">
+            Web: <a href="https://santiagoguyfilms.com" target="_blank">santiagoguyfilms.com</a>
+        </p>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-brand">Santiago Guy Films</div>
+    <p class="footer-copy">&copy; 2026 Santiago Guy Films. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="https://santiagoguyfilms.com">Home</a>
+        <a href="https://santiagoguyfilms.com/offers/">Services</a>
+        <a href="https://santiagoguyfilms.com/privacy-policy">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>
