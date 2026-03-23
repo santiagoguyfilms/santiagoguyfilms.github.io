@@ -9,170 +9,367 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg-deep: #0a0b14;
-      --bg-surface: #111220;
-      --bg-elevated: #16172a;
-      --accent-cyan: #00d4ff;
-      --accent-purple: #a855f7;
-      --accent-pink: #ec4899;
-      --gradient-sgf: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
-      --text-primary: #ffffff;
-      --text-body: #b0b3c5;
-      --text-muted: #6b7280;
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-xl: 32px;
-    }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body {
-      background: var(--bg-deep);
-      color: var(--text-primary);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-    .glow-cyan { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; }
-    .glow-purple { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; }
-    .top-bar { height: 4px; background: var(--gradient-sgf); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
-    .hero { position: relative; text-align: center; padding: 140px 24px 80px; overflow: hidden; }
-    .hero .glow-cyan { top: -200px; left: 50%; transform: translateX(-50%); }
-    .hero-label { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 24px; position: relative; z-index: 1; }
-    .hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative; z-index: 1; }
-    .hero h1 .gradient-text { background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-body); max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
-    .trust-bar { display: flex; justify-content: center; gap: 48px; margin-top: 48px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .trust-item { text-align: center; }
-    .trust-number { font-size: 2rem; font-weight: 800; color: var(--accent-cyan); }
-    .trust-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
-    .offers-section { position: relative; padding: 40px 24px 100px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
-    .offers-section .glow-cyan { top: 100px; right: -200px; }
-    .offers-section .glow-purple { bottom: 200px; left: -200px; }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); text-align: center; margin-bottom: 16px; }
-    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; text-align: center; margin-bottom: 12px; }
-    .section-subtitle { text-align: center; color: var(--text-body); margin-bottom: 60px; font-size: 1.05rem; }
-    .offers-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
-    .offer-card { background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg); padding: 40px 32px; transition: transform 0.3s ease, border-color 0.3s ease; }
-    .offer-card:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.15); }
-    .card-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 20px; }
-    .badge-cyan { background: rgba(0,212,255,0.1); color: var(--accent-cyan); border: 1px solid rgba(0,212,255,0.2); }
-    .badge-purple { background: rgba(168,85,247,0.1); color: var(--accent-purple); border: 1px solid rgba(168,85,247,0.2); }
-    .offer-card h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
-    .offer-tagline { color: var(--text-body); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.7; }
-    .offer-price { display: flex; align-items: baseline; gap: 12px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .offer-price .amount { font-size: 2.4rem; font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .offer-price .detail { font-size: 0.85rem; color: var(--text-muted); }
-    .offer-includes h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
-    .include-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; color: var(--text-body); line-height: 1.5; }
-    .include-item .check { flex-shrink: 0; width: 22px; height: 22px; background: rgba(0,212,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
-    .include-item .check svg { width: 12px; height: 12px; stroke: var(--accent-cyan); stroke-width: 3; }
-    .cta-group { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
-    .btn-primary { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 28px; background: var(--gradient-sgf); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem; border-radius: 100px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.3); }
-    .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
-    .btn-secondary { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; background: transparent; color: var(--text-body); text-decoration: none; font-weight: 600; font-size: 0.9rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s ease, color 0.3s ease; }
-    .btn-secondary:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-    .btn-secondary svg { width: 18px; height: 18px; flex-shrink: 0; }
-    .tier-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .tier-option { background: var(--bg-elevated); border: 2px solid rgba(255,255,255,0.06); border-radius: var(--radius-md); padding: 20px 16px; text-align: center; cursor: pointer; transition: border-color 0.3s ease, background 0.3s ease; position: relative; }
-    .tier-option:hover { border-color: rgba(0,212,255,0.3); }
-    .tier-option.active { border-color: var(--accent-cyan); background: rgba(0,212,255,0.05); }
-    .tier-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-    .tier-option.active .tier-label { color: var(--accent-cyan); }
-    .tier-price { font-size: 2rem; font-weight: 900; color: var(--text-primary); }
-    .tier-option.active .tier-price { background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .tier-freq { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
-    .tier-tag { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; margin-top: 10px; }
-    .tag-popular { background: rgba(0,212,255,0.15); color: var(--accent-cyan); }
-    .tag-value { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
-    .tier-cta { display: none; }
-    .tier-cta.active { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-    .how-it-works { position: relative; padding: 80px 24px 100px; max-width: 900px; margin: 0 auto; overflow: hidden; }
-    .how-it-works .glow-cyan { top: -100px; left: 50%; transform: translateX(-50%); }
-    .hiw-header { text-align: center; margin-bottom: 60px; }
-    .hiw-header h2 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; margin-bottom: 8px; }
-    .hiw-header p { color: var(--text-body); font-size: 1rem; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .step { text-align: center; padding: 32px 20px; background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-md); }
-    .step-num { font-size: 2rem; font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
-    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-    .step p { font-size: 0.85rem; color: var(--text-body); line-height: 1.6; }
-    footer { text-align: center; padding: 60px 24px 40px; border-top: 1px solid rgba(255,255,255,0.04); }
-    .footer-brand { font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-    .footer-link { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; }
-    .footer-link:hover { color: var(--accent-cyan); }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    @media (max-width: 768px) {
-      .trust-bar { gap: 32px; }
-      .steps { grid-template-columns: 1fr; gap: 20px; }
-      .offer-card { padding: 32px 24px; }
-      .tier-toggle { gap: 8px; }
-      .tier-option { padding: 16px 12px; }
-      .tier-price { font-size: 1.6rem; }
-    }
-    @media (max-width: 480px) {
-      .hero { padding: 120px 20px 60px; }
-      .offers-section { padding: 40px 16px 80px; }
-    }
+  :root {
+    --bg-deep: #0a0b14;
+    --bg-surface: #111220;
+    --bg-elevated: #16172a;
+    --accent-cyan: #00d4ff;
+    --accent-purple: #a855f7;
+    --accent-pink: #ec4899;
+    --gradient-sgf: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+    --text-primary: #ffffff;
+    --text-body: #b0b3c5;
+    --text-muted: #6b7280;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .glow-cyan {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-purple {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .top-bar {
+    height: 4px;
+    background: var(--gradient-sgf);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    overflow: hidden;
+  }
+  .hero .glow-cyan { top: -200px; left: -100px; }
+  .hero .glow-purple { bottom: -100px; right: -150px; }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+  }
+  .hero h1 .thin { font-weight: 300; color: var(--text-body); }
+  .hero h1 .gradient-text {
+    background: var(--gradient-sgf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--text-body);
+    max-width: 600px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 48px;
+  }
+
+  .hero-arrow {
+    position: relative;
+    z-index: 1;
+    width: 48px; height: 48px;
+    border: 2px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+  }
+  .hero-arrow:hover { border-color: var(--accent-cyan); transform: translateY(4px); }
+  .hero-arrow svg { width: 20px; height: 20px; stroke: var(--text-body); }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  section { position: relative; overflow: hidden; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 16px;
+  }
+
+  .offers { padding: 100px 24px 120px; position: relative; }
+  .offers .glow-purple { top: 100px; left: -200px; }
+  .offers .glow-cyan { bottom: 0; right: -200px; }
+
+  .offers-header { text-align: center; margin-bottom: 72px; position: relative; z-index: 1; }
+  .offers-header h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; margin-bottom: 16px; }
+  .offers-header p { color: var(--text-body); font-size: 1.1rem; max-width: 550px; margin: 0 auto; }
+
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+    gap: 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .offer-card {
+    background: var(--bg-surface);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius-xl);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .offer-card:hover { transform: translateY(-6px); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gradient-sgf);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+  .offer-card:hover::before { opacity: 1; }
+
+  .card-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .badge-cyan { background: rgba(0,212,255,0.1); color: var(--accent-cyan); border: 1px solid rgba(0,212,255,0.2); }
+  .badge-purple { background: rgba(168,85,247,0.1); color: var(--accent-purple); border: 1px solid rgba(168,85,247,0.2); }
+
+  .offer-card h3 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+  .offer-tagline { color: var(--text-body); font-size: 1rem; margin-bottom: 28px; line-height: 1.6; }
+
+  .offer-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 32px; }
+  .offer-price .amount {
+    font-size: clamp(3rem, 6vw, 4rem);
+    font-weight: 900;
+    background: var(--gradient-sgf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .offer-price .detail { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+
+  .offer-includes { margin-bottom: 36px; }
+  .offer-includes h4 { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+
+  .include-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .include-item:last-child { border-bottom: none; }
+
+  .check { flex-shrink: 0; width: 22px; height: 22px; background: rgba(52,211,153,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .check svg { width: 12px; height: 12px; stroke: #34d399; stroke-width: 3; }
+  .include-item span { color: #d1d5db; font-size: 0.95rem; line-height: 1.5; }
+
+  .cta-group { display: flex; flex-direction: column; gap: 12px; }
+
+  .btn-primary {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 18px 32px; background: var(--gradient-sgf); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
+    letter-spacing: 0.5px; border: none; border-radius: var(--radius-md);
+    cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.3s ease; }
+  .btn-primary:hover::after { background: rgba(255,255,255,0.1); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,255,0.25); }
+
+  .btn-secondary {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 16px 32px; background: transparent; color: var(--text-body);
+    font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md);
+    cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+  }
+  .btn-secondary:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(0,212,255,0.04); }
+  .btn-secondary svg { width: 18px; height: 18px; }
+
+  .how-it-works { padding: 100px 24px 120px; background: var(--bg-surface); position: relative; }
+  .how-it-works .glow-cyan { top: -100px; right: -100px; }
+
+  .hiw-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 1; }
+  .hiw-header h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; }
+  .hiw-header p { color: var(--text-body); font-size: 1.05rem; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+  .step { text-align: center; padding: 32px 20px; }
+  .step-num { font-size: 4rem; font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 16px; opacity: 0.4; }
+  .step h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+  .step p { color: var(--text-body); font-size: 0.9rem; line-height: 1.6; }
+
+  .trust { padding: 80px 24px; text-align: center; position: relative; }
+  .trust .glow-purple { top: -100px; left: 50%; transform: translateX(-50%); }
+  .trust-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 48px; margin-bottom: 32px; position: relative; z-index: 1; }
+  .stat { text-align: center; }
+  .stat .num { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+  .stat .label { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+  .trust-note { color: var(--text-body); font-size: 1rem; max-width: 500px; margin: 0 auto; position: relative; z-index: 1; }
+
+  footer { padding: 48px 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
+  .footer-brand { font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .footer-link { color: var(--accent-cyan); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: opacity 0.3s ease; }
+  .footer-link:hover { opacity: 0.7; }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 100px 20px 60px; min-height: 90vh; }
+    .offer-card { padding: 36px 28px; }
+    .offers-grid { gap: 24px; }
+    .trust-stats { gap: 32px; }
+    .steps { gap: 16px; }
+    .step { padding: 24px 16px; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.4rem; }
+    .offer-card { padding: 32px 24px; }
+    .offer-price .amount { font-size: 2.8rem; }
+    .btn-primary, .btn-secondary { padding: 16px 24px; }
+  }
+
+  .tier-toggle { display: flex; gap: 12px; margin-bottom: 28px; }
+  .tier-option { flex: 1; background: var(--bg-elevated); border: 2px solid rgba(255,255,255,0.06); border-radius: var(--radius-md); padding: 20px 16px; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative; }
+  .tier-option:hover { border-color: rgba(0,212,255,0.3); }
+  .tier-option.active { border-color: var(--accent-cyan); background: rgba(0,212,255,0.06); }
+  .tier-option .tier-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .tier-option.active .tier-label { color: var(--accent-cyan); }
+  .tier-option .tier-price { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+  .tier-option .tier-freq { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+  .tier-option .tier-tag { display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .tag-popular { background: rgba(0,212,255,0.15); color: var(--accent-cyan); }
+  .tag-value { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
+  .tier-cta { display: none; }
+  .tier-cta.active { display: flex; flex-direction: column; gap: 12px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hero-arrow { animation: none; }
+    .offer-card { transition: none; }
+  }
 </style>
 </head>
 <body>
+
 <div class="top-bar"></div>
 
 <section class="hero">
   <div class="glow-cyan"></div>
-  <div class="hero-label reveal">Santiago Guy Films</div>
-  <h1 class="reveal">Done-For-You Services.<br><span class="gradient-text">Built in a Day.</span></h1>
-  <p class="reveal">Premium AI, web, social media, and local business services — no retainers, no bloat, just results.</p>
-  <div class="trust-bar reveal">
-    <div class="trust-item">
-      <div class="trust-number" data-count="50">0</div>
-      <div class="trust-label">Brand Collabs</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-number" data-count="157">0</div>
-      <div class="trust-label">K+ TikTok Followers</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-number" data-count="10">0</div>
-      <div class="trust-label">M+ Likes</div>
-    </div>
-  </div>
+  <div class="glow-purple"></div>
+  <div class="hero-badge">Santiago Guy Films</div>
+  <h1>
+    <span class="thin">Stop overthinking it.</span><br>
+    <span class="gradient-text">Let's get it done.</span>
+  </h1>
+  <p class="hero-sub">Premium done-for-you services — AI setup, custom websites, and AI-powered social media management. You bring the brand. I bring the build.</p>
+  <a href="#offers" class="hero-arrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </a>
 </section>
 
-<section class="offers-section">
-  <div class="glow-cyan"></div>
+<section class="trust">
   <div class="glow-purple"></div>
-  <div class="section-label reveal">Services</div>
-  <h2 class="section-title reveal">Choose Your Service</h2>
-  <p class="section-subtitle reveal">Every service includes a kickoff call and is delivered fast — most within 24-48 hours.</p>
+  <div class="trust-stats reveal">
+    <div class="stat"><div class="num" data-count="157">0</div><div class="label">K+ TikTok Followers</div></div>
+    <div class="stat"><div class="num" data-count="50">0</div><div class="label">Brand Partnerships</div></div>
+    <div class="stat"><div class="num" data-count="9">0</div><div class="label">M+ Video Likes</div></div>
+  </div>
+  <p class="trust-note reveal reveal-delay-1">Trusted by brands who want content and systems that actually perform.</p>
+</section>
 
+<section class="offers" id="offers">
+  <div class="glow-purple"></div>
+  <div class="glow-cyan"></div>
+  <div class="offers-header reveal">
+    <div class="section-label">Services</div>
+    <h2>Pick your build. Book your day.</h2>
+    <p>Each service is delivered in a single focused session. No back-and-forth. No waiting weeks.</p>
+  </div>
   <div class="offers-grid">
 
-    <!-- ─── OFFER 1: GET SET UP WITH CLAUDE ─── -->
     <div class="offer-card reveal reveal-delay-1">
       <div class="card-badge badge-cyan">AI Setup</div>
       <h3>Get Set Up With Claude</h3>
-      <p class="offer-tagline">I install Claude AI on your machine, build custom workflows for your business, train you 1-on-1, and hand you a cheat sheet so you're dangerous from day one. This is the session I wish someone gave me.</p>
-      <div class="offer-price">
-        <span class="amount">$497</span>
-        <span class="detail">one-time &middot; delivered within 24 hrs</span>
-      </div>
+      <p class="offer-tagline">I install and configure Claude AI on your computer so you can automate tasks, write faster, and work smarter — today.</p>
+      <div class="offer-price"><span class="amount">$497</span><span class="detail">one-time &middot; delivered within 24 hrs</span></div>
       <div class="offer-includes">
         <h4>What's Included</h4>
         <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Full Claude AI installation and configuration on your machine</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Custom workflow automations tailored to your business</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>1-on-1 training session — hands-on, not a generic tutorial</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Custom automations tailored to your specific business workflows</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>One-on-one training session so you actually know how to use it</span></div>
         <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>7-day follow-up support for questions and fine-tuning</span></div>
         <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Cheat sheet with prompts and shortcuts built for your business</span></div>
       </div>
@@ -182,15 +379,11 @@
       </div>
     </div>
 
-    <!-- ─── OFFER 2: WEBSITE IN A DAY ─── -->
     <div class="offer-card reveal reveal-delay-2">
       <div class="card-badge badge-purple">Web Design</div>
       <h3>Website in a Day</h3>
       <p class="offer-tagline">I design and deploy a custom, dark-themed, mobile-first website for your brand — live by end of day. No templates. No monthly fees.</p>
-      <div class="offer-price">
-        <span class="amount">$797</span>
-        <span class="detail">one-time &middot; delivered within 24 hrs</span>
-      </div>
+      <div class="offer-price"><span class="amount">$797</span><span class="detail">one-time &middot; delivered within 24 hrs</span></div>
       <div class="offer-includes">
         <h4>What's Included</h4>
         <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Custom-designed cinematic website — not a template, not WordPress</span></div>
@@ -205,23 +398,16 @@
       </div>
     </div>
 
-    <!-- ─── OFFER 3: AI SOCIAL MEDIA MANAGER ─── -->
     <div class="offer-card reveal reveal-delay-3">
       <div class="card-badge badge-cyan">AI Membership</div>
       <h3>Your AI Social Media Manager</h3>
-      <p class="offer-tagline">You're posting but have no idea what's actually working. I plug my AI engine into your accounts and tell you exactly what to do next — with coaching to make sure you actually do it. The affordable, AI-powered alternative to a bloated agency retainer.</p>
+      <p class="offer-tagline">You're posting but have no idea what's actually working. I plug my AI engine into your accounts and tell you exactly what to do next — with coaching to make sure you actually do it.</p>
       <div class="tier-toggle">
         <div class="tier-option active" onclick="selectTier('biweekly')">
-          <div class="tier-label">Biweekly</div>
-          <div class="tier-price">$247</div>
-          <div class="tier-freq">/month</div>
-          <div class="tier-tag tag-popular">Most Popular</div>
+          <div class="tier-label">Biweekly</div><div class="tier-price">$247</div><div class="tier-freq">/month</div><div class="tier-tag tag-popular">Most Popular</div>
         </div>
         <div class="tier-option" onclick="selectTier('monthly')">
-          <div class="tier-label">Monthly</div>
-          <div class="tier-price">$147</div>
-          <div class="tier-freq">/month</div>
-          <div class="tier-tag tag-value">Best Value</div>
+          <div class="tier-label">Monthly</div><div class="tier-price">$147</div><div class="tier-freq">/month</div><div class="tier-tag tag-value">Best Value</div>
         </div>
       </div>
       <div class="offer-includes">
@@ -234,24 +420,20 @@
         <div class="include-item" id="biweekly-bonus"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>2 reports per month — stay ahead of the algorithm, not behind it</span></div>
       </div>
       <div class="tier-cta active" id="cta-biweekly">
-        <a href="https://buy.stripe.com/eVq14na1Ueuo6ZK3hbes004" target="_blank" class="btn-primary" data-stripe="biweekly"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Subscribe — $247/mo Biweekly</a>
+        <a href="https://buy.stripe.com/eVq14na1Ueuo6ZK3hbes004" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Subscribe — $247/mo Biweekly</a>
         <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a Free Discovery Call</a>
       </div>
       <div class="tier-cta" id="cta-monthly">
-        <a href="https://buy.stripe.com/bJe3cv1vo3PK83ObNHes005" target="_blank" class="btn-primary" data-stripe="monthly"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Subscribe — $147/mo Monthly</a>
+        <a href="https://buy.stripe.com/bJe3cv1vo3PK83ObNHes005" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Subscribe — $147/mo Monthly</a>
         <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a Free Discovery Call</a>
       </div>
     </div>
 
-    <!-- ─── OFFER 4: BIZAUDIT MIAMI ─── -->
     <div class="offer-card reveal reveal-delay-4">
       <div class="card-badge badge-purple">Local Business</div>
       <h3>BizAudit Miami</h3>
-      <p class="offer-tagline">Know exactly where you stand online. I audit your business across 8 platforms, compare you to local competitors, and hand you a clear action plan — no guessing, no fluff, just data and a strategy call to walk through it all.</p>
-      <div class="offer-price">
-        <span class="amount">$97</span>
-        <span class="detail">one-time &middot; delivered in 48 hours</span>
-      </div>
+      <p class="offer-tagline">Know exactly where you stand online. I audit your business across 8 platforms, compare you to local competitors, and hand you a clear action plan — no guessing, no fluff.</p>
+      <div class="offer-price"><span class="amount">$97</span><span class="detail">one-time &middot; delivered in 48 hours</span></div>
       <div class="offer-includes">
         <h4>What's Included</h4>
         <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Full BizAudit Report — deep dive across Google, Yelp, Instagram, Facebook, TikTok, YouTube, LinkedIn &amp; your website</span></div>
@@ -266,73 +448,22 @@
       </div>
     </div>
 
-    <!-- ─── OFFER 5: REPUTATION STARTER KIT ─── -->
     <div class="offer-card reveal reveal-delay-5">
-      <div class="card-badge badge-cyan">Marketing</div>
-      <h3>Reputation Starter Kit</h3>
-      <p class="offer-tagline">Your happy customers would leave you a review — if you just asked. I build the system that asks for you, handles every response, and turns your Google profile into a lead machine.</p>
-      <div class="offer-price">
-        <span class="amount">$247</span>
-        <span class="detail">one-time &middot; delivered within 24 hrs</span>
-      </div>
+      <div class="card-badge badge-cyan">Email Marketing</div>
+      <h3>Email Sequence in a Day</h3>
+      <p class="offer-tagline">Your email list is sitting idle. I'll write a complete 5-7 email welcome and nurture sequence — custom subject lines, body copy, and CTAs — all in your brand voice, delivered in 24 hours. No writing required from you.</p>
+      <div class="offer-price"><span class="amount">$397</span><span class="detail">one-time &middot; delivered in 24 hours</span></div>
       <div class="offer-includes">
         <h4>What's Included</h4>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Google review audit — where you stand, what's hurting you, and what competitors are doing better</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Review generation strategy + done-for-you ask templates (SMS, email, in-person scripts)</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Automated follow-up system setup so reviews come in on autopilot</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Response templates for positive and negative reviews — sound professional every time</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>30-day review growth plan with weekly milestones and accountability check-ins</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>5-7 custom emails — written, formatted, and ready to load into your email platform</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Subject lines, preview text, body copy, and CTAs for every email</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Customized to your brand voice and target audience — no generic templates</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>AI-powered copywriting reviewed and refined by Franco personally</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>24-hour delivery — brief today, inbox-ready tomorrow</span></div>
       </div>
       <div class="cta-group">
-        <a href="https://buy.stripe.com/28EcN5a1U71Wfwg04Zes007" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Pay $247 — Fix My Reviews</a>
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book Your Kickoff Call First</a>
-      </div>
-    </div>
-
-    <!-- OFFER 6: SCHOOL EMAIL AUTOPILOT -->
-    <div class="offer-card reveal reveal-delay-6">
-      <div class="card-badge badge-purple">AI Skill</div>
-      <h3>School Email Autopilot</h3>
-      <p class="offer-tagline">AI reads every email from your kid’s school, extracts deadlines and events, adds them to your calendar, and posts a clean daily digest to your family Slack. Never miss a field trip again.</p>
-
-      <div class="offer-price">
-        <span class="amount">$197</span>
-        <span class="detail">one-time purchase · 5-minute setup</span>
-      </div>
-
-      <div class="offer-includes">
-        <h4>What’s Included</h4>
-        <div class="include-item">
-          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
-          <span>AI-powered email scanning — reads every school email automatically</span>
-        </div>
-        <div class="include-item">
-          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
-          <span>Auto calendar events — field trips, deadlines, and meetings added instantly</span>
-        </div>
-        <div class="include-item">
-          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
-          <span>Daily family digest posted to your Slack channel every morning</span>
-        </div>
-        <div class="include-item">
-          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
-          <span>Works with any school domain — just enter yours and go</span>
-        </div>
-        <div class="include-item">
-          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
-          <span>Requires Claude Cowork account + Gmail, Google Calendar, and Slack MCPs</span>
-        </div>
-      </div>
-
-      <div class="cta-group">
-        <a href="https://buy.stripe.com/cNi4gz6PI860do88Bves00h" target="_blank" class="btn-primary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          Pay $197 — Automate It
-        </a>
-        <a href="https://santiagoguyfilms.com/school-email-autopilot/" target="_blank" class="btn-secondary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Learn More
-        </a>
+        <a href="https://buy.stripe.com/6oU14n1voeuo5VG6tnes00i" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Pay $397 — Write My Email Sequence</a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a Quick Call First</a>
       </div>
     </div>
 
@@ -347,22 +478,9 @@
     <p>No endless email threads. No scope creep. No waiting.</p>
   </div>
   <div class="steps">
-    <div class="step reveal reveal-delay-1">
-      <div class="step-num">01</div>
-      <h3>Pay &amp; Book</h3>
-      <p>Choose your service, pay securely via Stripe, and book your kickoff call on Calendly.</p>
-    </div>
-    <div class="step reveal reveal-delay-2">
-      <div class="step-num">02</div>
-      <h3>Kickoff Call</h3>
-      <p>30-minute Zoom call where I learn your brand, your goals, and exactly what you need.</p>
-    </div>
-    <div class="step reveal reveal-delay-3">
-      <div class="step-num">03</div>
-      <h3>Results. Fast.</h3>
-      <p>I get to work immediately. One-time services deliver within 24 hours. Memberships start with your first report that same week.</p>
-    </div>
-
+    <div class="step reveal reveal-delay-1"><div class="step-num">01</div><h3>Pay &amp; Book</h3><p>Choose your service, pay securely via Stripe, and book your kickoff call on Calendly.</p></div>
+    <div class="step reveal reveal-delay-2"><div class="step-num">02</div><h3>Kickoff Call</h3><p>30-minute Zoom call where I learn your brand, your goals, and exactly what you need.</p></div>
+    <div class="step reveal reveal-delay-3"><div class="step-num">03</div><h3>Results. Fast.</h3><p>I get to work immediately. One-time services deliver within 24 hours. Memberships start with your first report that same week.</p></div>
   </div>
 </section>
 
@@ -375,40 +493,37 @@
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.count);
-        let current = 0;
-        const increment = target / 40;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) { el.textContent = target; clearInterval(timer); }
-          else { el.textContent = Math.floor(current); }
-        }, 30);
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      let current = 0;
+      const increment = target / 40;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) { el.textContent = target; clearInterval(timer); }
+        else { el.textContent = Math.floor(current); }
+      }, 30);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
-  function selectTier(tier) {
-    document.querySelectorAll('.tier-option').forEach(el => el.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-    document.querySelectorAll('.tier-cta').forEach(el => el.classList.remove('active'));
-    document.getElementById('cta-' + tier).classList.add('active');
-    const bonus = document.getElementById('biweekly-bonus');
-    if (tier === 'biweekly') { bonus.style.display = 'flex'; }
-    else { bonus.style.display = 'none'; }
-  }
+function selectTier(tier) {
+  document.querySelectorAll('.tier-option').forEach(el => el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.querySelectorAll('.tier-cta').forEach(el => el.classList.remove('active'));
+  document.getElementById('cta-' + tier).classList.add('active');
+  const bonus = document.getElementById('biweekly-bonus');
+  bonus.style.display = (tier === 'biweekly') ? 'flex' : 'none';
+}
 </script>
 </body>
 </html>
