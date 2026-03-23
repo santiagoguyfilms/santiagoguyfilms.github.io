@@ -25,7 +25,7 @@
   }
 
   header h1 {
-    font-size: 1.75rem;
+    font-size: 2.2rem;
     font-weight: 800;
     background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
     -webkit-background-clip: text;
@@ -36,7 +36,7 @@
 
   header p {
     color: #888;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     margin-top: 0.35rem;
   }
 
@@ -53,8 +53,8 @@
 
   .search-box input {
     width: 100%;
-    padding: 1rem 1.25rem;
-    font-size: 1rem;
+    padding: 1.15rem 1.25rem;
+    font-size: 1.15rem;
     font-family: 'Inter', sans-serif;
     background: #111220;
     border: 1.5px solid #222;
@@ -70,6 +70,15 @@
 
   .search-box input::placeholder {
     color: #555;
+  }
+
+  .hint-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: -1rem;
+    margin-bottom: 1.25rem;
+    padding-left: 0.25rem;
+    line-height: 1.5;
   }
 
   .result-card {
@@ -102,14 +111,42 @@
     margin-bottom: 1rem;
   }
 
+  .result-card .badge-primary {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    background: rgba(0,212,255,0.12);
+    color: #00d4ff;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .result-card .badge-also {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    background: rgba(168,85,247,0.12);
+    color: #a855f7;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
   .result-card .name {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
   }
 
   .result-card .role {
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 500;
     background: linear-gradient(135deg, #00d4ff, #a855f7);
     -webkit-background-clip: text;
@@ -120,9 +157,20 @@
 
   .result-card .personality {
     margin-top: 0.75rem;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: #aaa;
     line-height: 1.5;
+  }
+
+  .result-card .also-helps {
+    margin-top: 0.85rem;
+    font-size: 0.95rem;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  .result-card .also-helps strong {
+    color: #999;
   }
 
   .result-card .keywords {
@@ -133,8 +181,8 @@
   }
 
   .result-card .keywords span {
-    font-size: 0.7rem;
-    padding: 0.25rem 0.6rem;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.7rem;
     background: rgba(0, 212, 255, 0.08);
     border: 1px solid rgba(0, 212, 255, 0.15);
     border-radius: 20px;
@@ -143,7 +191,7 @@
 
   .result-card .cta {
     margin-top: 1.25rem;
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #666;
     font-style: italic;
   }
@@ -153,6 +201,125 @@
     font-style: normal;
   }
 
+  .new-hire-card {
+    background: linear-gradient(135deg, rgba(236,72,153,0.06), rgba(168,85,247,0.06));
+    border: 1px dashed rgba(168,85,247,0.3);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s, transform 0.35s;
+    display: none;
+  }
+
+  .new-hire-card.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .new-hire-card .hire-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #a855f7;
+    margin-bottom: 0.5rem;
+  }
+
+  .new-hire-card .hire-body {
+    font-size: 1rem;
+    color: #999;
+    line-height: 1.55;
+  }
+
+  .new-hire-card .hire-body strong {
+    color: #ccc;
+  }
+
+  .request-card {
+    background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(168,85,247,0.06));
+    border: 1px dashed rgba(0,212,255,0.3);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s, transform 0.35s;
+    display: none;
+    margin-top: 0.5rem;
+  }
+
+  .request-card.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .request-card .req-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #00d4ff;
+    margin-bottom: 0.75rem;
+  }
+
+  .request-card .req-desc {
+    font-size: 0.95rem;
+    color: #999;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .request-card textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    background: #0a0b14;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.2s;
+  }
+
+  .request-card textarea:focus {
+    border-color: #00d4ff;
+  }
+
+  .request-card textarea::placeholder {
+    color: #555;
+  }
+
+  .request-card button {
+    margin-top: 0.75rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    background: linear-gradient(135deg, #00d4ff, #a855f7);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  .request-card button:hover {
+    opacity: 0.9;
+  }
+
+  .request-card button:active {
+    transform: scale(0.97);
+  }
+
+  .request-card .req-success {
+    font-size: 0.95rem;
+    color: #10b981;
+    font-weight: 600;
+    margin-top: 0.75rem;
+    display: none;
+  }
+
   .multi-results {
     display: flex;
     flex-direction: column;
@@ -160,7 +327,7 @@
   }
 
   .team-grid-title {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: #555;
@@ -190,25 +357,25 @@
   }
 
   .team-chip .chip-emoji {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin-bottom: 0.3rem;
   }
 
   .team-chip .chip-name {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #fff;
   }
 
   .team-chip .chip-role {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     color: #666;
     margin-top: 0.1rem;
   }
 
   @media (max-width: 480px) {
     .team-grid { grid-template-columns: repeat(2, 1fr); }
-    header h1 { font-size: 1.4rem; }
+    header h1 { font-size: 1.8rem; }
   }
 </style>
 </head>
@@ -216,13 +383,14 @@
 
 <header>
   <h1>SGF Team Router</h1>
-  <p>Tell me what you need — I'll find the right person.</p>
+  <p>Tell me what you need &#8212; I'll find the right person.</p>
 </header>
 
 <main>
   <div class="search-box">
-    <input type="text" id="query" placeholder="e.g. I need to review a brand contract..." autofocus>
+    <input type="text" id="query" placeholder="e.g. make my site look better, review a contract, I'm stressed out..." autofocus>
   </div>
+  <div class="hint-text">Just describe what you need in your own words &#8212; no need to know exact skill names.</div>
 
   <div id="results" class="multi-results"></div>
 
@@ -232,87 +400,62 @@
 
 <script>
 const team = [
-  {
-    name: "Carmen",
-    emoji: "\ud83d\udccb",
-    color: "#ec4899",
-    role: "Admin & Executive Assistant",
-    personality: "Efficient, warm, proactive \u2014 full Gmail & Calendar access, anticipates your needs before you ask.",
-    keywords: ["email", "inbox", "calendar", "schedule", "meeting", "rsvp", "appointment", "reminder", "briefing", "morning brief", "draft email", "reply", "follow-up", "admin", "reschedule", "cancel meeting", "what's on my calendar", "check my email", "send email"],
-    trigger: 'Say "Carmen" to activate'
-  },
-  {
-    name: "Regina",
-    emoji: "\ud83d\udcca",
-    color: "#a855f7",
-    role: "Project Manager",
-    personality: "Direct, organized, unflappable \u2014 accountability without guilt, dry humor. Keeps the train on the tracks.",
-    keywords: ["deadline", "deliverable", "content calendar", "project", "timeline", "task", "what's due", "overdue", "priority", "workflow", "schedule", "daily plan", "weekly plan", "what should I work on", "behind", "pipeline", "organize", "to-do", "status"],
-    trigger: 'Say "Regina" to activate'
-  },
-  {
-    name: "Rafa",
-    emoji: "\ud83d\udcb0",
-    color: "#f59e0b",
-    role: "Sales & Business Development",
-    personality: "Charismatic, high-energy, strategic closer \u2014 Miami energy. Knows your worth and won't let you leave money on the table.",
-    keywords: ["pitch", "rate", "negotiate", "cold outreach", "brand partnership", "close", "upsell", "revenue", "income", "monetize", "pricing", "retainer", "affiliate", "sponsorship", "client", "dm strategy", "media kit", "follow-up", "deal", "money", "business development", "raise rates"],
-    trigger: 'Say "Rafa" to activate'
-  },
-  {
-    name: "Sonny",
-    emoji: "\ud83c\udfac",
-    color: "#00d4ff",
-    role: "Creative Director",
-    personality: "Artistic, perceptive, brutally honest about creative work \u2014 passionate about craft. Pushes your content to the next level.",
-    keywords: ["content", "video", "hook", "pacing", "thumbnail", "editing", "storytelling", "creative", "framing", "lighting", "audio", "caption", "transition", "b-roll", "composition", "color grading", "aesthetic", "trend", "storyboard", "creative brief", "ideation", "shoot", "review my video"],
-    trigger: 'Say "Sonny" to activate'
-  },
-  {
-    name: "Anna",
-    emoji: "\ud83d\udcc8",
-    color: "#10b981",
-    role: "Marketing Director & Media Buyer",
-    personality: "Sharp, data-driven, numbers-first \u2014 slightly impatient energy, dry humor. Always on call.",
-    keywords: ["ad", "advertising", "media buy", "ad spend", "cpm", "roas", "ctr", "cpc", "paid social", "audience", "targeting", "campaign", "meta ads", "tiktok ads", "youtube ads", "google ads", "retargeting", "pixel", "conversion", "a/b test", "budget", "media plan", "brand positioning"],
-    trigger: 'Say "Anna" to activate'
-  },
-  {
-    name: "Andrew",
-    emoji: "\ud83e\uddee",
-    color: "#6366f1",
-    role: "Finance Manager & Accountant",
-    personality: "Calm, precise, reassuring \u2014 firm when it matters. Trusted family accountant vibe. Always watching the numbers.",
-    keywords: ["money", "expense", "income", "tax", "1099", "schedule c", "quarterly", "write-off", "deduction", "bookkeeping", "invoice", "profit", "loss", "cash flow", "budget", "savings", "retirement", "sep ira", "receipt", "irs", "self-employment", "accounting", "mileage", "home office", "depreciation", "financial"],
-    trigger: 'Say "Andrew" to activate'
-  },
-  {
-    name: "Dante",
-    emoji: "\u2696\ufe0f",
-    color: "#ef4444",
-    role: "Legal & Contracts Advisor",
-    personality: "Measured, authoritative, protective \u2014 formal but not cold. Reads every clause. Protects your interests.",
-    keywords: ["contract", "agreement", "nda", "usage rights", "licensing", "exclusivity", "intellectual property", "copyright", "ownership", "payment terms", "kill fee", "revision clause", "deliverable scope", "indemnification", "liability", "non-compete", "termination", "talent release", "model release", "legal", "brand deal terms"],
-    trigger: 'Say "Dante" to activate'
-  },
-  {
-    name: "Rina",
-    emoji: "\ud83d\udc9c",
-    color: "#c084fc",
-    role: "Encourager & Tough Love Mentor",
-    personality: "Warm but firm, deeply wise, poetic \u2014 never dismissive. Absorbs frustration with grace and redirects with love.",
-    keywords: ["frustrated", "stuck", "overwhelmed", "burnout", "doubt", "imposter", "creative block", "angry", "quit", "not working", "comparing", "struggling", "venting", "stressed", "tired", "lost", "motivation", "confidence", "tough day", "need encouragement", "feeling down"],
-    trigger: 'Say "Rina" or just vent to activate'
-  },
-  {
-    name: "Felix",
-    emoji: "\ud83d\ude80",
-    color: "#06b6d4",
-    role: "Web Deployment Specialist",
-    personality: "Calm, methodical, resourceful \u2014 deploys sites to GitHub Pages. The bridge between building it and the world seeing it.",
-    keywords: ["deploy", "github", "push", "publish", "site live", "github pages", "upload", "git", "website", "repo", "go live", "hosting", "put online", "get this live"],
-    trigger: 'Say "Felix" to activate'
-  }
+  { name: "Carmen", emoji: "\ud83d\udccb", color: "#ec4899", role: "Admin & Executive Assistant", personality: "Efficient, warm, proactive \u2014 full Gmail & Calendar access, anticipates your needs before you ask.", keywords: ["email", "inbox", "calendar", "schedule", "meeting", "rsvp", "appointment", "reminder", "briefing", "morning brief", "draft email", "reply", "follow-up", "admin", "reschedule", "cancel meeting", "what's on my calendar", "check my email", "send email", "organize", "daily brief"], alsoHelps: ["scheduling shoots", "coordinating with team members", "managing client communications", "inbox cleanup", "setting reminders for deadlines"], synonyms: ["assistant", "secretary", "organizer", "coordinator", "help me manage", "check messages", "any emails", "what's today look like", "what do i have today", "morning", "messages", "correspondence", "plan my day"], trigger: 'Say "Carmen" to activate' },
+  { name: "Regina", emoji: "\ud83d\udcca", color: "#a855f7", role: "Project Manager", personality: "Direct, organized, unflappable \u2014 accountability without guilt, dry humor. Keeps the train on the tracks.", keywords: ["deadline", "deliverable", "content calendar", "project", "timeline", "task", "what's due", "overdue", "priority", "workflow", "schedule", "daily plan", "weekly plan", "what should I work on", "behind", "pipeline", "organize", "to-do", "status"], alsoHelps: ["tracking brand deliverables", "content production schedules", "making sure nothing falls through the cracks", "planning your week", "accountability check-ins"], synonyms: ["manager", "planner", "organizer", "tasks", "things to do", "what's next", "am i forgetting something", "what's on my plate", "overwhelmed with work", "too much going on", "help me prioritize", "where do i start", "checklist", "progress", "tracker"], trigger: 'Say "Regina" to activate' },
+  { name: "Rafa", emoji: "\ud83d\udcb0", color: "#f59e0b", role: "Sales & Business Development", personality: "Charismatic, high-energy, strategic closer \u2014 Miami energy. Knows your worth and won't let you leave money on the table.", keywords: ["pitch", "rate", "negotiate", "cold outreach", "brand partnership", "close", "upsell", "revenue", "income", "monetize", "pricing", "retainer", "affiliate", "sponsorship", "client", "dm strategy", "media kit", "follow-up", "deal", "money", "business development", "raise rates"], alsoHelps: ["writing brand pitch emails", "figuring out what to charge", "preparing for sales calls", "building proposals", "growing your client base"], synonyms: ["sales", "sell", "prospect", "lead", "closing", "how much should i charge", "is this rate fair", "brand deal", "new clients", "find brands", "pitch deck", "proposal", "earn more", "grow revenue", "land a deal", "partnership", "collab", "collaboration"], trigger: 'Say "Rafa" to activate' },
+  { name: "Sonny", emoji: "\ud83c\udfac", color: "#00d4ff", role: "Creative Director", personality: "Artistic, perceptive, brutally honest about creative work \u2014 passionate about craft. Pushes your content to the next level.", keywords: ["content", "video", "hook", "pacing", "thumbnail", "editing", "storytelling", "creative", "framing", "lighting", "audio", "caption", "transition", "b-roll", "composition", "color grading", "aesthetic", "trend", "storyboard", "creative brief", "ideation", "shoot", "review my video"], alsoHelps: ["brainstorming video concepts", "reviewing raw footage", "writing captions and hooks", "planning content themes", "creative direction for brand deals"], synonyms: ["film", "camera", "footage", "clip", "reel", "tiktok", "instagram", "youtube", "make it better", "this looks boring", "ideas", "concept", "script", "visual", "production", "create", "content strategy", "what should i post", "ugc", "recording", "color grade"], trigger: 'Say "Sonny" to activate' },
+  { name: "Anna", emoji: "\ud83d\udcc8", color: "#10b981", role: "Marketing Director & Media Buyer", personality: "Sharp, data-driven, numbers-first \u2014 slightly impatient energy, dry humor. Always on call.", keywords: ["ad", "advertising", "media buy", "ad spend", "cpm", "roas", "ctr", "cpc", "paid social", "audience", "targeting", "campaign", "meta ads", "tiktok ads", "youtube ads", "google ads", "retargeting", "pixel", "conversion", "a/b test", "budget", "media plan", "brand positioning"], alsoHelps: ["analyzing what's working on social", "building ad creative strategies", "optimizing spend", "audience research", "competitive positioning"], synonyms: ["marketing", "promote", "promotion", "boost", "grow", "followers", "reach", "impressions", "engagement", "analytics", "metrics", "performance", "roi", "spend", "ads manager", "facebook ads", "run ads", "campaign strategy", "seo", "organic growth", "social media strategy"], trigger: 'Say "Anna" to activate' },
+  { name: "Andrew", emoji: "\ud83e\uddee", color: "#6366f1", role: "Finance Manager & Accountant", personality: "Calm, precise, reassuring \u2014 firm when it matters. Trusted family accountant vibe. Always watching the numbers.", keywords: ["money", "expense", "income", "tax", "1099", "schedule c", "quarterly", "write-off", "deduction", "bookkeeping", "invoice", "profit", "loss", "cash flow", "budget", "savings", "retirement", "sep ira", "receipt", "irs", "self-employment", "accounting", "mileage", "home office", "depreciation", "financial"], alsoHelps: ["creating invoices for brand deals", "tracking business expenses", "quarterly tax prep", "understanding write-offs", "setting financial goals"], synonyms: ["finance", "accountant", "taxes", "pay", "payment", "billing", "charge", "cost", "how much did i make", "am i profitable", "revenue tracker", "tax time", "receipts", "bank", "quickbooks", "stripe", "paypal", "earning", "spending"], trigger: 'Say "Andrew" to activate' },
+  { name: "Dante", emoji: "\u2696\ufe0f", color: "#ef4444", role: "Legal & Contracts Advisor", personality: "Measured, authoritative, protective \u2014 formal but not cold. Reads every clause. Protects your interests.", keywords: ["contract", "agreement", "nda", "usage rights", "licensing", "exclusivity", "intellectual property", "copyright", "ownership", "payment terms", "kill fee", "revision clause", "deliverable scope", "indemnification", "liability", "non-compete", "termination", "talent release", "model release", "legal", "brand deal terms"], alsoHelps: ["reviewing brand contracts before signing", "understanding usage rights", "negotiating better terms", "protecting your content ownership", "creating standard agreements"], synonyms: ["lawyer", "law", "sign", "clause", "terms", "fine print", "review this", "is this fair", "protect", "rights", "sue", "dispute", "document", "paperwork", "should i sign this", "they want me to sign", "what does this mean", "red flag"], trigger: 'Say "Dante" to activate' },
+  { name: "Rina", emoji: "\ud83d\udc9c", color: "#c084fc", role: "Encourager & Tough Love Mentor", personality: "Warm but firm, deeply wise, poetic \u2014 never dismissive. Absorbs frustration with grace and redirects with love.", keywords: ["frustrated", "stuck", "overwhelmed", "burnout", "doubt", "imposter", "creative block", "angry", "quit", "not working", "comparing", "struggling", "venting", "stressed", "tired", "lost", "motivation", "confidence", "tough day", "need encouragement", "feeling down"], alsoHelps: ["mindset resets", "perspective shifts when you're spiraling", "celebrating wins you forget to celebrate", "turning bad days around", "keeping you grounded"], synonyms: ["encourage", "support", "help me", "i can't", "i'm done", "this sucks", "nobody cares", "what's the point", "why bother", "i'm failing", "not good enough", "depressed", "sad", "anxious", "worried", "fear", "scared", "lonely", "talk to someone", "vent", "pep talk", "cheer me up", "bad day"], trigger: 'Say "Rina" or just vent' },
+  { name: "Felix", emoji: "\ud83d\ude80", color: "#06b6d4", role: "Web Deployment Specialist", personality: "Calm, methodical, resourceful \u2014 deploys sites to GitHub Pages. The bridge between building it and the world seeing it.", keywords: ["deploy", "github", "push", "publish", "site live", "github pages", "upload", "git", "website live", "repo", "go live", "hosting", "put online", "get this live"], alsoHelps: ["pushing website updates", "managing GitHub repos", "troubleshooting deployment issues", "getting your pages online fast"], synonyms: ["launch", "ship it", "make it live", "put it up", "website online", "domain", "url", "link", "is my site up", "update the site", "push changes", "publish changes", "release"], trigger: 'Say "Felix" to activate' },
+  { name: "Marco", emoji: "\ud83c\udfa8", color: "#f97316", role: "Web Design Director", personality: "Visual architect with a filmmaker's soul \u2014 allergic to mediocrity, cinematic thinker, Miami energy. Turns websites into experiences.", keywords: ["web design", "landing page", "layout", "hero section", "cta", "visual storytelling", "scroll animation", "parallax", "page flow", "visual hierarchy", "web typography", "micro-interaction", "hover effect", "scroll-triggered", "cinematic web", "redesign", "page structure", "interactive design"], alsoHelps: ["redesigning boring pages", "making your site feel premium", "building immersive scroll experiences", "hero section makeovers", "visual brand consistency on the web"], synonyms: ["design", "website", "site", "page", "look", "feel", "ugly", "boring", "template", "make it better", "needs work", "upgrade", "modern", "clean", "sleek", "professional", "beautiful", "css", "html", "style", "color", "font", "spacing", "ux", "ui", "user experience", "responsive", "mobile", "looks bad", "looks off", "hit harder", "more energy", "generic", "cookie cutter"], trigger: 'Say "Marco" to activate' },
+  { name: "Karen", emoji: "\ud83d\udccf", color: "#dc2626", role: "HR Director & Team Accountability", personality: "Sharp, composed, relentless about standards \u2014 fair but firm. Documents everything. Progressive discipline enforcer.", keywords: ["team performance", "accountability", "quality control", "corrective action", "hr", "standards", "discipline", "performance review", "team management", "employee", "warning", "improvement plan", "expectations", "evaluation"], alsoHelps: ["holding team members accountable", "setting performance standards", "documenting issues", "creating improvement plans", "team culture and expectations"], synonyms: ["someone's not performing", "quality issue", "team problem", "not meeting expectations", "drop the ball", "sloppy work", "accountability", "write up", "team member issue", "bad work", "missed deadline", "underperforming", "fire", "let go", "reprimand", "standards", "team review"], trigger: 'Say "Karen" to activate' },
+  { name: "Carlos", emoji: "\ud83d\udd27", color: "#78716c", role: "Contractor Coordinator & Project Manager", personality: "Pragmatic, street-smart, bilingual Miami native energy \u2014 firm but respectful with contractors. Treats your money like his own.", keywords: ["contractor", "painter", "plumber", "electrician", "handyman", "fence", "repair", "renovation", "home improvement", "quote", "estimate", "trade", "construction", "remodel", "fix", "install", "maintenance"], alsoHelps: ["finding reliable contractors in Miami", "getting competitive quotes", "negotiating prices with trades", "scheduling home repairs", "managing renovation projects"], synonyms: ["fix something", "house", "home", "broken", "leak", "paint", "fence", "roof", "floor", "tile", "bathroom", "kitchen", "garage", "ac", "hvac", "air conditioning", "water heater", "drywall", "concrete", "landscaping", "lawn", "pool", "pressure wash", "need someone to fix", "who can fix", "need a guy", "handyman", "trades"], trigger: 'Say "Carlos" to activate' },
+  { name: "Quentin", emoji: "\ud83e\udde0", color: "#0ea5e9", role: "AI Content Strategist", personality: "Strategic mind with a creator's instinct \u2014 knows what to post, when to post it, and why. Data meets creativity.", keywords: ["content strategy", "what to post", "content brief", "weekly brief", "content calendar", "hook ideas", "posting ideas", "social media plan", "trending", "performance report", "what's working", "what's not working"], alsoHelps: ["weekly content planning", "analyzing what content performs best", "generating hook ideas", "building a posting calendar", "trend-spotting in your niche"], synonyms: ["what should i post", "content ideas", "posting schedule", "social strategy", "plan my content", "weekly plan", "brief", "hooks", "what's trending", "why isn't my content working", "what content performs", "analyze my stats", "coach me", "traction", "algorithm", "viral", "blowing up", "flopping", "not getting views"], trigger: 'Say "Quentin" to activate' }
+];
+
+const casualPhrases = {
+  "what's going on today": ["Carmen", "Regina"], "start my day": ["Carmen", "Regina"], "any updates": ["Carmen"], "check in": ["Carmen"], "set up a call": ["Carmen"], "book a meeting": ["Carmen"],
+  "i have too much to do": ["Regina", "Rina"], "help me get organized": ["Regina"], "what's the plan": ["Regina"], "falling behind": ["Regina", "Rina"],
+  "how do i get more clients": ["Rafa", "Anna"], "grow my business": ["Rafa", "Anna"], "make more money": ["Rafa", "Andrew"],
+  "make better content": ["Sonny"], "my videos suck": ["Sonny", "Rina"], "what should i film": ["Sonny"], "content ideas": ["Sonny"], "review my work": ["Sonny"],
+  "get more views": ["Anna", "Sonny"], "grow my audience": ["Anna", "Sonny"], "nobody sees my stuff": ["Anna", "Rina"],
+  "how much did i spend": ["Andrew"], "am i making money": ["Andrew"], "tax season": ["Andrew"],
+  "they sent me a contract": ["Dante"], "should i sign this": ["Dante"], "is this legit": ["Dante"], "protect myself": ["Dante"],
+  "i want to quit": ["Rina"], "i feel like giving up": ["Rina"], "nothing is working": ["Rina"], "am i wasting my time": ["Rina"], "i need a break": ["Rina"],
+  "my site is down": ["Felix"], "update my website": ["Felix", "Marco"], "put this online": ["Felix"],
+  "make my site look good": ["Marco"], "redesign my website": ["Marco"], "this page looks bad": ["Marco"], "needs a facelift": ["Marco"], "make it look professional": ["Marco"], "website redesign": ["Marco"], "the site needs work": ["Marco"],
+  "someone dropped the ball": ["Karen"], "the work quality is bad": ["Karen"], "team member not doing their job": ["Karen"], "hold them accountable": ["Karen"], "performance issue": ["Karen"],
+  "something's broken at home": ["Carlos"], "i need a repair": ["Carlos"], "find me a contractor": ["Carlos"], "get a quote": ["Carlos"], "home project": ["Carlos"], "fix my house": ["Carlos"], "need work done on the house": ["Carlos"],
+  "what should i post this week": ["Quentin"], "plan my content": ["Quentin"], "i need content ideas": ["Quentin", "Sonny"], "what's trending right now": ["Quentin"], "why aren't my posts getting views": ["Quentin", "Anna"]
+};
+
+const conceptMap = [
+  { concepts: ["roi", "profit margin", "overhead", "net income", "gross", "revenue", "earn", "cost", "worth", "value", "afford", "expensive", "cheap", "price", "fee", "charge", "bill", "owe", "debt", "loan", "credit", "savings", "invest", "wealth", "rich", "broke", "paycheck", "salary", "wage"], members: ["Andrew", "Rafa"], weight: 8 },
+  { concepts: ["hate", "love", "hope", "dream", "fear", "cry", "scream", "laugh", "happy", "miserable", "excited", "nervous", "panic", "calm", "peace", "rage", "fury", "jealous", "envy", "proud", "ashamed", "guilty", "regret", "sorry", "grateful", "thankful", "hopeless", "hopeful", "inspired", "uninspired", "numb", "empty", "alone", "bored", "restless", "anxious", "overwhelm", "exhausted", "drained", "beaten", "defeated", "winning", "losing", "give up", "keep going", "can't do this", "i suck", "i'm the worst", "why me"], members: ["Rina"], weight: 10 },
+  { concepts: ["late", "early", "tomorrow", "yesterday", "next week", "this week", "today", "tonight", "morning", "afternoon", "due", "soon", "urgent", "asap", "hurry", "rush", "wait", "delay", "postpone", "reschedule", "cancel", "confirm", "remind", "forget", "forgot", "remember", "when", "how long", "running out of time"], members: ["Regina", "Carmen"], weight: 7 },
+  { concepts: ["pretty", "ugly", "beautiful", "hideous", "clean", "messy", "sharp", "blurry", "bright", "dark", "colorful", "dull", "flat", "dynamic", "boring", "exciting", "basic", "premium", "cheap-looking", "polished", "amateur", "professional-looking", "slick", "dated", "outdated", "fresh", "modern", "old-school", "eye-catching", "bland"], members: ["Marco", "Sonny"], weight: 6 },
+  { concepts: ["scale", "grow", "expand", "bigger", "more", "level up", "next level", "upgrade", "improve", "better", "optimize", "maximize", "increase", "double", "triple", "10x", "blow up", "take off", "momentum", "traction", "breakthrough", "opportunity", "potential"], members: ["Rafa", "Anna"], weight: 7 },
+  { concepts: ["scam", "fraud", "steal", "stolen", "unfair", "sketchy", "suspicious", "trust", "verify", "legitimate", "official", "binding", "enforce", "violate", "breach", "penalty", "consequence", "sue", "court", "lawyer", "attorney", "rights", "protected", "exposed", "risky", "safe", "unsafe", "guarantee", "promise", "obligation"], members: ["Dante"], weight: 9 },
+  { concepts: ["house", "home", "apartment", "condo", "property", "room", "wall", "ceiling", "floor", "door", "window", "yard", "garden", "patio", "deck", "driveway", "pipe", "wire", "outlet", "switch", "faucet", "toilet", "shower", "sink", "cabinet", "counter", "appliance", "washer", "dryer", "fridge", "oven", "stove", "crack", "leak", "mold", "stain", "scratch", "dent", "hole", "rust", "rot", "damage"], members: ["Carlos"], weight: 9 },
+  { concepts: ["team", "staff", "crew", "hire", "fire", "train", "onboard", "evaluate", "review", "feedback", "performance", "behavior", "attitude", "effort", "lazy", "reliable", "dependable", "consistent", "inconsistent", "improve", "warn", "document", "standards", "expectations", "professionalism", "culture"], members: ["Karen"], weight: 8 },
+  { concepts: ["post", "upload", "share", "publish", "schedule post", "plan content", "batch", "series", "format", "angle", "niche", "audience", "viral", "algorithm", "reach", "discovery", "for you page", "fyp", "explore page", "hashtag", "trending audio", "challenge", "duet", "stitch", "collab post", "carousel", "story", "reel"], members: ["Quentin", "Sonny"], weight: 7 },
+  { concepts: ["email", "text", "message", "call", "phone", "dm", "respond", "reply", "reach out", "contact", "notify", "inform", "update", "cc", "bcc", "forward", "thread", "conversation", "inbox", "outbox", "sent", "received", "unread", "spam"], members: ["Carmen", "Rafa"], weight: 6 },
+  { concepts: ["code", "bug", "error", "broken link", "404", "server", "dns", "ssl", "https", "domain", "hosting", "bandwidth", "cache", "load time", "speed", "performance", "downtime", "uptime", "backup", "restore", "version", "update", "patch", "release", "staging", "production", "live"], members: ["Felix"], weight: 8 },
+  { concepts: ["sponsor", "promote", "boost", "advertise", "commercial", "placement", "impression", "click", "view", "watch", "traffic", "funnel", "landing", "lead gen", "conversion", "signup", "subscribe", "follower", "fan", "community", "engagement rate", "benchmark"], members: ["Anna"], weight: 7 }
+];
+
+const newHireSuggestions = [
+  { topics: ["podcast", "audio", "voiceover", "sound design", "music", "spotify", "apple podcast"], suggestion: "Audio & Podcast Producer", description: "Someone to handle podcast production, audio editing, voiceover work, and sound design." },
+  { topics: ["analytics", "data", "dashboard", "metrics", "reporting", "google analytics", "tableau", "data science"], suggestion: "Data & Analytics Specialist", description: "A dedicated numbers person to build dashboards, track KPIs across platforms, and turn raw data into actionable insights." },
+  { topics: ["customer service", "support", "complaint", "refund", "help desk", "ticket", "client issue"], suggestion: "Client Relations Manager", description: "Someone to handle ongoing client communication, support tickets, and relationship management." },
+  { topics: ["ai image", "midjourney", "dall-e", "stable diffusion", "ai art", "generate image", "image generation"], suggestion: "AI Visual Artist", description: "A specialist for AI-generated imagery, mockups, product visualizations, and creative AI art direction." },
+  { topics: ["translate", "translation", "spanish", "localize", "localization", "multilingual", "subtitles", "dub"], suggestion: "Localization Specialist", description: "Someone to handle translations, bilingual content adaptation, subtitle creation, and culturally-aware localization." },
+  { topics: ["ecommerce", "shopify", "store", "product", "merch", "merchandise", "sell online", "shop"], suggestion: "E-Commerce Manager", description: "A specialist for running an online store \u2014 product listings, inventory, fulfillment, and optimizing your merch or digital product sales." },
+  { topics: ["influencer", "talent", "agency", "management", "representation", "agent", "manager"], suggestion: "Talent & Influencer Manager", description: "Someone to handle creator relationships, talent negotiations, agency communications, and managing your representation." },
+  { topics: ["crm", "hubspot", "salesforce", "pipeline software", "automation", "zapier", "workflow automation", "integration"], suggestion: "Automation & CRM Specialist", description: "A tech-savvy operator to build automated workflows, manage CRM integrations, and connect all your tools." },
+  { topics: ["photography", "photo", "headshot", "product photo", "lifestyle photo", "photo editing", "lightroom", "photoshop"], suggestion: "Photography Director", description: "A specialist for still photography \u2014 product shoots, lifestyle imagery, headshots, and photo editing." }
 ];
 
 const input = document.getElementById('query');
@@ -322,100 +465,167 @@ const teamGrid = document.getElementById('teamGrid');
 team.forEach(member => {
   const chip = document.createElement('div');
   chip.className = 'team-chip';
-  chip.innerHTML = `
-    <div class="chip-emoji">${member.emoji}</div>
-    <div class="chip-name">${member.name}</div>
-    <div class="chip-role">${member.role.split('&')[0].trim()}</div>
-  `;
-  chip.addEventListener('click', () => showResult([member]));
+  chip.innerHTML = '<div class="chip-emoji">' + member.emoji + '</div><div class="chip-name">' + member.name + '</div><div class="chip-role">' + member.role.split('&')[0].trim() + '</div>';
+  chip.addEventListener('click', function() { showResult([{ member: member, score: 100, matchType: 'direct' }]); });
   teamGrid.appendChild(chip);
 });
 
 function scoreMatch(query, member) {
-  const q = query.toLowerCase();
-  let score = 0;
-  if (q.includes(member.name.toLowerCase())) score += 100;
-  for (const kw of member.keywords) {
-    if (q.includes(kw)) {
-      score += 10;
-    } else {
-      const words = kw.split(' ');
-      for (const w of words) {
-        if (w.length > 3 && q.includes(w)) score += 4;
-      }
+  var q = query.toLowerCase().trim();
+  var score = 0;
+  var matchType = 'keyword';
+  if (q.includes(member.name.toLowerCase())) { score += 100; matchType = 'name'; }
+  for (var i = 0; i < member.keywords.length; i++) {
+    var kw = member.keywords[i];
+    if (q.includes(kw.toLowerCase())) { score += 12; }
+    else { var words = kw.split(' '); for (var j = 0; j < words.length; j++) { if (words[j].length > 3 && q.includes(words[j].toLowerCase())) score += 5; } }
+  }
+  if (member.synonyms) {
+    for (var i = 0; i < member.synonyms.length; i++) {
+      var syn = member.synonyms[i];
+      if (q.includes(syn.toLowerCase())) { score += 10; }
+      else { var sw = syn.split(' '); for (var j = 0; j < sw.length; j++) { if (sw[j].length > 3 && q.includes(sw[j].toLowerCase())) score += 4; } }
     }
   }
-  const roleWords = member.role.toLowerCase().split(/\W+/);
-  for (const rw of roleWords) {
-    if (rw.length > 3 && q.includes(rw)) score += 6;
+  var roleWords = member.role.toLowerCase().split(/\W+/);
+  for (var i = 0; i < roleWords.length; i++) { if (roleWords[i].length > 3 && q.includes(roleWords[i])) score += 7; }
+  if (member.alsoHelps) {
+    for (var i = 0; i < member.alsoHelps.length; i++) {
+      var ahWords = member.alsoHelps[i].toLowerCase().split(/\W+/);
+      for (var j = 0; j < ahWords.length; j++) { if (ahWords[j].length > 3 && q.includes(ahWords[j])) score += 3; }
+    }
   }
-  return score;
+  for (var i = 0; i < conceptMap.length; i++) {
+    var concept = conceptMap[i];
+    if (concept.members.includes(member.name)) {
+      var hits = 0;
+      for (var j = 0; j < concept.concepts.length; j++) { if (q.includes(concept.concepts[j].toLowerCase())) hits++; }
+      if (hits > 0) score += hits * concept.weight;
+    }
+  }
+  return { score: score, matchType: matchType };
+}
+
+function checkCasualPhrases(query) {
+  var q = query.toLowerCase().trim();
+  var boosts = {};
+  var entries = Object.entries(casualPhrases);
+  for (var i = 0; i < entries.length; i++) {
+    var phrase = entries[i][0], names = entries[i][1];
+    var phraseWords = phrase.split(' ');
+    var matching = phraseWords.filter(function(w) { return w.length > 2 && q.includes(w); });
+    if (matching.length >= Math.ceil(phraseWords.length * 0.6)) {
+      for (var j = 0; j < names.length; j++) { boosts[names[j]] = (boosts[names[j]] || 0) + 8; }
+    }
+  }
+  return boosts;
+}
+
+function checkNewHireSuggestion(query) {
+  var q = query.toLowerCase().trim();
+  for (var i = 0; i < newHireSuggestions.length; i++) {
+    var hire = newHireSuggestions[i];
+    var matchCount = hire.topics.filter(function(t) { return q.includes(t); }).length;
+    if (matchCount > 0) return hire;
+    var allWords = hire.topics.join(' ').split(/\W+/);
+    var wordMatches = allWords.filter(function(w) { return w.length > 3 && q.includes(w); });
+    if (wordMatches.length >= 2) return hire;
+  }
+  return null;
 }
 
 function findMatches(query) {
-  if (!query.trim()) return [];
-  const scored = team.map(m => ({ member: m, score: scoreMatch(query, m) }))
-    .filter(s => s.score > 0)
-    .sort((a, b) => b.score - a.score);
-  if (scored.length === 0) return [];
-  const top = scored[0];
-  const results = [top];
-  if (scored.length > 1 && scored[1].score >= top.score * 0.5) {
-    results.push(scored[1]);
+  if (!query.trim()) return { matches: [], newHire: null };
+  var casualBoosts = checkCasualPhrases(query);
+  var scored = team.map(function(m) {
+    var result = scoreMatch(query, m);
+    var boost = casualBoosts[m.name] || 0;
+    return { member: m, score: result.score + boost, matchType: result.matchType };
+  }).filter(function(s) { return s.score > 0; }).sort(function(a, b) { return b.score - a.score; });
+  var newHire = checkNewHireSuggestion(query);
+  if (scored.length === 0) return { matches: [], newHire: newHire };
+  var top = scored[0];
+  var results = [top];
+  for (var i = 1; i < scored.length && i < 3; i++) {
+    if (scored[i].score >= top.score * 0.4) { scored[i].matchType = 'related'; results.push(scored[i]); }
   }
-  return results.map(r => r.member);
+  return { matches: results, newHire: newHire };
 }
 
-function showResult(members) {
+function showResult(matches, newHire) {
   resultsContainer.innerHTML = '';
-  if (members.length === 0) {
-    const card = document.createElement('div');
+  if (matches.length === 0 && !newHire) {
+    var card = document.createElement('div');
     card.className = 'result-card';
-    card.innerHTML = `
-      <div class="name">No exact match</div>
-      <div class="personality" style="margin-top:0.5rem;">Try describing your task differently, or tap a team member below to see what they handle.</div>
-    `;
+    card.innerHTML = '<div class="name">Nobody on the team handles this yet</div><div class="personality" style="margin-top:0.5rem;">Try describing it differently, or tap a team member below. If this is truly a gap, request a new employee below.</div>';
     resultsContainer.appendChild(card);
-    requestAnimationFrame(() => card.classList.add('visible'));
+    requestAnimationFrame(function() { card.classList.add('visible'); });
+    var reqCard = buildRequestCard(input.value.trim());
+    resultsContainer.appendChild(reqCard);
+    setTimeout(function() { reqCard.classList.add('visible'); }, 150);
     return;
   }
-  members.forEach((member, i) => {
-    const card = document.createElement('div');
+  matches.forEach(function(item, i) {
+    var member = item.member || item;
+    var isTop = i === 0;
+    var card = document.createElement('div');
     card.className = 'result-card';
-    card.innerHTML = `
-      <div class="avatar" style="background:${member.color}">${member.emoji}</div>
-      <div class="name">${member.name}</div>
-      <div class="role">${member.role}</div>
-      <div class="personality">${member.personality}</div>
-      <div class="keywords">${member.keywords.slice(0, 8).map(k => `<span>${k}</span>`).join('')}</div>
-      <div class="cta">To activate &rarr; <strong>${member.trigger}</strong></div>
-    `;
+    var badge = isTop ? '<span class="badge-primary">Best Match</span>' : '<span class="badge-also">Also Relevant</span>';
+    var alsoHelpsHtml = member.alsoHelps ? '<div class="also-helps"><strong>Also helps with:</strong> ' + member.alsoHelps.join(' \u00b7 ') + '</div>' : '';
+    card.innerHTML = '<div class="avatar" style="background:' + member.color + '">' + member.emoji + '</div><div class="name">' + member.name + ' ' + (matches.length > 1 ? badge : '') + '</div><div class="role">' + member.role + '</div><div class="personality">' + member.personality + '</div>' + alsoHelpsHtml + '<div class="keywords">' + member.keywords.slice(0, 8).map(function(k) { return '<span>' + k + '</span>'; }).join('') + '</div><div class="cta">To activate \u2192 <strong>' + member.trigger + '</strong></div>';
     resultsContainer.appendChild(card);
-    setTimeout(() => card.classList.add('visible'), i * 100);
+    setTimeout(function() { card.classList.add('visible'); }, i * 100);
   });
+  if (newHire) {
+    var hireCard = document.createElement('div');
+    hireCard.className = 'new-hire-card';
+    hireCard.innerHTML = '<div class="hire-title">New Hire Idea: ' + newHire.suggestion + '</div><div class="hire-body">' + newHire.description + ' <strong>None of the current team specializes in this</strong> \u2014 might be worth building a new skill for it.</div>';
+    resultsContainer.appendChild(hireCard);
+    setTimeout(function() { hireCard.classList.add('visible'); }, matches.length * 100 + 100);
+    var reqCard = buildRequestCard(input.value.trim());
+    resultsContainer.appendChild(reqCard);
+    setTimeout(function() { reqCard.classList.add('visible'); }, matches.length * 100 + 250);
+  }
 }
 
-let debounce;
-input.addEventListener('input', () => {
-  clearTimeout(debounce);
-  debounce = setTimeout(() => {
-    const q = input.value.trim();
-    if (q.length < 2) {
-      resultsContainer.innerHTML = '';
-      return;
-    }
-    const matches = findMatches(q);
-    showResult(matches);
+function buildRequestCard(prefill) {
+  var reqCard = document.createElement('div');
+  reqCard.className = 'request-card';
+  reqCard.innerHTML = '<div class="req-title">Request a New Team Member</div><div class="req-desc">Describe the skill or role you need. This will be saved so we can build the right employee for it.</div><textarea id="newEeRequest" placeholder="e.g. I need someone who can handle podcast editing and distribution...">' + (prefill || '') + '</textarea><button onclick="submitRequest()">Submit Request</button><div class="req-success" id="reqSuccess">Request saved! We\'ll build this team member for you.</div>';
+  return reqCard;
+}
+
+function submitRequest() {
+  var textarea = document.getElementById('newEeRequest');
+  var successMsg = document.getElementById('reqSuccess');
+  var val = textarea.value.trim();
+  if (!val) return;
+  var requests = JSON.parse(localStorage.getItem('sgf_ee_requests') || '[]');
+  requests.push({ request: val, date: new Date().toISOString() });
+  localStorage.setItem('sgf_ee_requests', JSON.stringify(requests));
+  successMsg.style.display = 'block';
+  textarea.disabled = true;
+  textarea.style.opacity = '0.5';
+}
+
+var debounceTimer;
+input.addEventListener('input', function() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(function() {
+    var q = input.value.trim();
+    if (q.length < 2) { resultsContainer.innerHTML = ''; return; }
+    var result = findMatches(q);
+    showResult(result.matches, result.newHire);
   }, 250);
 });
 
-input.addEventListener('keydown', (e) => {
+input.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
-    clearTimeout(debounce);
-    const q = input.value.trim();
+    clearTimeout(debounceTimer);
+    var q = input.value.trim();
     if (q.length < 2) return;
-    const matches = findMatches(q);
-    showResult(matches);
+    var result = findMatches(q);
+    showResult(result.matches, result.newHire);
   }
 });
 </script>
