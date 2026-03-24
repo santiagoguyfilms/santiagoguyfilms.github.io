@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Business Content Score — Santiago Guy Films</title>
+<meta name="description" content="Find out how your business's online presence stacks up with our free 2-minute Content Score assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0b14;--bg2:#111220;--bg3:#16172a;--cyan:#00d4ff;--purple:#a855f7;--pink:#ec4899;--green:#34d399;--orange:#f59e0b;--red:#ef4444;--gradient:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);--text:#fff;--text2:#b0b3c5;--text3:#6b7280}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--cyan);text-decoration:none}
+
+.top-bar{height:4px;background:var(--gradient);position:fixed;top:0;left:0;right:0;z-index:100}
+.glow{position:absolute;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:0}
+.glow-c{background:radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 70%)}
+.glow-p{background:radial-gradient(circle,rgba(168,85,247,.05) 0%,transparent 70%)}
+
+.nav{text-align:center;padding:24px;position:relative;z-index:1}
+.nav a{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text3);transition:color .3s}
+.nav a:hover{color:var(--cyan)}
+
+.hero{text-align:center;padding:40px 20px 32px;position:relative;overflow:hidden;max-width:680px;margin:0 auto}
+.hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:14px}
+.hero h1 .g{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text2);font-size:1.05rem;line-height:1.7;max-width:500px;margin:0 auto}
+.hero-sub{display:flex;justify-content:center;gap:24px;margin-top:16px;color:var(--text3);font-size:13px;flex-wrap:wrap}
+.hero-sub span{display:flex;align-items:center;gap:6px}
+.hero-sub svg{width:14px;height:14px;stroke:var(--cyan)}
+
+.container{max-width:600px;margin:0 auto;padding:20px}
+
+/* Quiz card */
+.qcard{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:24px;padding:36px;position:relative;overflow:hidden}
+.qcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);opacity:.5}
+.progress{height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:28px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gradient);border-radius:3px;transition:width .4s ease}
+.step-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+.question{font-size:clamp(1.1rem,3vw,1.35rem);font-weight:700;margin-bottom:22px;line-height:1.4}
+
+.options{display:flex;flex-direction:column;gap:10px}
+.opt{padding:14px 16px;background:var(--bg3);border:2px solid rgba(255,255,255,.04);border-radius:12px;cursor:pointer;transition:all .25s;font-size:14px;color:var(--text2);display:flex;align-items:center;gap:12px}
+.opt:hover{border-color:rgba(0,212,255,.3);color:var(--text)}
+.opt.sel{border-color:var(--cyan);background:rgba(0,212,255,.06);color:var(--text)}
+.opt .dot{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.opt.sel .dot{border-color:var(--cyan);background:var(--cyan)}
+.opt.sel .dot::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff}
+
+.nav-btns{display:flex;justify-content:space-between;margin-top:24px}
+.btn{padding:12px 24px;border:none;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.btn-go{background:var(--gradient);color:#fff}
+.btn-go:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,212,255,.25)}
+.btn-back{background:transparent;color:var(--text3);border:1px solid rgba(255,255,255,.08)}
+.btn-back:hover{border-color:rgba(255,255,255,.2);color:var(--text2)}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.btn-lg{padding:16px 32px;font-size:15px;width:100%;justify-content:center}
+
+/* Gate */
+.gate{display:none}
+.gate h2{font-size:1.5rem;font-weight:800;margin-bottom:6px}
+.gate p{color:var(--text2);font-size:14px;margin-bottom:22px}
+.gate input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;margin-bottom:12px;outline:none;transition:border .3s}
+.gate input:focus{border-color:var(--cyan)}
+.gate input::placeholder{color:var(--text3)}
+.trust-line{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--text3)}
+.trust-line svg{width:14px;height:14px;stroke:var(--green);flex-shrink:0}
+.gate-err{color:var(--red);font-size:13px;margin-bottom:8px;display:none}
+
+/* Results */
+.results{display:none}
+.score-ring{width:180px;height:180px;border-radius:50%;margin:0 auto 20px;position:relative;display:flex;align-items:center;justify-content:center}
+.score-ring svg{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring .track{fill:none;stroke:rgba(255,255,255,.06);stroke-width:8}
+.score-ring .fill{fill:none;stroke:url(#scoreGrad);stroke-width:8;stroke-linecap:round;stroke-dasharray:502;stroke-dashoffset:502;transition:stroke-dashoffset 1.5s ease}
+.score-num{font-size:48px;font-weight:900;position:relative;z-index:1}
+.score-num .pct{font-size:22px;color:var(--text3)}
+.score-grade{text-align:center;font-size:15px;font-weight:600;margin-bottom:28px}
+
+.breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.bd-item{background:var(--bg3);border-radius:10px;padding:14px}
+.bd-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.bd-bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.bd-bar-fill{height:100%;border-radius:3px;transition:width 1s ease}
+.bd-val{font-size:16px;font-weight:700}
+
+.recs{margin-top:4px}
+.recs h3{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.rec{display:flex;gap:12px;padding:14px;background:var(--bg3);border-radius:12px;margin-bottom:10px}
+.rec-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rec h4{font-size:14px;font-weight:600;margin-bottom:2px}
+.rec p{font-size:12px;color:var(--text2);line-height:1.5}
+
+.cta-box{text-align:center;margin-top:28px;padding:28px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);border-radius:16px}
+.cta-box h3{font-size:1.1rem;font-weight:800;margin-bottom:6px}
+.cta-box p{color:var(--text2);font-size:13px;margin-bottom:18px}
+.cta-box .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+.footer{text-align:center;padding:40px 20px;color:var(--text3);font-size:12px}
+.footer a{color:var(--cyan)}
+
+@media(max-width:600px){
+  .qcard{padding:28px 20px}
+  .breakdown{grid-template-columns:1fr}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+<div class="top-bar"></div>
+<div class="nav"><a href="https://santiagoguyfilms.com">Santiago Guy Films</a></div>
+
+<div class="hero">
+  <div class="badge">Free Assessment &middot; 2 Minutes</div>
+  <h1>What's Your Business <span class="g">Content Score?</span></h1>
+  <p>Find out how your online presence stacks up and get a personalized action plan to attract more customers.</p>
+  <div class="hero-sub">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2 min quiz</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg> Instant results</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h6"/><path d="M12 2l5 5-7 7-4 1 1-4 7-7z"/></svg> Free action plan</span>
+  </div>
+</div>
+
+<div class="container">
+  <!-- QUIZ -->
+  <div class="qcard" id="quiz">
+    <div class="progress"><div class="progress-fill" id="prog" style="width:12.5%"></div></div>
+    <div class="step-label" id="step">Question 1 of 8</div>
+    <div class="question" id="q"></div>
+    <div class="options" id="opts"></div>
+    <div class="nav-btns">
+      <button class="btn btn-back" id="bBack" onclick="prev()" disabled>&larr; Back</button>
+      <button class="btn btn-go" id="bNext" onclick="next()" disabled>Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- GATE -->
+  <div class="qcard gate" id="gate">
+    <h2>Your score is ready!</h2>
+    <p>Enter your info below to see your Content Score and personalized recommendations.</p>
+    <div class="gate-err" id="gErr">Please enter a valid email</div>
+    <input id="gName" placeholder="Your name">
+    <input id="gEmail" type="email" placeholder="Email address *" required>
+    <input id="gCompany" placeholder="Business name (optional)">
+    <input id="gPhone" placeholder="Phone (optional)">
+    <button class="btn btn-go btn-lg" onclick="submitGate()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
+      See My Score
+    </button>
+    <div class="trust-line">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      We respect your privacy. No spam, ever.
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="qcard results" id="results">
+    <div style="text-align:center">
+      <h2 style="margin-bottom:4px">Your Content Score</h2>
+      <p style="color:var(--text3);font-size:13px;margin-bottom:20px" id="rName"></p>
+    </div>
+    <div class="score-ring">
+      <svg viewBox="0 0 180 180">
+        <defs><linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00d4ff"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#ec4899"/></linearGradient></defs>
+        <circle class="track" cx="90" cy="90" r="80"/>
+        <circle class="fill" id="ringFill" cx="90" cy="90" r="80"/>
+      </svg>
+      <div class="score-num"><span id="sNum">0</span><span class="pct">%</span></div>
+    </div>
+    <div class="score-grade" id="sGrade"></div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="recs">
+      <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg> Your Action Plan</h3>
+      <div id="recs"></div>
+    </div>
+    <div class="cta-box">
+      <h3>Want help implementing this?</h3>
+      <p>Book a free strategy call and we'll show you exactly how to level up your content game.</p>
+      <div class="btns">
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn btn-go">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book Free Strategy Call
+        </a>
+        <a href="/offers/" class="btn btn-back" style="text-decoration:none">View Services</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Powered by <a href="https://santiagoguyfilms.com">Santiago Guy Films</a> &mdash; Miami's AI-Powered Content Agency</div>
+
+<!-- REPLACE_GOOGLE_SCRIPT_URL: Replace the URL in the submitGate function with your Google Apps Script URL to capture leads -->
+<script>
+const Qs=[
+{q:"How often does your business post content on social media?",cat:"frequency",o:["Rarely or never","A few times a month","2-3 times a week","Daily or near-daily"]},
+{q:"Do you have a professional website that represents your business?",cat:"website",o:["No website at all","Basic or outdated website","Decent website, could be better","Professional, mobile-friendly, converting visitors"]},
+{q:"How would you describe your brand's visual identity?",cat:"branding",o:["No consistent branding","Logo only, no real brand system","Some brand guidelines but inconsistent","Strong, consistent brand across everything"]},
+{q:"Are you using video content to promote your business?",cat:"video",o:["No video at all","Occasional amateur videos","Regular video content, decent quality","Professional UGC/branded videos performing well"]},
+{q:"How do customers currently find your business online?",cat:"discovery",o:["Mostly word-of-mouth, little online presence","Google search but ranking is low","Mix of search, social, and referrals","Strong online presence driving consistent leads"]},
+{q:"Do you collect and showcase customer reviews or testimonials?",cat:"proof",o:["No reviews or testimonials","A few reviews, not showcased","Reviews on Google/Yelp but not featured","Actively collecting and showcasing social proof"]},
+{q:"Are you running any paid advertising?",cat:"ads",o:["No paid ads at all","Boosting posts occasionally","Running ads but unsure about ROI","Strategic ad campaigns with tracked results"]},
+{q:"What best describes your business's content strategy?",cat:"strategy",o:["We post randomly when we remember","We know we should post more but lack a plan","Some content ideas but execution is inconsistent","Clear strategy, content calendar, consistent execution"]}
+];
+
+let cur=0,ans=Array(Qs.length).fill(null);
+
+function render(){
+  const q=Qs[cur];
+  document.getElementById('q').textContent=q.q;
+  document.getElementById('step').textContent=`Question ${cur+1} of ${Qs.length}`;
+  document.getElementById('prog').style.width=((cur+1)/Qs.length*100)+'%';
+  document.getElementById('bBack').disabled=cur===0;
+  document.getElementById('bNext').disabled=ans[cur]===null;
+  document.getElementById('bNext').innerHTML=cur===Qs.length-1?'See Results &rarr;':'Next &rarr;';
+  document.getElementById('opts').innerHTML=q.o.map((o,i)=>`<div class="opt${ans[cur]===i?' sel':''}" onclick="pick(${i})"><div class="dot"></div><span>${o}</span></div>`).join('');
+}
+
+function pick(i){ans[cur]=i;render()}
+function next(){if(ans[cur]===null)return;if(cur<Qs.length-1){cur++;render()}else showGate()}
+function prev(){if(cur>0){cur--;render()}}
+
+function showGate(){
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('gate').style.display='block';
+}
+
+function submitGate(){
+  const email=document.getElementById('gEmail').value.trim();
+  if(!email||!email.includes('@')){document.getElementById('gErr').style.display='block';return}
+
+  const scores={};
+  Qs.forEach((q,i)=>scores[q.cat]=ans[i]+1);
+  const total=Object.values(scores).reduce((a,b)=>a+b,0);
+  const pct=Math.round(total/32*100);
+
+  // Fire-and-forget lead capture
+  const data={name:document.getElementById('gName').value,email,company:document.getElementById('gCompany').value,phone:document.getElementById('gPhone').value,score:pct,scores:JSON.stringify(scores),source:'content-score',timestamp:new Date().toISOString()};
+  try{
+    // REPLACE this URL with your Google Apps Script URL
+    const scriptUrl='https://script.google.com/macros/s/REPLACE_WITH_YOUR_SCRIPT_ID/exec';
+    if(!scriptUrl.includes('REPLACE'))fetch(scriptUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  }catch(e){}
+
+  showResults(scores,pct);
+}
+
+function showResults(scores,pct){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('results').style.display='block';
+  const name=document.getElementById('gName').value;
+  document.getElementById('rName').textContent=name?`Results for ${name}`:'';
+
+  // Animate ring
+  const circ=2*Math.PI*80;
+  const offset=circ-(pct/100*circ);
+  setTimeout(()=>document.getElementById('ringFill').style.strokeDashoffset=offset,100);
+
+  // Animate number
+  let c=0;const iv=setInterval(()=>{c+=2;if(c>pct)c=pct;document.getElementById('sNum').textContent=c;if(c>=pct)clearInterval(iv)},20);
+
+  // Grade
+  let g,gc;
+  if(pct>=85){g='Excellent — You\'re ahead of the game!';gc='#34d399'}
+  else if(pct>=65){g='Good — Strong foundation with room to grow';gc='#00d4ff'}
+  else if(pct>=45){g='Fair — You\'re leaving money on the table';gc='#f59e0b'}
+  else{g='Needs Work — Major opportunities being missed';gc='#ef4444'}
+  document.getElementById('sGrade').innerHTML=`<span style="color:${gc}">${g}</span>`;
+
+  // Breakdown
+  const names={frequency:'Posting Frequency',website:'Website Quality',branding:'Brand Identity',video:'Video Content',discovery:'Online Discovery',proof:'Social Proof',ads:'Paid Advertising',strategy:'Content Strategy'};
+  const cols={frequency:'#00d4ff',website:'#a855f7',branding:'#ec4899',video:'#f59e0b',discovery:'#34d399',proof:'#f59e0b',ads:'#00d4ff',strategy:'#a855f7'};
+  document.getElementById('breakdown').innerHTML=Object.entries(scores).map(([k,v])=>`<div class="bd-item"><div class="bd-label">${names[k]}</div><div class="bd-bar"><div class="bd-bar-fill" style="width:${v/4*100}%;background:${cols[k]}"></div></div><div class="bd-val" style="color:${cols[k]}">${v}/4</div></div>`).join('');
+
+  // Recs
+  const recs=[];
+  if(scores.video<=2)recs.push({t:'Start Using Video Content',d:'Video gets 3x more engagement than static posts. Even simple smartphone videos showing your product or service can transform your reach.',c:'#f59e0b'});
+  if(scores.website<=2)recs.push({t:'Upgrade Your Website',d:'Your website is your digital storefront. A modern, mobile-friendly site builds trust instantly and converts browsers into buyers.',c:'#a855f7'});
+  if(scores.frequency<=2)recs.push({t:'Post More Consistently',d:'Algorithms reward consistency. Posting 3-5x per week keeps you visible and builds momentum over time.',c:'#00d4ff'});
+  if(scores.branding<=2)recs.push({t:'Build a Brand System',d:'Consistent colors, fonts, and messaging make your business look professional. People buy from brands they recognize.',c:'#ec4899'});
+  if(scores.proof<=2)recs.push({t:'Leverage Social Proof',d:'92% of consumers read reviews before buying. Start collecting testimonials and feature them prominently everywhere.',c:'#f59e0b'});
+  if(scores.strategy<=2)recs.push({t:'Create a Content Strategy',d:'Random posting gets random results. A simple content calendar will 2-3x your engagement.',c:'#34d399'});
+  if(scores.ads<=2)recs.push({t:'Explore Targeted Ads',d:'Even $5-10/day on well-targeted social ads can reach hundreds of potential customers in your area.',c:'#00d4ff'});
+  if(scores.discovery<=2)recs.push({t:'Improve Your Discoverability',d:'Optimize your Google Business Profile and use local SEO so people searching for your service find you.',c:'#a855f7'});
+  if(recs.length<3)recs.push({t:'Level Up With Professional Content',d:'You\'re doing well. Consider professional UGC-style content that feels authentic but looks polished — it converts 2-4x higher.',c:'#34d399'});
+  if(recs.length<3)recs.push({t:'Automate Your Workflow',d:'AI tools can help you plan, create, and schedule content in a fraction of the time. Work smarter, not harder.',c:'#00d4ff'});
+
+  document.getElementById('recs').innerHTML=recs.slice(0,5).map(r=>`<div class="rec"><div class="rec-icon" style="background:${r.c}15;color:${r.c}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div><div><h4>${r.t}</h4><p>${r.d}</p></div></div>`).join('');
+}
+
+render();
+</script>
+</body>
+</html>

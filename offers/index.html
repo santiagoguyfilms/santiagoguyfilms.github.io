@@ -39,6 +39,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ─── AMBIENT GLOW BACKGROUNDS ─── */
   .glow-cyan {
     position: absolute;
     width: 600px; height: 600px;
@@ -56,6 +57,7 @@
     z-index: 0;
   }
 
+  /* ─── GRADIENT TOP BAR ─── */
   .top-bar {
     height: 4px;
     background: var(--gradient-sgf);
@@ -64,6 +66,7 @@
     z-index: 100;
   }
 
+  /* ─── HERO SECTION ─── */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -134,7 +137,10 @@
     transition: all 0.3s ease;
     animation: float 3s ease-in-out infinite;
   }
-  .hero-arrow:hover { border-color: var(--accent-cyan); transform: translateY(4px); }
+  .hero-arrow:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(4px);
+  }
   .hero-arrow svg { width: 20px; height: 20px; stroke: var(--text-body); }
 
   @keyframes float {
@@ -142,6 +148,7 @@
     50% { transform: translateY(8px); }
   }
 
+  /* ─── SECTION LAYOUT ─── */
   section { position: relative; overflow: hidden; }
 
   .section-label {
@@ -153,13 +160,31 @@
     margin-bottom: 16px;
   }
 
-  .offers { padding: 100px 24px 120px; position: relative; }
+  /* ─── OFFERS GRID ─── */
+  .offers {
+    padding: 100px 24px 120px;
+    position: relative;
+  }
   .offers .glow-purple { top: 100px; left: -200px; }
   .offers .glow-cyan { bottom: 0; right: -200px; }
 
-  .offers-header { text-align: center; margin-bottom: 72px; position: relative; z-index: 1; }
-  .offers-header h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; margin-bottom: 16px; }
-  .offers-header p { color: var(--text-body); font-size: 1.1rem; max-width: 550px; margin: 0 auto; }
+  .offers-header {
+    text-align: center;
+    margin-bottom: 72px;
+    position: relative;
+    z-index: 1;
+  }
+  .offers-header h2 {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+  .offers-header p {
+    color: var(--text-body);
+    font-size: 1.1rem;
+    max-width: 550px;
+    margin: 0 auto;
+  }
 
   .offers-grid {
     display: grid;
@@ -171,6 +196,7 @@
     z-index: 1;
   }
 
+  /* ─── OFFER CARD ─── */
   .offer-card {
     background: var(--bg-surface);
     border: 1px solid rgba(255,255,255,0.06);
@@ -180,7 +206,11 @@
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
-  .offer-card:hover { transform: translateY(-6px); box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+  .offer-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  }
+
   .offer-card::before {
     content: '';
     position: absolute;
@@ -202,13 +232,37 @@
     text-transform: uppercase;
     margin-bottom: 20px;
   }
-  .badge-cyan { background: rgba(0,212,255,0.1); color: var(--accent-cyan); border: 1px solid rgba(0,212,255,0.2); }
-  .badge-purple { background: rgba(168,85,247,0.1); color: var(--accent-purple); border: 1px solid rgba(168,85,247,0.2); }
+  .badge-cyan {
+    background: rgba(0,212,255,0.1);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0,212,255,0.2);
+  }
+  .badge-purple {
+    background: rgba(168,85,247,0.1);
+    color: var(--accent-purple);
+    border: 1px solid rgba(168,85,247,0.2);
+  }
 
-  .offer-card h3 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
-  .offer-tagline { color: var(--text-body); font-size: 1rem; margin-bottom: 28px; line-height: 1.6; }
+  .offer-card h3 {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
 
-  .offer-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 32px; }
+  .offer-tagline {
+    color: var(--text-body);
+    font-size: 1rem;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .offer-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
   .offer-price .amount {
     font-size: clamp(3rem, 6vw, 4rem);
     font-weight: 900;
@@ -218,74 +272,263 @@
     background-clip: text;
     line-height: 1;
   }
-  .offer-price .detail { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+  .offer-price .detail {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
 
-  .offer-includes { margin-bottom: 36px; }
-  .offer-includes h4 { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .offer-includes {
+    margin-bottom: 36px;
+  }
+  .offer-includes h4 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
 
-  .include-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .include-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
   .include-item:last-child { border-bottom: none; }
 
-  .check { flex-shrink: 0; width: 22px; height: 22px; background: rgba(52,211,153,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .check {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: rgba(52,211,153,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
   .check svg { width: 12px; height: 12px; stroke: #34d399; stroke-width: 3; }
-  .include-item span { color: #d1d5db; font-size: 0.95rem; line-height: 1.5; }
 
-  .cta-group { display: flex; flex-direction: column; gap: 12px; }
+  .include-item span {
+    color: #d1d5db;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* ─── CTA BUTTONS ─── */
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 
   .btn-primary {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 18px 32px; background: var(--gradient-sgf); color: #fff;
-    font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
-    letter-spacing: 0.5px; border: none; border-radius: var(--radius-md);
-    cursor: pointer; text-decoration: none; transition: all 0.3s ease;
-    position: relative; overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 32px;
+    background: var(--gradient-sgf);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
-  .btn-primary::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.3s ease; }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.3s ease;
+  }
   .btn-primary:hover::after { background: rgba(255,255,255,0.1); }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,255,0.25); }
 
   .btn-secondary {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 16px 32px; background: transparent; color: var(--text-body);
-    font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
-    border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md);
-    cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--text-body);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
-  .btn-secondary:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(0,212,255,0.04); }
+  .btn-secondary:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    background: rgba(0,212,255,0.04);
+  }
   .btn-secondary svg { width: 18px; height: 18px; }
 
-  .how-it-works { padding: 100px 24px 120px; background: var(--bg-surface); position: relative; }
+  /* ─── HOW IT WORKS ─── */
+  .how-it-works {
+    padding: 100px 24px 120px;
+    background: var(--bg-surface);
+    position: relative;
+  }
   .how-it-works .glow-cyan { top: -100px; right: -100px; }
 
-  .hiw-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 1; }
-  .hiw-header h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; }
-  .hiw-header p { color: var(--text-body); font-size: 1.05rem; }
+  .hiw-header {
+    text-align: center;
+    margin-bottom: 64px;
+    position: relative;
+    z-index: 1;
+  }
+  .hiw-header h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .hiw-header p {
+    color: var(--text-body);
+    font-size: 1.05rem;
+  }
 
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
-  .step { text-align: center; padding: 32px 20px; }
-  .step-num { font-size: 4rem; font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 16px; opacity: 0.4; }
-  .step h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-  .step p { color: var(--text-body); font-size: 0.9rem; line-height: 1.6; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
 
-  .trust { padding: 80px 24px; text-align: center; position: relative; }
+  .step {
+    text-align: center;
+    padding: 32px 20px;
+  }
+
+  .step-num {
+    font-size: 4rem;
+    font-weight: 900;
+    background: var(--gradient-sgf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 16px;
+    opacity: 0.4;
+  }
+
+  .step h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .step p {
+    color: var(--text-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ─── TRUST / SOCIAL PROOF ─── */
+  .trust {
+    padding: 80px 24px;
+    text-align: center;
+    position: relative;
+  }
   .trust .glow-purple { top: -100px; left: 50%; transform: translateX(-50%); }
-  .trust-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 48px; margin-bottom: 32px; position: relative; z-index: 1; }
-  .stat { text-align: center; }
-  .stat .num { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .stat .label { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
-  .trust-note { color: var(--text-body); font-size: 1rem; max-width: 500px; margin: 0 auto; position: relative; z-index: 1; }
 
-  footer { padding: 48px 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
-  .footer-brand { font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-  .footer-link { color: var(--accent-cyan); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: opacity 0.3s ease; }
+  .trust-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    text-align: center;
+  }
+  .stat .num {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    background: var(--gradient-sgf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .stat .label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .trust-note {
+    color: var(--text-body);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 48px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .footer-brand {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .footer-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
   .footer-link:hover { opacity: 0.7; }
 
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
 
+  /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     .hero { padding: 100px 20px 60px; min-height: 90vh; }
     .offer-card { padding: 36px 28px; }
@@ -294,6 +537,7 @@
     .steps { gap: 16px; }
     .step { padding: 24px 16px; }
   }
+
   @media (max-width: 480px) {
     .hero h1 { font-size: 2.4rem; }
     .offer-card { padding: 32px 24px; }
@@ -301,20 +545,65 @@
     .btn-primary, .btn-secondary { padding: 16px 24px; }
   }
 
-  .tier-toggle { display: flex; gap: 12px; margin-bottom: 28px; }
-  .tier-option { flex: 1; background: var(--bg-elevated); border: 2px solid rgba(255,255,255,0.06); border-radius: var(--radius-md); padding: 20px 16px; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative; }
+  /* ─── TIER TOGGLE (BIZ MIRROR) ─── */
+  .tier-toggle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .tier-option {
+    flex: 1;
+    background: var(--bg-elevated);
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+  }
   .tier-option:hover { border-color: rgba(0,212,255,0.3); }
   .tier-option.active { border-color: var(--accent-cyan); background: rgba(0,212,255,0.06); }
-  .tier-option .tier-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .tier-option .tier-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
   .tier-option.active .tier-label { color: var(--accent-cyan); }
-  .tier-option .tier-price { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; background: var(--gradient-sgf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-  .tier-option .tier-freq { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
-  .tier-option .tier-tag { display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .tier-option .tier-price {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 900;
+    background: var(--gradient-sgf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .tier-option .tier-freq {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .tier-option .tier-tag {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
   .tag-popular { background: rgba(0,212,255,0.15); color: var(--accent-cyan); }
   .tag-value { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
+
   .tier-cta { display: none; }
   .tier-cta.active { display: flex; flex-direction: column; gap: 12px; }
 
+  /* ─── REDUCED MOTION ─── */
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     .hero-arrow { animation: none; }
@@ -324,180 +613,464 @@
 </head>
 <body>
 
+<!-- Gradient top bar -->
 <div class="top-bar"></div>
 
+<!-- ═══════════════════════════════════════════ HERO ═══════════════════════════════════════════ -->
 <section class="hero">
   <div class="glow-cyan"></div>
   <div class="glow-purple"></div>
+
   <div class="hero-badge">Santiago Guy Films</div>
+
   <h1>
     <span class="thin">Stop overthinking it.</span><br>
     <span class="gradient-text">Let's get it done.</span>
   </h1>
-  <p class="hero-sub">Premium done-for-you services — AI setup, custom websites, and AI-powered social media management. You bring the brand. I bring the build.</p>
+
+  <p class="hero-sub">
+    Premium AI-powered services — from a $97 business audit to a full $2,497/mo digital retainer.
+    You bring the brand. I bring the build.
+  </p>
+
   <a href="#offers" class="hero-arrow">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
   </a>
 </section>
 
+<!-- ═══════════════════════════════════════════ CONTENT SCORE BANNER ═══════════════════════════════════════════ -->
+<section style="padding:48px 24px;text-align:center;position:relative;">
+  <div style="max-width:700px;margin:0 auto;padding:32px 40px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);border-radius:20px;">
+    <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:8px;">Free Assessment</div>
+    <h2 style="font-size:clamp(1.4rem,3vw,1.8rem);font-weight:800;margin-bottom:8px;">Not sure where to start?</h2>
+    <p style="color:var(--text-body);font-size:1rem;margin-bottom:20px;">Take our free 2-minute Content Score quiz and find out exactly where your business stands online.</p>
+    <a href="/score/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--gradient-sgf);color:#fff;font-weight:700;font-size:0.95rem;border-radius:12px;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(0,212,255,0.25)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
+      Get Your Free Content Score
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TRUST ═══════════════════════════════════════════ -->
 <section class="trust">
   <div class="glow-purple"></div>
   <div class="trust-stats reveal">
-    <div class="stat"><div class="num" data-count="157">0</div><div class="label">K+ TikTok Followers</div></div>
-    <div class="stat"><div class="num" data-count="50">0</div><div class="label">Brand Partnerships</div></div>
-    <div class="stat"><div class="num" data-count="9">0</div><div class="label">M+ Video Likes</div></div>
+    <div class="stat">
+      <div class="num" data-count="157">0</div>
+      <div class="label">K+ TikTok Followers</div>
+    </div>
+    <div class="stat">
+      <div class="num" data-count="50">0</div>
+      <div class="label">Brand Partnerships</div>
+    </div>
+    <div class="stat">
+      <div class="num" data-count="9">0</div>
+      <div class="label">M+ Video Likes</div>
+    </div>
   </div>
   <p class="trust-note reveal reveal-delay-1">Trusted by brands who want content and systems that actually perform.</p>
 </section>
 
+<!-- ═══════════════════════════════════════════ OFFERS ═══════════════════════════════════════════ -->
 <section class="offers" id="offers">
   <div class="glow-purple"></div>
   <div class="glow-cyan"></div>
+
   <div class="offers-header reveal">
     <div class="section-label">Services</div>
     <h2>Pick your build. Book your day.</h2>
     <p>Each service is delivered in a single focused session. No back-and-forth. No waiting weeks.</p>
   </div>
+
   <div class="offers-grid">
 
+    <!-- ─── PREMIUM: WEBSITE + CONTENT LAUNCH ─── -->
+    <div class="offer-card reveal reveal-delay-1" style="border:1px solid rgba(168,85,247,0.25);box-shadow:0 0 40px rgba(168,85,247,0.06);">
+      <div class="card-badge badge-purple">Growth</div>
+      <h3>Website + Content Launch</h3>
+      <p class="offer-tagline">A professional website plus a complete content launch package — 5 branded social posts, brand identity guidelines, and SEO setup. Everything you need to start attracting customers from day one.</p>
+
+      <div class="offer-price">
+        <span class="amount">$1,497</span>
+        <span class="detail">one-time &middot; delivered in 48 hrs</span>
+      </div>
+
+      <div class="offer-includes">
+        <h4>What's Included</h4>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Custom professional website designed and deployed for your brand</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Mobile-optimized responsive design that looks incredible everywhere</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>5 branded social media launch posts ready to go live</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Brand identity guidelines — colors, fonts, voice, visual system</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>SEO foundation and Google Business optimization</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Client portal access to track every deliverable in real time</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>14 days of priority support after launch</span></div>
+      </div>
+
+      <div class="cta-group">
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book Strategy Call — $1,497
+        </a>
+        <a href="/results/" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          See Client Results
+        </a>
+      </div>
+    </div>
+
+    <!-- ─── PREMIUM: FULL DIGITAL RETAINER ─── -->
+    <div class="offer-card reveal reveal-delay-2" style="border:1px solid rgba(0,212,255,0.25);box-shadow:0 0 40px rgba(0,212,255,0.06);">
+      <div class="card-badge badge-cyan">Scale</div>
+      <h3>Full Digital Retainer</h3>
+      <p class="offer-tagline">Your complete digital team — content creation, social media management, paid ads, website maintenance, and monthly analytics. Everything managed by our 12-person AI-powered team so you can focus on running your business.</p>
+
+      <div class="offer-price">
+        <span class="amount">$2,497</span>
+        <span class="detail">/month &middot; cancel anytime</span>
+      </div>
+
+      <div class="offer-includes">
+        <h4>What's Included</h4>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>12-person AI team dedicated to your business around the clock</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>20+ content pieces per month — posts, stories, and reels</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Full social media management across all platforms</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Paid ad campaign setup, management, and optimization</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Website maintenance, updates, and new page creation</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Monthly analytics reports with real ROI data</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Dedicated client portal with real-time progress tracking</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Priority support via Slack and phone — we're always available</span></div>
+      </div>
+
+      <div class="cta-group">
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book Strategy Call — $2,497/mo
+        </a>
+        <a href="/results/" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
+          See Client Results
+        </a>
+      </div>
+    </div>
+
+    <!-- ─── OFFER 1: GET SET UP WITH CLAUDE ─── -->
     <div class="offer-card reveal reveal-delay-1">
       <div class="card-badge badge-cyan">AI Setup</div>
       <h3>Get Set Up With Claude</h3>
       <p class="offer-tagline">I install and configure Claude AI on your computer so you can automate tasks, write faster, and work smarter — today.</p>
-      <div class="offer-price"><span class="amount">$497</span><span class="detail">one-time &middot; delivered within 24 hrs</span></div>
+
+      <div class="offer-price">
+        <span class="amount">$497</span>
+        <span class="detail">one-time &middot; delivered within 24 hrs</span>
+      </div>
+
       <div class="offer-includes">
         <h4>What's Included</h4>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Full Claude AI installation and configuration on your machine</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Custom automations tailored to your specific business workflows</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>One-on-one training session so you actually know how to use it</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>7-day follow-up support for questions and fine-tuning</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Cheat sheet with prompts and shortcuts built for your business</span></div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Full Claude AI installation and configuration on your machine</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Custom automations tailored to your specific business workflows</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>One-on-one training session so you actually know how to use it</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>7-day follow-up support for questions and fine-tuning</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Cheat sheet with prompts and shortcuts built for your business</span>
+        </div>
       </div>
+
       <div class="cta-group">
-        <a href="https://buy.stripe.com/4gM14nca29a483O6tnes001" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Pay $497 — Let's Go</a>
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book Your Kickoff Call First</a>
+        <a href="https://buy.stripe.com/4gM14nca29a483O6tnes001" target="_blank" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Pay $497 — Let's Go
+        </a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book Your Kickoff Call First
+        </a>
       </div>
     </div>
 
+    <!-- ─── OFFER 2: WEBSITE IN A DAY ─── -->
     <div class="offer-card reveal reveal-delay-2">
       <div class="card-badge badge-purple">Web Design</div>
       <h3>Website in a Day</h3>
       <p class="offer-tagline">I design and deploy a custom, dark-themed, mobile-first website for your brand — live by end of day. No templates. No monthly fees.</p>
-      <div class="offer-price"><span class="amount">$797</span><span class="detail">one-time &middot; delivered within 24 hrs</span></div>
+
+      <div class="offer-price">
+        <span class="amount">$797</span>
+        <span class="detail">one-time &middot; delivered within 24 hrs</span>
+      </div>
+
       <div class="offer-includes">
         <h4>What's Included</h4>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Custom-designed cinematic website — not a template, not WordPress</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Mobile-first responsive design that looks incredible on every screen</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Domain connection and deployment — your site goes live same day</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>SEO-optimized structure so Google can actually find you</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Free hosting on GitHub Pages — zero monthly fees, ever</span></div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Custom-designed cinematic website — not a template, not WordPress</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Mobile-first responsive design that looks incredible on every screen</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Domain connection and deployment — your site goes live same day</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>SEO-optimized structure so Google can actually find you</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Free hosting on GitHub Pages — zero monthly fees, ever</span>
+        </div>
       </div>
+
       <div class="cta-group">
-        <a href="https://buy.stripe.com/bJe14ngqi1HC97SeZTes002" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Pay $797 — Build My Site</a>
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book Your Kickoff Call First</a>
+        <a href="https://buy.stripe.com/bJe14ngqi1HC97SeZTes002" target="_blank" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Pay $797 — Build My Site
+        </a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book Your Kickoff Call First
+        </a>
       </div>
     </div>
 
+    <!-- ─── OFFER 3: YOUR AI SOCIAL MEDIA MANAGER ─── -->
     <div class="offer-card reveal reveal-delay-3">
       <div class="card-badge badge-cyan">AI Membership</div>
       <h3>Your AI Social Media Manager</h3>
-      <p class="offer-tagline">You're posting but have no idea what's actually working. I plug my AI engine into your accounts and tell you exactly what to do next — with coaching to make sure you actually do it.</p>
+      <p class="offer-tagline">You're posting but have no idea what's actually working. I plug my AI engine into your accounts and tell you exactly what to do next — with coaching to make sure you actually do it. The affordable, AI-powered alternative to a bloated agency retainer.</p>
+
       <div class="tier-toggle">
         <div class="tier-option active" onclick="selectTier('biweekly')">
-          <div class="tier-label">Biweekly</div><div class="tier-price">$247</div><div class="tier-freq">/month</div><div class="tier-tag tag-popular">Most Popular</div>
+          <div class="tier-label">Biweekly</div>
+          <div class="tier-price">$247</div>
+          <div class="tier-freq">/month</div>
+          <div class="tier-tag tag-popular">Most Popular</div>
         </div>
         <div class="tier-option" onclick="selectTier('monthly')">
-          <div class="tier-label">Monthly</div><div class="tier-price">$147</div><div class="tier-freq">/month</div><div class="tier-tag tag-value">Best Value</div>
+          <div class="tier-label">Monthly</div>
+          <div class="tier-price">$147</div>
+          <div class="tier-freq">/month</div>
+          <div class="tier-tag tag-value">Best Value</div>
         </div>
       </div>
+
       <div class="offer-includes">
         <h4>What's Included</h4>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>AI-powered deep analysis of your last 30 posts across TikTok &amp; Instagram</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Content ranking — what's driving engagement, what's dead weight</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Personalized coaching video walking you through every finding</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Specific action plan — not generic advice, real moves for YOUR brand</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Hashtag, format, and posting cadence optimization</span></div>
-        <div class="include-item" id="biweekly-bonus"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>2 reports per month — stay ahead of the algorithm, not behind it</span></div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>AI-powered deep analysis of your last 30 posts across TikTok &amp; Instagram</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Content ranking — what's driving engagement, what's dead weight</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Personalized coaching video walking you through every finding</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Specific action plan — not generic advice, real moves for YOUR brand</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Hashtag, format, and posting cadence optimization</span>
+        </div>
+        <div class="include-item" id="biweekly-bonus">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>2 reports per month — stay ahead of the algorithm, not behind it</span>
+        </div>
       </div>
+
       <div class="tier-cta active" id="cta-biweekly">
-        <a href="https://buy.stripe.com/eVq14na1Ueuo6ZK3hbes004" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Subscribe — $247/mo Biweekly</a>
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a Free Discovery Call</a>
+        <a href="https://buy.stripe.com/eVq14na1Ueuo6ZK3hbes004" target="_blank" class="btn-primary" data-stripe="biweekly">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Subscribe — $247/mo Biweekly
+        </a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book a Free Discovery Call
+        </a>
       </div>
       <div class="tier-cta" id="cta-monthly">
-        <a href="https://buy.stripe.com/bJe3cv1vo3PK83ObNHes005" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Subscribe — $147/mo Monthly</a>
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a Free Discovery Call</a>
+        <a href="https://buy.stripe.com/bJe3cv1vo3PK83ObNHes005" target="_blank" class="btn-primary" data-stripe="monthly">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Subscribe — $147/mo Monthly
+        </a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book a Free Discovery Call
+        </a>
       </div>
     </div>
 
+    <!-- ─── OFFER 4: BIZAUDIT MIAMI ─── -->
     <div class="offer-card reveal reveal-delay-4">
       <div class="card-badge badge-purple">Local Business</div>
       <h3>BizAudit Miami</h3>
-      <p class="offer-tagline">Know exactly where you stand online. I audit your business across 8 platforms, compare you to local competitors, and hand you a clear action plan — no guessing, no fluff.</p>
-      <div class="offer-price"><span class="amount">$97</span><span class="detail">one-time &middot; delivered in 48 hours</span></div>
+      <p class="offer-tagline">Know exactly where you stand online. I audit your business across 8 platforms, compare you to local competitors, and hand you a clear action plan — no guessing, no fluff, just data and a strategy call to walk through it all.</p>
+
+      <div class="offer-price">
+        <span class="amount">$97</span>
+        <span class="detail">one-time &middot; delivered in 48 hours</span>
+      </div>
+
       <div class="offer-includes">
         <h4>What's Included</h4>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Full BizAudit Report — deep dive across Google, Yelp, Instagram, Facebook, TikTok, YouTube, LinkedIn &amp; your website</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>30-minute 1-on-1 strategy call with Franco to walk through every finding</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Competitor snapshot — how 2-3 local competitors stack up against you</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Top 3 priority action items — specific, actionable moves you can make today</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>48-hour delivery — no waiting weeks, your report is ready fast</span></div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Full BizAudit Report — deep dive across Google, Yelp, Instagram, Facebook, TikTok, YouTube, LinkedIn &amp; your website</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>30-minute 1-on-1 strategy call with Franco to walk through every finding</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Competitor snapshot — how 2-3 local competitors stack up against you</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Top 3 priority action items — specific, actionable moves you can make today</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>48-hour delivery — no waiting weeks, your report is ready fast</span>
+        </div>
       </div>
+
       <div class="cta-group">
-        <a href="https://buy.stripe.com/eVq3cveia1HC2Ju8Bves006" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Pay $97 — Audit My Business</a>
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book Your Strategy Call First</a>
+        <a href="https://buy.stripe.com/eVq3cveia1HC2Ju8Bves006" target="_blank" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Pay $97 — Audit My Business
+        </a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book Your Strategy Call First
+        </a>
       </div>
     </div>
 
+    <!-- ─── OFFER 5: EMAIL SEQUENCE IN A DAY ─── -->
     <div class="offer-card reveal reveal-delay-5">
       <div class="card-badge badge-cyan">Email Marketing</div>
       <h3>Email Sequence in a Day</h3>
       <p class="offer-tagline">Your email list is sitting idle. I'll write a complete 5-7 email welcome and nurture sequence — custom subject lines, body copy, and CTAs — all in your brand voice, delivered in 24 hours. No writing required from you.</p>
-      <div class="offer-price"><span class="amount">$397</span><span class="detail">one-time &middot; delivered in 24 hours</span></div>
+
+      <div class="offer-price">
+        <span class="amount">$397</span>
+        <span class="detail">one-time &middot; delivered in 24 hours</span>
+      </div>
+
       <div class="offer-includes">
         <h4>What's Included</h4>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>5-7 custom emails — written, formatted, and ready to load into your email platform</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Subject lines, preview text, body copy, and CTAs for every email</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Customized to your brand voice and target audience — no generic templates</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>AI-powered copywriting reviewed and refined by Franco personally</span></div>
-        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>24-hour delivery — brief today, inbox-ready tomorrow</span></div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>5-7 custom emails — written, formatted, and ready to load into your email platform</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Subject lines, preview text, body copy, and CTAs for every email</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>Customized to your brand voice and target audience — no generic templates</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>AI-powered copywriting reviewed and refined by Franco personally</span>
+        </div>
+        <div class="include-item">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <span>24-hour delivery — brief today, inbox-ready tomorrow</span>
+        </div>
       </div>
+
       <div class="cta-group">
-        <a href="https://buy.stripe.com/6oU14n1voeuo5VG6tnes00i" target="_blank" class="btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Pay $397 — Write My Email Sequence</a>
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a Quick Call First</a>
+        <a href="https://buy.stripe.com/6oU14n1voeuo5VG6tnes00i" target="_blank" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Pay $397 — Write My Email Sequence
+        </a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book a Quick Call First
+        </a>
       </div>
     </div>
 
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════ HOW IT WORKS ═══════════════════════════════════════════ -->
 <section class="how-it-works">
   <div class="glow-cyan"></div>
+
   <div class="hiw-header reveal">
     <div class="section-label">The Process</div>
     <h2>Three steps. One day. Done.</h2>
     <p>No endless email threads. No scope creep. No waiting.</p>
   </div>
+
   <div class="steps">
-    <div class="step reveal reveal-delay-1"><div class="step-num">01</div><h3>Pay &amp; Book</h3><p>Choose your service, pay securely via Stripe, and book your kickoff call on Calendly.</p></div>
-    <div class="step reveal reveal-delay-2"><div class="step-num">02</div><h3>Kickoff Call</h3><p>30-minute Zoom call where I learn your brand, your goals, and exactly what you need.</p></div>
-    <div class="step reveal reveal-delay-3"><div class="step-num">03</div><h3>Results. Fast.</h3><p>I get to work immediately. One-time services deliver within 24 hours. Memberships start with your first report that same week.</p></div>
+    <div class="step reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <h3>Pay & Book</h3>
+      <p>Choose your service, pay securely via Stripe, and book your kickoff call on Calendly.</p>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <h3>Kickoff Call</h3>
+      <p>30-minute Zoom call where I learn your brand, your goals, and exactly what you need.</p>
+    </div>
+    <div class="step reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <h3>Results. Fast.</h3>
+      <p>I get to work immediately. One-time services deliver within 24 hours. Memberships start with your first report that same week.</p>
+    </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════ FOOTER ═══════════════════════════════════════════ -->
 <footer>
   <div class="footer-brand">Santiago Guy Films</div>
   <a href="https://www.santiagoguyfilms.com" class="footer-link">www.santiagoguyfilms.com</a>
-  <div style="margin-top: 16px;">
+  <div style="margin-top: 16px; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
+    <a href="/score/" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-muted)'">Free Content Score</a>
+    <a href="/results/" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-muted)'">Client Results</a>
     <a href="./terms.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-muted)'">Service Agreement &amp; Terms</a>
   </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════ SCRIPTS ═══════════════════════════════════════════ -->
 <script>
+// Scroll-triggered reveal animations
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// Counter animation for trust stats
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -507,23 +1080,37 @@ const counterObserver = new IntersectionObserver((entries) => {
       const increment = target / 40;
       const timer = setInterval(() => {
         current += increment;
-        if (current >= target) { el.textContent = target; clearInterval(timer); }
-        else { el.textContent = Math.floor(current); }
+        if (current >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current);
+        }
       }, 30);
       counterObserver.unobserve(el);
     }
   });
 }, { threshold: 0.5 });
+
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
+// Tier toggle for AI Social Media Manager
 function selectTier(tier) {
+  // Toggle active tier option
   document.querySelectorAll('.tier-option').forEach(el => el.classList.remove('active'));
   event.currentTarget.classList.add('active');
+  // Toggle CTA buttons
   document.querySelectorAll('.tier-cta').forEach(el => el.classList.remove('active'));
   document.getElementById('cta-' + tier).classList.add('active');
+  // Toggle biweekly bonus line
   const bonus = document.getElementById('biweekly-bonus');
-  bonus.style.display = (tier === 'biweekly') ? 'flex' : 'none';
+  if (tier === 'biweekly') {
+    bonus.style.display = 'flex';
+  } else {
+    bonus.style.display = 'none';
+  }
 }
 </script>
+
 </body>
 </html>
