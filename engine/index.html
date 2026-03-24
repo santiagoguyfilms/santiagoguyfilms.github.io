@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Business Engine — Santiago Guy Films</title>
+<meta name="description" content="Get an entire AI-powered digital team for less than one employee. Website, content, social media, ads, and client portal — all handled by AI. Starting at $497/mo.">
+<meta property="og:title" content="AI Business Engine — Santiago Guy Films">
+<meta property="og:description" content="An entire AI-powered digital team for less than one employee. Starting at $497/mo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://santiagoguyfilms.com/engine/">
+<link rel="canonical" href="https://santiagoguyfilms.com/engine/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg-deep: #0a0b14;
+  --bg-surface: #111220;
+  --bg-elevated: #16172a;
+  --accent-cyan: #00d4ff;
+  --accent-purple: #a855f7;
+  --accent-pink: #ec4899;
+  --accent-green: #34d399;
+  --gradient-sgf: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+  --text-primary: #ffffff;
+  --text-body: #b0b3c5;
+  --text-muted: #6b7280;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glow-cyan {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-purple {
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.top-bar {
+  height: 4px;
+  background: var(--gradient-sgf);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+.hero .glow-cyan { top: -200px; left: -100px; }
+.hero .glow-purple { bottom: -100px; right: -150px; }
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  max-width: 950px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+.hero h1 .thin { font-weight: 300; color: var(--text-body); }
+.hero h1 .gradient-text {
+  background: var(--gradient-sgf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--text-body);
+  max-width: 620px;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 48px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-arrow {
+  position: relative;
+  z-index: 1;
+  width: 48px; height: 48px;
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+  margin-top: 48px;
+  text-decoration: none;
+}
+.hero-arrow:hover { border-color: var(--accent-cyan); transform: translateY(4px); }
+.hero-arrow svg { width: 20px; height: 20px; stroke: var(--text-body); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+/* ─── SECTIONS ─── */
+section { position: relative; overflow: hidden; }
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 16px;
+}
+
+/* ─── COMPARISON ─── */
+.comparison {
+  padding: 100px 24px;
+  background: var(--bg-surface);
+  position: relative;
+}
+.comparison .glow-cyan { top: -100px; right: -200px; }
+.comp-header {
+  text-align: center;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+.comp-header h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.comp-header p {
+  color: var(--text-body);
+  font-size: 1.1rem;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.comp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.comp-card {
+  padding: 40px 32px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.comp-old {
+  background: rgba(239,68,68,0.04);
+  border-color: rgba(239,68,68,0.15);
+}
+.comp-new {
+  background: rgba(0,212,255,0.04);
+  border-color: rgba(0,212,255,0.15);
+}
+.comp-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.comp-old h3 { color: #ef4444; }
+.comp-new h3 { color: var(--accent-cyan); }
+.comp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  color: var(--text-body);
+  font-size: 0.95rem;
+}
+.comp-x { color: #ef4444; font-weight: 700; flex-shrink: 0; }
+.comp-check { color: var(--accent-green); font-weight: 700; flex-shrink: 0; }
+
+/* ─── PRICING GRID ─── */
+.pricing {
+  padding: 100px 24px 120px;
+  position: relative;
+}
+.pricing .glow-purple { top: 100px; left: -200px; }
+.pricing .glow-cyan { bottom: 0; right: -200px; }
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 72px;
+  position: relative;
+  z-index: 1;
+}
+.pricing-header h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.pricing-header p {
+  color: var(--text-body);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.price-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-xl);
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+}
+.price-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-sgf);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.price-card:hover::before { opacity: 1; }
+
+.price-card.featured {
+  border-color: rgba(0,212,255,0.3);
+  background: linear-gradient(180deg, rgba(0,212,255,0.04) 0%, var(--bg-surface) 40%);
+}
+.price-card.featured::before { opacity: 1; }
+
+.popular-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--gradient-sgf);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+.card-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.badge-cyan {
+  background: rgba(0,212,255,0.1);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.badge-purple {
+  background: rgba(168,85,247,0.1);
+  color: var(--accent-purple);
+  border: 1px solid rgba(168,85,247,0.2);
+}
+.badge-pink {
+  background: rgba(236,72,153,0.1);
+  color: var(--accent-pink);
+  border: 1px solid rgba(236,72,153,0.2);
+}
+
+.price-card h3 {
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.price-tagline {
+  color: var(--text-body);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.price-amount .amount {
+  font-size: clamp(2.8rem, 6vw, 3.8rem);
+  font-weight: 900;
+  background: var(--gradient-sgf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.price-amount .detail {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.price-includes {
+  margin-bottom: 36px;
+}
+.price-includes h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.include-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.include-item:last-child { border-bottom: none; }
+
+.check {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  background: rgba(52,211,153,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.check svg { width: 12px; height: 12px; stroke: #34d399; stroke-width: 3; }
+
+.include-item span {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 32px;
+  background: var(--gradient-sgf);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.3s ease;
+}
+.btn-primary:hover::after { background: rgba(255,255,255,0.1); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,255,0.25); }
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--text-body);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: rgba(0,212,255,0.04);
+}
+
+/* ─── WHAT'S INSIDE ─── */
+.inside {
+  padding: 100px 24px 120px;
+  background: var(--bg-surface);
+  position: relative;
+}
+.inside .glow-purple { bottom: -100px; left: -200px; }
+.inside-header {
+  text-align: center;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+.inside-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.inside-header p {
+  color: var(--text-body);
+  font-size: 1.1rem;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.inside-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.inside-card {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: all 0.3s ease;
+}
+.inside-card:hover {
+  border-color: rgba(0,212,255,0.15);
+  transform: translateY(-3px);
+}
+.inside-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+.inside-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.inside-card p {
+  color: var(--text-body);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ─── FAQ ─── */
+.faq {
+  padding: 100px 24px 120px;
+  position: relative;
+}
+.faq-header {
+  text-align: center;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+.faq-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+}
+
+.faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 0;
+}
+.faq-item h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+.faq-item p {
+  color: var(--text-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ─── FINAL CTA ─── */
+.final-cta {
+  padding: 120px 24px;
+  text-align: center;
+  background: var(--bg-surface);
+  position: relative;
+}
+.final-cta .glow-cyan { top: -200px; left: 50%; transform: translateX(-50%); }
+.final-cta h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.final-cta p {
+  color: var(--text-body);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
+}
+.final-cta .hero-cta {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  padding: 48px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--accent-cyan); }
+.footer-copy {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 500px; }
+  .comp-grid { grid-template-columns: 1fr; max-width: 500px; }
+}
+@media (max-width: 480px) {
+  .price-card { padding: 36px 24px; }
+  .hero { padding: 100px 20px 60px; }
+}
+
+/* ─── STRUCTURED DATA ─── */
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Business Engine",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Santiago Guy Films",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Miami",
+      "addressRegion": "FL"
+    }
+  },
+  "description": "AI-powered digital business system — website, content, social media, ads, and client portal handled by AI.",
+  "areaServed": "Miami, FL",
+  "offers": [
+    { "@type": "Offer", "name": "AI Launchpad", "price": "497", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" } },
+    { "@type": "Offer", "name": "AI Growth Engine", "price": "997", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" } },
+    { "@type": "Offer", "name": "AI Business Partner", "price": "2497", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="glow-cyan"></div>
+  <div class="glow-purple"></div>
+  <div class="hero-badge">Santiago Guy Films</div>
+  <h1><span class="thin">Your entire digital team.</span><br><span class="gradient-text">Powered by AI.</span></h1>
+  <p class="hero-sub">Website, content, social media, ads, email automations, and a client portal — all managed by an AI-powered system. For less than one employee.</p>
+  <div class="hero-cta">
+    <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="btn-primary">Book a Strategy Call</a>
+    <a href="#pricing" class="btn-secondary">See Pricing</a>
+  </div>
+  <a href="#compare" class="hero-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+</section>
+
+<!-- ═══ COMPARISON ═══ -->
+<section class="comparison" id="compare">
+  <div class="glow-cyan"></div>
+  <div class="comp-header">
+    <p class="section-label">The Old Way vs. The SGF Way</p>
+    <h2>Why hire a team when AI can do it?</h2>
+    <p>Traditional agencies charge $3,000-$10,000/month and move slow. We deliver more, faster, for less.</p>
+  </div>
+  <div class="comp-grid">
+    <div class="comp-card comp-old">
+      <h3>Traditional Agency</h3>
+      <div class="comp-item"><span class="comp-x">✕</span> $3,000-$10,000/month</div>
+      <div class="comp-item"><span class="comp-x">✕</span> 2-4 week turnaround</div>
+      <div class="comp-item"><span class="comp-x">✕</span> Generic templates</div>
+      <div class="comp-item"><span class="comp-x">✕</span> Monthly PDF reports you never read</div>
+      <div class="comp-item"><span class="comp-x">✕</span> 6-12 month contracts</div>
+      <div class="comp-item"><span class="comp-x">✕</span> No portal — just email chains</div>
+    </div>
+    <div class="comp-card comp-new">
+      <h3>AI Business Engine</h3>
+      <div class="comp-item"><span class="comp-check">✓</span> Starting at $497/month</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Website live in 24-48 hours</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Custom-built for YOUR business</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Real-time dashboard with live metrics</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Month-to-month — cancel anytime</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Your own client portal</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="pricing" id="pricing">
+  <div class="glow-purple"></div>
+  <div class="glow-cyan"></div>
+  <div class="pricing-header">
+    <p class="section-label">Pricing</p>
+    <h2>Pick your engine</h2>
+    <p>Every plan is month-to-month. No contracts. No setup fees. Cancel anytime.</p>
+  </div>
+  <div class="pricing-grid">
+
+    <!-- LAUNCHPAD -->
+    <div class="price-card">
+      <span class="card-badge badge-cyan">Launchpad</span>
+      <h3>AI Launchpad</h3>
+      <p class="price-tagline">Get online and start attracting customers with a professional digital presence.</p>
+      <div class="price-amount">
+        <span class="amount">$497</span>
+        <span class="detail">/month</span>
+      </div>
+      <div class="price-includes">
+        <h4>What's Included</h4>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Custom website (built in 48hrs)</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>4 social media posts/month (IG + FB)</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Content Score quiz + lead capture</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Google Business Profile setup</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Client portal access</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Monthly performance report</span></div>
+      </div>
+      <div class="cta-group">
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="btn-primary">Get Started</a>
+        <a href="https://santiagoguyfilms.com/score/" class="btn-secondary">Take the Free Quiz First</a>
+      </div>
+    </div>
+
+    <!-- GROWTH ENGINE -->
+    <div class="price-card featured">
+      <div class="popular-tag">Most Popular</div>
+      <span class="card-badge badge-purple">Growth</span>
+      <h3>AI Growth Engine</h3>
+      <p class="price-tagline">Scale your business with consistent content, email automation, and ad management.</p>
+      <div class="price-amount">
+        <span class="amount">$997</span>
+        <span class="detail">/month</span>
+      </div>
+      <div class="price-includes">
+        <h4>Everything in Launchpad, plus</h4>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>8 social media posts/month (IG + FB)</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Email automation sequences (3-touch drip)</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Facebook + Instagram ad management</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>SEO-optimized blog posts (2/month)</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Monthly strategy call (30 min)</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Reputation management + review requests</span></div>
+      </div>
+      <div class="cta-group">
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="btn-primary">Get Started</a>
+        <a href="https://santiagoguyfilms.com/score/" class="btn-secondary">Take the Free Quiz First</a>
+      </div>
+    </div>
+
+    <!-- BUSINESS PARTNER -->
+    <div class="price-card">
+      <span class="card-badge badge-pink">Scale</span>
+      <h3>AI Business Partner</h3>
+      <p class="price-tagline">Your full AI-powered digital department. Everything handled. You focus on running your business.</p>
+      <div class="price-amount">
+        <span class="amount">$2,497</span>
+        <span class="detail">/month</span>
+      </div>
+      <div class="price-includes">
+        <h4>Everything in Growth, plus</h4>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Unlimited social media content</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Full ad strategy + creative + management</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Weekly strategy calls</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Quarterly business review + growth plan</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Priority support (same-day response)</span></div>
+        <div class="include-item"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></div><span>Dedicated client portal + real-time dashboard</span></div>
+      </div>
+      <div class="cta-group">
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="btn-primary">Get Started</a>
+        <a href="https://santiagoguyfilms.com/score/" class="btn-secondary">Take the Free Quiz First</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ WHAT'S INSIDE THE ENGINE ═══ -->
+<section class="inside">
+  <div class="glow-purple"></div>
+  <div class="inside-header">
+    <p class="section-label">What's Inside</p>
+    <h2>Your AI-powered business engine</h2>
+    <p>Everything a digital team does — automated, faster, and at a fraction of the cost.</p>
+  </div>
+  <div class="inside-grid">
+    <div class="inside-card">
+      <div class="inside-icon">🌐</div>
+      <h3>Custom Website</h3>
+      <p>Professional, mobile-first website built in 24-48 hours. SEO-optimized with structured data, fast loading, and designed to convert.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-icon">📱</div>
+      <h3>Social Media Content</h3>
+      <p>AI-generated posts tailored to your business and audience. Consistent branding across Instagram and Facebook.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-icon">📧</div>
+      <h3>Email Automations</h3>
+      <p>Automated drip sequences that nurture leads into customers. Set it up once, let it work forever.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-icon">📊</div>
+      <h3>Ad Management</h3>
+      <p>Facebook and Instagram ad campaigns targeting your ideal customers. We handle creative, targeting, and optimization.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-icon">🔍</div>
+      <h3>SEO & Google</h3>
+      <p>Google Business Profile, local SEO, blog content, and structured data so customers find you organically.</p>
+    </div>
+    <div class="inside-card">
+      <div class="inside-icon">🖥️</div>
+      <h3>Client Portal</h3>
+      <p>Your own portal to track project progress, view deliverables, send messages, and manage invoices — all in one place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq">
+  <div class="faq-header">
+    <p class="section-label">FAQ</p>
+    <h2>Common questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>What do you mean by "AI-powered"?</h3>
+      <p>We use AI tools to create content, design graphics, write copy, and automate workflows — which means faster delivery, lower costs, and consistent quality. You get the output of a full team without the full team price tag.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there a contract?</h3>
+      <p>No. Every plan is month-to-month. Stay because it works, not because you're locked in. Cancel anytime with 30 days notice.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How fast can I get started?</h3>
+      <p>We book a strategy call, you pick your plan, and your website is live within 48 hours. Social media content starts the following week.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need to provide content?</h3>
+      <p>We work with what you have — photos, videos, logos. If you don't have much, we create it. The less you need to do, the better.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if I need something not listed?</h3>
+      <p>Book a call and tell us what you need. We customize every engagement. If we can build it, we will.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="final-cta">
+  <div class="glow-cyan"></div>
+  <h2>Ready to <span class="gradient-text">turn it on?</span></h2>
+  <p>Book a free strategy call. We'll assess your business, show you what the engine can do, and build a custom plan.</p>
+  <div class="hero-cta">
+    <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" class="btn-primary">Book Your Free Strategy Call</a>
+    <a href="https://santiagoguyfilms.com/score/" class="btn-secondary">Take the Free Content Score Quiz</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="https://santiagoguyfilms.com">Home</a>
+    <a href="https://santiagoguyfilms.com/offers/">All Services</a>
+    <a href="https://santiagoguyfilms.com/results/">Results</a>
+    <a href="https://santiagoguyfilms.com/score/">Content Score</a>
+    <a href="https://santiagoguyfilms.com/blog/">Blog</a>
+    <a href="https://portal.santiagoguyfilms.com">Client Portal</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Santiago Guy Films. Miami, FL.</p>
+</footer>
+
+</body>
+</html>
