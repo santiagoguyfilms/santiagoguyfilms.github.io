@@ -239,7 +239,7 @@ function submitGate(){
   const data={name:document.getElementById('gName').value,email,company:document.getElementById('gCompany').value,phone:document.getElementById('gPhone').value,score:pct,scores:JSON.stringify(scores),source:'content-score',timestamp:new Date().toISOString()};
   try{
     // Submit via hidden iframe to avoid CORS/redirect issues
-    const scriptUrl='https://script.google.com/macros/s/AKfycbzt9yOj5O08Y34w6UGfSwoLvC-GeAVvc90_DdlN14qvkeE0n6GcI58u2h_Qmg-xRCI_/exec';
+    const scriptUrl='https://script.google.com/macros/s/AKfycby3U0wxBJyhcjjEyyr37zjpMI36yhSEjp0NtyRS7NIiyR-ZdRc1LsaAqvrDwzc3o5ll/exec';
     const iframe=document.createElement('iframe');iframe.name='leadFrame';iframe.style.display='none';document.body.appendChild(iframe);
     const form=document.createElement('form');form.method='POST';form.action=scriptUrl;form.target='leadFrame';
     Object.entries(data).forEach(([k,v])=>{const inp=document.createElement('input');inp.type='hidden';inp.name=k;inp.value=v;form.appendChild(inp)});
