@@ -205,7 +205,7 @@ function submitReferral(){
   };
 
   // Submit via iframe
-  const scriptUrl='REFERRAL_SCRIPT_URL';
+  const scriptUrl='https://script.google.com/macros/s/AKfycbwRH8k_jqLak5TShV4yvKIA4b4BPOSmF-3Y6eAimrfncFFpPwAuBK5Xpa_kad1UHQ/exec';
   if(!scriptUrl.includes('REFERRAL_SCRIPT')){
     const iframe=document.createElement('iframe');iframe.name='refFrame';iframe.style.display='none';document.body.appendChild(iframe);
     const form=document.createElement('form');form.method='POST';form.action=scriptUrl;form.target='refFrame';
