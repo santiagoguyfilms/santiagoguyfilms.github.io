@@ -19,35 +19,24 @@
 :root{--bg:#0a0b14;--bg2:#111220;--bg3:#16172a;--cyan:#00d4ff;--purple:#a855f7;--pink:#ec4899;--green:#34d399;--orange:#f59e0b;--red:#ef4444;--gradient:linear-gradient(135deg,#00d4ff,#a855f7,#ec4899);--text:#fff;--text2:#b0b3c5;--text3:#6b7280}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
 a{color:var(--cyan);text-decoration:none}
-
 .top-bar{height:4px;background:var(--gradient);position:fixed;top:0;left:0;right:0;z-index:100}
-.glow{position:absolute;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:0}
-.glow-c{background:radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 70%)}
-.glow-p{background:radial-gradient(circle,rgba(168,85,247,.05) 0%,transparent 70%)}
-
 .nav{text-align:center;padding:24px;position:relative;z-index:1}
 .nav a{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text3);transition:color .3s}
 .nav a:hover{color:var(--cyan)}
-
-.hero{text-align:center;padding:40px 20px 32px;position:relative;overflow:hidden;max-width:680px;margin:0 auto}
+.hero{text-align:center;padding:40px 20px 32px;max-width:680px;margin:0 auto}
 .hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
 .hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:14px}
 .hero h1 .g{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--text2);font-size:1.05rem;line-height:1.7;max-width:500px;margin:0 auto}
 .hero-sub{display:flex;justify-content:center;gap:24px;margin-top:16px;color:var(--text3);font-size:13px;flex-wrap:wrap}
 .hero-sub span{display:flex;align-items:center;gap:6px}
-.hero-sub svg{width:14px;height:14px;stroke:var(--cyan)}
-
 .container{max-width:600px;margin:0 auto;padding:20px}
-
-/* Quiz card */
 .qcard{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:24px;padding:36px;position:relative;overflow:hidden}
 .qcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);opacity:.5}
 .progress{height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:28px;overflow:hidden}
 .progress-fill{height:100%;background:var(--gradient);border-radius:3px;transition:width .4s ease}
 .step-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
 .question{font-size:clamp(1.1rem,3vw,1.35rem);font-weight:700;margin-bottom:22px;line-height:1.4}
-
 .options{display:flex;flex-direction:column;gap:10px}
 .opt{padding:14px 16px;background:var(--bg3);border:2px solid rgba(255,255,255,.04);border-radius:12px;cursor:pointer;transition:all .25s;font-size:14px;color:var(--text2);display:flex;align-items:center;gap:12px}
 .opt:hover{border-color:rgba(0,212,255,.3);color:var(--text)}
@@ -55,7 +44,14 @@ a{color:var(--cyan);text-decoration:none}
 .opt .dot{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s}
 .opt.sel .dot{border-color:var(--cyan);background:var(--cyan)}
 .opt.sel .dot::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff}
-
+/* Business type grid */
+.biz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.biz-opt{padding:16px;background:var(--bg3);border:2px solid rgba(255,255,255,.04);border-radius:12px;cursor:pointer;transition:all .25s;text-align:center}
+.biz-opt:hover{border-color:rgba(0,212,255,.3)}
+.biz-opt.sel{border-color:var(--cyan);background:rgba(0,212,255,.06)}
+.biz-opt .biz-icon{font-size:24px;margin-bottom:6px}
+.biz-opt .biz-label{font-size:13px;font-weight:600;color:var(--text2)}
+.biz-opt.sel .biz-label{color:var(--text)}
 .nav-btns{display:flex;justify-content:space-between;margin-top:24px}
 .btn{padding:12px 24px;border:none;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
 .btn-go{background:var(--gradient);color:#fff}
@@ -64,7 +60,6 @@ a{color:var(--cyan);text-decoration:none}
 .btn-back:hover{border-color:rgba(255,255,255,.2);color:var(--text2)}
 .btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important;box-shadow:none!important}
 .btn-lg{padding:16px 32px;font-size:15px;width:100%;justify-content:center}
-
 /* Gate */
 .gate{display:none}
 .gate h2{font-size:1.5rem;font-weight:800;margin-bottom:6px}
@@ -73,9 +68,7 @@ a{color:var(--cyan);text-decoration:none}
 .gate input:focus{border-color:var(--cyan)}
 .gate input::placeholder{color:var(--text3)}
 .trust-line{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--text3)}
-.trust-line svg{width:14px;height:14px;stroke:var(--green);flex-shrink:0}
 .gate-err{color:var(--red);font-size:13px;margin-bottom:8px;display:none}
-
 /* Results */
 .results{display:none}
 .score-ring{width:180px;height:180px;border-radius:50%;margin:0 auto 20px;position:relative;display:flex;align-items:center;justify-content:center}
@@ -84,85 +77,70 @@ a{color:var(--cyan);text-decoration:none}
 .score-ring .fill{fill:none;stroke:url(#scoreGrad);stroke-width:8;stroke-linecap:round;stroke-dasharray:502;stroke-dashoffset:502;transition:stroke-dashoffset 1.5s ease}
 .score-num{font-size:48px;font-weight:900;position:relative;z-index:1}
 .score-num .pct{font-size:22px;color:var(--text3)}
-.score-grade{text-align:center;font-size:15px;font-weight:600;margin-bottom:28px}
-
+.score-grade{text-align:center;font-size:15px;font-weight:600;margin-bottom:8px}
+.benchmark{text-align:center;font-size:13px;color:var(--text3);margin-bottom:28px;padding:10px 16px;background:rgba(255,255,255,.03);border-radius:8px}
+.benchmark strong{color:var(--text2)}
 .breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
 .bd-item{background:var(--bg3);border-radius:10px;padding:14px}
 .bd-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
 .bd-bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-bottom:6px}
 .bd-bar-fill{height:100%;border-radius:3px;transition:width 1s ease}
 .bd-val{font-size:16px;font-weight:700}
-
 .recs{margin-top:4px}
 .recs h3{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .rec{display:flex;gap:12px;padding:14px;background:var(--bg3);border-radius:12px;margin-bottom:10px}
-.rec-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rec-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
 .rec h4{font-size:14px;font-weight:600;margin-bottom:2px}
 .rec p{font-size:12px;color:var(--text2);line-height:1.5}
-
+.rec .service-link{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:1px}
 .cta-box{text-align:center;margin-top:28px;padding:28px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);border-radius:16px}
 .cta-box h3{font-size:1.1rem;font-weight:800;margin-bottom:6px}
 .cta-box p{color:var(--text2);font-size:13px;margin-bottom:18px}
 .cta-box .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-
 .footer{text-align:center;padding:40px 20px;color:var(--text3);font-size:12px}
 .footer a{color:var(--cyan)}
-
-@media(max-width:600px){
-  .qcard{padding:28px 20px}
-  .breakdown{grid-template-columns:1fr}
-  .hero h1{font-size:1.8rem}
-}
+@media(max-width:600px){.qcard{padding:28px 20px}.breakdown{grid-template-columns:1fr}.biz-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="top-bar"></div>
 <div class="nav"><a href="https://santiagoguyfilms.com">Santiago Guy Films</a></div>
-
 <div class="hero">
   <div class="badge">Free Assessment &middot; 2 Minutes</div>
   <h1>What's Your Business <span class="g">Content Score?</span></h1>
-  <p>Find out how your online presence stacks up and get a personalized action plan to attract more customers.</p>
+  <p>Find out how your online presence stacks up and get a personalized action plan tailored to your industry.</p>
   <div class="hero-sub">
-    <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2 min quiz</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg> Instant results</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h6"/><path d="M12 2l5 5-7 7-4 1 1-4 7-7z"/></svg> Free action plan</span>
+    <span>&#128337; 2 min quiz</span>
+    <span>&#128202; Instant results</span>
+    <span>&#127919; Industry-specific tips</span>
   </div>
 </div>
 
 <div class="container">
-  <!-- QUIZ -->
   <div class="qcard" id="quiz">
-    <div class="progress"><div class="progress-fill" id="prog" style="width:12.5%"></div></div>
-    <div class="step-label" id="step">Question 1 of 8</div>
+    <div class="progress"><div class="progress-fill" id="prog" style="width:11%"></div></div>
+    <div class="step-label" id="step">Question 1 of 9</div>
     <div class="question" id="q"></div>
-    <div class="options" id="opts"></div>
+    <div id="opts"></div>
     <div class="nav-btns">
       <button class="btn btn-back" id="bBack" onclick="prev()" disabled>&larr; Back</button>
       <button class="btn btn-go" id="bNext" onclick="next()" disabled>Next &rarr;</button>
     </div>
   </div>
 
-  <!-- GATE -->
   <div class="qcard gate" id="gate">
     <h2>Your score is ready!</h2>
-    <p>Enter your info below to see your Content Score and personalized recommendations.</p>
+    <p>Enter your info to see your personalized Content Score and industry-specific recommendations.</p>
     <div class="gate-err" id="gErr">Please enter a valid email</div>
     <input id="gName" placeholder="Your name">
     <input id="gEmail" type="email" placeholder="Email address *" required>
     <input id="gCompany" placeholder="Business name (optional)">
     <input id="gPhone" placeholder="Phone (optional)">
-    <button class="btn btn-go btn-lg" onclick="submitGate()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
-      See My Score
-    </button>
-    <div class="trust-line">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      We respect your privacy. No spam, ever.
-    </div>
+    <input id="gWebsite" placeholder="Your website URL (optional)" type="url">
+    <button class="btn btn-go btn-lg" onclick="submitGate()">See My Score</button>
+    <div class="trust-line">&#128274; We respect your privacy. No spam, ever.</div>
   </div>
 
-  <!-- RESULTS -->
   <div class="qcard results" id="results">
     <div style="text-align:center">
       <h2 style="margin-bottom:4px">Your Content Score</h2>
@@ -177,19 +155,17 @@ a{color:var(--cyan);text-decoration:none}
       <div class="score-num"><span id="sNum">0</span><span class="pct">%</span></div>
     </div>
     <div class="score-grade" id="sGrade"></div>
+    <div class="benchmark" id="sBench"></div>
     <div class="breakdown" id="breakdown"></div>
     <div class="recs">
-      <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg> Your Action Plan</h3>
+      <h3>&#127775; Your Action Plan</h3>
       <div id="recs"></div>
     </div>
     <div class="cta-box">
       <h3>Want help implementing this?</h3>
-      <p>Book a free strategy call and we'll show you exactly how to level up your content game.</p>
+      <p id="ctaText">Book a free strategy call and we'll show you exactly how to level up.</p>
       <div class="btns">
-        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn btn-go">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Book Free Strategy Call
-        </a>
+        <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn btn-go">Book Free Strategy Call</a>
         <a href="/offers/" class="btn btn-back" style="text-decoration:none">View Services</a>
       </div>
     </div>
@@ -198,34 +174,114 @@ a{color:var(--cyan);text-decoration:none}
 
 <div class="footer">Powered by <a href="https://santiagoguyfilms.com">Santiago Guy Films</a> &mdash; Miami's AI-Powered Content Agency</div>
 
-<!-- REPLACE_GOOGLE_SCRIPT_URL: Replace the URL in the submitGate function with your Google Apps Script URL to capture leads -->
 <script>
-const Qs=[
-{q:"How often does your business post content on social media?",cat:"frequency",o:["Rarely or never","A few times a month","2-3 times a week","Daily or near-daily"]},
-{q:"Do you have a professional website that represents your business?",cat:"website",o:["No website at all","Basic or outdated website","Decent website, could be better","Professional, mobile-friendly, converting visitors"]},
-{q:"How would you describe your brand's visual identity?",cat:"branding",o:["No consistent branding","Logo only, no real brand system","Some brand guidelines but inconsistent","Strong, consistent brand across everything"]},
-{q:"Are you using video content to promote your business?",cat:"video",o:["No video at all","Occasional amateur videos","Regular video content, decent quality","Professional UGC/branded videos performing well"]},
-{q:"How do customers currently find your business online?",cat:"discovery",o:["Mostly word-of-mouth, little online presence","Google search but ranking is low","Mix of search, social, and referrals","Strong online presence driving consistent leads"]},
-{q:"Do you collect and showcase customer reviews or testimonials?",cat:"proof",o:["No reviews or testimonials","A few reviews, not showcased","Reviews on Google/Yelp but not featured","Actively collecting and showcasing social proof"]},
-{q:"Are you running any paid advertising?",cat:"ads",o:["No paid ads at all","Boosting posts occasionally","Running ads but unsure about ROI","Strategic ad campaigns with tracked results"]},
-{q:"What best describes your business's content strategy?",cat:"strategy",o:["We post randomly when we remember","We know we should post more but lack a plan","Some content ideas but execution is inconsistent","Clear strategy, content calendar, consistent execution"]}
+var bizType=null;
+var bizTypes=[
+  {id:'restaurant',label:'Restaurant / Food & Bev',icon:'&#127869;'},
+  {id:'fitness',label:'Fitness / Wellness',icon:'&#128170;'},
+  {id:'realestate',label:'Real Estate',icon:'&#127968;'},
+  {id:'professional',label:'Professional Services',icon:'&#9878;'},
+  {id:'retail',label:'Retail / E-commerce',icon:'&#128722;'},
+  {id:'beauty',label:'Beauty / Salon',icon:'&#128135;'},
+  {id:'contractor',label:'Contractor / Home Services',icon:'&#128296;'},
+  {id:'other',label:'Other',icon:'&#128188;'}
 ];
 
-let cur=0,ans=Array(Qs.length).fill(null);
+var Qs=[
+  {q:"How often does your business post content on social media?",cat:"frequency",o:["Rarely or never","A few times a month","2-3 times a week","Daily or near-daily"]},
+  {q:"Do you have a professional website that represents your business?",cat:"website",o:["No website at all","Basic or outdated website","Decent website, could be better","Professional, mobile-friendly, converting visitors"]},
+  {q:"How would you describe your brand's visual identity?",cat:"branding",o:["No consistent branding","Logo only, no real brand system","Some brand guidelines but inconsistent","Strong, consistent brand across everything"]},
+  {q:"Are you using video content to promote your business?",cat:"video",o:["No video at all","Occasional amateur videos","Regular video content, decent quality","Professional UGC/branded videos performing well"]},
+  {q:"How do customers currently find your business online?",cat:"discovery",o:["Mostly word-of-mouth, little online presence","Google search but ranking is low","Mix of search, social, and referrals","Strong online presence driving consistent leads"]},
+  {q:"Do you collect and showcase customer reviews or testimonials?",cat:"proof",o:["No reviews or testimonials","A few reviews, not showcased","Reviews on Google/Yelp but not featured","Actively collecting and showcasing social proof"]},
+  {q:"Are you running any paid advertising?",cat:"ads",o:["No paid ads at all","Boosting posts occasionally","Running ads but unsure about ROI","Strategic ad campaigns with tracked results"]},
+  {q:"What best describes your business's content strategy?",cat:"strategy",o:["We post randomly when we remember","We know we should post more but lack a plan","Some content ideas but execution is inconsistent","Clear strategy, content calendar, consistent execution"]}
+];
+
+var totalQs=Qs.length+1;
+var cur=0;
+var ans=Array(Qs.length).fill(null);
+
+var benchmarks={restaurant:45,fitness:50,realestate:48,professional:42,retail:52,beauty:55,contractor:38,other:45};
+
+var industryRecs={
+  restaurant:{
+    video:{t:"Post Food Prep Reels 3x/Week",d:"Behind-the-scenes cooking videos get 4x more engagement for restaurants. Show plating, sizzling pans, and fresh ingredients. Customers eat with their eyes first.",s:"/services/social-media/",sn:"Social Media Manager"},
+    website:{t:"Your Menu Needs to Be Online and Mobile-Friendly",d:"68% of diners check the menu before visiting. If your menu is a PDF or missing, you are losing walk-ins. A modern website with a clickable menu converts browsers to reservations.",s:"/services/website/",sn:"Website in a Day - $797"},
+    proof:{t:"Get to 100+ Google Reviews",d:"Restaurants live and die by reviews. Text your regulars the Google review link after great meals. Respond to every review within 24 hours — even the bad ones.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
+    frequency:{t:"Post Daily Specials and Behind-the-Scenes",d:"The restaurants killing it on Instagram post their daily specials, kitchen prep, and staff moments every day. It does not have to be polished — authenticity wins in food.",s:"/services/social-media/",sn:"Social Media Manager"},
+    discovery:{t:"Optimize Google Business Profile and Food Delivery Apps",d:"Make sure your GBP has fresh photos, correct hours, and updated menu. Also claim and optimize your profiles on Yelp, DoorDash, and UberEats.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
+    branding:{t:"Create a Consistent Visual Brand for Your Restaurant",d:"Same colors, same vibe, same fonts across your menu, Instagram, and signage. Customers should recognize your brand before they read the name.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
+    strategy:{t:"Plan a Weekly Content Calendar Around Your Menu",d:"Map content to your weekly specials, events, and seasonal items. Monday is new special reveal, Wednesday is kitchen BTS, Friday is weekend promo.",s:"/services/social-media/",sn:"Social Media Manager"},
+    ads:{t:"Run Geo-Targeted Ads Within 5 Miles",d:"Restaurant ads should target people within driving distance. A $10/day Instagram ad showing your best dish to people within 5 miles of your location fills seats.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+  },
+  fitness:{
+    video:{t:"Post Transformation Videos and Workout Clips",d:"Before/after transformations are the #1 performing content for gyms and studios. Film quick 15-second workout clips and member spotlight stories.",s:"/services/social-media/",sn:"Social Media Manager"},
+    website:{t:"Your Website Should Book Classes, Not Just Look Pretty",d:"Every fitness website needs an online booking button above the fold. If someone has to call or DM to sign up, you are losing 60% of potential members.",s:"/services/website/",sn:"Website in a Day - $797"},
+    proof:{t:"Showcase Member Transformations as Social Proof",d:"Ask your best members for before/after photos and quotes. Feature them on your website and social media. Nothing sells fitness better than visible results.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
+    frequency:{t:"Post Workout Tips and Class Previews Daily",d:"Fitness followers want daily motivation. Quick exercise demos, nutrition tips, and class previews keep your audience engaged and thinking about their next visit.",s:"/services/social-media/",sn:"Social Media Manager"},
+    discovery:{t:"Dominate Local Fitness Searches",d:"Optimize for 'gym near me,' 'yoga studio [neighborhood],' and 'personal trainer Miami.' Google Business Profile with class photos and reviews is your best weapon.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
+    branding:{t:"Build a Brand That Represents Your Gym Culture",d:"Your brand should feel like your gym feels. High energy? Dark and bold. Zen yoga? Clean and calm. Consistency between your space and your online presence builds trust.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
+    strategy:{t:"Create a Content Calendar Around Class Schedule",d:"Tie your content to your weekly schedule. Promote Monday classes on Sunday night. Share Wednesday workout challenges. Recap weekend events.",s:"/services/social-media/",sn:"Social Media Manager"},
+    ads:{t:"Run Free Trial Ads to Cold Audiences",d:"The best fitness ad is a free class or 7-day trial offer targeted to people within 10 miles who are interested in fitness. Low risk for them, high conversion for you.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+  },
+  realestate:{
+    video:{t:"Post Property Walkthrough Videos Weekly",d:"Walkthrough videos get 3x more inquiries than photo carousels. Use your phone, walk through the property, and narrate the highlights. Buyers want to feel like they are there.",s:"/services/social-media/",sn:"Social Media Manager"},
+    website:{t:"Your Website Should Showcase Listings and Your Brand",d:"Buyers and sellers Google you before they call. A professional website with your active listings, sold properties, and testimonials positions you as the go-to agent.",s:"/services/website/",sn:"Website in a Day - $797"},
+    proof:{t:"Feature Sold Properties and Client Testimonials",d:"Every closed deal is a marketing opportunity. Post the sold photo, tag the buyer/seller (with permission), and share a testimonial. This builds massive social proof.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
+    frequency:{t:"Post Listings, Market Updates, and Neighborhood Guides",d:"Successful real estate agents post 4-5x per week mixing new listings, market data, neighborhood spotlights, and personal brand content.",s:"/services/social-media/",sn:"Social Media Manager"},
+    discovery:{t:"Own Your Neighborhood in Google Search",d:"Create content around specific neighborhoods — 'Best restaurants in Brickell,' 'Living in Coral Gables.' This makes you the local expert that Google sends buyers to.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
+    branding:{t:"Build a Personal Brand, Not Just a Brokerage Brand",d:"People hire agents, not brokerages. Your personal brand — your face, your story, your expertise — should be front and center on every piece of content.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
+    strategy:{t:"Plan Content Around the Buying Cycle",d:"Map content to the buyer journey: awareness (neighborhood guides), consideration (market updates), decision (testimonials and walkthroughs).",s:"/services/social-media/",sn:"Social Media Manager"},
+    ads:{t:"Run Just-Listed and Just-Sold Ads",d:"Targeted ads showing new listings to potential buyers and sold properties to potential sellers in the same zip code. This is the highest-ROI real estate ad strategy.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+  },
+  contractor:{
+    video:{t:"Post Before/After Project Videos",d:"Nothing sells contractor work better than dramatic before/after reveals. Time-lapse a project, show the transformation, and watch the inquiries roll in.",s:"/services/social-media/",sn:"Social Media Manager"},
+    website:{t:"You Need a Website — Yesterday",d:"Most contractors have zero web presence. A simple professional site with your services, past projects, and a contact form puts you ahead of 80% of your competition.",s:"/services/website/",sn:"Website in a Day - $797"},
+    proof:{t:"Collect Reviews Like Your Business Depends on It (It Does)",d:"Homeowners check reviews before hiring contractors more than any other industry. After every job, text the client your Google review link. Aim for 50+ reviews.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
+    frequency:{t:"Post Project Photos 3x/Week",d:"Show your work in progress and completed. Homeowners love seeing the craftsmanship. Even simple phone photos of a finished kitchen or painted room perform well.",s:"/services/social-media/",sn:"Social Media Manager"},
+    discovery:{t:"Dominate 'Contractor Near Me' Searches",d:"Optimize your Google Business Profile, get listed on Angi and Thumbtack, and make sure your website mentions your specific services and service area.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
+    branding:{t:"Look Professional — Stand Out From the Pack",d:"Most contractors look the same online. A clean logo, consistent truck/uniform branding, and a professional website instantly set you apart and justify higher rates.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
+    strategy:{t:"Create Seasonal Content That Matches Demand",d:"Spring is landscaping and painting. Summer is pool and outdoor. Fall is weatherproofing. Winter is interior remodels. Plan content around what homeowners are thinking about.",s:"/services/social-media/",sn:"Social Media Manager"},
+    ads:{t:"Run Hyper-Local Service Ads",d:"Target homeowners within your service area with ads showing your best work. Google Local Service Ads are especially powerful for contractors — you only pay for leads.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+  }
+};
+// Aliases for types without custom recs
+industryRecs.professional=industryRecs.realestate;
+industryRecs.retail=industryRecs.restaurant;
+industryRecs.beauty=industryRecs.fitness;
+industryRecs.other=industryRecs.contractor;
 
 function render(){
-  const q=Qs[cur];
+  var total=totalQs;
+  if(cur===0){
+    document.getElementById('q').textContent="What type of business do you run?";
+    document.getElementById('step').textContent="Question 1 of "+total;
+    document.getElementById('prog').style.width=(1/total*100)+'%';
+    document.getElementById('bBack').disabled=true;
+    document.getElementById('bNext').disabled=bizType===null;
+    document.getElementById('bNext').innerHTML='Next &rarr;';
+    document.getElementById('opts').innerHTML='<div class="biz-grid">'+bizTypes.map(function(b){
+      return '<div class="biz-opt'+(bizType===b.id?' sel':'')+'" onclick="pickBiz(\''+b.id+'\')"><div class="biz-icon">'+b.icon+'</div><div class="biz-label">'+b.label+'</div></div>';
+    }).join('')+'</div>';
+    return;
+  }
+  var qi=cur-1;
+  var q=Qs[qi];
   document.getElementById('q').textContent=q.q;
-  document.getElementById('step').textContent=`Question ${cur+1} of ${Qs.length}`;
-  document.getElementById('prog').style.width=((cur+1)/Qs.length*100)+'%';
-  document.getElementById('bBack').disabled=cur===0;
-  document.getElementById('bNext').disabled=ans[cur]===null;
-  document.getElementById('bNext').innerHTML=cur===Qs.length-1?'See Results &rarr;':'Next &rarr;';
-  document.getElementById('opts').innerHTML=q.o.map((o,i)=>`<div class="opt${ans[cur]===i?' sel':''}" onclick="pick(${i})"><div class="dot"></div><span>${o}</span></div>`).join('');
+  document.getElementById('step').textContent='Question '+(cur+1)+' of '+total;
+  document.getElementById('prog').style.width=((cur+1)/total*100)+'%';
+  document.getElementById('bBack').disabled=false;
+  document.getElementById('bNext').disabled=ans[qi]===null;
+  document.getElementById('bNext').innerHTML=cur===total-1?'See Results &rarr;':'Next &rarr;';
+  document.getElementById('opts').innerHTML='<div class="options">'+q.o.map(function(o,i){
+    return '<div class="opt'+(ans[qi]===i?' sel':'')+'" onclick="pick('+i+')"><div class="dot"></div><span>'+o+'</span></div>';
+  }).join('')+'</div>';
 }
 
-function pick(i){ans[cur]=i;render()}
-function next(){if(ans[cur]===null)return;if(cur<Qs.length-1){cur++;render()}else showGate()}
+function pickBiz(id){bizType=id;document.querySelectorAll('.biz-opt').forEach(function(el){el.classList.remove('sel')});event.currentTarget.classList.add('sel');document.getElementById('bNext').disabled=false}
+function pick(i){var qi=cur-1;ans[qi]=i;render()}
+function next(){if(cur===0&&bizType===null)return;if(cur>0&&ans[cur-1]===null)return;if(cur<totalQs-1){cur++;render()}else showGate()}
 function prev(){if(cur>0){cur--;render()}}
 
 function showGate(){
@@ -234,24 +290,20 @@ function showGate(){
 }
 
 function submitGate(){
-  const email=document.getElementById('gEmail').value.trim();
-  if(!email||!email.includes('@')){document.getElementById('gErr').style.display='block';return}
+  var email=document.getElementById('gEmail').value.trim();
+  if(!email||email.indexOf('@')<0){document.getElementById('gErr').style.display='block';return}
+  var scores={};
+  Qs.forEach(function(q,i){scores[q.cat]=ans[i]+1});
+  var total=0;for(var k in scores)total+=scores[k];
+  var pct=Math.round(total/32*100);
 
-  const scores={};
-  Qs.forEach((q,i)=>scores[q.cat]=ans[i]+1);
-  const total=Object.values(scores).reduce((a,b)=>a+b,0);
-  const pct=Math.round(total/32*100);
+  var data={name:document.getElementById('gName').value,email:email,company:document.getElementById('gCompany').value,phone:document.getElementById('gPhone').value,website:document.getElementById('gWebsite').value,score:pct,scores:JSON.stringify(scores),bizType:bizType,source:'content-score-v2',timestamp:new Date().toISOString()};
 
-  // Fire-and-forget lead capture
-  const data={name:document.getElementById('gName').value,email,company:document.getElementById('gCompany').value,phone:document.getElementById('gPhone').value,score:pct,scores:JSON.stringify(scores),source:'content-score',timestamp:new Date().toISOString()};
-  try{
-    // Submit via hidden iframe to avoid CORS/redirect issues
-    const scriptUrl='https://script.google.com/macros/s/AKfycby3U0wxBJyhcjjEyyr37zjpMI36yhSEjp0NtyRS7NIiyR-ZdRc1LsaAqvrDwzc3o5ll/exec';
-    const iframe=document.createElement('iframe');iframe.name='leadFrame';iframe.style.display='none';document.body.appendChild(iframe);
-    const form=document.createElement('form');form.method='POST';form.action=scriptUrl;form.target='leadFrame';
-    Object.entries(data).forEach(([k,v])=>{const inp=document.createElement('input');inp.type='hidden';inp.name=k;inp.value=v;form.appendChild(inp)});
-    document.body.appendChild(form);form.submit();form.remove();
-  }catch(e){}
+  var scriptUrl='https://script.google.com/macros/s/AKfycby3U0wxBJyhcjjEyyr37zjpMI36yhSEjp0NtyRS7NIiyR-ZdRc1LsaAqvrDwzc3o5ll/exec';
+  var iframe=document.createElement('iframe');iframe.name='leadFrame';iframe.style.display='none';document.body.appendChild(iframe);
+  var form=document.createElement('form');form.method='POST';form.action=scriptUrl;form.target='leadFrame';
+  for(var key in data){var inp=document.createElement('input');inp.type='hidden';inp.name=key;inp.value=data[key];form.appendChild(inp)}
+  document.body.appendChild(form);form.submit();form.remove();
 
   showResults(scores,pct);
 }
@@ -259,44 +311,55 @@ function submitGate(){
 function showResults(scores,pct){
   document.getElementById('gate').style.display='none';
   document.getElementById('results').style.display='block';
-  const name=document.getElementById('gName').value;
-  document.getElementById('rName').textContent=name?`Results for ${name}`:'';
+  var name=document.getElementById('gName').value;
+  var biz=bizTypes.find(function(b){return b.id===bizType});
+  document.getElementById('rName').textContent=name?(name+(biz?' &middot; '+biz.label:'')):'';
 
-  // Animate ring
-  const circ=2*Math.PI*80;
-  const offset=circ-(pct/100*circ);
-  setTimeout(()=>document.getElementById('ringFill').style.strokeDashoffset=offset,100);
+  var circ=2*Math.PI*80;
+  var offset=circ-(pct/100*circ);
+  setTimeout(function(){document.getElementById('ringFill').style.strokeDashoffset=offset},100);
+  var c=0;var iv=setInterval(function(){c+=2;if(c>pct)c=pct;document.getElementById('sNum').textContent=c;if(c>=pct)clearInterval(iv)},20);
 
-  // Animate number
-  let c=0;const iv=setInterval(()=>{c+=2;if(c>pct)c=pct;document.getElementById('sNum').textContent=c;if(c>=pct)clearInterval(iv)},20);
-
-  // Grade
-  let g,gc;
-  if(pct>=85){g='Excellent — You\'re ahead of the game!';gc='#34d399'}
+  var g,gc;
+  if(pct>=85){g='Excellent';gc='#34d399'}
   else if(pct>=65){g='Good — Strong foundation with room to grow';gc='#00d4ff'}
-  else if(pct>=45){g='Fair — You\'re leaving money on the table';gc='#f59e0b'}
+  else if(pct>=45){g='Fair — You are leaving money on the table';gc='#f59e0b'}
   else{g='Needs Work — Major opportunities being missed';gc='#ef4444'}
-  document.getElementById('sGrade').innerHTML=`<span style="color:${gc}">${g}</span>`;
+  document.getElementById('sGrade').innerHTML='<span style="color:'+gc+'">'+g+'</span>';
+
+  // Benchmark
+  var avg=benchmarks[bizType]||45;
+  var bizLabel=biz?biz.label:'businesses';
+  var diff=pct-avg;
+  var benchText='';
+  if(diff>10)benchText='Your score is <strong>'+pct+'%</strong>. The average Miami '+bizLabel.toLowerCase()+' scores '+avg+'%. You are <strong>well ahead</strong> of your competitors.';
+  else if(diff>0)benchText='Your score is <strong>'+pct+'%</strong>. The average Miami '+bizLabel.toLowerCase()+' scores '+avg+'%. You are <strong>slightly ahead</strong> but still have room to grow.';
+  else if(diff>-10)benchText='Your score is <strong>'+pct+'%</strong>. The average Miami '+bizLabel.toLowerCase()+' scores '+avg+'%. You are <strong>close to average</strong> — a few changes will put you ahead.';
+  else benchText='Your score is <strong>'+pct+'%</strong>. The average Miami '+bizLabel.toLowerCase()+' scores '+avg+'%. You are <strong>behind most competitors</strong> — but that means big opportunity.';
+  document.getElementById('sBench').innerHTML=benchText;
 
   // Breakdown
-  const names={frequency:'Posting Frequency',website:'Website Quality',branding:'Brand Identity',video:'Video Content',discovery:'Online Discovery',proof:'Social Proof',ads:'Paid Advertising',strategy:'Content Strategy'};
-  const cols={frequency:'#00d4ff',website:'#a855f7',branding:'#ec4899',video:'#f59e0b',discovery:'#34d399',proof:'#f59e0b',ads:'#00d4ff',strategy:'#a855f7'};
-  document.getElementById('breakdown').innerHTML=Object.entries(scores).map(([k,v])=>`<div class="bd-item"><div class="bd-label">${names[k]}</div><div class="bd-bar"><div class="bd-bar-fill" style="width:${v/4*100}%;background:${cols[k]}"></div></div><div class="bd-val" style="color:${cols[k]}">${v}/4</div></div>`).join('');
+  var names={frequency:'Posting Frequency',website:'Website Quality',branding:'Brand Identity',video:'Video Content',discovery:'Online Discovery',proof:'Social Proof',ads:'Paid Advertising',strategy:'Content Strategy'};
+  var cols={frequency:'#00d4ff',website:'#a855f7',branding:'#ec4899',video:'#f59e0b',discovery:'#34d399',proof:'#f59e0b',ads:'#00d4ff',strategy:'#a855f7'};
+  document.getElementById('breakdown').innerHTML=Object.keys(scores).map(function(k){var v=scores[k];return '<div class="bd-item"><div class="bd-label">'+names[k]+'</div><div class="bd-bar"><div class="bd-bar-fill" style="width:'+v/4*100+'%;background:'+cols[k]+'"></div></div><div class="bd-val" style="color:'+cols[k]+'">'+v+'/4</div></div>'}).join('');
 
-  // Recs
-  const recs=[];
-  if(scores.video<=2)recs.push({t:'Start Using Video Content',d:'Video gets 3x more engagement than static posts. Even simple smartphone videos showing your product or service can transform your reach.',c:'#f59e0b'});
-  if(scores.website<=2)recs.push({t:'Upgrade Your Website',d:'Your website is your digital storefront. A modern, mobile-friendly site builds trust instantly and converts browsers into buyers.',c:'#a855f7'});
-  if(scores.frequency<=2)recs.push({t:'Post More Consistently',d:'Algorithms reward consistency. Posting 3-5x per week keeps you visible and builds momentum over time.',c:'#00d4ff'});
-  if(scores.branding<=2)recs.push({t:'Build a Brand System',d:'Consistent colors, fonts, and messaging make your business look professional. People buy from brands they recognize.',c:'#ec4899'});
-  if(scores.proof<=2)recs.push({t:'Leverage Social Proof',d:'92% of consumers read reviews before buying. Start collecting testimonials and feature them prominently everywhere.',c:'#f59e0b'});
-  if(scores.strategy<=2)recs.push({t:'Create a Content Strategy',d:'Random posting gets random results. A simple content calendar will 2-3x your engagement.',c:'#34d399'});
-  if(scores.ads<=2)recs.push({t:'Explore Targeted Ads',d:'Even $5-10/day on well-targeted social ads can reach hundreds of potential customers in your area.',c:'#00d4ff'});
-  if(scores.discovery<=2)recs.push({t:'Improve Your Discoverability',d:'Optimize your Google Business Profile and use local SEO so people searching for your service find you.',c:'#a855f7'});
-  if(recs.length<3)recs.push({t:'Level Up With Professional Content',d:'You\'re doing well. Consider professional UGC-style content that feels authentic but looks polished — it converts 2-4x higher.',c:'#34d399'});
-  if(recs.length<3)recs.push({t:'Automate Your Workflow',d:'AI tools can help you plan, create, and schedule content in a fraction of the time. Work smarter, not harder.',c:'#00d4ff'});
-
-  document.getElementById('recs').innerHTML=recs.slice(0,5).map(r=>`<div class="rec"><div class="rec-icon" style="background:${r.c}15;color:${r.c}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div><div><h4>${r.t}</h4><p>${r.d}</p></div></div>`).join('');
+  // Industry-specific recs
+  var irecs=industryRecs[bizType]||industryRecs.other;
+  var sorted=Object.keys(scores).sort(function(a,b){return scores[a]-scores[b]});
+  var recHtml='';
+  var count=0;
+  for(var i=0;i<sorted.length&&count<4;i++){
+    var cat=sorted[i];
+    if(scores[cat]<=3&&irecs[cat]){
+      var r=irecs[cat];
+      recHtml+='<div class="rec"><div class="rec-icon" style="background:'+cols[cat]+'22;color:'+cols[cat]+'">&#9733;</div><div><h4>'+r.t+'</h4><p>'+r.d+'</p>'+(r.s?'<a href="'+r.s+'" class="service-link">'+r.sn+' &rarr;</a>':'')+'</div></div>';
+      count++;
+    }
+  }
+  if(count<3){
+    recHtml+='<div class="rec"><div class="rec-icon" style="background:#34d39922;color:#34d399">&#9733;</div><div><h4>Automate Your Workflow With AI</h4><p>AI tools can handle your emails, content drafts, and scheduling in a fraction of the time. Work smarter, not harder.</p><a href="/services/ai-setup/" class="service-link">AI Setup - $497 &rarr;</a></div></div>';
+  }
+  document.getElementById('recs').innerHTML=recHtml;
 }
 
 render();
