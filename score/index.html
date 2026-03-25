@@ -148,7 +148,8 @@ a{color:var(--cyan);text-decoration:none}
 .rec-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
 .rec h4{font-size:14px;font-weight:600;margin-bottom:2px}
 .rec p{font-size:12px;color:var(--text2);line-height:1.5}
-.rec .service-link{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:1px}
+.rec .help-tag{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;font-weight:600;color:var(--cyan);opacity:.7;transition:opacity .2s}
+.rec .help-tag:hover{opacity:1}
 .cta-box{text-align:center;margin-top:28px;padding:28px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);border-radius:16px}
 .cta-box h3{font-size:1.1rem;font-weight:800;margin-bottom:6px}
 .cta-box p{color:var(--text2);font-size:13px;margin-bottom:18px}
@@ -498,44 +499,44 @@ function showGate(){
 
 var industryRecs={
   restaurant:{
-    video:{t:"Post Food Prep Reels 3x/Week",d:"Behind-the-scenes cooking videos get 4x more engagement for restaurants. Show plating, sizzling pans, and fresh ingredients. Customers eat with their eyes first.",s:"/services/social-media/",sn:"Social Media Manager"},
-    website:{t:"Your Menu Needs to Be Online and Mobile-Friendly",d:"68% of diners check the menu before visiting. If your menu is a PDF or missing, you are losing walk-ins. A modern website with a clickable menu converts browsers to reservations.",s:"/services/website/",sn:"Website in a Day - $797"},
-    proof:{t:"Get to 100+ Google Reviews",d:"Restaurants live and die by reviews. Text your regulars the Google review link after great meals. Respond to every review within 24 hours — even the bad ones.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
-    frequency:{t:"Post Daily Specials and Behind-the-Scenes",d:"The restaurants killing it on Instagram post their daily specials, kitchen prep, and staff moments every day. It does not have to be polished — authenticity wins in food.",s:"/services/social-media/",sn:"Social Media Manager"},
-    discovery:{t:"Optimize Google Business Profile and Food Delivery Apps",d:"Make sure your GBP has fresh photos, correct hours, and updated menu. Also claim and optimize your profiles on Yelp, DoorDash, and UberEats.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
-    branding:{t:"Create a Consistent Visual Brand for Your Restaurant",d:"Same colors, same vibe, same fonts across your menu, Instagram, and signage. Customers should recognize your brand before they read the name.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
-    strategy:{t:"Plan a Weekly Content Calendar Around Your Menu",d:"Map content to your weekly specials, events, and seasonal items. Monday is new special reveal, Wednesday is kitchen BTS, Friday is weekend promo.",s:"/services/social-media/",sn:"Social Media Manager"},
-    ads:{t:"Run Geo-Targeted Ads Within 5 Miles",d:"Restaurant ads should target people within driving distance. A $10/day Instagram ad showing your best dish to people within 5 miles of your location fills seats.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+    video:{t:"Post Food Prep Reels 3x/Week",d:"Behind-the-scenes cooking videos get 4x more engagement for restaurants. Show plating, sizzling pans, and fresh ingredients. Customers eat with their eyes first.",s:"/offers/"},
+    website:{t:"Your Menu Needs to Be Online and Mobile-Friendly",d:"68% of diners check the menu before visiting. If your menu is a PDF or missing, you are losing walk-ins. A modern website with a clickable menu converts browsers to reservations.",s:"/offers/"},
+    proof:{t:"Get to 100+ Google Reviews",d:"Restaurants live and die by reviews. Text your regulars the Google review link after great meals. Respond to every review within 24 hours — even the bad ones.",s:"/offers/"},
+    frequency:{t:"Post Daily Specials and Behind-the-Scenes",d:"The restaurants killing it on Instagram post their daily specials, kitchen prep, and staff moments every day. It does not have to be polished — authenticity wins in food.",s:"/offers/"},
+    discovery:{t:"Optimize Google Business Profile and Food Delivery Apps",d:"Make sure your GBP has fresh photos, correct hours, and updated menu. Also claim and optimize your profiles on Yelp, DoorDash, and UberEats.",s:"/offers/"},
+    branding:{t:"Create a Consistent Visual Brand for Your Restaurant",d:"Same colors, same vibe, same fonts across your menu, Instagram, and signage. Customers should recognize your brand before they read the name.",s:"/offers/"},
+    strategy:{t:"Plan a Weekly Content Calendar Around Your Menu",d:"Map content to your weekly specials, events, and seasonal items. Monday is new special reveal, Wednesday is kitchen BTS, Friday is weekend promo.",s:"/offers/"},
+    ads:{t:"Run Geo-Targeted Ads Within 5 Miles",d:"Restaurant ads should target people within driving distance. A $10/day Instagram ad showing your best dish to people within 5 miles of your location fills seats.",s:"/offers/"}
   },
   fitness:{
-    video:{t:"Post Transformation Videos and Workout Clips",d:"Before/after transformations are the #1 performing content for gyms and studios. Film quick 15-second workout clips and member spotlight stories.",s:"/services/social-media/",sn:"Social Media Manager"},
-    website:{t:"Your Website Should Book Classes, Not Just Look Pretty",d:"Every fitness website needs an online booking button above the fold. If someone has to call or DM to sign up, you are losing 60% of potential members.",s:"/services/website/",sn:"Website in a Day - $797"},
-    proof:{t:"Showcase Member Transformations as Social Proof",d:"Ask your best members for before/after photos and quotes. Feature them on your website and social media. Nothing sells fitness better than visible results.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
-    frequency:{t:"Post Workout Tips and Class Previews Daily",d:"Fitness followers want daily motivation. Quick exercise demos, nutrition tips, and class previews keep your audience engaged and thinking about their next visit.",s:"/services/social-media/",sn:"Social Media Manager"},
-    discovery:{t:"Dominate Local Fitness Searches",d:"Optimize for 'gym near me,' 'yoga studio [neighborhood],' and 'personal trainer Miami.' Google Business Profile with class photos and reviews is your best weapon.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
-    branding:{t:"Build a Brand That Represents Your Gym Culture",d:"Your brand should feel like your gym feels. High energy? Dark and bold. Zen yoga? Clean and calm. Consistency between your space and your online presence builds trust.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
-    strategy:{t:"Create a Content Calendar Around Class Schedule",d:"Tie your content to your weekly schedule. Promote Monday classes on Sunday night. Share Wednesday workout challenges. Recap weekend events.",s:"/services/social-media/",sn:"Social Media Manager"},
-    ads:{t:"Run Free Trial Ads to Cold Audiences",d:"The best fitness ad is a free class or 7-day trial offer targeted to people within 10 miles who are interested in fitness. Low risk for them, high conversion for you.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+    video:{t:"Post Transformation Videos and Workout Clips",d:"Before/after transformations are the #1 performing content for gyms and studios. Film quick 15-second workout clips and member spotlight stories.",s:"/offers/"},
+    website:{t:"Your Website Should Book Classes, Not Just Look Pretty",d:"Every fitness website needs an online booking button above the fold. If someone has to call or DM to sign up, you are losing 60% of potential members.",s:"/offers/"},
+    proof:{t:"Showcase Member Transformations as Social Proof",d:"Ask your best members for before/after photos and quotes. Feature them on your website and social media. Nothing sells fitness better than visible results.",s:"/offers/"},
+    frequency:{t:"Post Workout Tips and Class Previews Daily",d:"Fitness followers want daily motivation. Quick exercise demos, nutrition tips, and class previews keep your audience engaged and thinking about their next visit.",s:"/offers/"},
+    discovery:{t:"Dominate Local Fitness Searches",d:"Optimize for 'gym near me,' 'yoga studio [neighborhood],' and 'personal trainer Miami.' Google Business Profile with class photos and reviews is your best weapon.",s:"/offers/"},
+    branding:{t:"Build a Brand That Represents Your Gym Culture",d:"Your brand should feel like your gym feels. High energy? Dark and bold. Zen yoga? Clean and calm. Consistency between your space and your online presence builds trust.",s:"/offers/"},
+    strategy:{t:"Create a Content Calendar Around Class Schedule",d:"Tie your content to your weekly schedule. Promote Monday classes on Sunday night. Share Wednesday workout challenges. Recap weekend events.",s:"/offers/"},
+    ads:{t:"Run Free Trial Ads to Cold Audiences",d:"The best fitness ad is a free class or 7-day trial offer targeted to people within 10 miles who are interested in fitness. Low risk for them, high conversion for you.",s:"/offers/"}
   },
   realestate:{
-    video:{t:"Post Property Walkthrough Videos Weekly",d:"Walkthrough videos get 3x more inquiries than photo carousels. Use your phone, walk through the property, and narrate the highlights. Buyers want to feel like they are there.",s:"/services/social-media/",sn:"Social Media Manager"},
-    website:{t:"Your Website Should Showcase Listings and Your Brand",d:"Buyers and sellers Google you before they call. A professional website with your active listings, sold properties, and testimonials positions you as the go-to agent.",s:"/services/website/",sn:"Website in a Day - $797"},
-    proof:{t:"Feature Sold Properties and Client Testimonials",d:"Every closed deal is a marketing opportunity. Post the sold photo, tag the buyer/seller (with permission), and share a testimonial. This builds massive social proof.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
-    frequency:{t:"Post Listings, Market Updates, and Neighborhood Guides",d:"Successful real estate agents post 4-5x per week mixing new listings, market data, neighborhood spotlights, and personal brand content.",s:"/services/social-media/",sn:"Social Media Manager"},
-    discovery:{t:"Own Your Neighborhood in Google Search",d:"Create content around specific neighborhoods — 'Best restaurants in Brickell,' 'Living in Coral Gables.' This makes you the local expert that Google sends buyers to.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
-    branding:{t:"Build a Personal Brand, Not Just a Brokerage Brand",d:"People hire agents, not brokerages. Your personal brand — your face, your story, your expertise — should be front and center on every piece of content.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
-    strategy:{t:"Plan Content Around the Buying Cycle",d:"Map content to the buyer journey: awareness (neighborhood guides), consideration (market updates), decision (testimonials and walkthroughs).",s:"/services/social-media/",sn:"Social Media Manager"},
-    ads:{t:"Run Just-Listed and Just-Sold Ads",d:"Targeted ads showing new listings to potential buyers and sold properties to potential sellers in the same zip code. This is the highest-ROI real estate ad strategy.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+    video:{t:"Post Property Walkthrough Videos Weekly",d:"Walkthrough videos get 3x more inquiries than photo carousels. Use your phone, walk through the property, and narrate the highlights. Buyers want to feel like they are there.",s:"/offers/"},
+    website:{t:"Your Website Should Showcase Listings and Your Brand",d:"Buyers and sellers Google you before they call. A professional website with your active listings, sold properties, and testimonials positions you as the go-to agent.",s:"/offers/"},
+    proof:{t:"Feature Sold Properties and Client Testimonials",d:"Every closed deal is a marketing opportunity. Post the sold photo, tag the buyer/seller (with permission), and share a testimonial. This builds massive social proof.",s:"/offers/"},
+    frequency:{t:"Post Listings, Market Updates, and Neighborhood Guides",d:"Successful real estate agents post 4-5x per week mixing new listings, market data, neighborhood spotlights, and personal brand content.",s:"/offers/"},
+    discovery:{t:"Own Your Neighborhood in Google Search",d:"Create content around specific neighborhoods — 'Best restaurants in Brickell,' 'Living in Coral Gables.' This makes you the local expert that Google sends buyers to.",s:"/offers/"},
+    branding:{t:"Build a Personal Brand, Not Just a Brokerage Brand",d:"People hire agents, not brokerages. Your personal brand — your face, your story, your expertise — should be front and center on every piece of content.",s:"/offers/"},
+    strategy:{t:"Plan Content Around the Buying Cycle",d:"Map content to the buyer journey: awareness (neighborhood guides), consideration (market updates), decision (testimonials and walkthroughs).",s:"/offers/"},
+    ads:{t:"Run Just-Listed and Just-Sold Ads",d:"Targeted ads showing new listings to potential buyers and sold properties to potential sellers in the same zip code. This is the highest-ROI real estate ad strategy.",s:"/offers/"}
   },
   contractor:{
-    video:{t:"Post Before/After Project Videos",d:"Nothing sells contractor work better than dramatic before/after reveals. Time-lapse a project, show the transformation, and watch the inquiries roll in.",s:"/services/social-media/",sn:"Social Media Manager"},
-    website:{t:"You Need a Website — Yesterday",d:"Most contractors have zero web presence. A simple professional site with your services, past projects, and a contact form puts you ahead of 80% of your competition.",s:"/services/website/",sn:"Website in a Day - $797"},
-    proof:{t:"Collect Reviews Like Your Business Depends on It (It Does)",d:"Homeowners check reviews before hiring contractors more than any other industry. After every job, text the client your Google review link. Aim for 50+ reviews.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
-    frequency:{t:"Post Project Photos 3x/Week",d:"Show your work in progress and completed. Homeowners love seeing the craftsmanship. Even simple phone photos of a finished kitchen or painted room perform well.",s:"/services/social-media/",sn:"Social Media Manager"},
-    discovery:{t:"Dominate 'Contractor Near Me' Searches",d:"Optimize your Google Business Profile, get listed on Angi and Thumbtack, and make sure your website mentions your specific services and service area.",s:"/services/bizaudit/",sn:"BizAudit - $97"},
-    branding:{t:"Look Professional — Stand Out From the Pack",d:"Most contractors look the same online. A clean logo, consistent truck/uniform branding, and a professional website instantly set you apart and justify higher rates.",s:"/services/content-launch/",sn:"Content Launch - $1,497"},
-    strategy:{t:"Create Seasonal Content That Matches Demand",d:"Spring is landscaping and painting. Summer is pool and outdoor. Fall is weatherproofing. Winter is interior remodels. Plan content around what homeowners are thinking about.",s:"/services/social-media/",sn:"Social Media Manager"},
-    ads:{t:"Run Hyper-Local Service Ads",d:"Target homeowners within your service area with ads showing your best work. Google Local Service Ads are especially powerful for contractors — you only pay for leads.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
+    video:{t:"Post Before/After Project Videos",d:"Nothing sells contractor work better than dramatic before/after reveals. Time-lapse a project, show the transformation, and watch the inquiries roll in.",s:"/offers/"},
+    website:{t:"You Need a Website — Yesterday",d:"Most contractors have zero web presence. A simple professional site with your services, past projects, and a contact form puts you ahead of 80% of your competition.",s:"/offers/"},
+    proof:{t:"Collect Reviews Like Your Business Depends on It (It Does)",d:"Homeowners check reviews before hiring contractors more than any other industry. After every job, text the client your Google review link. Aim for 50+ reviews.",s:"/offers/"},
+    frequency:{t:"Post Project Photos 3x/Week",d:"Show your work in progress and completed. Homeowners love seeing the craftsmanship. Even simple phone photos of a finished kitchen or painted room perform well.",s:"/offers/"},
+    discovery:{t:"Dominate 'Contractor Near Me' Searches",d:"Optimize your Google Business Profile, get listed on Angi and Thumbtack, and make sure your website mentions your specific services and service area.",s:"/offers/"},
+    branding:{t:"Look Professional — Stand Out From the Pack",d:"Most contractors look the same online. A clean logo, consistent truck/uniform branding, and a professional website instantly set you apart and justify higher rates.",s:"/offers/"},
+    strategy:{t:"Create Seasonal Content That Matches Demand",d:"Spring is landscaping and painting. Summer is pool and outdoor. Fall is weatherproofing. Winter is interior remodels. Plan content around what homeowners are thinking about.",s:"/offers/"},
+    ads:{t:"Run Hyper-Local Service Ads",d:"Target homeowners within your service area with ads showing your best work. Google Local Service Ads are especially powerful for contractors — you only pay for leads.",s:"/offers/"}
   }
 };
 industryRecs.professional=industryRecs.realestate;
@@ -657,12 +658,12 @@ function showResults(scores,pct){
           desc=desc.replace(/Aim for 50\+ reviews/,'You have '+biz.reviews+' reviews — aim for '+(biz.reviews<50?'50':'100')+'+');
         }
       }
-      recHtml+='<div class="rec"><div class="rec-icon" style="background:'+cols[cat]+'22;color:'+cols[cat]+'">&#9733;</div><div><h4>'+r.t+'</h4><p>'+desc+'</p>'+(r.s?'<a href="'+r.s+'" class="service-link">'+r.sn+' &rarr;</a>':'')+'</div></div>';
+      recHtml+='<div class="rec"><div class="rec-icon" style="background:'+cols[cat]+'22;color:'+cols[cat]+'">&#9733;</div><div><h4>'+r.t+'</h4><p>'+desc+'</p>'+(r.s?'<a href="'+r.s+'" class="help-tag">Need help with this? See how we can help &rarr;</a>':'')+'</div></div>';
       count++;
     }
   }
   if(count<3){
-    recHtml+='<div class="rec"><div class="rec-icon" style="background:#34d39922;color:#34d399">&#9733;</div><div><h4>Automate Your Workflow With AI</h4><p>AI tools can handle your emails, content drafts, and scheduling in a fraction of the time. Work smarter, not harder.</p><a href="/services/ai-setup/" class="service-link">AI Setup - $497 &rarr;</a></div></div>';
+    recHtml+='<div class="rec"><div class="rec-icon" style="background:#34d39922;color:#34d399">&#9733;</div><div><h4>Automate Your Workflow With AI</h4><p>AI tools can handle your emails, content drafts, and scheduling in a fraction of the time. Work smarter, not harder.</p><a href="/offers/" class="help-tag">Need help with this? See how we can help &rarr;</a></div></div>';
   }
   document.getElementById('recs').innerHTML=recHtml;
 }
