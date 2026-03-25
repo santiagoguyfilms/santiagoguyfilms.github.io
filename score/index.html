@@ -390,6 +390,9 @@ function esc(s){var d=document.createElement('div');d.textContent=s;return d.inn
 function startQuiz(){
   document.getElementById('lookup').style.display='none';
   document.getElementById('quiz').style.display='block';
+  // If Google Places auto-detected the category, skip the category picker
+  skipCategory=bizType!==null;
+  cur=0;
   render();
 }
 
@@ -416,16 +419,19 @@ var Qs=[
 ];
 
 var bizType=null;
-var totalQs=Qs.length+1; // +1 for biz type question
+var skipCategory=false; // true when Google Places auto-detected the category
 var cur=0;
 var ans=Array(Qs.length).fill(null);
 
 var benchmarks={restaurant:45,fitness:50,realestate:48,professional:42,retail:52,beauty:55,contractor:38,other:45};
 
+function getTotalQs(){return skipCategory?Qs.length:Qs.length+1}
+function getQIndex(){return skipCategory?cur:cur-1}
+
 function render(){
-  var total=totalQs;
-  if(cur===0){
-    // Business type question — may be pre-filled from Google Places
+  var total=getTotalQs();
+  // Show category picker only if we don't have a category from Google Places
+  if(!skipCategory&&cur===0){
     document.getElementById('q').textContent="What type of business do you run?";
     document.getElementById('step').textContent="Question 1 of "+total;
     document.getElementById('prog').style.width=(1/total*100)+'%';
@@ -437,23 +443,37 @@ function render(){
     }).join('')+'</div>';
     return;
   }
-  var qi=cur-1;
+  var qi=getQIndex();
   var q=Qs[qi];
   document.getElementById('q').textContent=q.q;
-  document.getElementById('step').textContent='Question '+(cur+1)+' of '+total;
-  document.getElementById('prog').style.width=((cur+1)/total*100)+'%';
-  document.getElementById('bBack').disabled=false;
+  var displayNum=skipCategory?cur+1:cur+1;
+  document.getElementById('step').textContent='Question '+displayNum+' of '+total;
+  document.getElementById('prog').style.width=(displayNum/total*100)+'%';
+  document.getElementById('bBack').disabled=cur===0;
   document.getElementById('bNext').disabled=ans[qi]===null;
-  document.getElementById('bNext').innerHTML=cur===total-1?'See Results &rarr;':'Next &rarr;';
+  document.getElementById('bNext').innerHTML=cur===getTotalQs()-1?'See Results &rarr;':'Next &rarr;';
   document.getElementById('opts').innerHTML='<div class="options">'+q.o.map(function(o,i){
     return '<div class="opt'+(ans[qi]===i?' sel':'')+'" onclick="pick('+i+')"><div class="dot"></div><span>'+o+'</span></div>';
   }).join('')+'</div>';
 }
 
 function pickBiz(id){bizType=id;document.querySelectorAll('.biz-opt').forEach(function(el){el.classList.remove('sel')});event.currentTarget.classList.add('sel');document.getElementById('bNext').disabled=false}
-function pick(i){var qi=cur-1;ans[qi]=i;render()}
-function next(){if(cur===0&&bizType===null)return;if(cur>0&&ans[cur-1]===null)return;if(cur<totalQs-1){cur++;render()}else showGate()}
-function prev(){if(cur>0){cur--;render()}}
+function pick(i){var qi=getQIndex();ans[qi]=i;render()}
+function next(){
+  if(!skipCategory&&cur===0&&bizType===null)return;
+  var qi=getQIndex();
+  if((!skipCategory&&cur>0||skipCategory)&&ans[qi]===null)return;
+  if(cur<getTotalQs()-1){cur++;render()}
+  else showGate();
+}
+function prev(){
+  if(cur>0){cur--;render()}
+  else{
+    // Go back to lookup screen
+    document.getElementById('quiz').style.display='none';
+    document.getElementById('lookup').style.display='block';
+  }
+}
 
 function showGate(){
   document.getElementById('quiz').style.display='none';
