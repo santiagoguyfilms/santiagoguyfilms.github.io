@@ -60,6 +60,42 @@ a{color:var(--cyan);text-decoration:none}
 .btn-back:hover{border-color:rgba(255,255,255,.2);color:var(--text2)}
 .btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important;box-shadow:none!important}
 .btn-lg{padding:16px 32px;font-size:15px;width:100%;justify-content:center}
+
+/* Business lookup */
+.lookup-section{text-align:center}
+.lookup-section h2{font-size:1.35rem;font-weight:800;margin-bottom:6px}
+.lookup-section>p{color:var(--text2);font-size:14px;margin-bottom:22px}
+.search-wrap{position:relative;margin-bottom:8px;text-align:left}
+.search-wrap input{width:100%;padding:14px 16px 14px 44px;background:var(--bg);border:2px solid rgba(255,255,255,.06);border-radius:12px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border .3s}
+.search-wrap input:focus{border-color:var(--cyan)}
+.search-wrap input::placeholder{color:var(--text3)}
+.search-wrap .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text3);pointer-events:none}
+.search-wrap .s-spin{display:none;position:absolute;right:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;border:2px solid var(--cyan);border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+.ac-list{position:absolute;top:100%;left:0;right:0;background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-top:6px;max-height:280px;overflow-y:auto;z-index:50;display:none}
+.ac-list.show{display:block}
+.ac-item{padding:12px 16px;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.ac-item:last-child{border-bottom:none}
+.ac-item:hover{background:rgba(0,212,255,.05)}
+.ac-icon{width:36px;height:36px;border-radius:10px;background:rgba(0,212,255,.08);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ac-info{text-align:left}
+.ac-name{font-size:14px;font-weight:600}
+.ac-addr{font-size:12px;color:var(--text3)}
+.not-listed{margin-top:14px;font-size:13px;color:var(--text3)}
+.not-listed a{cursor:pointer;color:var(--cyan);font-weight:600}
+.manual-fields{display:none;margin-top:18px;text-align:left}
+.manual-fields label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:block}
+.manual-fields input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;margin-bottom:12px;outline:none;transition:border .3s}
+.manual-fields input:focus{border-color:var(--cyan)}
+.manual-fields input::placeholder{color:var(--text3)}
+.biz-card{display:none;margin-top:18px;padding:16px 18px;background:var(--bg3);border:2px solid var(--cyan);border-radius:12px;text-align:left;position:relative}
+.biz-card .bc-name{font-size:16px;font-weight:700;margin-bottom:3px}
+.biz-card .bc-detail{font-size:13px;color:var(--text2)}
+.biz-card .bc-rating{display:flex;align-items:center;gap:4px;margin-top:6px;font-size:13px;color:var(--orange)}
+.biz-card .bc-rating span{color:var(--text3)}
+.biz-card .bc-change{position:absolute;top:12px;right:14px;font-size:12px;font-weight:600;color:var(--cyan);cursor:pointer}
+.lookup-go{display:none;margin-top:18px}
+
 /* Gate */
 .gate{display:none}
 .gate h2{font-size:1.5rem;font-weight:800;margin-bottom:6px}
@@ -69,6 +105,7 @@ a{color:var(--cyan);text-decoration:none}
 .gate input::placeholder{color:var(--text3)}
 .trust-line{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--text3)}
 .gate-err{color:var(--red);font-size:13px;margin-bottom:8px;display:none}
+
 /* Results */
 .results{display:none}
 .score-ring{width:180px;height:180px;border-radius:50%;margin:0 auto 20px;position:relative;display:flex;align-items:center;justify-content:center}
@@ -80,6 +117,19 @@ a{color:var(--cyan);text-decoration:none}
 .score-grade{text-align:center;font-size:15px;font-weight:600;margin-bottom:8px}
 .benchmark{text-align:center;font-size:13px;color:var(--text3);margin-bottom:28px;padding:10px 16px;background:rgba(255,255,255,.03);border-radius:8px}
 .benchmark strong{color:var(--text2)}
+
+/* Business snapshot in results */
+.biz-snap{display:none;background:var(--bg3);border-radius:14px;padding:18px;margin-bottom:24px;border:1px solid rgba(255,255,255,.06)}
+.snap-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.snap-icon{width:44px;height:44px;border-radius:10px;background:rgba(0,212,255,.08);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.snap-name{font-size:17px;font-weight:800}
+.snap-cat{font-size:12px;color:var(--text3)}
+.snap-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.snap-stat{text-align:center;padding:10px;background:var(--bg);border-radius:10px}
+.snap-stat .sv{font-size:16px;font-weight:700;color:var(--cyan)}
+.snap-stat .sl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.snap-insight{margin-top:14px;padding:12px 14px;background:rgba(0,212,255,.05);border-radius:10px;font-size:13px;color:var(--text2);line-height:1.55}
+
 .breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
 .bd-item{background:var(--bg3);border-radius:10px;padding:14px}
 .bd-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
@@ -99,7 +149,7 @@ a{color:var(--cyan);text-decoration:none}
 .cta-box .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .footer{text-align:center;padding:40px 20px;color:var(--text3);font-size:12px}
 .footer a{color:var(--cyan)}
-@media(max-width:600px){.qcard{padding:28px 20px}.breakdown{grid-template-columns:1fr}.biz-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.qcard{padding:28px 20px}.breakdown{grid-template-columns:1fr}.biz-grid{grid-template-columns:1fr 1fr}.snap-stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -117,7 +167,39 @@ a{color:var(--cyan);text-decoration:none}
 </div>
 
 <div class="container">
-  <div class="qcard" id="quiz">
+  <!-- BUSINESS LOOKUP (new first step) -->
+  <div class="qcard" id="lookup">
+    <div class="lookup-section">
+      <h2>&#127981; Let's find your business</h2>
+      <p>We'll personalize your results and recommendations based on your business.</p>
+      <div class="search-wrap">
+        <span class="s-icon">&#128269;</span>
+        <input type="text" id="bizSearch" placeholder="Start typing your business name..." autocomplete="off">
+        <div class="s-spin" id="sSpin"></div>
+        <div class="ac-list" id="acList"></div>
+      </div>
+      <div class="not-listed" id="notListed">Can't find it? <a onclick="showManual()">Enter your info manually</a></div>
+      <div class="manual-fields" id="manualFields">
+        <label>Business Name</label>
+        <input type="text" id="manName" placeholder="Your business name">
+        <label>Website (optional)</label>
+        <input type="url" id="manUrl" placeholder="https://yourbusiness.com">
+        <button class="btn btn-go btn-lg" onclick="submitManual()">Continue &rarr;</button>
+      </div>
+      <div class="biz-card" id="bizCard">
+        <div class="bc-name" id="bcName"></div>
+        <div class="bc-detail" id="bcDetail"></div>
+        <div class="bc-rating" id="bcRating"></div>
+        <span class="bc-change" onclick="resetBiz()">&#9998; Change</span>
+      </div>
+      <div class="lookup-go" id="lookupGo">
+        <button class="btn btn-go btn-lg" onclick="startQuiz()">Start My Assessment &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="qcard" id="quiz" style="display:none">
     <div class="progress"><div class="progress-fill" id="prog" style="width:11%"></div></div>
     <div class="step-label" id="step">Question 1 of 9</div>
     <div class="question" id="q"></div>
@@ -128,19 +210,19 @@ a{color:var(--cyan);text-decoration:none}
     </div>
   </div>
 
+  <!-- EMAIL GATE (simplified) -->
   <div class="qcard gate" id="gate">
     <h2>Your score is ready!</h2>
     <p>Enter your info to see your personalized Content Score and industry-specific recommendations.</p>
     <div class="gate-err" id="gErr">Please enter a valid email</div>
     <input id="gName" placeholder="Your name">
     <input id="gEmail" type="email" placeholder="Email address *" required>
-    <input id="gCompany" placeholder="Business name (optional)">
     <input id="gPhone" placeholder="Phone (optional)">
-    <input id="gWebsite" placeholder="Your website URL (optional)" type="url">
     <button class="btn btn-go btn-lg" onclick="submitGate()">See My Score</button>
     <div class="trust-line">&#128274; We respect your privacy. No spam, ever.</div>
   </div>
 
+  <!-- RESULTS -->
   <div class="qcard results" id="results">
     <div style="text-align:center">
       <h2 style="margin-bottom:4px">Your Content Score</h2>
@@ -156,6 +238,20 @@ a{color:var(--cyan);text-decoration:none}
     </div>
     <div class="score-grade" id="sGrade"></div>
     <div class="benchmark" id="sBench"></div>
+
+    <!-- Business snapshot -->
+    <div class="biz-snap" id="bizSnap">
+      <div class="snap-head">
+        <div class="snap-icon">&#127981;</div>
+        <div>
+          <div class="snap-name" id="snapName"></div>
+          <div class="snap-cat" id="snapCat"></div>
+        </div>
+      </div>
+      <div class="snap-stats" id="snapStats"></div>
+      <div class="snap-insight" id="snapInsight"></div>
+    </div>
+
     <div class="breakdown" id="breakdown"></div>
     <div class="recs">
       <h3>&#127775; Your Action Plan</h3>
@@ -175,7 +271,128 @@ a{color:var(--cyan);text-decoration:none}
 <div class="footer">Powered by <a href="https://santiagoguyfilms.com">Santiago Guy Films</a> &mdash; Miami's AI-Powered Content Agency</div>
 
 <script>
-var bizType=null;
+// ── Google Places ──
+var GKEY='AIzaSyAO45lwAZyhDb07i98ipzgmWG0SktW6p0M';
+var placesReady=false,acService,plService;
+var biz={name:'',address:'',rating:null,reviews:null,website:'',category:'',placeId:''};
+
+function loadPlaces(){
+  var s=document.createElement('script');
+  s.src='https://maps.googleapis.com/maps/api/js?key='+GKEY+'&libraries=places&callback=initPlaces';
+  s.async=true;document.head.appendChild(s);
+}
+function initPlaces(){
+  acService=new google.maps.places.AutocompleteService();
+  plService=new google.maps.places.PlacesService(document.createElement('div'));
+  placesReady=true;
+}
+
+var searchTimer;
+var searchEl=document.getElementById('bizSearch');
+var acListEl=document.getElementById('acList');
+var spinEl=document.getElementById('sSpin');
+
+searchEl.addEventListener('input',function(){
+  var q=this.value.trim();
+  clearTimeout(searchTimer);
+  if(q.length<2){acListEl.classList.remove('show');return}
+  if(!placesReady){showManual();return}
+  spinEl.style.display='block';
+  searchTimer=setTimeout(function(){
+    acService.getPlacePredictions({input:q,types:['establishment']},function(preds,status){
+      spinEl.style.display='none';
+      if(status!=='OK'||!preds){
+        acListEl.innerHTML='<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
+        acListEl.classList.add('show');return;
+      }
+      var html=preds.slice(0,5).map(function(p){
+        return '<div class="ac-item" onclick="selectPlace(\''+p.place_id+'\')"><div class="ac-icon">&#127979;</div><div class="ac-info"><div class="ac-name">'+esc(p.structured_formatting.main_text)+'</div><div class="ac-addr">'+esc(p.structured_formatting.secondary_text||'')+'</div></div></div>';
+      }).join('');
+      html+='<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
+      acListEl.innerHTML=html;
+      acListEl.classList.add('show');
+    });
+  },300);
+});
+
+document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap'))acListEl.classList.remove('show')});
+
+function selectPlace(pid){
+  acListEl.classList.remove('show');
+  spinEl.style.display='block';
+  plService.getDetails({placeId:pid,fields:['name','formatted_address','rating','user_ratings_total','website','types','url']},function(place,status){
+    spinEl.style.display='none';
+    if(status!=='OK')return;
+    biz={name:place.name,address:place.formatted_address||'',rating:place.rating||null,reviews:place.user_ratings_total||null,website:place.website||'',category:typeLabel(place.types||[]),placeId:pid};
+    // Auto-detect business type
+    autoDetectBizType(place.types||[]);
+    showBizCard();
+  });
+}
+
+function typeLabel(types){
+  var m={restaurant:'Restaurant',cafe:'Cafe',bar:'Bar',bakery:'Bakery',gym:'Gym & Fitness',spa:'Spa & Wellness',beauty_salon:'Beauty Salon',hair_care:'Hair Care',dentist:'Dentist',doctor:'Doctor',lawyer:'Legal Services',accounting:'Accounting',real_estate_agency:'Real Estate',car_dealer:'Auto Dealer',car_repair:'Auto Repair',store:'Retail Store',clothing_store:'Clothing Store',home_goods_store:'Home Goods',plumber:'Plumbing',electrician:'Electrician',roofing_contractor:'Roofing',general_contractor:'General Contractor',painter:'Painting',lodging:'Hotel & Lodging',veterinary_care:'Veterinary',florist:'Florist'};
+  for(var i=0;i<types.length;i++){if(m[types[i]])return m[types[i]]}
+  return 'Local Business';
+}
+
+function autoDetectBizType(types){
+  var map={restaurant:'restaurant',cafe:'restaurant',bar:'restaurant',bakery:'restaurant',food:'restaurant',gym:'fitness',spa:'fitness',beauty_salon:'beauty',hair_care:'beauty',dentist:'professional',doctor:'professional',lawyer:'professional',accounting:'professional',real_estate_agency:'realestate',store:'retail',clothing_store:'retail',home_goods_store:'retail',shopping_mall:'retail',plumber:'contractor',electrician:'contractor',roofing_contractor:'contractor',general_contractor:'contractor',painter:'contractor',lodging:'other'};
+  for(var i=0;i<types.length;i++){if(map[types[i]]){bizType=map[types[i]];return}}
+  bizType=null; // Will need manual selection
+}
+
+function showBizCard(){
+  searchEl.style.display='none';
+  document.getElementById('notListed').style.display='none';
+  document.getElementById('manualFields').style.display='none';
+  var card=document.getElementById('bizCard');
+  document.getElementById('bcName').textContent=biz.name;
+  document.getElementById('bcDetail').textContent=[biz.category,biz.address].filter(Boolean).join(' — ');
+  var rEl=document.getElementById('bcRating');
+  if(biz.rating){
+    var stars='';for(var i=0;i<5;i++)stars+=i<Math.round(biz.rating)?'&#9733;':'&#9734;';
+    rEl.innerHTML=stars+' '+biz.rating+' <span>('+((biz.reviews||0))+' reviews)</span>';
+    rEl.style.display='flex';
+  }else{rEl.style.display='none'}
+  card.style.display='block';
+  document.getElementById('lookupGo').style.display='block';
+}
+
+function resetBiz(){
+  document.getElementById('bizCard').style.display='none';
+  document.getElementById('lookupGo').style.display='none';
+  searchEl.style.display='block';
+  searchEl.value='';
+  document.getElementById('notListed').style.display='block';
+  document.getElementById('manualFields').style.display='none';
+  biz={name:'',address:'',rating:null,reviews:null,website:'',category:'',placeId:''};
+  bizType=null;
+}
+
+function showManual(){
+  acListEl.classList.remove('show');
+  document.getElementById('manualFields').style.display='block';
+  document.getElementById('manName').focus();
+}
+
+function submitManual(){
+  var n=document.getElementById('manName').value.trim();
+  if(!n){document.getElementById('manName').style.borderColor='var(--red)';return}
+  biz={name:n,address:'',rating:null,reviews:null,website:document.getElementById('manUrl').value.trim(),category:'',placeId:''};
+  bizType=null;
+  showBizCard();
+}
+
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+// ── Quiz ──
+function startQuiz(){
+  document.getElementById('lookup').style.display='none';
+  document.getElementById('quiz').style.display='block';
+  render();
+}
+
 var bizTypes=[
   {id:'restaurant',label:'Restaurant / Food & Bev',icon:'&#127869;'},
   {id:'fitness',label:'Fitness / Wellness',icon:'&#128170;'},
@@ -198,11 +415,50 @@ var Qs=[
   {q:"What best describes your business's content strategy?",cat:"strategy",o:["We post randomly when we remember","We know we should post more but lack a plan","Some content ideas but execution is inconsistent","Clear strategy, content calendar, consistent execution"]}
 ];
 
-var totalQs=Qs.length+1;
+var bizType=null;
+var totalQs=Qs.length+1; // +1 for biz type question
 var cur=0;
 var ans=Array(Qs.length).fill(null);
 
 var benchmarks={restaurant:45,fitness:50,realestate:48,professional:42,retail:52,beauty:55,contractor:38,other:45};
+
+function render(){
+  var total=totalQs;
+  if(cur===0){
+    // Business type question — may be pre-filled from Google Places
+    document.getElementById('q').textContent="What type of business do you run?";
+    document.getElementById('step').textContent="Question 1 of "+total;
+    document.getElementById('prog').style.width=(1/total*100)+'%';
+    document.getElementById('bBack').disabled=true;
+    document.getElementById('bNext').disabled=bizType===null;
+    document.getElementById('bNext').innerHTML='Next &rarr;';
+    document.getElementById('opts').innerHTML='<div class="biz-grid">'+bizTypes.map(function(b){
+      return '<div class="biz-opt'+(bizType===b.id?' sel':'')+'" onclick="pickBiz(\''+b.id+'\')"><div class="biz-icon">'+b.icon+'</div><div class="biz-label">'+b.label+'</div></div>';
+    }).join('')+'</div>';
+    return;
+  }
+  var qi=cur-1;
+  var q=Qs[qi];
+  document.getElementById('q').textContent=q.q;
+  document.getElementById('step').textContent='Question '+(cur+1)+' of '+total;
+  document.getElementById('prog').style.width=((cur+1)/total*100)+'%';
+  document.getElementById('bBack').disabled=false;
+  document.getElementById('bNext').disabled=ans[qi]===null;
+  document.getElementById('bNext').innerHTML=cur===total-1?'See Results &rarr;':'Next &rarr;';
+  document.getElementById('opts').innerHTML='<div class="options">'+q.o.map(function(o,i){
+    return '<div class="opt'+(ans[qi]===i?' sel':'')+'" onclick="pick('+i+')"><div class="dot"></div><span>'+o+'</span></div>';
+  }).join('')+'</div>';
+}
+
+function pickBiz(id){bizType=id;document.querySelectorAll('.biz-opt').forEach(function(el){el.classList.remove('sel')});event.currentTarget.classList.add('sel');document.getElementById('bNext').disabled=false}
+function pick(i){var qi=cur-1;ans[qi]=i;render()}
+function next(){if(cur===0&&bizType===null)return;if(cur>0&&ans[cur-1]===null)return;if(cur<totalQs-1){cur++;render()}else showGate()}
+function prev(){if(cur>0){cur--;render()}}
+
+function showGate(){
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('gate').style.display='block';
+}
 
 var industryRecs={
   restaurant:{
@@ -246,48 +502,10 @@ var industryRecs={
     ads:{t:"Run Hyper-Local Service Ads",d:"Target homeowners within your service area with ads showing your best work. Google Local Service Ads are especially powerful for contractors — you only pay for leads.",s:"/services/retainer/",sn:"Full Retainer - $2,497/mo"}
   }
 };
-// Aliases for types without custom recs
 industryRecs.professional=industryRecs.realestate;
 industryRecs.retail=industryRecs.restaurant;
 industryRecs.beauty=industryRecs.fitness;
 industryRecs.other=industryRecs.contractor;
-
-function render(){
-  var total=totalQs;
-  if(cur===0){
-    document.getElementById('q').textContent="What type of business do you run?";
-    document.getElementById('step').textContent="Question 1 of "+total;
-    document.getElementById('prog').style.width=(1/total*100)+'%';
-    document.getElementById('bBack').disabled=true;
-    document.getElementById('bNext').disabled=bizType===null;
-    document.getElementById('bNext').innerHTML='Next &rarr;';
-    document.getElementById('opts').innerHTML='<div class="biz-grid">'+bizTypes.map(function(b){
-      return '<div class="biz-opt'+(bizType===b.id?' sel':'')+'" onclick="pickBiz(\''+b.id+'\')"><div class="biz-icon">'+b.icon+'</div><div class="biz-label">'+b.label+'</div></div>';
-    }).join('')+'</div>';
-    return;
-  }
-  var qi=cur-1;
-  var q=Qs[qi];
-  document.getElementById('q').textContent=q.q;
-  document.getElementById('step').textContent='Question '+(cur+1)+' of '+total;
-  document.getElementById('prog').style.width=((cur+1)/total*100)+'%';
-  document.getElementById('bBack').disabled=false;
-  document.getElementById('bNext').disabled=ans[qi]===null;
-  document.getElementById('bNext').innerHTML=cur===total-1?'See Results &rarr;':'Next &rarr;';
-  document.getElementById('opts').innerHTML='<div class="options">'+q.o.map(function(o,i){
-    return '<div class="opt'+(ans[qi]===i?' sel':'')+'" onclick="pick('+i+')"><div class="dot"></div><span>'+o+'</span></div>';
-  }).join('')+'</div>';
-}
-
-function pickBiz(id){bizType=id;document.querySelectorAll('.biz-opt').forEach(function(el){el.classList.remove('sel')});event.currentTarget.classList.add('sel');document.getElementById('bNext').disabled=false}
-function pick(i){var qi=cur-1;ans[qi]=i;render()}
-function next(){if(cur===0&&bizType===null)return;if(cur>0&&ans[cur-1]===null)return;if(cur<totalQs-1){cur++;render()}else showGate()}
-function prev(){if(cur>0){cur--;render()}}
-
-function showGate(){
-  document.getElementById('quiz').style.display='none';
-  document.getElementById('gate').style.display='block';
-}
 
 function submitGate(){
   var email=document.getElementById('gEmail').value.trim();
@@ -297,7 +515,7 @@ function submitGate(){
   var total=0;for(var k in scores)total+=scores[k];
   var pct=Math.round(total/32*100);
 
-  var data={name:document.getElementById('gName').value,email:email,company:document.getElementById('gCompany').value,phone:document.getElementById('gPhone').value,website:document.getElementById('gWebsite').value,score:pct,scores:JSON.stringify(scores),bizType:bizType,source:'content-score-v2',timestamp:new Date().toISOString()};
+  var data={name:document.getElementById('gName').value,email:email,company:biz.name,phone:document.getElementById('gPhone').value,website:biz.website,score:pct,scores:JSON.stringify(scores),bizType:bizType,bizRating:biz.rating||'',bizReviews:biz.reviews||'',bizAddress:biz.address,source:'content-score-v2',timestamp:new Date().toISOString()};
 
   var scriptUrl='https://script.google.com/macros/s/AKfycby3U0wxBJyhcjjEyyr37zjpMI36yhSEjp0NtyRS7NIiyR-ZdRc1LsaAqvrDwzc3o5ll/exec';
   var iframe=document.createElement('iframe');iframe.name='leadFrame';iframe.style.display='none';document.body.appendChild(iframe);
@@ -312,8 +530,10 @@ function showResults(scores,pct){
   document.getElementById('gate').style.display='none';
   document.getElementById('results').style.display='block';
   var name=document.getElementById('gName').value;
-  var biz=bizTypes.find(function(b){return b.id===bizType});
-  document.getElementById('rName').textContent=name?(name+(biz?' &middot; '+biz.label:'')):'';
+  var bt=bizTypes.find(function(b){return b.id===bizType});
+  var label=biz.name||name||'';
+  if(label&&bt)label+=' &middot; '+bt.label;
+  document.getElementById('rName').innerHTML=label;
 
   var circ=2*Math.PI*80;
   var offset=circ-(pct/100*circ);
@@ -329,7 +549,7 @@ function showResults(scores,pct){
 
   // Benchmark
   var avg=benchmarks[bizType]||45;
-  var bizLabel=biz?biz.label:'businesses';
+  var bizLabel=bt?bt.label:'businesses';
   var diff=pct-avg;
   var benchText='';
   if(diff>10)benchText='Your score is <strong>'+pct+'%</strong>. The average Miami '+bizLabel.toLowerCase()+' scores '+avg+'%. You are <strong>well ahead</strong> of your competitors.';
@@ -338,21 +558,70 @@ function showResults(scores,pct){
   else benchText='Your score is <strong>'+pct+'%</strong>. The average Miami '+bizLabel.toLowerCase()+' scores '+avg+'%. You are <strong>behind most competitors</strong> — but that means big opportunity.';
   document.getElementById('sBench').innerHTML=benchText;
 
+  // ── Business snapshot ──
+  if(biz.name){
+    var snap=document.getElementById('bizSnap');
+    snap.style.display='block';
+    document.getElementById('snapName').textContent=biz.name;
+    document.getElementById('snapCat').textContent=[biz.category,biz.address].filter(Boolean).join(' — ');
+
+    var statsHtml='';
+    if(biz.rating){
+      var stars='';for(var i=0;i<5;i++)stars+=i<Math.round(biz.rating)?'&#9733;':'&#9734;';
+      statsHtml+='<div class="snap-stat"><div class="sv" style="color:var(--orange)">'+biz.rating+' '+stars+'</div><div class="sl">Google Rating</div></div>';
+    }
+    if(biz.reviews!==null){
+      statsHtml+='<div class="snap-stat"><div class="sv">'+biz.reviews+'</div><div class="sl">Google Reviews</div></div>';
+    }
+    if(biz.website){
+      statsHtml+='<div class="snap-stat"><div class="sv" style="color:var(--green)">&#10003;</div><div class="sl">Website Found</div></div>';
+    }else{
+      statsHtml+='<div class="snap-stat"><div class="sv" style="color:var(--red)">&#10007;</div><div class="sl">No Website</div></div>';
+    }
+    document.getElementById('snapStats').innerHTML=statsHtml;
+
+    // Personalized insight
+    var insight='';
+    var bn=biz.name;
+    if(biz.reviews!==null&&biz.reviews<50&&scores.proof<=2){
+      insight='&#128161; With only '+biz.reviews+' Google reviews, '+bn+' is missing a huge trust signal. Businesses in your category with 100+ reviews see 2-3x more click-throughs from search.';
+    }else if(biz.rating&&biz.rating>=4.5&&scores.proof<=2){
+      insight='&#128161; '+bn+' has a strong '+biz.rating+'-star rating — but you\'re not showcasing it! Feature these reviews on your website and social media to convert more browsers into customers.';
+    }else if(!biz.website&&scores.website<=2){
+      insight='&#128161; We couldn\'t find a website for '+bn+'. 81% of consumers research businesses online before visiting. A professional website could be your biggest unlock.';
+    }else if(biz.website&&scores.video<=2){
+      insight='&#128161; '+bn+' has a web presence but no video strategy. Businesses that add video to their content mix see 49% faster revenue growth.';
+    }else if(scores.frequency<=2){
+      insight='&#128161; Consistency is '+bn+'\'s biggest opportunity. Businesses that post 3-5x per week grow their audience 2x faster than those posting sporadically.';
+    }else{
+      insight='&#128161; '+bn+' has solid foundations. The next step is turning your content into a system that generates leads on autopilot.';
+    }
+    document.getElementById('snapInsight').innerHTML=insight;
+  }
+
   // Breakdown
   var names={frequency:'Posting Frequency',website:'Website Quality',branding:'Brand Identity',video:'Video Content',discovery:'Online Discovery',proof:'Social Proof',ads:'Paid Advertising',strategy:'Content Strategy'};
   var cols={frequency:'#00d4ff',website:'#a855f7',branding:'#ec4899',video:'#f59e0b',discovery:'#34d399',proof:'#f59e0b',ads:'#00d4ff',strategy:'#a855f7'};
   document.getElementById('breakdown').innerHTML=Object.keys(scores).map(function(k){var v=scores[k];return '<div class="bd-item"><div class="bd-label">'+names[k]+'</div><div class="bd-bar"><div class="bd-bar-fill" style="width:'+v/4*100+'%;background:'+cols[k]+'"></div></div><div class="bd-val" style="color:'+cols[k]+'">'+v+'/4</div></div>'}).join('');
 
-  // Industry-specific recs
+  // Industry-specific recs — personalized with business name
   var irecs=industryRecs[bizType]||industryRecs.other;
   var sorted=Object.keys(scores).sort(function(a,b){return scores[a]-scores[b]});
   var recHtml='';
   var count=0;
+  var bn=biz.name||'your business';
   for(var i=0;i<sorted.length&&count<4;i++){
     var cat=sorted[i];
     if(scores[cat]<=3&&irecs[cat]){
       var r=irecs[cat];
-      recHtml+='<div class="rec"><div class="rec-icon" style="background:'+cols[cat]+'22;color:'+cols[cat]+'">&#9733;</div><div><h4>'+r.t+'</h4><p>'+r.d+'</p>'+(r.s?'<a href="'+r.s+'" class="service-link">'+r.sn+' &rarr;</a>':'')+'</div></div>';
+      // Personalize description with business name
+      var desc=r.d;
+      if(biz.name){
+        if(cat==='proof'&&biz.reviews!==null){
+          desc=desc.replace(/Aim for 50\+ reviews/,'You have '+biz.reviews+' reviews — aim for '+(biz.reviews<50?'50':'100')+'+');
+        }
+      }
+      recHtml+='<div class="rec"><div class="rec-icon" style="background:'+cols[cat]+'22;color:'+cols[cat]+'">&#9733;</div><div><h4>'+r.t+'</h4><p>'+desc+'</p>'+(r.s?'<a href="'+r.s+'" class="service-link">'+r.sn+' &rarr;</a>':'')+'</div></div>';
       count++;
     }
   }
@@ -362,7 +631,8 @@ function showResults(scores,pct){
   document.getElementById('recs').innerHTML=recHtml;
 }
 
-render();
+// ── Init ──
+loadPlaces();
 </script>
 </body>
 </html>
