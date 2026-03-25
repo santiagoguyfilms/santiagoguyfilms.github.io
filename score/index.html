@@ -554,11 +554,15 @@ function submitGate(){
 
   var data={name:document.getElementById('gName').value,email:email,company:biz.name,phone:document.getElementById('gPhone').value,website:biz.website,score:pct,scores:JSON.stringify(scores),bizType:bizType,bizRating:biz.rating||'',bizReviews:biz.reviews||'',bizAddress:biz.address,source:'content-score-v2',timestamp:new Date().toISOString()};
 
+  // Send to Google Sheets
   var scriptUrl='https://script.google.com/macros/s/AKfycby3U0wxBJyhcjjEyyr37zjpMI36yhSEjp0NtyRS7NIiyR-ZdRc1LsaAqvrDwzc3o5ll/exec';
   var iframe=document.createElement('iframe');iframe.name='leadFrame';iframe.style.display='none';document.body.appendChild(iframe);
   var form=document.createElement('form');form.method='POST';form.action=scriptUrl;form.target='leadFrame';
   for(var key in data){var inp=document.createElement('input');inp.type='hidden';inp.name=key;inp.value=data[key];form.appendChild(inp)}
   document.body.appendChild(form);form.submit();form.remove();
+
+  // Send to client portal (triggers Mailchimp drip)
+  try{fetch('https://sgf-client-portal-production.up.railway.app/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:data.name,email:data.email,phone:data.phone,company:data.company,source:'content-score-v2',score_data:JSON.stringify({scores:scores,total:total,maxTotal:32,percentage:pct,business:{name:biz.name,rating:biz.rating,reviews:biz.reviews,website:biz.website,category:biz.category}})})})}catch(e){}
 
   showResults(scores,pct);
 }
