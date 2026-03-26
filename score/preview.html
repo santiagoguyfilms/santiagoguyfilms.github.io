@@ -758,12 +758,17 @@ var biz={name:'',address:'',rating:null,reviews:null,website:'',category:'',plac
 function loadPlaces(){
   var s=document.createElement('script');
   s.src='https://maps.googleapis.com/maps/api/js?key='+GKEY+'&libraries=places&callback=initPlaces';
-  s.async=true;document.head.appendChild(s);
+  s.async=true;
+  s.onerror=function(){console.error('Google Maps failed to load');document.querySelector('.search-hint').textContent='Search unavailable — enter your business manually below';};
+  document.head.appendChild(s);
 }
 function initPlaces(){
-  acService=new google.maps.places.AutocompleteService();
-  plService=new google.maps.places.PlacesService(document.createElement('div'));
-  placesReady=true;
+  try{
+    acService=new google.maps.places.AutocompleteService();
+    plService=new google.maps.places.PlacesService(document.createElement('div'));
+    placesReady=true;
+    console.log('Google Places API ready');
+  }catch(e){console.error('Places init error:',e)}
 }
 
 var searchTimer;
