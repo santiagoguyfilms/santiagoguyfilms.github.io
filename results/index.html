@@ -59,6 +59,7 @@ a{color:var(--cyan);text-decoration:none}
 .stat .lbl{font-size:12px;color:var(--text3);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 
 .container{max-width:1000px;margin:0 auto;padding:0 24px}
+.brand-logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:860px;margin:24px auto 0}
 .section-label{font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
 section{padding:60px 0;position:relative;overflow:hidden}
 
@@ -127,9 +128,10 @@ section{padding:60px 0;position:relative;overflow:hidden}
 .rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.15s}.rd5{transition-delay:.25s}
 
 @media(max-width:600px){
-  .stats-bar{gap:24px}
+  .stats-bar{gap:24px;display:grid;grid-template-columns:repeat(2,1fr);justify-items:center}
   .t-grid,.press-grid{grid-template-columns:1fr}
   .brands-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .brand-logo-grid{grid-template-columns:repeat(2,1fr)!important}
   .cta-box{padding:32px 24px}
 }
 </style>
@@ -156,7 +158,7 @@ section{padding:60px 0;position:relative;overflow:hidden}
 <section>
   <div class="container">
     <div class="section-label reveal">Brands We've Worked With</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:860px;margin:24px auto 0" class="reveal">
+    <div class="brand-logo-grid reveal">
       <div style="display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:18px 22px;height:64px"><img src="/logos/ridge.png" alt="Ridge" style="height:28px;width:auto;max-width:130px;object-fit:contain"></div>
       <div style="display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:18px 22px;height:64px"><img src="/logos/honeybook.svg" alt="HoneyBook" style="height:28px;width:auto;max-width:130px;object-fit:contain"></div>
       <div style="display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:18px 22px;height:64px"><img src="/logos/rexmd.svg" alt="Rex MD" style="height:28px;width:auto;max-width:130px;object-fit:contain"></div>
