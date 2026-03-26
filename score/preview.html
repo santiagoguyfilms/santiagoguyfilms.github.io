@@ -786,11 +786,16 @@ searchEl.addEventListener('input',function(){
   var q=this.value.trim();
   clearTimeout(searchTimer);
   if(q.length<2){acListEl.classList.remove('show');return}
-  if(!placesReady){showManual();return}
+  if(!placesReady){
+    document.querySelector('.search-hint').textContent='DEBUG: Places not ready yet, placesReady='+placesReady;
+    showManual();return;
+  }
   spinEl.style.display='block';
+  document.querySelector('.search-hint').textContent='DEBUG: Searching for "'+q+'"...';
   searchTimer=setTimeout(function(){
     acService.getPlacePredictions({input:q,types:['establishment'],bounds:miamiBounds,strictBounds:true},function(preds,status){
       spinEl.style.display='none';
+      document.querySelector('.search-hint').textContent='DEBUG: Status='+status+', Results='+(preds?preds.length:0);
       if(status!=='OK'||!preds){
         acListEl.innerHTML='<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
         acListEl.classList.add('show');return;
