@@ -783,7 +783,7 @@ searchEl.addEventListener('input',function(){
   if(!placesReady){showManual();return}
   spinEl.style.display='block';
   searchTimer=setTimeout(function(){
-    acService.getPlacePredictions({input:q,types:['establishment']},function(preds,status){
+    acService.getPlacePredictions({input:q},function(preds,status){
       spinEl.style.display='none';
       if(status!=='OK'||!preds){
         acListEl.innerHTML='<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
