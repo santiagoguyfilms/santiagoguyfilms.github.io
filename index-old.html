@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '498033357305619');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=498033357305619&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="OX5SNAy66m8J4iHGWaiByEH__zdRC3JEM637xSxy8ts" />
+  <title>Santiago Guy Films | AI Creative Studio & UGC</title>
+  <meta name="description" content="UGC production and AI business automation — Santiago Guy Films, Miami FL. 50+ brand collabs, 10+ years, 5.0 rating." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #07070f;
+      --bg-2:      #0c0c1a;
+      --card:      rgba(255,255,255,0.04);
+      --border:    rgba(255,255,255,0.08);
+      --blue:      #00cfff;
+      --blue-dim:  rgba(0,207,255,0.12);
+      --purple:    #7c5cfc;
+      --pink:      #e8459a;
+      --white:     #f0f0f8;
+      --gray-1:    #9898a8;
+      --gray-2:    #4a4a5a;
+      --orange:    #f59e0b;
+      --green:     #34d399;
+      --radius:    14px;
+      --radius-sm: 8px;
+      --font:      'Outfit', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 2px; }
+
+    /* ORBS */
+    .orb {
+      position: fixed; border-radius: 50%; filter: blur(100px);
+      pointer-events: none; z-index: 0;
+      animation: drift 18s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: rgba(124,92,252,0.10); top: -80px; left: -150px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(0,207,255,0.08); bottom: 15%; right: -120px; animation-delay: -6s; }
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%       { transform: translate(20px, -18px) scale(1.04); }
+      66%       { transform: translate(-15px, 12px) scale(0.96); }
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(7,7,15,0.75);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-1); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 400; color: var(--gray-1); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      padding: 9px 22px; background: var(--blue); color: #07070f !important;
+      border-radius: 100px; font-size: 0.83rem; font-weight: 700;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+
+    /* LAYOUT */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 5%; }
+    .section-pad { padding: 80px 0; }
+
+    .label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1rem;
+    }
+    .label::before { content: ''; display: block; width: 16px; height: 1px; background: var(--blue); }
+    .h2 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700; letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 1rem;
+    }
+    .desc { font-size: 1rem; font-weight: 300; color: var(--gray-1); max-width: 540px; line-height: 1.75; }
+    .section-header { margin-bottom: 40px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .label { justify-content: center; }
+    .section-header.center .desc { margin: 0 auto; }
+
+    .grad {
+      background: linear-gradient(130deg, var(--blue) 0%, var(--purple) 55%, var(--pink) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 130px 5% 90px;
+    }
+    .hero-eyebrow {
+      display: inline-block; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue);
+      border: 1px solid rgba(0,207,255,0.3); background: var(--blue-dim);
+      padding: 7px 18px; border-radius: 100px; margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-h1 {
+      font-size: clamp(2.8rem, 7vw, 5.2rem); font-weight: 800;
+      line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 300;
+      color: var(--gray-1); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.75;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary {
+      padding: 15px 36px; background: var(--blue); color: #07070f;
+      border-radius: 100px; font-family: var(--font); font-size: 0.95rem; font-weight: 700;
+      border: none; cursor: pointer; display: inline-block;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 36px rgba(0,207,255,0.22);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 0 52px rgba(0,207,255,0.35); }
+    .btn-ghost {
+      padding: 15px 36px; border: 1px solid var(--border); color: var(--white);
+      background: var(--card); border-radius: 100px; font-family: var(--font);
+      font-size: 0.95rem; font-weight: 500; cursor: pointer; display: inline-block;
+      backdrop-filter: blur(8px); transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--blue); transform: translateY(-2px); }
+
+    /* STATS */
+    .stats-row {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .stat {
+      flex: 1; min-width: 140px; padding: 28px 20px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-n {
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.03em;
+      background: linear-gradient(130deg, var(--blue), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; display: block;
+    }
+    .stat-l { font-size: 0.78rem; font-weight: 400; color: var(--gray-1); margin-top: 4px; }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
+
+    /* SERVICE CARDS */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px 28px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--card-glow, transparent);
+      opacity: 0; transition: opacity 0.3s; border-radius: var(--radius);
+    }
+    .card:hover { border-color: var(--card-accent, var(--blue)); transform: translateY(-5px); }
+    .card:hover::before { opacity: 1; }
+    .card-ai  { --card-accent: var(--blue);   --card-glow: rgba(0,207,255,0.06); }
+    .card-ugc { --card-accent: var(--pink);   --card-glow: rgba(232,69,154,0.08); }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1.25rem; position: relative;
+    }
+    .card-ai .card-icon  { background: rgba(0,207,255,0.12); }
+    .card-ugc .card-icon { background: rgba(232,69,154,0.12); }
+    .card-tag {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--card-accent, var(--blue));
+      margin-bottom: 0.5rem; display: block; position: relative;
+    }
+    .card-title {
+      font-size: 1.1rem; font-weight: 700; letter-spacing: -0.015em;
+      margin-bottom: 0.65rem; position: relative;
+    }
+    .card-body {
+      font-size: 0.875rem; font-weight: 300; color: var(--gray-1);
+      line-height: 1.7; margin-bottom: 1.25rem; position: relative;
+    }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.825rem; font-weight: 600;
+      color: var(--card-accent, var(--blue)); position: relative; transition: gap 0.2s;
+    }
+    .card-link:hover { gap: 10px; }
+    .card-link svg { width: 13px; height: 13px; }
+    .arrow-svg { viewBox: "0 0 24 24"; }
+
+    /* BRANDS */
+    .brands-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .brand-tag {
+      font-size: 0.8rem; font-weight: 500;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 100px; padding: 6px 14px; color: var(--gray-1);
+      transition: all 0.2s;
+    }
+    .brand-tag:hover { border-color: rgba(0,207,255,0.3); color: var(--white); }
+
+    .logo-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 16px; margin-top: 24px;
+    }
+    .logo-cell {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 20px 16px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; min-height: 80px;
+      transition: all 0.3s;
+    }
+    .logo-cell:hover { border-color: rgba(0,207,255,0.2); transform: translateY(-3px); background: rgba(255,255,255,0.05); }
+    .logo-cell img {
+      height: 28px; width: auto; max-width: 90px; object-fit: contain;
+      filter: grayscale(100%) brightness(0.7) invert(0.8);
+      transition: filter 0.3s;
+    }
+    .logo-cell:hover img { filter: grayscale(0%) brightness(1) invert(0); }
+    .logo-cell .logo-name {
+      font-size: 0.65rem; font-weight: 500; color: var(--gray-2);
+      text-transform: uppercase; letter-spacing: 0.05em; text-align: center;
+    }
+
+    /* REVIEWS */
+    .reviews-strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+    .review {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .review:hover { border-color: rgba(0,207,255,0.2); transform: translateY(-3px); }
+    .review .stars { color: var(--orange); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
+    .review .qt { font-size: 0.85rem; font-weight: 300; color: var(--gray-1); line-height: 1.7; font-style: italic; margin-bottom: 12px; }
+    .review .who { font-size: 0.78rem; font-weight: 600; color: var(--white); }
+    .review .src { font-size: 0.68rem; color: var(--gray-2); }
+    .reviews-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--blue); margin-top: 20px; transition: gap 0.2s; }
+    .reviews-link:hover { gap: 10px; }
+
+    /* CTA */
+    .cta-block {
+      background: linear-gradient(135deg, rgba(0,207,255,0.06), rgba(124,92,252,0.1), rgba(232,69,154,0.06));
+      border: 1px solid var(--border); border-radius: calc(var(--radius) * 1.5);
+      padding: 72px 5%; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-block::before {
+      content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,207,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-block .h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; }
+    .cta-block p { font-size: 1rem; font-weight: 300; color: var(--gray-1); margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 44px 5% 32px; position: relative; z-index: 1;
+    }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    .footer-brand { font-size: 0.85rem; font-weight: 500; color: var(--gray-1); }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.82rem; font-weight: 300; color: var(--gray-2); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 34px; height: 34px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--gray-2); background: var(--card);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .social-btn:hover { transform: translateY(-2px); }
+    .social-btn:hover .fa-instagram { color: #e1306c; }
+    .social-btn:hover .fa-tiktok { color: #ffffff; }
+    .social-btn:hover .fa-envelope { color: var(--blue); }
+    .footer-copy { width: 100%; text-align: center; font-size: 0.75rem; font-weight: 300; color: var(--gray-2); padding-top: 20px; border-top: 1px solid var(--border); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 20px 5%; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .stats-row { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .reviews-strip { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Santiago Guy Films</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="/offers/">Pricing</a></li>
+      <li><a href="/results/">Proof</a></li>
+      <li><a href="/score/" class="nav-cta">Free Content Score</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-eyebrow">AI Creative Studio · Miami, FL</div>
+    <h1 class="hero-h1">Content that<br>works as hard<br>as <span class="grad">you do.</span></h1>
+    <p class="hero-sub">UGC production and AI business automation. 50+ brands. 10 years. 5.0 rating. Let's build something.</p>
+    <div class="hero-actions">
+      <a href="/score/" class="btn-primary">Get Your Free Content Score</a>
+      <a href="/offers/" class="btn-ghost">See Services & Pricing</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="padding-bottom:80px;">
+    <div class="container">
+      <div class="stats-row reveal">
+        <div class="stat"><span class="stat-n">50+</span><div class="stat-l">Brand Collabs</div></div>
+        <div class="stat"><span class="stat-n">10+</span><div class="stat-l">Years in Production</div></div>
+        <div class="stat"><span class="stat-n">157k</span><div class="stat-l">TikTok Followers</div></div>
+        <div class="stat"><span class="stat-n">5.0</span><div class="stat-l">Client Rating</div></div>
+        <div class="stat"><span class="stat-n">100%</span><div class="stat-l">AI-Forward</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES (2 pillars only) -->
+  <section id="services" class="section-pad">
+    <div class="container">
+      <div class="section-header center reveal">
+        <div class="label">What I Do</div>
+        <h2 class="h2">Two things. <span class="grad">Done right.</span></h2>
+        <p class="desc">I make content that converts and build AI systems that save you time. That's it.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="card card-ugc reveal d1">
+          <div class="card-icon">🎬</div>
+          <span class="card-tag">UGC & Brand Content</span>
+          <div class="card-title">Short-Form Video That Performs</div>
+          <p class="card-body">High-converting UGC for paid social and organic. Modular creative assets — hooks, angles, b-roll — built from 50+ brand collabs and real performance data.</p>
+          <a href="https://www.canva.com/design/DAGSdMlpQZE/UXdxHJobbhQLsuZLFpg46w/view?utm_content=DAGSdMlpQZE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hcc4ce3f170" target="_blank" rel="noopener" class="card-link">View Media Kit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="card card-ai reveal d2">
+          <div class="card-icon">🧠</div>
+          <span class="card-tag">AI Business Solutions</span>
+          <div class="card-title">Automate the Work. Scale the Results.</div>
+          <p class="card-body">Custom AI workflows that eliminate busywork — from content systems to full business automation. I'll build it for you or teach you how.</p>
+          <a href="/offers/" class="card-link">See Packages & Pricing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BRANDS -->
+  <section id="brands" class="section-pad" style="background:var(--bg-2);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">Brand Collaborations</div>
+        <h2 class="h2">50+ brands.<br>Across every category.</h2>
+      </div>
+      <div class="logo-grid reveal">
+        <div class="logo-cell"><img src="https://logo.clearbit.com/ridge.com" alt="Ridge" onerror="this.style.display='none'"><div class="logo-name">Ridge</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/anker.com" alt="Anker" onerror="this.style.display='none'"><div class="logo-name">Anker</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/skechers.com" alt="Skechers" onerror="this.style.display='none'"><div class="logo-name">Skechers</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/crypto.com" alt="Crypto.com" onerror="this.style.display='none'"><div class="logo-name">Crypto.com</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/kodak.com" alt="Kodak" onerror="this.style.display='none'"><div class="logo-name">Kodak</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REVIEWS -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">What People Say</div>
+        <h2 class="h2">5.0 across every platform.</h2>
+      </div>
+      <div class="reviews-strip">
+        <div class="review reveal d1" style="border-color:rgba(0,207,255,0.15);background:rgba(0,207,255,0.03);">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="qt">"I absolutely love your videos! You're so engaging, so good at telling a story while showcasing really effective demonstrations."</div>
+          <div class="who">Angela T.</div>
+          <div class="src">Creator Manager, Darkroom Agency</div>
+        </div>
+        <div class="review reveal d2">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="qt">"An absolute gem! His attention to detail and expert skill set are impeccable. He captured every meaningful moment."</div>
+          <div class="who">David V.</div>
+          <div class="src">Verified Client</div>
+        </div>
+        <div class="review reveal d3">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="qt">"An extraordinarily gifted filmmaker. We hired him immediately. He made magic of our most important day."</div>
+          <div class="who">Barbara F.</div>
+          <div class="src">Verified Client</div>
+        </div>
+      </div>
+      <a href="/results/" class="reviews-link reveal">See all reviews + press features <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-pad" style="padding-top:0;">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h2 class="h2">Ready to build something<br><span class="grad">extraordinary?</span></h2>
+        <p>Take the free Content Score quiz or book a strategy call. First call is always free.</p>
+        <div class="cta-actions">
+          <a href="/score/" class="btn-primary">Get Your Free Content Score</a>
+          <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn-ghost">Book Strategy Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Santiago Guy Films</div>
+      <div class="footer-links">
+        <a href="/offers/">Services</a>
+        <a href="/results/">Proof</a>
+        <a href="/score/">Content Score</a>
+        <a href="mailto:welcome@santiagoguyfilms.com">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/santiagoguyfilms" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@santiagoguyfilms" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
+        <a href="mailto:welcome@santiagoguyfilms.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; 2026 Santiago Guy Films &middot; Built with AI &middot; Miami, FL</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
