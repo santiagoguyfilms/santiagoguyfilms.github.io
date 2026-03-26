@@ -250,6 +250,29 @@ src="https://www.facebook.com/tr?id=498033357305619&ev=PageView&noscript=1"
     }
     .brand-tag:hover { border-color: rgba(0,207,255,0.3); color: var(--white); }
 
+    .logo-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 16px; margin-top: 24px;
+    }
+    .logo-cell {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 20px 16px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; min-height: 80px;
+      transition: all 0.3s;
+    }
+    .logo-cell:hover { border-color: rgba(0,207,255,0.2); transform: translateY(-3px); background: rgba(255,255,255,0.05); }
+    .logo-cell img {
+      height: 28px; width: auto; max-width: 90px; object-fit: contain;
+      filter: grayscale(100%) brightness(0.7) invert(0.8);
+      transition: filter 0.3s;
+    }
+    .logo-cell:hover img { filter: grayscale(0%) brightness(1) invert(0); }
+    .logo-cell .logo-name {
+      font-size: 0.65rem; font-weight: 500; color: var(--gray-2);
+      text-transform: uppercase; letter-spacing: 0.05em; text-align: center;
+    }
+
     /* REVIEWS */
     .reviews-strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
     .review {
@@ -413,43 +436,46 @@ src="https://www.facebook.com/tr?id=498033357305619&ev=PageView&noscript=1"
         <div class="label">Brand Collaborations</div>
         <h2 class="h2">50+ brands.<br>Across every category.</h2>
       </div>
-      <div class="brands-wrap reveal">
-        <span class="brand-tag">Glass Expanse</span>
-        <span class="brand-tag">Ridge</span>
-        <span class="brand-tag">Rex MD</span>
-        <span class="brand-tag">Anker</span>
-        <span class="brand-tag">HoneyBook</span>
-        <span class="brand-tag">Skechers</span>
-        <span class="brand-tag">Crypto.com</span>
-        <span class="brand-tag">ThinOptics</span>
-        <span class="brand-tag">Boldify</span>
-        <span class="brand-tag">Pete & Pedro</span>
+      <div class="logo-grid reveal">
+        <div class="logo-cell"><img src="https://logo.clearbit.com/ridge.com" alt="Ridge" onerror="this.style.display='none'"><div class="logo-name">Ridge</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/anker.com" alt="Anker" onerror="this.style.display='none'"><div class="logo-name">Anker</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/skechers.com" alt="Skechers" onerror="this.style.display='none'"><div class="logo-name">Skechers</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/honeybook.com" alt="HoneyBook" onerror="this.style.display='none'"><div class="logo-name">HoneyBook</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/crypto.com" alt="Crypto.com" onerror="this.style.display='none'"><div class="logo-name">Crypto.com</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/kodak.com" alt="Kodak" onerror="this.style.display='none'"><div class="logo-name">Kodak</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/rexmd.com" alt="Rex MD" onerror="this.style.display='none'"><div class="logo-name">Rex MD</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/operationsmile.org" alt="Operation Smile" onerror="this.style.display='none'"><div class="logo-name">Operation Smile</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/ynab.com" alt="YNAB" onerror="this.style.display='none'"><div class="logo-name">YNAB</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/selectquote.com" alt="SelectQuote" onerror="this.style.display='none'"><div class="logo-name">SelectQuote</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/insurify.com" alt="Insurify" onerror="this.style.display='none'"><div class="logo-name">Insurify</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/boldify.com" alt="Boldify" onerror="this.style.display='none'"><div class="logo-name">Boldify</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/kachava.com" alt="Ka'Chava" onerror="this.style.display='none'"><div class="logo-name">Ka'Chava</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/eufy.com" alt="Eufy" onerror="this.style.display='none'"><div class="logo-name">Eufy</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/thinoptics.com" alt="ThinOptics" onerror="this.style.display='none'"><div class="logo-name">ThinOptics</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/peteandpedro.com" alt="Pete & Pedro" onerror="this.style.display='none'"><div class="logo-name">Pete & Pedro</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/frogfuel.com" alt="Frog Fuel" onerror="this.style.display='none'"><div class="logo-name">Frog Fuel</div></div>
+        <div class="logo-cell"><img src="https://logo.clearbit.com/glassexpanse.com" alt="Glass Expanse" onerror="this.style.display='none'"><div class="logo-name">Glass Expanse</div></div>
+      </div>
+      <div class="brands-wrap reveal" style="margin-top:16px;">
         <span class="brand-tag">Hempvana</span>
-        <span class="brand-tag">Eufy</span>
-        <span class="brand-tag">Ka Chava</span>
-        <span class="brand-tag">YNAB</span>
-        <span class="brand-tag">Orii Spice Rack</span>
         <span class="brand-tag">Bull Shot BBQ</span>
-        <span class="brand-tag">Operation Smile</span>
-        <span class="brand-tag">Kodak</span>
-        <span class="brand-tag">Buzz RX</span>
-        <span class="brand-tag">SelectQuote</span>
+        <span class="brand-tag">Orii Spice Rack</span>
         <span class="brand-tag">Rugiet</span>
-        <span class="brand-tag">Frog Fuel</span>
+        <span class="brand-tag">Buzz RX</span>
         <span class="brand-tag">Kerdom</span>
-        <span class="brand-tag">Reimagine App</span>
-        <span class="brand-tag">Insurify</span>
-        <span class="brand-tag">Penn State</span>
-        <span class="brand-tag">Workleap</span>
-        <span class="brand-tag">Njord Watch</span>
-        <span class="brand-tag">Go Primer</span>
-        <span class="brand-tag">Canles Shoes</span>
-        <span class="brand-tag">SafeDog</span>
         <span class="brand-tag">Wise Bank</span>
         <span class="brand-tag">Joymode</span>
         <span class="brand-tag">Blaze AI</span>
         <span class="brand-tag">Stash</span>
         <span class="brand-tag">Freebird</span>
+        <span class="brand-tag">Penn State</span>
+        <span class="brand-tag">Workleap</span>
+        <span class="brand-tag">Go Primer</span>
+        <span class="brand-tag">Njord Watch</span>
+        <span class="brand-tag">Reimagine App</span>
+        <span class="brand-tag">SafeDog</span>
+        <span class="brand-tag">Canles Shoes</span>
+        <span class="brand-tag">+ more</span>
       </div>
     </div>
   </section>
@@ -482,11 +508,11 @@ src="https://www.facebook.com/tr?id=498033357305619&ev=PageView&noscript=1"
           <div class="who">Sheena E.</div>
           <div class="src">Verified Client</div>
         </div>
-        <div class="review reveal d4">
+        <div class="review reveal d4" style="border-color:rgba(0,207,255,0.15);background:rgba(0,207,255,0.03);">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="qt">"An extraordinarily gifted filmmaker. He made magic of our most important day, capturing the joy, love and spirit of our union."</div>
-          <div class="who">Barbara F.</div>
-          <div class="src">Verified Client</div>
+          <div class="qt">"I absolutely love your videos! You're so engaging, so good at telling a story while showcasing really effective demonstrations."</div>
+          <div class="who">Angela T.</div>
+          <div class="src">Creator Manager, Darkroom Agency &middot; Bull Shot</div>
         </div>
       </div>
       <a href="/results/" class="reviews-link reveal">See all 12 reviews + press features <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>

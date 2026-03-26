@@ -84,6 +84,16 @@ section{padding:60px 0;position:relative;overflow:hidden}
 .rating-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);padding:4px 14px;border-radius:20px;font-size:12px;color:var(--text2);margin-bottom:20px;margin-top:8px}
 .rating-badge i{color:var(--orange)}
 
+/* Logo Grid */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin-top:24px}
+.logo-cell{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:76px;transition:all .3s}
+.logo-cell:hover{border-color:rgba(0,212,255,.2);transform:translateY(-3px);background:rgba(255,255,255,.05)}
+.logo-cell img{height:26px;width:auto;max-width:88px;object-fit:contain;filter:grayscale(100%) brightness(.7) invert(.8);transition:filter .3s}
+.logo-cell:hover img{filter:grayscale(0%) brightness(1) invert(0)}
+.logo-cell .logo-name{font-size:.63rem;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;text-align:center}
+.brand-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.brand-pill{font-size:.75rem;font-weight:500;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:100px;padding:5px 12px;color:var(--text3)}
+
 /* Press */
 .press-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:24px}
 .press-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:28px;transition:all .3s;text-decoration:none;color:var(--text);display:block}
@@ -146,21 +156,40 @@ section{padding:60px 0;position:relative;overflow:hidden}
 <section>
   <div class="container">
     <div class="section-label reveal">Brands I've Worked With</div>
-    <div class="brands-grid">
-      <div class="brand-chip reveal rd1"><span class="dot green"></span>Glass Expanse</div>
-      <div class="brand-chip reveal rd2"><span class="dot cyan"></span>Ridge</div>
-      <div class="brand-chip reveal rd3"><span class="dot purple"></span>Rex MD</div>
-      <div class="brand-chip reveal rd1"><span class="dot pink"></span>Anker</div>
-      <div class="brand-chip reveal rd2"><span class="dot orange"></span>HoneyBook</div>
-      <div class="brand-chip reveal rd3"><span class="dot green"></span>ThinOptics</div>
-      <div class="brand-chip reveal rd1"><span class="dot cyan"></span>Boldify</div>
-      <div class="brand-chip reveal rd2"><span class="dot purple"></span>Pete & Pedro</div>
-      <div class="brand-chip reveal rd3"><span class="dot pink"></span>Hempvana</div>
-      <div class="brand-chip reveal rd1"><span class="dot orange"></span>Canles Shoes</div>
-      <div class="brand-chip reveal rd2"><span class="dot green"></span>Bull Shot BBQ</div>
-      <div class="brand-chip reveal rd3"><span class="dot cyan"></span>Orii Spice Rack</div>
-      <div class="brand-chip reveal rd1"><span class="dot purple"></span>Reimagine App</div>
-      <div class="brand-chip reveal rd2"><span class="dot pink"></span>Go Primer</div>
+    <div class="logo-grid reveal">
+      <div class="logo-cell"><img src="https://logo.clearbit.com/ridge.com" alt="Ridge" onerror="this.style.display='none'"><div class="logo-name">Ridge</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/anker.com" alt="Anker" onerror="this.style.display='none'"><div class="logo-name">Anker</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/skechers.com" alt="Skechers" onerror="this.style.display='none'"><div class="logo-name">Skechers</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/honeybook.com" alt="HoneyBook" onerror="this.style.display='none'"><div class="logo-name">HoneyBook</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/crypto.com" alt="Crypto.com" onerror="this.style.display='none'"><div class="logo-name">Crypto.com</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/kodak.com" alt="Kodak" onerror="this.style.display='none'"><div class="logo-name">Kodak</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/rexmd.com" alt="Rex MD" onerror="this.style.display='none'"><div class="logo-name">Rex MD</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/operationsmile.org" alt="Operation Smile" onerror="this.style.display='none'"><div class="logo-name">Operation Smile</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/ynab.com" alt="YNAB" onerror="this.style.display='none'"><div class="logo-name">YNAB</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/selectquote.com" alt="SelectQuote" onerror="this.style.display='none'"><div class="logo-name">SelectQuote</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/insurify.com" alt="Insurify" onerror="this.style.display='none'"><div class="logo-name">Insurify</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/boldify.com" alt="Boldify" onerror="this.style.display='none'"><div class="logo-name">Boldify</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/kachava.com" alt="Ka'Chava" onerror="this.style.display='none'"><div class="logo-name">Ka'Chava</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/eufy.com" alt="Eufy" onerror="this.style.display='none'"><div class="logo-name">Eufy</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/thinoptics.com" alt="ThinOptics" onerror="this.style.display='none'"><div class="logo-name">ThinOptics</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/peteandpedro.com" alt="Pete & Pedro" onerror="this.style.display='none'"><div class="logo-name">Pete & Pedro</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/frogfuel.com" alt="Frog Fuel" onerror="this.style.display='none'"><div class="logo-name">Frog Fuel</div></div>
+      <div class="logo-cell"><img src="https://logo.clearbit.com/glassexpanse.com" alt="Glass Expanse" onerror="this.style.display='none'"><div class="logo-name">Glass Expanse</div></div>
+    </div>
+    <div class="brand-pills reveal">
+      <span class="brand-pill">Hempvana</span>
+      <span class="brand-pill">Bull Shot BBQ</span>
+      <span class="brand-pill">Orii Spice Rack</span>
+      <span class="brand-pill">Rugiet</span>
+      <span class="brand-pill">Wise Bank</span>
+      <span class="brand-pill">Joymode</span>
+      <span class="brand-pill">Blaze AI</span>
+      <span class="brand-pill">Stash</span>
+      <span class="brand-pill">Go Primer</span>
+      <span class="brand-pill">Reimagine App</span>
+      <span class="brand-pill">Penn State</span>
+      <span class="brand-pill">Workleap</span>
+      <span class="brand-pill">+ more</span>
     </div>
   </div>
 </section>
@@ -172,75 +201,89 @@ section{padding:60px 0;position:relative;overflow:hidden}
     <div class="rating-badge reveal"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0 average across all platforms</div>
     <div class="t-grid">
 
-      <div class="t-card reveal rd1">
+      <!-- BRAND REVIEW -->
+      <div class="t-card reveal rd1" style="border-color:rgba(0,212,255,.15);background:rgba(0,212,255,.03);">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"Santiago made us a film that had me and my husband in tears. We could not have asked for a better video or a better videographer. We are over the moon and can't recommend him enough."</div>
+        <div class="quote">"I absolutely love your videos! You're so engaging, so good at telling a story while showcasing really effective demonstrations."</div>
+        <div class="author"><div class="avatar">A</div><div><div class="name">Angela T.</div><div class="role">Creator Manager, Darkroom Agency</div></div></div>
+      </div>
+
+      <div class="t-card reveal rd2" style="border-color:rgba(0,212,255,.15);background:rgba(0,212,255,.03);">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="quote">"Content approved first time! Franco has worked with the brand many times and adds such great advice. We can't wait for the next one!"</div>
+        <div class="author"><div class="avatar">A</div><div><div class="name">Angela T.</div><div class="role">Creator Manager, Darkroom Agency</div></div></div>
+      </div>
+
+      <!-- CLIENT REVIEWS (wedding references removed) -->
+      <div class="t-card reveal rd3">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="quote">"Santiago made us a film that had me and my husband in tears. We could not have asked for a better video or a better videographer. Can't recommend him enough."</div>
         <div class="author"><div class="avatar">A</div><div><div class="name">Ashley W.</div><div class="role">Verified Client</div></div></div>
       </div>
 
-      <div class="t-card reveal rd2">
+      <div class="t-card reveal rd1">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"The best wedding videographer around. The sound quality and attention to detail were incredible. I hardly even knew they were there capturing some of the best footage ever!"</div>
+        <div class="quote">"The best videographer around. The sound quality and attention to detail were incredible. I hardly even knew they were there capturing some of the best footage ever!"</div>
         <div class="author"><div class="avatar">Y</div><div><div class="name">Yoeslan A.</div><div class="role">Verified Client</div></div></div>
       </div>
 
-      <div class="t-card reveal rd3">
+      <div class="t-card reveal rd2">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"He's a true creative. I highly recommend him for videography. Most talented I've met. Our wedding video was more than we could have imagined."</div>
+        <div class="quote">"He's a true creative. I highly recommend him for videography. Most talented I've met. Our video was more than we could have imagined."</div>
         <div class="author"><div class="avatar">S</div><div><div class="name">Sheena E.</div><div class="role">Verified Client</div></div></div>
       </div>
 
-      <div class="t-card reveal rd1">
+      <div class="t-card reveal rd3">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"Santiago Guy is an absolute gem! His attention to detail and expert skill set are impeccable. He took it upon himself to attend our rehearsal dinner to ensure he captured every meaningful moment."</div>
+        <div class="quote">"An absolute gem! His attention to detail and expert skill set are impeccable. He went above and beyond to ensure he captured every meaningful moment."</div>
         <div class="author"><div class="avatar">D</div><div><div class="name">David V.</div><div class="role">Verified Client</div></div></div>
       </div>
 
-      <div class="t-card reveal rd2">
+      <div class="t-card reveal rd1">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"An extraordinarily gifted filmmaker. We hired him immediately after our first interview. He made magic of our most important day, capturing the joy, love and spirit of our union."</div>
+        <div class="quote">"An extraordinarily gifted filmmaker. We hired him immediately after our first interview. He made magic of our most important day."</div>
         <div class="author"><div class="avatar">B</div><div><div class="name">Barbara F.</div><div class="role">Verified Client</div></div></div>
       </div>
 
-      <div class="t-card reveal rd3">
+      <div class="t-card reveal rd2">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"Completely selfless and invested in capturing every meaningful moment. Excellent attention to detail, inclusive of all our requests. Warm, genuine, and outstanding customer service."</div>
+        <div class="quote">"Completely selfless and invested in capturing every meaningful moment. Excellent attention to detail. Warm, genuine, and outstanding customer service."</div>
         <div class="author"><div class="avatar">N</div><div><div class="name">Nathania C.</div><div class="role">Verified Client</div></div></div>
       </div>
 
+      <div class="t-card reveal rd3">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="quote">"My friend got goosebumps and tears within two minutes of watching his work. He completely changed my perception of what videography could be."</div>
+        <div class="author"><div class="avatar">I</div><div><div class="name">Isabel B.</div><div class="role">Verified Client</div></div></div>
+      </div>
+
       <div class="t-card reveal rd1">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"My friend got goosebumps and tears within two minutes of watching his work. He completely changed my perception of what wedding videography could be."</div>
-        <div class="author"><div class="avatar">I</div><div><div class="name">Isabel B.</div><div class="role">Verified Client</div></div></div>
+        <div class="quote">"Three months later, I still get goosebumps watching our film. One of the best investments we ever made."</div>
+        <div class="author"><div class="avatar">R</div><div><div class="name">Rosemary M.</div><div class="role">Verified Client</div></div></div>
       </div>
 
       <div class="t-card reveal rd2">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"Three months later, I still get goosebumps watching our film. Our love story unfolds seamlessly throughout. One of the best investments we ever made."</div>
-        <div class="author"><div class="avatar">R</div><div><div class="name">Rosemary M.</div><div class="role">Verified Client</div></div></div>
+        <div class="quote">"Created a wonderful video with excellent music, effects, angles, and overall vibe. His professional demeanor made us feel comfortable."</div>
+        <div class="author"><div class="avatar">L</div><div><div class="name">Leyla B.</div><div class="role">Verified Client</div></div></div>
       </div>
 
       <div class="t-card reveal rd3">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"Created a wonderful video with excellent music, effects, angles, and overall vibe. His professional demeanor made us feel comfortable. I still get goosebumps watching it."</div>
-        <div class="author"><div class="avatar">L</div><div><div class="name">Leyla B.</div><div class="role">Verified Client</div></div></div>
-      </div>
-
-      <div class="t-card reveal rd1">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"Kind and patient throughout. We received so many compliments on our video. Hiring him last-minute was the best decision we made for our wedding."</div>
+        <div class="quote">"Kind and patient throughout. We received so many compliments on our video. Hiring him was the best decision we made."</div>
         <div class="author"><div class="avatar">J</div><div><div class="name">Jennifer L.</div><div class="role">Verified Client</div></div></div>
       </div>
 
-      <div class="t-card reveal rd2">
+      <div class="t-card reveal rd1">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <div class="quote">"Extremely accommodating with our last-minute planning. I want him to film every important event in our lives going forward. His work is that good."</div>
         <div class="author"><div class="avatar">F</div><div><div class="name">Francesca J.</div><div class="role">Verified Client</div></div></div>
       </div>
 
-      <div class="t-card reveal rd3">
+      <div class="t-card reveal rd2">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="quote">"Captured beautiful moments between friends, family, ceremony and reception. His work is very inspiring. We'll be staying in touch for years to come."</div>
+        <div class="quote">"Captured beautiful moments. His work is very inspiring. We'll be staying in touch for years to come."</div>
         <div class="author"><div class="avatar">J</div><div><div class="name">Justin S.</div><div class="role">Verified Client</div></div></div>
       </div>
 
