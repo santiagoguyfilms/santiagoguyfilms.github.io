@@ -80,7 +80,7 @@ a { color: var(--cyan); text-decoration: none; }
 
 /* ── SEARCH BOX — THE STAR ── */
 .search-section {
-  position: relative; z-index: 1;
+  position: relative; z-index: 10;
   max-width: 560px;
   margin: 0 auto;
   padding: 0 20px;
@@ -154,9 +154,9 @@ a { color: var(--cyan); text-decoration: none; }
   border-radius: 14px;
   margin-top: 6px;
   max-height: 320px; overflow-y: auto;
-  z-index: 50;
+  z-index: 999;
   display: none;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7);
 }
 .ac-list.show { display: block; }
 .ac-item {
@@ -768,9 +768,10 @@ function initPlaces(){
     acService=new google.maps.places.AutocompleteService();
     plService=new google.maps.places.PlacesService(document.createElement('div'));
     // Miami metro area bounds for location bias
+    // South Florida: Miami-Dade, Broward, Palm Beach
     miamiBounds=new google.maps.LatLngBounds(
-      new google.maps.LatLng(25.5,-80.6),  // SW corner
-      new google.maps.LatLng(26.3,-80.0)   // NE corner
+      new google.maps.LatLng(25.2,-80.9),
+      new google.maps.LatLng(26.9,-79.8)
     );
     placesReady=true;
     console.log('Google Places API ready');
@@ -782,28 +783,37 @@ var searchEl=document.getElementById('bizSearch');
 var acListEl=document.getElementById('acList');
 var spinEl=document.getElementById('sSpin');
 
+// Allow Enter key to use typed name directly
+searchEl.addEventListener('keydown',function(e){
+  if(e.key==='Enter'){
+    e.preventDefault();
+    var q=this.value.trim();
+    if(q.length>=2){
+      acListEl.classList.remove('show');
+      biz={name:q,address:'',rating:null,reviews:null,website:'',category:'',placeId:''};
+      bizType=null;
+      showTeaseCardManual();
+    }
+  }
+});
+
 searchEl.addEventListener('input',function(){
   var q=this.value.trim();
   clearTimeout(searchTimer);
   if(q.length<2){acListEl.classList.remove('show');return}
-  if(!placesReady){
-    document.querySelector('.search-hint').textContent='DEBUG: Places not ready yet, placesReady='+placesReady;
-    showManual();return;
-  }
+  if(!placesReady){showManual();return}
   spinEl.style.display='block';
-  document.querySelector('.search-hint').textContent='DEBUG: Searching for "'+q+'"...';
   searchTimer=setTimeout(function(){
-    acService.getPlacePredictions({input:q,types:['establishment'],bounds:miamiBounds,strictBounds:true},function(preds,status){
+    acService.getPlacePredictions({input:q,types:['establishment'],bounds:miamiBounds},function(preds,status){
       spinEl.style.display='none';
-      document.querySelector('.search-hint').textContent='DEBUG: Status='+status+', Results='+(preds?preds.length:0);
       if(status!=='OK'||!preds){
         acListEl.innerHTML='<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
         acListEl.classList.add('show');return;
       }
-      var html=preds.slice(0,5).map(function(p){
+      var useTyped='<div class="ac-item" style="border-bottom:2px solid rgba(0,212,255,0.15)" onclick="useTypedName()"><div class="ac-icon" style="background:rgba(0,212,255,0.15)">&#9998;</div><div class="ac-info"><div class="ac-name" style="color:var(--cyan)">Use &ldquo;'+esc(q)+'&rdquo;</div><div class="ac-addr">Continue with this name</div></div></div>';
+      var html=useTyped+preds.slice(0,4).map(function(p){
         return '<div class="ac-item" onclick="selectPlace(\''+p.place_id+'\')"><div class="ac-icon">&#127979;</div><div class="ac-info"><div class="ac-name">'+esc(p.structured_formatting.main_text)+'</div><div class="ac-addr">'+esc(p.structured_formatting.secondary_text||'')+'</div></div></div>';
       }).join('');
-      html+='<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
       acListEl.innerHTML=html;
       acListEl.classList.add('show');
     });
@@ -834,6 +844,14 @@ function autoDetectBizType(types){
   var map={restaurant:'restaurant',cafe:'restaurant',bar:'restaurant',bakery:'restaurant',food:'restaurant',gym:'fitness',spa:'fitness',beauty_salon:'beauty',hair_care:'beauty',dentist:'professional',doctor:'professional',lawyer:'professional',accounting:'professional',real_estate_agency:'realestate',store:'retail',clothing_store:'retail',home_goods_store:'retail',shopping_mall:'retail',plumber:'contractor',electrician:'contractor',roofing_contractor:'contractor',general_contractor:'contractor',painter:'contractor',lodging:'other'};
   for(var i=0;i<types.length;i++){if(map[types[i]]){bizType=map[types[i]];return}}
   bizType=null;
+}
+
+function useTypedName(){
+  var q=searchEl.value.trim();
+  acListEl.classList.remove('show');
+  biz={name:q,address:'',rating:null,reviews:null,website:'',category:'',placeId:''};
+  bizType=null;
+  showTeaseCardManual();
 }
 
 // ── Show the REAL DATA tease card ──
