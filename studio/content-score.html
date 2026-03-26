@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Business Content Score — Santiago Guy Films</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0b14;--bg2:#12131f;--bg3:#1a1c2e;--text:#e8eaf0;--text2:#9ca3b4;--text3:#5a5f7a;--cyan:#00d4ff;--purple:#a855f7;--pink:#ec4899;--green:#10b981;--red:#ef4444;--orange:#f59e0b}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+
+.hero{text-align:center;padding:60px 20px 40px;max-width:700px;margin:0 auto}
+.hero .badge{display:inline-block;background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(168,85,247,.15));border:1px solid rgba(0,212,255,.2);padding:6px 16px;border-radius:20px;font-size:12px;color:var(--cyan);font-weight:600;margin-bottom:16px}
+.hero h1{font-size:40px;font-weight:800;line-height:1.15;margin-bottom:16px}
+.hero h1 span{background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text2);font-size:17px;line-height:1.6;max-width:550px;margin:0 auto}
+.hero-sub{display:flex;justify-content:center;gap:24px;margin-top:20px;color:var(--text3);font-size:13px}
+.hero-sub i{color:var(--cyan);margin-right:6px}
+
+.quiz-container{max-width:640px;margin:0 auto;padding:20px}
+.quiz-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:32px;margin-bottom:20px}
+.progress-bar{height:6px;background:var(--bg3);border-radius:3px;margin-bottom:28px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));border-radius:3px;transition:width .4s ease}
+.step-label{font-size:12px;color:var(--text3);margin-bottom:20px;text-transform:uppercase;letter-spacing:1px}
+.question{font-size:20px;font-weight:700;margin-bottom:20px;line-height:1.4}
+.options{display:flex;flex-direction:column;gap:10px}
+.option{padding:14px 18px;background:var(--bg);border:2px solid var(--bg3);border-radius:10px;cursor:pointer;transition:all .2s;font-size:15px;display:flex;align-items:center;gap:12px}
+.option:hover{border-color:var(--cyan);background:rgba(0,212,255,.05)}
+.option.selected{border-color:var(--cyan);background:rgba(0,212,255,.08)}
+.option .opt-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.option:nth-child(1) .opt-icon{background:rgba(239,68,68,.15);color:var(--red)}
+.option:nth-child(2) .opt-icon{background:rgba(245,158,11,.15);color:var(--orange)}
+.option:nth-child(3) .opt-icon{background:rgba(0,212,255,.15);color:var(--cyan)}
+.option:nth-child(4) .opt-icon{background:rgba(16,185,129,.15);color:var(--green)}
+
+.nav-btns{display:flex;justify-content:space-between;margin-top:24px}
+.btn{padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff}
+.btn-cyan:hover{opacity:.9;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text3);border:1px solid var(--bg3)}
+.btn-ghost:hover{color:var(--text);border-color:var(--text3)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Business lookup */
+.lookup{text-align:center}
+.lookup h2{font-size:24px;font-weight:700;margin-bottom:8px}
+.lookup>p{color:var(--text2);font-size:14px;margin-bottom:24px}
+.search-wrap{position:relative;margin-bottom:8px}
+.search-wrap input{width:100%;padding:14px 16px 14px 44px;background:var(--bg);border:2px solid var(--bg3);border-radius:10px;color:var(--text);font-size:16px;outline:none;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--cyan)}
+.search-wrap .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:16px;pointer-events:none}
+.search-wrap .search-spinner{display:none;position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--cyan);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+.autocomplete-list{position:absolute;top:100%;left:0;right:0;background:var(--bg2);border:1px solid var(--bg3);border-radius:10px;margin-top:4px;max-height:260px;overflow-y:auto;z-index:100;display:none}
+.autocomplete-list.show{display:block}
+.ac-item{padding:12px 16px;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bg3)}
+.ac-item:last-child{border-bottom:none}
+.ac-item:hover{background:rgba(0,212,255,.06)}
+.ac-item .ac-icon{width:36px;height:36px;border-radius:8px;background:rgba(0,212,255,.1);display:flex;align-items:center;justify-content:center;color:var(--cyan);flex-shrink:0}
+.ac-item .ac-info{text-align:left}
+.ac-item .ac-name{font-size:14px;font-weight:600}
+.ac-item .ac-addr{font-size:12px;color:var(--text3)}
+.not-listed{margin-top:12px;font-size:13px;color:var(--text3)}
+.not-listed a{cursor:pointer;color:var(--cyan)}
+
+/* Manual entry fallback */
+.manual-entry{display:none;margin-top:16px;text-align:left}
+.manual-entry label{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:block}
+.manual-entry input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--bg3);border-radius:8px;color:var(--text);font-size:14px;margin-bottom:12px;outline:none}
+.manual-entry input:focus{border-color:var(--cyan)}
+
+/* Selected business card */
+.biz-selected{display:none;margin-top:16px;padding:16px;background:var(--bg);border:2px solid var(--cyan);border-radius:10px;text-align:left;position:relative}
+.biz-selected .biz-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.biz-selected .biz-details{font-size:13px;color:var(--text2)}
+.biz-selected .biz-rating{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:13px;color:var(--orange)}
+.biz-selected .biz-change{position:absolute;top:12px;right:12px;font-size:12px;color:var(--cyan);cursor:pointer}
+
+/* Email gate */
+.gate{display:none}
+.gate h2{font-size:24px;font-weight:700;margin-bottom:8px}
+.gate p{color:var(--text2);font-size:14px;margin-bottom:20px}
+.gate input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--bg3);border-radius:8px;color:var(--text);font-size:14px;margin-bottom:12px;outline:none}
+.gate input:focus{border-color:var(--cyan)}
+.gate .trust{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;color:var(--text3)}
+.gate .trust i{color:var(--green)}
+
+/* Results */
+.results{display:none}
+.score-ring{width:180px;height:180px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;position:relative}
+.score-ring::before{content:'';position:absolute;inset:0;border-radius:50%;padding:6px;background:conic-gradient(var(--cyan) 0%,var(--purple) var(--pct),var(--bg3) var(--pct));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.score-number{font-size:48px;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.score-label{font-size:14px;color:var(--text2);text-align:center;margin-bottom:24px}
+
+/* Business snapshot on results */
+.biz-snapshot{display:none;background:var(--bg);border-radius:12px;padding:18px;margin-bottom:24px;border:1px solid var(--bg3)}
+.biz-snapshot .snap-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.biz-snapshot .snap-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(168,85,247,.15));display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--cyan);flex-shrink:0}
+.biz-snapshot .snap-name{font-size:18px;font-weight:700}
+.biz-snapshot .snap-cat{font-size:12px;color:var(--text3)}
+.biz-snapshot .snap-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.biz-snapshot .snap-stat{text-align:center;padding:10px;background:var(--bg2);border-radius:8px}
+.biz-snapshot .snap-stat .stat-val{font-size:16px;font-weight:700;color:var(--cyan)}
+.biz-snapshot .snap-stat .stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;margin-top:2px}
+.biz-snapshot .snap-insight{margin-top:12px;padding:10px 12px;background:rgba(0,212,255,.06);border-radius:8px;font-size:13px;color:var(--text2);line-height:1.5}
+.biz-snapshot .snap-insight i{color:var(--cyan);margin-right:6px}
+
+.score-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.score-item{background:var(--bg);border-radius:10px;padding:14px}
+.score-item .si-label{font-size:11px;color:var(--text3);text-transform:uppercase;margin-bottom:6px}
+.score-item .si-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.score-item .si-fill{height:100%;border-radius:3px}
+.score-item .si-val{font-size:16px;font-weight:700}
+.recs{margin-top:24px}
+.rec{display:flex;gap:12px;padding:14px;background:var(--bg);border-radius:10px;margin-bottom:10px}
+.rec .rec-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.rec h4{font-size:14px;margin-bottom:2px}
+.rec p{font-size:12px;color:var(--text2);line-height:1.4}
+.cta-box{text-align:center;margin-top:30px;padding:24px;background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(168,85,247,.08));border:1px solid rgba(0,212,255,.2);border-radius:12px}
+.cta-box h3{font-size:18px;margin-bottom:8px}
+.cta-box p{color:var(--text2);font-size:13px;margin-bottom:16px}
+
+.footer{text-align:center;padding:40px 20px;color:var(--text3);font-size:13px}
+.footer a{color:var(--cyan)}
+
+@media(max-width:600px){
+  .hero h1{font-size:28px}
+  .hero p{font-size:15px}
+  .score-breakdown{grid-template-columns:1fr}
+  .hero-sub{flex-direction:column;gap:8px}
+  .biz-snapshot .snap-stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><i class="fas fa-bolt"></i> Free Assessment — Takes 2 Minutes</div>
+  <h1>What's Your Business <span>Content Score?</span></h1>
+  <p>Find out how your online presence stacks up and get a personalized action plan to attract more customers.</p>
+  <div class="hero-sub">
+    <span><i class="fas fa-clock"></i> 2 min quiz</span>
+    <span><i class="fas fa-chart-bar"></i> Instant results</span>
+    <span><i class="fas fa-gift"></i> Free action plan</span>
+  </div>
+</div>
+
+<div class="quiz-container">
+  <!-- BUSINESS LOOKUP (new first step) -->
+  <div class="quiz-card lookup" id="lookup-section">
+    <h2><i class="fas fa-building" style="color:var(--cyan);margin-right:8px"></i> Let's find your business</h2>
+    <p>We'll use this to personalize your results and recommendations.</p>
+    <div class="search-wrap">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="biz-search" placeholder="Start typing your business name..." autocomplete="off">
+      <i class="fas fa-spinner search-spinner" id="search-spinner"></i>
+      <div class="autocomplete-list" id="ac-list"></div>
+    </div>
+    <div class="not-listed">
+      <i class="fas fa-info-circle" style="margin-right:4px"></i> Can't find it? <a onclick="showManualEntry()">Enter your info manually</a>
+    </div>
+    <div class="manual-entry" id="manual-entry">
+      <label>Business Name</label>
+      <input type="text" id="manual-biz-name" placeholder="Your business name">
+      <label>Website (optional)</label>
+      <input type="url" id="manual-biz-url" placeholder="https://yourbusiness.com">
+      <button class="btn btn-cyan" onclick="submitManualBiz()" style="width:100%"><i class="fas fa-arrow-right"></i> Continue</button>
+    </div>
+    <div class="biz-selected" id="biz-selected">
+      <div class="biz-name" id="sel-biz-name"></div>
+      <div class="biz-details" id="sel-biz-details"></div>
+      <div class="biz-rating" id="sel-biz-rating"></div>
+      <span class="biz-change" onclick="changeBiz()"><i class="fas fa-pen"></i> Change</span>
+    </div>
+    <div id="lookup-next" style="display:none;margin-top:20px">
+      <button class="btn btn-cyan" onclick="startQuiz()" style="width:100%"><i class="fas fa-arrow-right"></i> Start My Assessment</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-card" id="quiz-section" style="display:none">
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:12.5%"></div></div>
+    <div class="step-label" id="step-label">Question 1 of 8</div>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="nav-btns">
+      <button class="btn btn-ghost" id="btn-back" onclick="prevQ()" disabled><i class="fas fa-arrow-left"></i> Back</button>
+      <button class="btn btn-cyan" id="btn-next" onclick="nextQ()" disabled>Next <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- EMAIL GATE (simplified — no company field) -->
+  <div class="quiz-card gate" id="gate-section">
+    <h2>Your score is ready!</h2>
+    <p>Enter your info below to see your personalized Content Score and action plan.</p>
+    <input type="text" id="lead-name" placeholder="Your name">
+    <input type="email" id="lead-email" placeholder="Your email address *">
+    <input type="tel" id="lead-phone" placeholder="Phone (optional)">
+    <button class="btn btn-cyan" onclick="submitLead()" style="width:100%"><i class="fas fa-chart-bar"></i> See My Score</button>
+    <div class="trust">
+      <i class="fas fa-lock"></i> We respect your privacy. No spam, ever. Unsubscribe anytime.
+    </div>
+    <div id="gate-error" style="color:var(--red);font-size:13px;margin-top:8px;display:none"></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="quiz-card results" id="results-section">
+    <div style="text-align:center">
+      <h2 style="margin-bottom:4px">Your Content Score</h2>
+      <p style="color:var(--text3);font-size:13px;margin-bottom:20px" id="result-name"></p>
+    </div>
+    <div class="score-ring" id="score-ring" style="--pct:0%">
+      <span class="score-number" id="score-number">0</span>
+    </div>
+    <div class="score-label" id="score-grade"></div>
+
+    <!-- Personalized business snapshot -->
+    <div class="biz-snapshot" id="biz-snapshot">
+      <div class="snap-header">
+        <div class="snap-icon"><i class="fas fa-building"></i></div>
+        <div>
+          <div class="snap-name" id="snap-name"></div>
+          <div class="snap-cat" id="snap-cat"></div>
+        </div>
+      </div>
+      <div class="snap-stats" id="snap-stats"></div>
+      <div class="snap-insight" id="snap-insight"></div>
+    </div>
+
+    <div class="score-breakdown" id="score-breakdown"></div>
+    <div class="recs">
+      <h3 style="margin-bottom:12px"><i class="fas fa-lightbulb" style="color:var(--orange)"></i> Your Action Plan</h3>
+      <div id="recommendations"></div>
+    </div>
+    <div class="cta-box">
+      <h3>Want help implementing this?</h3>
+      <p>Book a free strategy call and we'll show you exactly how to level up your content game.</p>
+      <a href="https://calendly.com/d/cvsk-kdg-2pp/sgf-kickoff-call" target="_blank" class="btn btn-cyan"><i class="fas fa-calendar"></i> Book Free Strategy Call</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Powered by <a href="https://santiagoguyfilms.com" target="_blank">Santiago Guy Films</a> — Miami's AI-Powered Content Agency</p>
+</div>
+
+<script>
+// ── Google Places Autocomplete ──
+const GOOGLE_API_KEY = 'AIzaSyAO45lwAZyhDb07i98ipzgmWG0SktW6p0M';
+
+let bizData = { name: '', address: '', rating: null, reviewCount: null, website: '', category: '', placeId: '' };
+let placesReady = false;
+let autocompleteService, placesService;
+
+// Load Google Maps JS API
+function loadGooglePlaces() {
+  if (GOOGLE_API_KEY === 'REPLACE_WITH_YOUR_KEY') return; // Skip if no key — manual-only mode
+  const script = document.createElement('script');
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&callback=initPlaces`;
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+function initPlaces() {
+  autocompleteService = new google.maps.places.AutocompleteService();
+  placesService = new google.maps.places.PlacesService(document.createElement('div'));
+  placesReady = true;
+}
+
+// ── Business Search ──
+let searchTimeout;
+const searchInput = document.getElementById('biz-search');
+const acList = document.getElementById('ac-list');
+const spinner = document.getElementById('search-spinner');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim();
+  clearTimeout(searchTimeout);
+  if (q.length < 2) { acList.classList.remove('show'); return; }
+
+  if (!placesReady) {
+    // No API key or not loaded — show manual entry prompt
+    showManualEntry();
+    return;
+  }
+
+  spinner.style.display = 'block';
+  searchTimeout = setTimeout(() => {
+    autocompleteService.getPlacePredictions(
+      { input: q, types: ['establishment'] },
+      (predictions, status) => {
+        spinner.style.display = 'none';
+        if (status !== google.maps.places.PlacesServiceStatus.OK || !predictions) {
+          acList.innerHTML = '<div class="ac-item" onclick="showManualEntry()"><div class="ac-icon"><i class="fas fa-plus"></i></div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
+          acList.classList.add('show');
+          return;
+        }
+
+        let html = predictions.slice(0, 5).map(p => `
+          <div class="ac-item" onclick="selectPlace('${p.place_id}')">
+            <div class="ac-icon"><i class="fas fa-store"></i></div>
+            <div class="ac-info">
+              <div class="ac-name">${escapeHtml(p.structured_formatting.main_text)}</div>
+              <div class="ac-addr">${escapeHtml(p.structured_formatting.secondary_text || '')}</div>
+            </div>
+          </div>
+        `).join('');
+
+        html += '<div class="ac-item" onclick="showManualEntry()"><div class="ac-icon"><i class="fas fa-plus"></i></div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
+
+        acList.innerHTML = html;
+        acList.classList.add('show');
+      }
+    );
+  }, 300);
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-wrap')) acList.classList.remove('show');
+});
+
+function selectPlace(placeId) {
+  acList.classList.remove('show');
+  spinner.style.display = 'block';
+
+  placesService.getDetails(
+    { placeId, fields: ['name', 'formatted_address', 'rating', 'user_ratings_total', 'website', 'types', 'url'] },
+    (place, status) => {
+      spinner.style.display = 'none';
+      if (status !== google.maps.places.PlacesServiceStatus.OK) return;
+
+      const category = formatPlaceTypes(place.types || []);
+      bizData = {
+        name: place.name,
+        address: place.formatted_address || '',
+        rating: place.rating || null,
+        reviewCount: place.user_ratings_total || null,
+        website: place.website || '',
+        category: category,
+        placeId: placeId
+      };
+
+      showSelectedBiz();
+    }
+  );
+}
+
+function formatPlaceTypes(types) {
+  const map = {
+    restaurant: 'Restaurant', cafe: 'Cafe', bar: 'Bar', bakery: 'Bakery',
+    gym: 'Gym & Fitness', spa: 'Spa & Wellness', beauty_salon: 'Beauty Salon',
+    hair_care: 'Hair Care', dentist: 'Dentist', doctor: 'Doctor',
+    lawyer: 'Legal Services', accounting: 'Accounting', real_estate_agency: 'Real Estate',
+    car_dealer: 'Auto Dealer', car_repair: 'Auto Repair', store: 'Retail Store',
+    clothing_store: 'Clothing Store', home_goods_store: 'Home Goods',
+    plumber: 'Plumbing', electrician: 'Electrician', roofing_contractor: 'Roofing',
+    general_contractor: 'General Contractor', painter: 'Painting',
+    lodging: 'Hotel & Lodging', travel_agency: 'Travel', pet_store: 'Pet Store',
+    veterinary_care: 'Veterinary', florist: 'Florist', jewelry_store: 'Jewelry'
+  };
+  for (const t of types) { if (map[t]) return map[t]; }
+  return 'Local Business';
+}
+
+function showSelectedBiz() {
+  document.getElementById('biz-search').style.display = 'none';
+  document.querySelector('.not-listed').style.display = 'none';
+  document.getElementById('manual-entry').style.display = 'none';
+  document.querySelector('.search-icon').style.display = 'none';
+
+  const sel = document.getElementById('biz-selected');
+  document.getElementById('sel-biz-name').textContent = bizData.name;
+  document.getElementById('sel-biz-details').textContent = [bizData.category, bizData.address].filter(Boolean).join(' — ');
+
+  const ratingEl = document.getElementById('sel-biz-rating');
+  if (bizData.rating) {
+    const stars = '★'.repeat(Math.round(bizData.rating)) + '☆'.repeat(5 - Math.round(bizData.rating));
+    ratingEl.innerHTML = `${stars} ${bizData.rating} <span style="color:var(--text3)">(${bizData.reviewCount || 0} reviews)</span>`;
+    ratingEl.style.display = 'inline-flex';
+  } else {
+    ratingEl.style.display = 'none';
+  }
+
+  sel.style.display = 'block';
+  document.getElementById('lookup-next').style.display = 'block';
+}
+
+function changeBiz() {
+  document.getElementById('biz-selected').style.display = 'none';
+  document.getElementById('lookup-next').style.display = 'none';
+  document.getElementById('biz-search').style.display = 'block';
+  document.getElementById('biz-search').value = '';
+  document.querySelector('.search-icon').style.display = 'block';
+  document.querySelector('.not-listed').style.display = 'block';
+  document.getElementById('manual-entry').style.display = 'none';
+  bizData = { name: '', address: '', rating: null, reviewCount: null, website: '', category: '', placeId: '' };
+}
+
+function showManualEntry() {
+  acList.classList.remove('show');
+  document.getElementById('manual-entry').style.display = 'block';
+  document.getElementById('manual-biz-name').focus();
+}
+
+function submitManualBiz() {
+  const name = document.getElementById('manual-biz-name').value.trim();
+  if (!name) { document.getElementById('manual-biz-name').style.borderColor = 'var(--red)'; return; }
+  bizData = {
+    name: name,
+    address: '',
+    rating: null,
+    reviewCount: null,
+    website: document.getElementById('manual-biz-url').value.trim(),
+    category: '',
+    placeId: ''
+  };
+  showSelectedBiz();
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+// ── Quiz Flow ──
+function startQuiz() {
+  document.getElementById('lookup-section').style.display = 'none';
+  document.getElementById('quiz-section').style.display = 'block';
+  renderQ();
+}
+
+const questions = [
+  {
+    q: "How often does your business post content on social media?",
+    cat: "frequency",
+    opts: [
+      { text: "Rarely or never", score: 1, icon: "fa-calendar-xmark" },
+      { text: "A few times a month", score: 2, icon: "fa-calendar-minus" },
+      { text: "2-3 times a week", score: 3, icon: "fa-calendar-check" },
+      { text: "Daily or near-daily", score: 4, icon: "fa-calendar-days" }
+    ]
+  },
+  {
+    q: "Do you have a professional website that represents your business?",
+    cat: "website",
+    opts: [
+      { text: "No website at all", score: 1, icon: "fa-circle-xmark" },
+      { text: "Basic/outdated website", score: 2, icon: "fa-globe" },
+      { text: "Decent website, could be better", score: 3, icon: "fa-laptop" },
+      { text: "Professional, mobile-friendly, converting visitors", score: 4, icon: "fa-rocket" }
+    ]
+  },
+  {
+    q: "How would you describe your brand's visual identity?",
+    cat: "branding",
+    opts: [
+      { text: "No consistent branding at all", score: 1, icon: "fa-ban" },
+      { text: "Logo only, no real brand system", score: 2, icon: "fa-image" },
+      { text: "Some brand guidelines but inconsistent", score: 3, icon: "fa-palette" },
+      { text: "Strong, consistent brand across everything", score: 4, icon: "fa-gem" }
+    ]
+  },
+  {
+    q: "Are you using video content to promote your business?",
+    cat: "video",
+    opts: [
+      { text: "No video at all", score: 1, icon: "fa-video-slash" },
+      { text: "Occasional amateur videos", score: 2, icon: "fa-mobile-screen" },
+      { text: "Regular video content, decent quality", score: 3, icon: "fa-film" },
+      { text: "Professional UGC/branded videos performing well", score: 4, icon: "fa-clapperboard" }
+    ]
+  },
+  {
+    q: "How do customers currently find your business online?",
+    cat: "discovery",
+    opts: [
+      { text: "Mostly word-of-mouth, very little online", score: 1, icon: "fa-question" },
+      { text: "Google search but ranking is low", score: 2, icon: "fa-magnifying-glass" },
+      { text: "Mix of search, social, and referrals", score: 3, icon: "fa-diagram-project" },
+      { text: "Strong online presence driving consistent leads", score: 4, icon: "fa-bullseye" }
+    ]
+  },
+  {
+    q: "Do you collect and showcase customer reviews or testimonials?",
+    cat: "social_proof",
+    opts: [
+      { text: "No reviews or testimonials", score: 1, icon: "fa-star-half" },
+      { text: "A few reviews, not really showcased", score: 2, icon: "fa-star-half-stroke" },
+      { text: "Reviews on Google/Yelp but not featured", score: 3, icon: "fa-star" },
+      { text: "Actively collecting and showcasing social proof everywhere", score: 4, icon: "fa-ranking-star" }
+    ]
+  },
+  {
+    q: "Are you running any paid advertising?",
+    cat: "paid_ads",
+    opts: [
+      { text: "No paid ads at all", score: 1, icon: "fa-money-bill-wave" },
+      { text: "Boosting posts occasionally", score: 2, icon: "fa-hand-holding-dollar" },
+      { text: "Running ads but not sure about ROI", score: 3, icon: "fa-chart-simple" },
+      { text: "Strategic ad campaigns with tracked results", score: 4, icon: "fa-bullhorn" }
+    ]
+  },
+  {
+    q: "What best describes your business's content strategy?",
+    cat: "strategy",
+    opts: [
+      { text: "We post randomly when we remember", score: 1, icon: "fa-shuffle" },
+      { text: "We know we should post more but lack a plan", score: 2, icon: "fa-lightbulb" },
+      { text: "We have some content ideas but execution is inconsistent", score: 3, icon: "fa-list-check" },
+      { text: "Clear strategy, content calendar, and consistent execution", score: 4, icon: "fa-chess-queen" }
+    ]
+  }
+];
+
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+
+function renderQ() {
+  const q = questions[current];
+  document.getElementById('question').textContent = q.q;
+  document.getElementById('step-label').textContent = `Question ${current + 1} of ${questions.length}`;
+  document.getElementById('progress').style.width = `${((current + 1) / questions.length) * 100}%`;
+  document.getElementById('btn-back').disabled = current === 0;
+
+  const isLast = current === questions.length - 1;
+  document.getElementById('btn-next').innerHTML = isLast ? 'See Results <i class="fas fa-chart-bar"></i>' : 'Next <i class="fas fa-arrow-right"></i>';
+  document.getElementById('btn-next').disabled = answers[current] === null;
+
+  const optDiv = document.getElementById('options');
+  optDiv.innerHTML = q.opts.map((o, i) => `
+    <div class="option ${answers[current] === i ? 'selected' : ''}" onclick="selectOpt(${i})">
+      <div class="opt-icon"><i class="fas ${o.icon}"></i></div>
+      <span>${o.text}</span>
+    </div>
+  `).join('');
+}
+
+function selectOpt(i) {
+  answers[current] = i;
+  document.querySelectorAll('.option').forEach((o, idx) => o.classList.toggle('selected', idx === i));
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextQ() {
+  if (answers[current] === null) return;
+  if (current < questions.length - 1) { current++; renderQ(); }
+  else { showGate(); }
+}
+
+function prevQ() {
+  if (current > 0) { current--; renderQ(); }
+}
+
+function showGate() {
+  document.getElementById('quiz-section').style.display = 'none';
+  document.getElementById('gate-section').style.display = 'block';
+}
+
+async function submitLead() {
+  const email = document.getElementById('lead-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('gate-error').textContent = 'Please enter a valid email';
+    document.getElementById('gate-error').style.display = 'block';
+    return;
+  }
+
+  const scores = {};
+  questions.forEach((q, i) => {
+    scores[q.cat] = questions[i].opts[answers[i]].score;
+  });
+  const total = Object.values(scores).reduce((a, b) => a + b, 0);
+
+  const leadData = {
+    name: document.getElementById('lead-name').value.trim(),
+    email,
+    company: bizData.name,
+    phone: document.getElementById('lead-phone').value.trim(),
+    source: 'content-score',
+    score_data: JSON.stringify({
+      scores, total, maxTotal: 32, percentage: Math.round(total / 32 * 100),
+      business: { name: bizData.name, address: bizData.address, rating: bizData.rating, reviewCount: bizData.reviewCount, website: bizData.website, category: bizData.category }
+    })
+  };
+
+  try {
+    await fetch('/api/leads', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(leadData) });
+  } catch(e) {}
+
+  showResults(scores, total, leadData.name);
+}
+
+function showResults(scores, total, name) {
+  document.getElementById('gate-section').style.display = 'none';
+  document.getElementById('results-section').style.display = 'block';
+
+  const pct = Math.round(total / 32 * 100);
+  const label = bizData.name ? `Results for ${bizData.name}` : (name ? `Results for ${name}` : '');
+  document.getElementById('result-name').textContent = label;
+
+  // Animate score
+  let counter = 0;
+  const interval = setInterval(() => {
+    counter += 2;
+    if (counter > pct) counter = pct;
+    document.getElementById('score-number').textContent = counter;
+    document.getElementById('score-ring').style.setProperty('--pct', counter + '%');
+    if (counter >= pct) clearInterval(interval);
+  }, 20);
+
+  // Grade
+  let grade, gradeColor;
+  if (pct >= 85) { grade = 'Excellent — You\'re ahead of the game!'; gradeColor = 'var(--green)'; }
+  else if (pct >= 65) { grade = 'Good — Strong foundation with room to grow'; gradeColor = 'var(--cyan)'; }
+  else if (pct >= 45) { grade = 'Fair — You\'re leaving money on the table'; gradeColor = 'var(--orange)'; }
+  else { grade = 'Needs Work — Major opportunities being missed'; gradeColor = 'var(--red)'; }
+  document.getElementById('score-grade').innerHTML = `<span style="color:${gradeColor};font-weight:600">${grade}</span>`;
+
+  // ── Personalized business snapshot ──
+  if (bizData.name) {
+    const snap = document.getElementById('biz-snapshot');
+    snap.style.display = 'block';
+    document.getElementById('snap-name').textContent = bizData.name;
+    document.getElementById('snap-cat').textContent = [bizData.category, bizData.address].filter(Boolean).join(' — ');
+
+    let statsHtml = '';
+
+    // Google rating
+    if (bizData.rating) {
+      const stars = '★'.repeat(Math.round(bizData.rating)) + '☆'.repeat(5 - Math.round(bizData.rating));
+      statsHtml += `<div class="snap-stat"><div class="stat-val" style="color:var(--orange)">${bizData.rating} ${stars}</div><div class="stat-label">Google Rating</div></div>`;
+    }
+
+    // Review count
+    if (bizData.reviewCount !== null) {
+      statsHtml += `<div class="snap-stat"><div class="stat-val">${bizData.reviewCount}</div><div class="stat-label">Google Reviews</div></div>`;
+    }
+
+    // Website status
+    if (bizData.website) {
+      statsHtml += `<div class="snap-stat"><div class="stat-val" style="color:var(--green)"><i class="fas fa-check-circle"></i></div><div class="stat-label">Website Found</div></div>`;
+    } else {
+      statsHtml += `<div class="snap-stat"><div class="stat-val" style="color:var(--red)"><i class="fas fa-times-circle"></i></div><div class="stat-label">No Website Found</div></div>`;
+    }
+
+    document.getElementById('snap-stats').innerHTML = statsHtml;
+
+    // Personalized insight based on their data + quiz answers
+    let insight = '';
+    if (bizData.reviewCount !== null && bizData.reviewCount < 50 && scores.social_proof <= 2) {
+      insight = `<i class="fas fa-lightbulb"></i> With only ${bizData.reviewCount} Google reviews, ${bizData.name} is missing a huge trust signal. Businesses in your category with 100+ reviews see 2-3x more click-throughs from search.`;
+    } else if (bizData.rating && bizData.rating >= 4.5 && scores.social_proof <= 2) {
+      insight = `<i class="fas fa-lightbulb"></i> ${bizData.name} has a strong ${bizData.rating}-star rating — but you're not showcasing it! Feature these reviews on your website and social media to convert more browsers into customers.`;
+    } else if (!bizData.website && scores.website <= 2) {
+      insight = `<i class="fas fa-lightbulb"></i> We couldn't find a website for ${bizData.name}. In 2026, 81% of consumers research businesses online before visiting. A professional website could be your biggest unlock.`;
+    } else if (bizData.website && scores.video <= 2) {
+      insight = `<i class="fas fa-lightbulb"></i> ${bizData.name} has a web presence but no video strategy. Businesses that add video to their content mix see 49% faster revenue growth than those that don't.`;
+    } else if (scores.frequency <= 2) {
+      insight = `<i class="fas fa-lightbulb"></i> Consistency is ${bizData.name}'s biggest opportunity. Businesses that post 3-5x per week grow their audience 2x faster than those posting sporadically.`;
+    } else {
+      insight = `<i class="fas fa-lightbulb"></i> ${bizData.name} has solid foundations. The next step is turning your content into a system that generates leads on autopilot — that's where the real growth happens.`;
+    }
+    document.getElementById('snap-insight').innerHTML = insight;
+  }
+
+  // Breakdown
+  const catNames = { frequency:'Posting Frequency', website:'Website Quality', branding:'Brand Identity', video:'Video Content', discovery:'Online Discovery', social_proof:'Social Proof', paid_ads:'Paid Advertising', strategy:'Content Strategy' };
+  const catColors = { frequency:'var(--cyan)', website:'var(--purple)', branding:'var(--pink)', video:'var(--orange)', discovery:'var(--green)', social_proof:'var(--orange)', paid_ads:'var(--cyan)', strategy:'var(--purple)' };
+  document.getElementById('score-breakdown').innerHTML = Object.entries(scores).map(([cat, val]) => `
+    <div class="score-item">
+      <div class="si-label">${catNames[cat]}</div>
+      <div class="si-bar"><div class="si-fill" style="width:${val/4*100}%;background:${catColors[cat]}"></div></div>
+      <div class="si-val" style="color:${catColors[cat]}">${val}/4</div>
+    </div>
+  `).join('');
+
+  // Recommendations — personalized with business name
+  const bName = bizData.name || 'your business';
+  const recs = [];
+  if (scores.video <= 2) recs.push({ icon:'fa-video', color:'var(--orange)', title:'Start Using Video Content', desc:`Video gets 3x more engagement than static posts. Even simple smartphone videos showing ${bName} in action can transform your online presence.` });
+  if (scores.website <= 2) recs.push({ icon:'fa-globe', color:'var(--purple)', title:'Upgrade Your Website', desc:`${bName}'s website is your digital storefront. A modern, mobile-friendly site builds trust instantly and converts browsers into buyers.` });
+  if (scores.frequency <= 2) recs.push({ icon:'fa-calendar', color:'var(--cyan)', title:'Post More Consistently', desc:`Algorithms reward consistency. ${bName} posting 3-5x per week will stay visible to your audience and build momentum over time.` });
+  if (scores.branding <= 2) recs.push({ icon:'fa-palette', color:'var(--pink)', title:'Build a Brand System', desc:`Consistent colors, fonts, and messaging make ${bName} look professional and memorable. People buy from brands they recognize.` });
+  if (scores.social_proof <= 2) {
+    const reviewNote = (bizData.reviewCount !== null) ? ` You have ${bizData.reviewCount} reviews — aim for 100+ to stand out.` : '';
+    recs.push({ icon:'fa-star', color:'var(--orange)', title:'Leverage Social Proof', desc:`92% of consumers read reviews before buying. Start collecting testimonials and featuring them on ${bName}'s website and social media.${reviewNote}` });
+  }
+  if (scores.strategy <= 2) recs.push({ icon:'fa-chess', color:'var(--green)', title:'Create a Content Strategy', desc:`Random posting gets random results. A simple content calendar for ${bName} with planned themes and formats will 2-3x your engagement.` });
+  if (scores.paid_ads <= 2) recs.push({ icon:'fa-bullhorn', color:'var(--cyan)', title:'Explore Targeted Ads', desc:`Even $5-10/day on well-targeted social ads can put ${bName} in front of hundreds of potential customers in your area.` });
+  if (scores.discovery <= 2) recs.push({ icon:'fa-magnifying-glass', color:'var(--purple)', title:'Improve Your Discoverability', desc:`Optimize ${bName}'s Google Business Profile, use local SEO keywords, and make sure people searching for your service can find you.` });
+
+  // Always include at least 3 recs
+  if (recs.length < 3 && scores.video > 2) recs.push({ icon:'fa-film', color:'var(--green)', title:'Level Up Your Video Quality', desc:`${bName} is posting video which is great. Now consider professional UGC-style content that feels authentic but looks polished — it converts at 2-4x higher rates.` });
+  if (recs.length < 3) recs.push({ icon:'fa-robot', color:'var(--cyan)', title:'Automate Your Content Workflow', desc:'AI tools can help you plan, create, and schedule content in a fraction of the time. Work smarter, not harder.' });
+  if (recs.length < 3) recs.push({ icon:'fa-chart-line', color:'var(--purple)', title:'Track and Optimize', desc:'What gets measured gets improved. Set up basic analytics to see what content drives real business results, not just likes.' });
+
+  document.getElementById('recommendations').innerHTML = recs.slice(0, 5).map(r => `
+    <div class="rec">
+      <div class="rec-icon" style="background:${r.color}22;color:${r.color}"><i class="fas ${r.icon}"></i></div>
+      <div><h4>${r.title}</h4><p>${r.desc}</p></div>
+    </div>
+  `).join('');
+}
+
+// ── Init ──
+loadGooglePlaces();
+</script>
+</body>
+</html>
