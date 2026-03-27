@@ -804,20 +804,28 @@ searchEl.addEventListener('input',function(){
   if(!placesReady){showManual();return}
   spinEl.style.display='block';
   searchTimer=setTimeout(function(){
-    acService.getPlacePredictions({input:q,bounds:miamiBounds},function(preds,status){
+    // Use TextSearch for better business name matching
+    var request={
+      query:q+' Miami',
+      location:new google.maps.LatLng(25.76,-80.19),
+      radius:80000,
+      type:'establishment'
+    };
+    plService.textSearch(request,function(results,status){
       spinEl.style.display='none';
-      if(status!=='OK'||!preds){
-        acListEl.innerHTML='<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
+      if(status!=='OK'||!results||results.length===0){
+        var useTyped='<div class="ac-item" style="border-bottom:2px solid rgba(0,212,255,0.15)" onclick="useTypedName()"><div class="ac-icon" style="background:rgba(0,212,255,0.15)">&#9998;</div><div class="ac-info"><div class="ac-name" style="color:var(--cyan)">Use &ldquo;'+esc(q)+'&rdquo;</div><div class="ac-addr">Continue with this name</div></div></div>';
+        acListEl.innerHTML=useTyped+'<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
         acListEl.classList.add('show');return;
       }
       var useTyped='<div class="ac-item" style="border-bottom:2px solid rgba(0,212,255,0.15)" onclick="useTypedName()"><div class="ac-icon" style="background:rgba(0,212,255,0.15)">&#9998;</div><div class="ac-info"><div class="ac-name" style="color:var(--cyan)">Use &ldquo;'+esc(q)+'&rdquo;</div><div class="ac-addr">Continue with this name</div></div></div>';
-      var html=useTyped+preds.slice(0,4).map(function(p){
-        return '<div class="ac-item" onclick="selectPlace(\''+p.place_id+'\')"><div class="ac-icon">&#127979;</div><div class="ac-info"><div class="ac-name">'+esc(p.structured_formatting.main_text)+'</div><div class="ac-addr">'+esc(p.structured_formatting.secondary_text||'')+'</div></div></div>';
+      var html=useTyped+results.slice(0,4).map(function(r){
+        return '<div class="ac-item" onclick="selectPlace(\''+r.place_id+'\')"><div class="ac-icon">&#127979;</div><div class="ac-info"><div class="ac-name">'+esc(r.name)+'</div><div class="ac-addr">'+esc(r.formatted_address||'')+'</div></div></div>';
       }).join('');
       acListEl.innerHTML=html;
       acListEl.classList.add('show');
     });
-  },300);
+  },500);
 });
 
 document.addEventListener('click',function(e){if(!e.target.closest('.search-box'))acListEl.classList.remove('show')});
