@@ -89,6 +89,22 @@ a { color: var(--cyan); text-decoration: none; }
   position: relative;
   margin-bottom: 12px;
 }
+.search-row { display: flex; gap: 10px; align-items: stretch; }
+.search-row .search-box { flex: 1; margin-bottom: 0; }
+.go-btn {
+  background: var(--cyan); color: var(--bg);
+  border: none; border-radius: 16px;
+  padding: 0 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(0,212,255,0.25);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: none;
+}
+.go-btn.show { display: block; }
+.go-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,255,0.35); }
 .search-box input {
   width: 100%;
   background: rgba(255,255,255,0.03);
@@ -550,13 +566,16 @@ a { color: var(--cyan); text-decoration: none; }
 </section>
 
 <div class="search-section" id="search-section">
-  <div class="search-box reveal" style="transition-delay:0.14s" id="search-area">
-    <span class="s-icon">&#128269;</span>
-    <input type="text" id="bizSearch" placeholder="Search your business name..." autocomplete="off">
-    <div class="s-spin" id="sSpin"></div>
-    <div class="ac-list" id="acList"></div>
+  <div class="search-row reveal" style="transition-delay:0.14s">
+    <div class="search-box" id="search-area">
+      <span class="s-icon">&#128269;</span>
+      <input type="text" id="bizSearch" placeholder="Enter your business name..." autocomplete="off">
+      <div class="s-spin" id="sSpin"></div>
+      <div class="ac-list" id="acList"></div>
+    </div>
+    <button class="go-btn" id="goBtn" onclick="useTypedName()">Go &#8594;</button>
   </div>
-  <p class="search-hint reveal" style="transition-delay:0.18s">Start typing to find your business</p>
+  <p class="search-hint reveal" style="transition-delay:0.18s">Type your business name and hit Go — or select from results</p>
   <div class="hero-badges reveal" style="transition-delay:0.22s">
     <div class="hero-badge"><span class="check">&#10003;</span> 100% Free</div>
     <div class="hero-badge"><span class="check">&#10003;</span> No Login</div>
@@ -797,35 +816,34 @@ searchEl.addEventListener('keydown',function(e){
   }
 });
 
+var goBtn=document.getElementById('goBtn');
+
 searchEl.addEventListener('input',function(){
   var q=this.value.trim();
   clearTimeout(searchTimer);
-  if(q.length<2){acListEl.classList.remove('show');return}
-  if(!placesReady){showManual();return}
-  spinEl.style.display='block';
+  // Show/hide Go button
+  if(q.length>=2){goBtn.classList.add('show')}else{goBtn.classList.remove('show')}
+  if(q.length<3){acListEl.classList.remove('show');return}
+  if(!placesReady){return}
+  // Background search for Google Places matches (optional enrichment)
   searchTimer=setTimeout(function(){
-    // Use TextSearch for better business name matching
     var request={
-      query:q+' Miami',
+      query:q+' Miami FL',
       location:new google.maps.LatLng(25.76,-80.19),
-      radius:80000,
-      type:'establishment'
+      radius:80000
     };
     plService.textSearch(request,function(results,status){
-      spinEl.style.display='none';
       if(status!=='OK'||!results||results.length===0){
-        var useTyped='<div class="ac-item" style="border-bottom:2px solid rgba(0,212,255,0.15)" onclick="useTypedName()"><div class="ac-icon" style="background:rgba(0,212,255,0.15)">&#9998;</div><div class="ac-info"><div class="ac-name" style="color:var(--cyan)">Use &ldquo;'+esc(q)+'&rdquo;</div><div class="ac-addr">Continue with this name</div></div></div>';
-        acListEl.innerHTML=useTyped+'<div class="ac-item" onclick="showManual()"><div class="ac-icon">&#10133;</div><div class="ac-info"><div class="ac-name">My business isn\'t listed</div><div class="ac-addr">Enter it manually</div></div></div>';
-        acListEl.classList.add('show');return;
+        acListEl.classList.remove('show');return;
       }
-      var useTyped='<div class="ac-item" style="border-bottom:2px solid rgba(0,212,255,0.15)" onclick="useTypedName()"><div class="ac-icon" style="background:rgba(0,212,255,0.15)">&#9998;</div><div class="ac-info"><div class="ac-name" style="color:var(--cyan)">Use &ldquo;'+esc(q)+'&rdquo;</div><div class="ac-addr">Continue with this name</div></div></div>';
-      var html=useTyped+results.slice(0,4).map(function(r){
+      var html='<div style="padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)">Found on Google &mdash; select for rich data</div>';
+      html+=results.slice(0,4).map(function(r){
         return '<div class="ac-item" onclick="selectPlace(\''+r.place_id+'\')"><div class="ac-icon">&#127979;</div><div class="ac-info"><div class="ac-name">'+esc(r.name)+'</div><div class="ac-addr">'+esc(r.formatted_address||'')+'</div></div></div>';
       }).join('');
       acListEl.innerHTML=html;
       acListEl.classList.add('show');
     });
-  },500);
+  },600);
 });
 
 document.addEventListener('click',function(e){if(!e.target.closest('.search-box'))acListEl.classList.remove('show')});
