@@ -181,12 +181,16 @@ h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-2px;line-heigh
 <h1>Pain Point Carousel Pipeline</h1>
 <div class="sub">Search-driven carousel briefs mapped to real SGF offers — or flagged as new product opportunities.</div>
 
-<div class="stats">
-<div class="st"><div class="st-l">Total Briefs</div><div class="st-v" style="color:#00d4ff">10</div></div>
-<div class="st"><div class="st-l">Existing Offers</div><div class="st-v" style="color:#34d399">6</div></div>
-<div class="st"><div class="st-l">New Opportunities</div><div class="st-v" style="color:#fbbf24">4</div></div>
-<div class="st"><div class="st-l">Avg Search Vol</div><div class="st-v" style="color:#a855f7">9.1K</div></div>
+<div class="stats" id="stats-grid">
+<div class="st"><div class="st-l">Total Briefs</div><div class="st-v" style="color:#00d4ff" id="stat-total">10</div></div>
+<div class="st"><div class="st-l">Existing Offers</div><div class="st-v" style="color:#34d399" id="stat-existing">6</div></div>
+<div class="st"><div class="st-l">New Opportunities</div><div class="st-v" style="color:#fbbf24" id="stat-new">4</div></div>
+<div class="st"><div class="st-l">Avg Search Vol</div><div class="st-v" style="color:#a855f7" id="stat-vol">9.1K</div></div>
 </div>
+
+<button class="btn btn-run" onclick="generateNewPainPoints()" id="generate-btn" style="margin:20px 0;max-width:400px">
+  🔄 Generate New Pain Points
+</button>
 
 <div class="grid" id="briefs-grid"></div>
 
@@ -196,24 +200,173 @@ h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-2px;line-heigh
 <div class="toast" id="toast"></div>
 
 <script>
-const briefs = [
-  {
-    num: "01",
-    title: "Why Your Content Gets Zero Engagement",
-    hook: "You're posting every day and getting nothing back. Here's why.",
-    src: "Google Trends", vol: "12K/mo", type: "Pain Point",
-    isNew: false,
-    offer: {
-      name: "AI Social Media Manager",
-      price: "$147/mo",
-      priceBig: "$147",
-      priceLabel: "Monthly AI-Powered Coaching",
-      tagline: "Your AI-powered social media coach",
-      deliverables: ["AI analysis of your last 30 posts", "Content ranking report", "Personalized coaching video", "Action plan with real moves", "Hashtag & cadence optimization"],
-      icons: ["&#9881;", "&#9733;", "&#9654;"]
-    },
-    problems: ["93% of small businesses struggle with social media", "Posting without a strategy = shouting into the void", "You're creating for yourself, not your audience"]
+// ── Current SGF Offers (synced with santiagoguyfilms.com/offers) ──
+const SGF_OFFERS = {
+  bizaudit: {
+    name: "BizAudit", price: "$497", priceBig: "$497", priceLabel: "Full Online Presence Audit",
+    tagline: "Full audit of your online presence with actionable plan + strategy call",
+    deliverables: ["Audit across Google, Yelp, IG, FB, TikTok, YT, LinkedIn & web", "30-min strategy call with Franco", "Competitor analysis (2-3 locals)", "Content strategy recommendations", "Priority action plan"],
+    icons: ["&#9733;", "&#9881;", "&#9654;"]
   },
+  ai_setup: {
+    name: "AI Business Setup", price: "$997", priceBig: "$997", priceLabel: "One-Time AI Installation",
+    tagline: "AI assistant configured for your business + custom automations + training",
+    deliverables: ["Full AI assistant installation & config", "Custom automations for your workflows", "Content templates branded for you", "1-on-1 training session", "7-day follow-up support"],
+    icons: ["&#9881;", "&#9654;", "&#9733;"]
+  },
+  website: {
+    name: "Website in a Day", price: "$1,997", priceBig: "$1,997", priceLabel: "Custom Site — Live Same Day",
+    tagline: "Custom website designed, built, deployed + SEO + AI chat",
+    deliverables: ["Custom professional website design", "Mobile-responsive layout", "SEO + Google Business optimization", "AI chat assistant setup", "Domain connection + deployment"],
+    icons: ["&#9654;", "&#9881;", "&#9733;"]
+  },
+  growth: {
+    name: "Growth Retainer", price: "$2,497/mo", priceBig: "$2,497", priceLabel: "Monthly Growth Package",
+    tagline: "Website + content + AI social media + monthly strategy calls",
+    deliverables: ["Custom website included", "20+ monthly content pieces", "AI social media management", "Monthly strategy call", "Analytics reports with ROI data"],
+    icons: ["&#9881;", "&#9733;", "&#9654;"]
+  },
+  fullstack: {
+    name: "Full Stack Partner", price: "$4,997/mo", priceBig: "$4,997", priceLabel: "Everything — All In",
+    tagline: "Everything in Growth + UGC + ads + 12-person AI team",
+    deliverables: ["Everything in Growth Retainer", "UGC content creation", "Ad creative + campaign management", "12-person AI team for your business", "Priority Slack & phone support"],
+    icons: ["&#9654;", "&#9881;", "&#9733;"]
+  },
+};
+
+// ── Pain Point Templates (pool to draw from) ──
+const PAIN_POOL = [
+  { title: "Your Business Is Failing Online and You Have No Idea", hook: "I Googled your business. You don't wanna know what I found.", src: "Google Search", vol: "15K/mo", type: "Controversial", offerKey: "bizaudit", problems: ["Most owners have NEVER searched themselves", "Your 2-star review from 2021 is the first thing people see", "Your competitor's Google profile looks like a Fortune 500"] },
+  { title: "You're Posting Content Nobody Cares About", hook: "3 likes. 1 comment from your mom. Let's talk about why.", src: "Google Trends", vol: "12K/mo", type: "Controversial", offerKey: "growth", problems: ["You're creating content for YOU, not your customer", "Posting without strategy is just a public diary", "Your engagement rate is lower than your phone battery"] },
+  { title: "That Agency Is Robbing You and You're Thanking Them", hook: "You're paying $3K/mo for a 22-year-old to schedule your Canva posts.", src: "Google Trends", vol: "7.8K/mo", type: "Controversial", offerKey: "growth", problems: ["Most agencies give you the intern, not the expert", "That 'strategy deck' was copy-pasted from their last client", "You could get 10x the output for 1/4 the price with AI"] },
+  { title: "Your Website Looks Like It Was Built in 2014", hook: "I clicked your site on my phone. It took 9 seconds to load. I left.", src: "Google Search", vol: "8.5K/mo", type: "Controversial", offerKey: "website", problems: ["53% of visitors leave if your site takes over 3 seconds", "That Wix template screams 'I don't take this seriously'", "Your competitor's site makes yours look abandoned"] },
+  { title: "You're Scared of AI and It's Going to Cost You Everything", hook: "Your competitor just replaced 3 employees with AI. You're still doing invoices by hand.", src: "Google Trends", vol: "18K/mo", type: "Fear/Urgency", offerKey: "ai_setup", problems: ["AI isn't coming. It's here. You're late.", "Every week you wait, you fall further behind", "The businesses that survive will be the ones that adapted"] },
+  { title: "Nobody Is Coming to Save Your Business", hook: "No magic client. No viral post. No lottery ticket. Just you and the work.", src: "Google Search", vol: "9.2K/mo", type: "Tough Love", offerKey: "bizaudit", problems: ["Hope is not a marketing strategy", "Waiting for referrals is how businesses die slowly", "You built this thing — now build the engine to grow it"] },
+  { title: "You Spent $50 Boosting a Post and Got Nothing", hook: "That's not advertising. That's donating to Mark Zuckerberg.", src: "Google Search", vol: "8.4K/mo", type: "Controversial", offerKey: "fullstack", problems: ["Boosting is not a strategy — it's a panic button", "You're targeting 'everyone' which means nobody", "Real ad campaigns start with strategy, not a boost button"] },
+  { title: "Your Employees Are Using AI. Why Aren't You?", hook: "They're using ChatGPT to do their job faster. You're still using Excel.", src: "Google Trends", vol: "16K/mo", type: "Fear/Urgency", offerKey: "ai_setup", problems: ["67% of employees use AI without telling their boss", "If they can automate their job, imagine what AI can do for yours", "You're paying for 40 hours of work that takes AI 40 minutes"] },
+  { title: "You Haven't Taken a Real Vacation in 3 Years", hook: "You own the business but the business owns you. That wasn't the plan.", src: "Google Trends", vol: "10K/mo", type: "Relatable", offerKey: "fullstack", problems: ["You check email at dinner, on vacation, at 2am", "Your family remembers when you used to be present", "Freedom was the whole point — where did it go?"] },
+  { title: "You're the Smartest Person at Your Company. That's the Problem.", hook: "If everything depends on you, nothing works without you. That's not a business — it's a job.", src: "Google Search", vol: "8K/mo", type: "Tough Love", offerKey: "fullstack", problems: ["You can't scale yourself", "Every hour you spend ON the business, you're not IN it", "What happens to your family if you get sick for a month?"] },
+  { title: "Your Competitor Just Launched a Website. You're Still 'Thinking About It.'", hook: "They started Monday. By Friday they had customers. You're still picking colors.", src: "Google Search", vol: "7K/mo", type: "Controversial", offerKey: "website", problems: ["Perfect is the enemy of profitable", "Every day without a site is money walking to your competitor", "We build sites in ONE DAY. What's your excuse?"] },
+  { title: "You're Working 80 Hours a Week and Your Business Is Flat", hook: "More hours won't fix a broken system. You don't need to work harder.", src: "Google Trends", vol: "11K/mo", type: "Relatable", offerKey: "ai_setup", problems: ["Hustle culture lied to you", "Working more hours on the wrong things = faster burnout", "Smart business owners automate. Tired ones just keep grinding."] },
+  { title: "Your Customers Are Choosing Your Competitor Right Now", hook: "They searched. They compared. They chose the one with the better online presence. It wasn't you.", src: "Google Search", vol: "13K/mo", type: "Fear/Urgency", offerKey: "bizaudit", problems: ["97% of people learn about local businesses online first", "If your Google profile is empty, you already lost", "Second place on Google gets 10% of clicks. First gets 40%."] },
+  { title: "You Told Yourself 'I'll Figure Out Marketing Later.' It's Later.", hook: "The business is 3 years old. You still don't have a strategy. When is 'later'?", src: "Google Trends", vol: "9K/mo", type: "Tough Love", offerKey: "growth", problems: ["Later never comes — it just becomes 'too late'", "Your competitors didn't wait for later", "A plan beats no plan every single time"] },
+  { title: "That Free Website Builder Is Costing You Thousands", hook: "You saved $500 on Wix. You lost $50,000 in customers who bounced.", src: "Google Search", vol: "6K/mo", type: "Controversial", offerKey: "website", problems: ["Slow, templated sites kill trust instantly", "Free hosting = your site goes down when it matters most", "Professional sites pay for themselves in the first month"] },
+  { title: "You're Afraid to Check Your Online Reviews", hook: "When was the last time you Googled yourself? Exactly.", src: "Google Search", vol: "14K/mo", type: "Relatable", offerKey: "bizaudit", problems: ["What you don't know IS hurting you", "That 1-star review from 2022 is still your first impression", "Your competitors respond to every review. You haven't responded to any."] },
+];
+
+function generateBriefs(count = 10) {
+  // Shuffle and pick
+  const shuffled = [...PAIN_POOL].sort(() => Math.random() - 0.5);
+  const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+
+  return selected.map((p, i) => ({
+    num: String(i + 1).padStart(2, '0'),
+    title: p.title,
+    hook: p.hook,
+    src: p.src,
+    vol: p.vol,
+    type: p.type,
+    isNew: false,
+    offer: SGF_OFFERS[p.offerKey],
+    problems: p.problems,
+  }));
+}
+
+let briefs = generateBriefs(10);
+
+function generateNewPainPoints() {
+  briefs = generateBriefs(10);
+  renderBriefs();
+  showToast('🔄 New pain points generated!');
+}
+
+function updateStats() {
+  const existing = briefs.filter(b => !b.isNew).length;
+  const newOpp = briefs.filter(b => b.isNew).length;
+  const avgVol = briefs.reduce((sum, b) => sum + parseFloat(b.vol.replace('K/mo','')) * 1000, 0) / briefs.length;
+  document.getElementById('stat-total').textContent = briefs.length;
+  document.getElementById('stat-existing').textContent = existing;
+  document.getElementById('stat-new').textContent = newOpp;
+  document.getElementById('stat-vol').textContent = (avgVol/1000).toFixed(1) + 'K';
+}
+
+function renderBriefs() {
+  const grid = document.getElementById('briefs-grid');
+  grid.innerHTML = '';
+  updateStats();
+
+  briefs.forEach((b, i) => {
+    const savedLink = localStorage.getItem('payment_' + b.num) || '';
+    const hasLink = savedLink.length > 0;
+
+    const card = document.createElement('div');
+    card.className = 'brief' + (b.isNew ? ' is-new' : '');
+    card.style.animationDelay = (i * 0.04) + 's';
+    card.innerHTML = `
+      <div class="brief-num">
+        Brief ${b.num}
+        ${b.isNew ? '<span class="tag tag-new">&#x1F4A1; New Product Opportunity</span>' : ''}
+      </div>
+      <div class="brief-title">${b.title}</div>
+      <div class="brief-hook">Hook: "${b.hook}"</div>
+      <div class="brief-meta">
+        <span class="tag tag-src">${b.src}</span>
+        <span class="tag tag-vol">${b.vol}</span>
+        <span class="tag tag-type">${b.type}</span>
+        <span class="tag tag-ready">Ready</span>
+      </div>
+
+      <div class="offer-badge existing">
+        <span class="offer-icon">&#x2705;</span>
+        <span>Pushes: <strong>${b.offer.name} — ${b.offer.price}</strong></span>
+      </div>
+
+      <div class="brief-divider"></div>
+
+      <div class="brief-actions">
+        <button class="btn btn-preview" onclick="toggleMockup('${b.num}')">
+          <span>&#x1F50D;</span> Preview Mockup
+        </button>
+        <button class="btn btn-payment ${hasLink ? 'has-link' : ''}" onclick="togglePayment('${b.num}')" id="pay-btn-${b.num}">
+          <span>${hasLink ? '&#x2705;' : '&#x1F517;'}</span> ${hasLink ? 'Payment Link Added' : 'Add Payment Link'}
+        </button>
+      </div>
+
+      <div class="mockup-panel" id="mockup-${b.num}">
+        <div class="mockup-label">5-Slide Preview — ${b.offer.name}</div>
+        <div class="mockup-slides">
+          ${renderMockupSlides(b)}
+        </div>
+      </div>
+
+      <div class="payment-panel" id="payment-${b.num}">
+        <div class="payment-input-row" id="payment-edit-${b.num}" ${hasLink ? 'style="display:none"' : ''}>
+          <input class="payment-input" id="input-${b.num}" type="url" placeholder="Paste Stripe or payment link..." value="${savedLink}">
+          <button class="payment-save" onclick="savePayment('${b.num}')">Save</button>
+        </div>
+        <div class="payment-saved" id="payment-saved-${b.num}" ${!hasLink ? 'style="display:none"' : ''}>
+          <span class="payment-saved-link">${savedLink}</span>
+          <button class="payment-edit" onclick="editPayment('${b.num}')">Edit</button>
+          <button class="payment-remove" onclick="removePayment('${b.num}')">Remove</button>
+        </div>
+      </div>
+
+      <button class="btn btn-run" onclick="runCarousel('${b.num}', \`${b.title.replace(/`/g, "'")}\`, \`${b.hook.replace(/`/g, "'")}\`, \`${b.offer.name.replace(/`/g, "'")}\`, '${b.offer.price}', ${b.isNew})">
+        &#x1F3AC; Run Carousel
+      </button>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Initial render
+renderBriefs();
+
+// Old hardcoded briefs removed — now using dynamic renderBriefs()
+// ── OLD CODE BELOW — DEAD, kept for reference only ──
+if (false) { const briefs_DELETED = [
+  {
+    num: "DELETED",
   {
     num: "02",
     title: "Your Competitor Is Using AI — You're Still Doing It By Hand",
@@ -367,9 +520,7 @@ const briefs = [
     },
     problems: ["Average WordPress site costs $200-$500/yr in hosting", "Templates make your brand look generic", "Plugin bloat slows your site and kills SEO"]
   }
-];
-
-const grid = document.getElementById('briefs-grid');
+]; } // end dead code
 
 function renderMockupSlides(b) {
   const hookWords = b.hook.split(' ');
@@ -455,80 +606,7 @@ function renderMockupSlides(b) {
   return s1 + s2 + s3 + s4 + s5;
 }
 
-briefs.forEach((b, i) => {
-  const savedLink = localStorage.getItem('payment_' + b.num) || '';
-  const hasLink = savedLink.length > 0;
-
-  const card = document.createElement('div');
-  card.className = 'brief' + (b.isNew ? ' is-new' : '');
-  card.style.animationDelay = (i * 0.04) + 's';
-  card.innerHTML = `
-    <div class="brief-num">
-      Brief ${b.num}
-      ${b.isNew ? '<span class="tag tag-new">&#x1F4A1; New Product Opportunity</span>' : ''}
-    </div>
-    <div class="brief-title">${b.title}</div>
-    <div class="brief-hook">Hook: "${b.hook}"</div>
-    <div class="brief-meta">
-      <span class="tag tag-src">${b.src}</span>
-      <span class="tag tag-vol">${b.vol}</span>
-      <span class="tag tag-type">${b.type}</span>
-      <span class="tag tag-ready">Ready</span>
-    </div>
-
-    <div class="offer-badge ${b.isNew ? 'new-product' : 'existing'}">
-      <span class="offer-icon">${b.isNew ? '&#x1F680;' : '&#x2705;'}</span>
-      <span>${b.isNew ? 'New Offer Concept: ' : 'Pushes: '}<strong>${b.offer.name} — ${b.offer.price}</strong></span>
-    </div>
-
-    <div class="brief-divider"></div>
-
-    <div class="brief-actions">
-      <button class="btn btn-preview" onclick="toggleMockup('${b.num}')">
-        <span>&#x1F50D;</span> Preview Mockup
-      </button>
-      <button class="btn btn-payment ${hasLink ? 'has-link' : ''}" onclick="togglePayment('${b.num}')" id="pay-btn-${b.num}">
-        <span>${hasLink ? '&#x2705;' : '&#x1F517;'}</span> ${hasLink ? 'Payment Link Added' : 'Add Payment Link'}
-      </button>
-    </div>
-
-    <div class="mockup-panel" id="mockup-${b.num}">
-      <div class="mockup-label">5-Slide Preview — ${b.offer.name}</div>
-      <div class="mockup-slides">
-        ${renderMockupSlides(b)}
-      </div>
-    </div>
-
-    <div class="payment-panel" id="payment-${b.num}">
-      ${hasLink ? `
-        <div class="payment-saved" id="payment-saved-${b.num}">
-          <span class="payment-saved-link">${savedLink}</span>
-          <button class="payment-edit" onclick="editPayment('${b.num}')">Edit</button>
-          <button class="payment-remove" onclick="removePayment('${b.num}')">Remove</button>
-        </div>
-        <div class="payment-input-row" id="payment-edit-${b.num}" style="display:none">
-          <input class="payment-input" id="input-${b.num}" type="url" placeholder="Paste Stripe or payment link..." value="${savedLink}">
-          <button class="payment-save" onclick="savePayment('${b.num}')">Save</button>
-        </div>
-      ` : `
-        <div class="payment-input-row" id="payment-edit-${b.num}">
-          <input class="payment-input" id="input-${b.num}" type="url" placeholder="Paste Stripe or payment link...">
-          <button class="payment-save" onclick="savePayment('${b.num}')">Save</button>
-        </div>
-        <div class="payment-saved" id="payment-saved-${b.num}" style="display:none">
-          <span class="payment-saved-link" id="link-display-${b.num}"></span>
-          <button class="payment-edit" onclick="editPayment('${b.num}')">Edit</button>
-          <button class="payment-remove" onclick="removePayment('${b.num}')">Remove</button>
-        </div>
-      `}
-    </div>
-
-    <button class="btn btn-run ${b.isNew ? 'new-offer' : ''}" onclick="runCarousel('${b.num}', \`${b.title.replace(/`/g, "'")}\`, \`${b.hook.replace(/`/g, "'")}\`, \`${b.offer.name.replace(/`/g, "'")}\`, '${b.offer.price}', ${b.isNew})">
-      ${b.isNew ? '&#x1F680; Launch New Offer + Carousel' : '&#x1F3AC; Run Carousel'}
-    </button>
-  `;
-  grid.appendChild(card);
-});
+// Old briefs.forEach removed — renderBriefs() handles rendering now
 
 function toggleMockup(num) {
   const panel = document.getElementById('mockup-' + num);
