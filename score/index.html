@@ -1151,6 +1151,9 @@ function submitGate(){
   document.body.appendChild(form);form.submit();form.remove();
   // Client portal
   try{fetch('https://sgf-client-portal-production.up.railway.app/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:data.name,email:data.email,phone:data.phone,company:data.company,source:'content-score-v2',score_data:JSON.stringify({scores:scores,total:total,maxTotal:32,percentage:pct,business:{name:biz.name,rating:biz.rating,reviews:biz.reviews,website:biz.website,category:biz.category}})})})}catch(e){}
+  // Email notification to Franco
+  var notifyUrl='DEPLOY_NOTIFICATION_SCRIPT';
+  if(notifyUrl!=='DEPLOY_NOTIFICATION_SCRIPT'){try{var nf=document.createElement('iframe');nf.name='nf';nf.style.display='none';document.body.appendChild(nf);var nForm=document.createElement('form');nForm.method='POST';nForm.action=notifyUrl;nForm.target='nf';for(var nk in data){var ni=document.createElement('input');ni.type='hidden';ni.name=nk;ni.value=data[nk];nForm.appendChild(ni)}document.body.appendChild(nForm);nForm.submit();nForm.remove()}catch(e){}}
   // Meta Pixel
   if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Content Score',content_category:bizType,value:pct,currency:'USD'});fbq('track','CompleteRegistration',{content_name:'Content Score',status:pct+'%'})}
   showResults(scores,pct);
