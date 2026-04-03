@@ -837,19 +837,20 @@ img, svg, video, canvas, iframe { max-width: 100%; }
     </div>
   </div>
   <div class="qcard gate" id="gate">
-    <h2>Your score is ready!</h2>
-    <p>Enter your info to see your personalized Content Score and action plan.</p>
-    <div class="gate-err" id="gErr">Please enter a valid email</div>
-    <input id="gName" placeholder="Your name">
+    <h2>Your BizAudit is ready!</h2>
+    <p>Enter your name and email and we'll send you a full personalized BizAudit PDF report within 48 hours — free.</p>
+    <div class="gate-err" id="gErr">Please enter your name and a valid email</div>
+    <input id="gName" placeholder="Your name *" required>
     <input id="gEmail" type="email" placeholder="Email address *" required>
     <input id="gPhone" placeholder="Phone (optional)">
-    <button class="btn-q btn-go-q btn-lg-q" onclick="submitGate()">See My Score</button>
-    <div class="trust-line">&#128274; No spam, ever.</div>
+    <button class="btn-q btn-go-q btn-lg-q" onclick="submitGate()">Send My BizAudit</button>
+    <div class="trust-line">&#128274; No spam. Just your report.</div>
   </div>
   <div class="qcard results" id="results">
     <div style="text-align:center">
       <h2 style="margin-bottom:4px">Your Content Score</h2>
-      <p style="color:var(--text-muted);font-size:14px;margin-bottom:18px" id="rName"></p>
+      <p style="color:var(--text-muted);font-size:14px;margin-bottom:4px" id="rName"></p>
+      <p style="color:var(--accent-green);font-size:14px;font-weight:600;margin-bottom:18px;">Your full BizAudit PDF report will be emailed within 48 hours.</p>
     </div>
     <div class="score-ring">
       <svg viewBox="0 0 180 180"><defs><linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00d4ff"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#ec4899"/></linearGradient></defs><circle class="track" cx="90" cy="90" r="80"/><circle class="fill" id="ringFill" cx="90" cy="90" r="80"/></svg>
@@ -1136,8 +1137,9 @@ var industryRecs={
 industryRecs.professional=industryRecs.realestate;industryRecs.retail=industryRecs.restaurant;industryRecs.beauty=industryRecs.fitness;industryRecs.other=industryRecs.contractor;
 
 function submitGate(){
+  var name=document.getElementById('gName').value.trim();
   var email=document.getElementById('gEmail').value.trim();
-  if(!email||email.indexOf('@')<0){document.getElementById('gErr').style.display='block';return}
+  if(!name||!email||email.indexOf('@')<0){document.getElementById('gErr').style.display='block';return}
   var scores={};Qs.forEach(function(q,i){scores[q.cat]=ans[i]+1});
   var total=0;for(var k in scores)total+=scores[k];var pct=Math.round(total/36*100);
   var data={name:document.getElementById('gName').value,email:email,company:biz.name,phone:document.getElementById('gPhone').value,website:biz.website,score:pct,scores:JSON.stringify(scores),bizType:bizType,bizRating:biz.rating||'',bizReviews:biz.reviews||'',bizAddress:biz.address,source:'content-score-v2',timestamp:new Date().toISOString()};
