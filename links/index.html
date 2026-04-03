@@ -59,44 +59,49 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 18px 40px;
+  padding: 14px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10, 11, 20, 0.9);
+  background: rgba(10, 11, 20, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 .nav-brand {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
-  letter-spacing: 2.5px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--text-primary);
+  color: #ffffff;
+  text-decoration: none;
 }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
 }
 .nav-link {
-  color: var(--text-body);
+  color: rgba(255,255,255,0.7);
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.3px;
   transition: color 0.3s ease;
+  padding: 6px 0;
 }
-.nav-link:hover { color: var(--text-primary); }
+.nav-link:hover { color: #ffffff; }
 .nav-link-accent {
-  color: var(--accent);
+  color: var(--bg-deep);
+  background: var(--accent);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.3px;
+  padding: 8px 16px;
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
-.nav-link-accent:hover { color: #33dfff; }
+.nav-link-accent:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,212,255,0.3); }
 
 /* ===== HEADER / INTRO ===== */
 .header-section {
@@ -726,8 +731,11 @@ footer {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   nav { padding: 14px 20px; }
-  .nav-links { gap: 16px; }
-  .nav-link, .nav-link-accent { font-size: 12px; }
+  nav { padding: 12px 16px; }
+  .nav-brand { font-size: 11px; letter-spacing: 1px; }
+  .nav-links { gap: 10px; }
+  .nav-link { font-size: 11px; }
+  .nav-link-accent { font-size: 10px; padding: 6px 12px; }
 
   .header-section { padding: 90px 24px 36px; }
   .franco-avatar { width: 100px; height: 100px; }
@@ -777,17 +785,18 @@ footer {
 
 <!-- NAV — clean, consultant, no lead magnet -->
 <nav>
-  <div class="nav-brand">Santiago Guy Films</div>
+  <a href="https://santiagoguyfilms.com" class="nav-brand">Santiago Guy Films</a>
   <div class="nav-links">
-    <a href="https://santiagoguyfilms.github.io/media-kit/" target="_blank" class="nav-link">Media Kit</a>
-    <a href="https://www.santiagoguyfilms.com/results" target="_blank" class="nav-link">Results</a>
+    <a href="https://santiagoguyfilms.com" class="nav-link">Home</a>
+    <a href="https://santiagoguyfilms.com/media-kit/" class="nav-link">Media Kit</a>
+    <a href="https://santiagoguyfilms.com/results/" class="nav-link">Results</a>
+    <a href="https://santiagoguyfilms.com/score/" class="nav-link">BizAudit</a>
     <a href="https://calendly.com/welcome-santiagoguyfilms/30min" target="_blank" class="nav-link-accent">Book a Consultation</a>
   </div>
 </nav>
 
 <!-- HEADER — FRANCO INTRO -->
 <section class="header-section">
-  <div class="header-brand reveal">SGF <span>Studio</span></div>
   <div class="franco-avatar reveal">
     <img src="franco-headshot.jpg" alt="Franco Lopez">
   </div>
