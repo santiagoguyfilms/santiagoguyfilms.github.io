@@ -61,7 +61,7 @@ nav {
   z-index: 100;
   padding: 14px 32px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background: rgba(10, 11, 20, 0.95);
   backdrop-filter: blur(20px);
@@ -78,7 +78,7 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 36px;
 }
 .nav-link {
   color: rgba(255,255,255,0.7);
@@ -111,19 +111,13 @@ nav {
   text-align: center;
 }
 
-.header-brand {
-  font-size: 18px;
+.business-name {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
   font-weight: 900;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+  letter-spacing: -1px;
   color: var(--text-primary);
-  margin-bottom: 24px;
-}
-.header-brand span {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 20px;
+  line-height: 1.1;
 }
 
 .franco-avatar {
@@ -732,10 +726,9 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 14px 20px; }
   nav { padding: 12px 16px; }
-  .nav-brand { font-size: 11px; letter-spacing: 1px; }
-  .nav-links { gap: 10px; }
-  .nav-link { font-size: 11px; }
-  .nav-link-accent { font-size: 10px; padding: 6px 12px; }
+  .nav-links { gap: 16px; }
+  .nav-link { font-size: 12px; }
+  .nav-link-accent { font-size: 11px; padding: 7px 14px; }
 
   .header-section { padding: 90px 24px 36px; }
   .franco-avatar { width: 100px; height: 100px; }
@@ -785,18 +778,17 @@ footer {
 
 <!-- NAV — clean, consultant, no lead magnet -->
 <nav>
-  <a href="https://santiagoguyfilms.com" class="nav-brand">Santiago Guy Films</a>
   <div class="nav-links">
-    <a href="https://santiagoguyfilms.com" class="nav-link">Home</a>
+    <a href="https://santiagoguyfilms.com/links/" class="nav-link">Home</a>
     <a href="https://santiagoguyfilms.com/media-kit/" class="nav-link">Media Kit</a>
     <a href="https://santiagoguyfilms.com/results/" class="nav-link">Results</a>
-    <a href="#journey" class="nav-link">Journey</a>
     <a href="https://calendly.com/welcome-santiagoguyfilms/30min" target="_blank" class="nav-link-accent">Book a Consultation</a>
   </div>
 </nav>
 
 <!-- HEADER — FRANCO INTRO -->
 <section class="header-section">
+  <div class="business-name reveal">Santiago Guy Films</div>
   <div class="franco-avatar reveal">
     <img src="franco-headshot.jpg" alt="Franco Lopez">
   </div>
