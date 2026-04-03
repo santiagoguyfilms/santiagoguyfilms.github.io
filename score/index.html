@@ -673,83 +673,123 @@ img, svg, video, canvas, iframe { max-width: 100%; }
   </div>
 </section>
 
-<!-- SAMPLE REPORT PREVIEW -->
+<!-- SAMPLE BIZAUDIT REPORT PREVIEW -->
 <section class="preview-section" id="previewSection">
-  <div class="section-label reveal">SAMPLE REPORT</div>
-  <p class="reveal">Here's what your report looks like</p>
-  <div class="mock-report reveal" id="mock-report">
-    <div class="mock-header">
-      <div class="mock-biz">
-        <div class="mock-avatar">&#127860;</div>
+  <div class="section-label reveal">SAMPLE BIZAUDIT REPORT</div>
+  <p class="reveal" style="font-size:17px;">Complete the questionnaire and receive a full PDF report like this — free.</p>
+  <div class="mock-report reveal" id="mock-report" style="overflow:hidden;border-radius:20px;">
+
+    <!-- Report Hero -->
+    <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);padding:24px 20px 20px;color:white;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(233,69,96,0.15);"></div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e94560;margin-bottom:8px;">BizAudit Report</div>
+      <div style="font-size:22px;font-weight:800;line-height:1.15;">Coral Gables <span style="color:#f5a623;">Bistro</span></div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:8px;display:flex;gap:16px;flex-wrap:wrap;">
+        <span>Miami, FL</span><span>Restaurant</span><span>March 2026</span>
+      </div>
+    </div>
+
+    <!-- Score Banner -->
+    <div style="background:linear-gradient(135deg,#1a1a2e,#0f3460);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.06);">
+      <div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:600;">Overall Score</div>
+        <div style="font-size:36px;font-weight:800;color:#f5a623;line-height:1;">62<span style="font-size:18px;opacity:0.5">/100</span></div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <div style="background:rgba(255,255,255,0.08);border-radius:20px;padding:6px 14px;text-align:center;">
+          <div style="font-size:16px;font-weight:700;color:white;">4.2</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);">Rating</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:20px;padding:6px 14px;text-align:center;">
+          <div style="font-size:16px;font-weight:700;color:white;">47</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);">Reviews</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:20px;padding:6px 14px;text-align:center;">
+          <div style="font-size:16px;font-weight:700;color:white;">6</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);">Platforms</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform Grid -->
+    <div style="padding:18px 20px;border-top:1px solid var(--border);">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Platform Presence</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="background:var(--bg-elevated);border-radius:10px;padding:12px;border-top:3px solid var(--accent-green);">
+          <div style="font-size:11px;font-weight:700;color:var(--text-primary);margin-bottom:2px;">Instagram</div>
+          <span style="font-size:9px;font-weight:600;background:rgba(52,211,153,0.15);color:#34d399;padding:2px 6px;border-radius:10px;">Active</span>
+          <div style="font-size:18px;font-weight:800;color:var(--text-primary);margin-top:6px;">2,340</div>
+          <div style="font-size:9px;color:var(--text-muted);">Followers</div>
+        </div>
+        <div style="background:var(--bg-elevated);border-radius:10px;padding:12px;border-top:3px solid var(--accent-amber);">
+          <div style="font-size:11px;font-weight:700;color:var(--text-primary);margin-bottom:2px;">Google Business</div>
+          <span style="font-size:9px;font-weight:600;background:rgba(245,158,11,0.15);color:#f59e0b;padding:2px 6px;border-radius:10px;">Weak</span>
+          <div style="font-size:18px;font-weight:800;color:var(--text-primary);margin-top:6px;">4.2</div>
+          <div style="font-size:9px;color:var(--text-muted);">Stars / 47 Reviews</div>
+        </div>
+        <div style="background:var(--bg-elevated);border-radius:10px;padding:12px;border-top:3px solid var(--accent-amber);">
+          <div style="font-size:11px;font-weight:700;color:var(--text-primary);margin-bottom:2px;">Website</div>
+          <span style="font-size:9px;font-weight:600;background:rgba(245,158,11,0.15);color:#f59e0b;padding:2px 6px;border-radius:10px;">No SEO</span>
+          <div style="font-size:18px;font-weight:800;color:var(--text-primary);margin-top:6px;">Live</div>
+          <div style="font-size:9px;color:var(--text-muted);">No mobile optimization</div>
+        </div>
+        <div style="background:var(--bg-elevated);border-radius:10px;padding:12px;border-top:3px solid var(--accent-red);">
+          <div style="font-size:11px;font-weight:700;color:var(--text-primary);margin-bottom:2px;">TikTok</div>
+          <span style="font-size:9px;font-weight:600;background:rgba(239,68,68,0.15);color:#ef4444;padding:2px 6px;border-radius:10px;">Not Found</span>
+          <div style="font-size:18px;font-weight:800;color:var(--text-primary);margin-top:6px;">0</div>
+          <div style="font-size:9px;color:var(--text-muted);">Presence</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strengths / Gaps -->
+    <div style="padding:18px 20px;border-top:1px solid var(--border);">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <div>
-          <div class="mock-name">Coral Gables Bistro</div>
-          <div class="mock-loc">Miami, FL</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#34d399;margin-bottom:10px;">What You're Doing Right</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;">
+            <span style="color:#34d399;font-weight:800;font-size:12px;margin-top:1px;">+</span>
+            <span style="font-size:12px;color:var(--text-body);line-height:1.5;">Strong Yelp rating with consistent positive reviews</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;">
+            <span style="color:#34d399;font-weight:800;font-size:12px;margin-top:1px;">+</span>
+            <span style="font-size:12px;color:var(--text-body);line-height:1.5;">Active Instagram with food photography</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#ef4444;margin-bottom:10px;">What Needs Work</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;">
+            <span style="color:#ef4444;font-weight:800;font-size:12px;margin-top:1px;">!</span>
+            <span style="font-size:12px;color:var(--text-body);line-height:1.5;">Google Business Profile incomplete — missing hours and menu</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;">
+            <span style="color:#ef4444;font-weight:800;font-size:12px;margin-top:1px;">!</span>
+            <span style="font-size:12px;color:var(--text-body);line-height:1.5;">No TikTok — competitors averaging 12K views/mo</span>
+          </div>
         </div>
       </div>
-      <div class="mock-overall"><div class="mock-score-ring">62</div></div>
     </div>
-    <div class="mock-platforms">
-      <div class="mock-plat-row">
-        <div class="mock-plat-icon ig">&#128247;</div>
-        <div class="mock-plat-name">Instagram</div>
-        <div class="mock-plat-bar-track"><div class="mock-plat-bar" data-w="78" style="background:var(--accent)"></div></div>
-        <div class="mock-plat-grade grade-b">B+</div>
-      </div>
-      <div class="mock-plat-row">
-        <div class="mock-plat-icon goog">&#127760;</div>
-        <div class="mock-plat-name">Google</div>
-        <div class="mock-plat-bar-track"><div class="mock-plat-bar" data-w="55" style="background:var(--accent-amber)"></div></div>
-        <div class="mock-plat-grade grade-c">C+</div>
-      </div>
-      <div class="mock-plat-row">
-        <div class="mock-plat-icon yelp">&#11088;</div>
-        <div class="mock-plat-name">Yelp</div>
-        <div class="mock-plat-bar-track"><div class="mock-plat-bar" data-w="88" style="background:var(--accent-green)"></div></div>
-        <div class="mock-plat-grade grade-a">A</div>
-      </div>
-      <div class="mock-plat-row">
-        <div class="mock-plat-icon tt">&#127909;</div>
-        <div class="mock-plat-name">TikTok</div>
-        <div class="mock-plat-bar-track"><div class="mock-plat-bar" data-w="22" style="background:var(--accent-red)"></div></div>
-        <div class="mock-plat-grade grade-d">D</div>
-      </div>
-      <div class="mock-plat-row">
-        <div class="mock-plat-icon fb">&#128100;</div>
-        <div class="mock-plat-name">Facebook</div>
-        <div class="mock-plat-bar-track"><div class="mock-plat-bar" data-w="48" style="background:var(--accent-amber)"></div></div>
-        <div class="mock-plat-grade grade-c">C</div>
-      </div>
-    </div>
-    <div class="mock-findings">
-      <div class="label">&#9888;&#65039; TOP FINDINGS</div>
-      <div class="finding-row">
-        <div class="finding-icon">&#128308;</div>
-        <div class="finding-text"><strong>Google Business Profile incomplete</strong> &mdash; missing hours, menu link, and 3 key categories</div>
-      </div>
-      <div class="finding-row">
-        <div class="finding-icon">&#128992;</div>
-        <div class="finding-text"><strong>No TikTok presence</strong> &mdash; competitors in this zip code average 12K views/mo on short form video</div>
-      </div>
-    </div>
+
+    <!-- Growth Opportunities + Blur -->
     <div class="mock-blur-overlay">
-      <div class="mock-blur-content">
-        <div class="finding-row">
-          <div class="finding-icon">&#128993;</div>
-          <div class="finding-text"><strong>Instagram posting frequency</strong> &mdash; 2x/week vs competitor avg of 5x/week</div>
+      <div class="mock-blur-content" style="padding:18px 20px 20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-amber);margin-bottom:12px;">Growth Opportunities</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;">
+          <span style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#e94560,#c0392b);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;">1</span>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text-primary);">Launch a Google Review Campaign</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5;">Simple email sequence to regulars could build 100+ reviews fast...</div></div>
         </div>
-        <div class="finding-row">
-          <div class="finding-icon">&#128994;</div>
-          <div class="finding-text"><strong>Review response rate</strong> &mdash; only 30% of Yelp reviews have owner reply</div>
+        <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;">
+          <span style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#e94560,#c0392b);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;">2</span>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text-primary);">Start Short-Form Video Content</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5;">Behind-the-scenes food prep Reels get 4x more engagement...</div></div>
         </div>
-        <div class="finding-row">
-          <div class="finding-icon">&#128308;</div>
-          <div class="finding-text"><strong>Website missing mobile CTA</strong> &mdash; no click to call on mobile</div>
-        </div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:16px;margin-bottom:10px;">Executive Summary</div>
+        <p style="font-size:12px;color:var(--text-body);line-height:1.7;">Coral Gables Bistro has strong foundations — a loyal customer base, solid reviews, and an active Instagram. The main gaps are an incomplete Google Business Profile, no short-form video strategy, and a website that isn't optimized for mobile or SEO...</p>
       </div>
       <div class="mock-unlock">
-        <button onclick="document.getElementById('bizSearch').focus(); window.scrollTo({top:0,behavior:'smooth'});">&#128275; Unlock Your Full Report</button>
+        <button onclick="document.getElementById('bizSearch').focus(); window.scrollTo({top:0,behavior:'smooth'});">Get Your Free BizAudit</button>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1148,7 +1188,7 @@ function showResults(scores,pct){
   var cols={frequency:'#00d4ff',website:'#a855f7',branding:'#ec4899',video:'#f59e0b',discovery:'#34d399',proof:'#f59e0b',ads:'#00d4ff',strategy:'#a855f7',gbp:'#34d399'};
   document.getElementById('breakdown').innerHTML=Object.keys(scores).map(function(k){var v=scores[k];return '<div class="bd-item"><div class="bd-label">'+names[k]+'</div><div class="bd-bar"><div class="bd-bar-fill" style="width:'+v/4*100+'%;background:'+cols[k]+'"></div></div><div class="bd-val" style="color:'+cols[k]+'">'+v+'/4</div></div>'}).join('');
   var ir=industryRecs[bizType]||industryRecs.other,sorted=Object.keys(scores).sort(function(a,b){return scores[a]-scores[b]}),rH='',cnt=0;
-  for(var i=0;i<sorted.length&&cnt<4;i++){var cat=sorted[i];if(scores[cat]<=3&&ir[cat]){var r=ir[cat];rH+='<div class="rec"><div class="rec-icon" style="background:'+cols[cat]+'22;color:'+cols[cat]+'">&#9733;</div><div><h4>'+r.t+'</h4><p>'+r.d+'</p>'+(r.s?'<a href="'+r.s+'" class="help-tag">We can help &rarr;</a>':'')+'</div></div>';cnt++}}
+  for(var i=0;i<sorted.length&&cnt<4;i++){var cat=sorted[i];if(scores[cat]<=3&&ir[cat]){var r=ir[cat];rH+='<div class="rec"><div class="rec-icon" style="background:'+cols[cat]+'22;color:'+cols[cat]+'">&#9733;</div><div><h4>'+r.t+'</h4><p>'+r.d+'</p>'+''+'</div></div>';cnt++}}
   if(cnt<3)rH+='<div class="rec"><div class="rec-icon" style="background:#34d39922;color:#34d399">&#9733;</div><div><h4>Automate With AI</h4><p>AI handles emails, content drafts, and scheduling in a fraction of the time.</p><a href="https://calendly.com/welcome-santiagoguyfilms/30min" class="help-tag">Book a consultation &rarr;</a></div></div>';
   document.getElementById('recs').innerHTML=rH;
 }
