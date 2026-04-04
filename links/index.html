@@ -1053,50 +1053,101 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-<!-- Vapi AI Chat Widget — Custom Fixed Corner Button -->
+<!-- Vapi AI — Fixed Corner Square -->
 <style>
-.vapi-corner-btn {
+#vapiBox {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 16px;
+  right: 16px;
   z-index: 9999;
-  background: rgba(0, 212, 255, 0.12);
-  border-top: 1px solid rgba(0, 212, 255, 0.25);
-  border-left: 1px solid rgba(0, 212, 255, 0.25);
-  border-radius: 12px 0 0 0;
-  padding: 10px 16px;
+  width: 140px;
+  background: var(--bg-surface, #111220);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 14px;
+  padding: 14px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
 }
-.vapi-corner-btn:hover { background: rgba(0, 212, 255, 0.2); }
-.vapi-corner-btn svg { width: 16px; height: 16px; fill: #00d4ff; flex-shrink: 0; }
-.vapi-corner-btn span { font-size: 11px; font-weight: 700; color: #00d4ff; letter-spacing: 0.5px; white-space: nowrap; }
+#vapiBox:hover { border-color: rgba(0, 212, 255, 0.5); background: rgba(17, 18, 32, 0.95); }
+#vapiBox.active { border-color: rgba(52, 211, 153, 0.5); }
+#vapiBox.connecting { border-color: rgba(168, 85, 247, 0.5); }
+#vapiIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+#vapiBox.connecting #vapiIcon { background: rgba(168, 85, 247, 0.15); }
+#vapiBox.active #vapiIcon { background: rgba(52, 211, 153, 0.15); animation: pulse-ring 1.5s ease infinite; }
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+}
+#vapiIcon svg { width: 18px; height: 18px; fill: #00d4ff; }
+#vapiBox.connecting #vapiIcon svg { fill: #a855f7; }
+#vapiBox.active #vapiIcon svg { fill: #34d399; }
+#vapiLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: #00d4ff;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
+}
+#vapiBox.connecting #vapiLabel { color: #a855f7; }
+#vapiBox.active #vapiLabel { color: #34d399; }
+#vapiEnd {
+  display: none;
+  font-size: 9px;
+  font-weight: 700;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+#vapiBox.active #vapiEnd { display: block; }
 </style>
 
-<div class="vapi-corner-btn" id="vapiBtn" onclick="startVapi()">
-  <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.72 1.63 5.12 4.15 6.57-.12 1.58-.82 2.98-1.88 4.03-.14.14-.18.36-.1.54.09.18.27.3.47.3 2.51 0 4.68-1.29 5.94-2.51.46.07.93.11 1.42.11 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></svg>
-  <span>Talk to My AI Assistant</span>
+<div id="vapiBox" onclick="toggleVapi()">
+  <div id="vapiIcon">
+    <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.72 1.63 5.12 4.15 6.57-.12 1.58-.82 2.98-1.88 4.03-.14.14-.18.36-.1.54.09.18.27.3.47.3 2.51 0 4.68-1.29 5.94-2.51.46.07.93.11 1.42.11 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></svg>
+  </div>
+  <div id="vapiLabel">Talk to My<br>AI Assistant</div>
+  <div id="vapiEnd" onclick="event.stopPropagation();endVapi();">End Call</div>
 </div>
 
 <script>
   var vapiInstance = null;
-  var vapiLoaded = false;
+  var vapiActive = false;
   const assistant = "d6d5de09-80c0-4058-aaf8-e6d88a5b7e6c";
   const apiKey = "4f734101-ca3b-4376-b031-9d25694212df";
+  var box = document.getElementById('vapiBox');
+  var label = document.getElementById('vapiLabel');
 
-  function startVapi() {
+  function toggleVapi() {
+    if (vapiActive) return;
     if (vapiInstance) {
+      box.className = 'connecting';
+      label.innerHTML = 'Connecting...';
       vapiInstance.start(assistant);
-      document.getElementById('vapiBtn').querySelector('span').textContent = 'Listening...';
       return;
     }
-    document.getElementById('vapiBtn').querySelector('span').textContent = 'Connecting...';
+    box.className = 'connecting';
+    label.innerHTML = 'Connecting...';
     var g = document.createElement('script');
     g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
     g.onload = function () {
@@ -1105,10 +1156,33 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         assistant: assistant,
         config: { hide: true }
       });
+      vapiInstance.on('call-start', function() {
+        vapiActive = true;
+        box.className = 'active';
+        label.innerHTML = 'Listening...';
+      });
+      vapiInstance.on('call-end', function() {
+        vapiActive = false;
+        box.className = '';
+        label.innerHTML = 'Talk to My<br>AI Assistant';
+      });
+      vapiInstance.on('error', function() {
+        vapiActive = false;
+        box.className = '';
+        label.innerHTML = 'Talk to My<br>AI Assistant';
+      });
       setTimeout(function(){ vapiInstance.start(assistant); }, 500);
-      document.getElementById('vapiBtn').querySelector('span').textContent = 'Listening...';
     };
     document.body.appendChild(g);
+  }
+
+  function endVapi() {
+    if (vapiInstance) {
+      vapiInstance.stop();
+      vapiActive = false;
+      box.className = '';
+      label.innerHTML = 'Talk to My<br>AI Assistant';
+    }
   }
 </script>
 
