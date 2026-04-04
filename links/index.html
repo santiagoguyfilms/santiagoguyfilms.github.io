@@ -1053,47 +1053,63 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-<!-- Vapi AI Chat Widget -->
+<!-- Vapi AI Chat Widget — Custom Fixed Corner Button -->
+<style>
+.vapi-corner-btn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(0, 212, 255, 0.12);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-left: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 12px 0 0 0;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.vapi-corner-btn:hover { background: rgba(0, 212, 255, 0.2); }
+.vapi-corner-btn svg { width: 16px; height: 16px; fill: #00d4ff; flex-shrink: 0; }
+.vapi-corner-btn span { font-size: 11px; font-weight: 700; color: #00d4ff; letter-spacing: 0.5px; white-space: nowrap; }
+</style>
+
+<div class="vapi-corner-btn" id="vapiBtn" onclick="startVapi()">
+  <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.72 1.63 5.12 4.15 6.57-.12 1.58-.82 2.98-1.88 4.03-.14.14-.18.36-.1.54.09.18.27.3.47.3 2.51 0 4.68-1.29 5.94-2.51.46.07.93.11 1.42.11 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></svg>
+  <span>Speak with AI</span>
+</div>
+
 <script>
   var vapiInstance = null;
+  var vapiLoaded = false;
   const assistant = "d6d5de09-80c0-4058-aaf8-e6d88a5b7e6c";
   const apiKey = "4f734101-ca3b-4376-b031-9d25694212df";
 
-  (function (d, t) {
-    var g = document.createElement(t),
-      s = d.getElementsByTagName(t)[0];
+  function startVapi() {
+    if (vapiInstance) {
+      vapiInstance.start(assistant);
+      document.getElementById('vapiBtn').querySelector('span').textContent = 'Listening...';
+      return;
+    }
+    document.getElementById('vapiBtn').querySelector('span').textContent = 'Connecting...';
+    var g = document.createElement('script');
     g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-    g.defer = true;
     g.onload = function () {
       vapiInstance = window.vapiSDK.run({
         apiKey: apiKey,
         assistant: assistant,
-        config: {
-          position: "bottom-left",
-          offset: "16px",
-          width: "44px",
-          height: "44px",
-          idle: {
-            color: "rgb(0, 212, 255)",
-            type: "pill",
-            title: "Speak with AI",
-            icon: "https://unpkg.com/lucide-static@0.321.0/icons/message-circle.svg",
-          },
-          active: {
-            color: "rgb(0, 212, 255)",
-            type: "round",
-            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
-          },
-          loading: {
-            color: "rgb(168, 85, 247)",
-            type: "round",
-            icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg",
-          }
-        },
+        config: { hide: true }
       });
+      setTimeout(function(){ vapiInstance.start(assistant); }, 500);
+      document.getElementById('vapiBtn').querySelector('span').textContent = 'Listening...';
     };
-    s.parentNode.insertBefore(g, s);
-  })(document, "script");
+    document.body.appendChild(g);
+  }
 </script>
 
 </body>
