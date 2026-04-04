@@ -1056,5 +1056,53 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
+<!-- Vapi AI Chat Widget -->
+<script>
+  var vapiInstance = null;
+  const assistant = "d6d5de09-80c0-4058-aaf8-e6d88a5b7e6c";
+  const apiKey = "4f734101-ca3b-4376-b031-9d25694212df";
+
+  (function (d, t) {
+    var g = document.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+    g.defer = true;
+    g.onload = function () {
+      vapiInstance = window.vapiSDK.run({
+        apiKey: apiKey,
+        assistant: assistant,
+        config: {
+          position: "bottom-right",
+          offset: "20px",
+          width: "60px",
+          height: "60px",
+          idle: {
+            color: "rgb(0, 212, 255)",
+            type: "pill",
+            title: "Chat with AI",
+            subtitle: "Ask me anything",
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/message-circle.svg",
+          },
+          active: {
+            color: "rgb(0, 212, 255)",
+            type: "pill",
+            title: "AI Assistant",
+            subtitle: "Listening...",
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
+          },
+          loading: {
+            color: "rgb(168, 85, 247)",
+            type: "pill",
+            title: "Connecting...",
+            subtitle: "Please wait",
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg",
+          }
+        },
+      });
+    };
+    s.parentNode.insertBefore(g, s);
+  })(document, "script");
+</script>
+
 </body>
 </html>
