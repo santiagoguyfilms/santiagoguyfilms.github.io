@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizAudit Report — Experior Financial Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0b14;
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .top-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #00d4ff, #a855f7, #ec4899);
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 36px 20px 64px;
+  }
+
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 24px;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    background: #00d4ff;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-size: clamp(38px, 10vw, 60px);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.0;
+    margin-bottom: 24px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4b5072;
+    margin-bottom: 3px;
+  }
+
+  .meta-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #9ca3af;
+  }
+
+  .score-card {
+    background: #111220;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .score-circle {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: rgba(0,212,255,0.1);
+    border: 2px solid rgba(0,212,255,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .score-num {
+    font-size: 44px;
+    font-weight: 900;
+    color: #00d4ff;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .score-pct {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(0,212,255,0.6);
+  }
+
+  .score-body { text-align: left; }
+
+  .score-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 10px;
+  }
+
+  .score-headline {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .score-desc {
+    font-size: 15px;
+    color: #9ca3af;
+    line-height: 1.7;
+  }
+
+  .note-box {
+    background: rgba(168,85,247,0.07);
+    border: 1px solid rgba(168,85,247,0.2);
+    border-radius: 16px;
+    padding: 22px 20px;
+    margin-bottom: 36px;
+    font-size: 15px;
+    color: #9ca3af;
+    line-height: 1.7;
+  }
+
+  .note-box strong { color: #a855f7; }
+
+  .section { margin-bottom: 44px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 6vw, 34px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card {
+    background: #111220;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 22px 20px;
+  }
+
+  .card.strength { border-left: 3px solid #34d399; }
+  .card.weakness { border-left: 3px solid #ec4899; }
+  .card.opportunity { border-left: 3px solid #00d4ff; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .platform-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .platform-icon { font-size: 17px; }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .b-weak { background: rgba(236,72,153,0.12); color: #ec4899; border: 1px solid rgba(236,72,153,0.25); }
+  .b-fair { background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+  .b-good { background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+  .b-strong { background: rgba(0,212,255,0.1); color: #00d4ff; border: 1px solid rgba(0,212,255,0.25); }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .card h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 7px;
+    letter-spacing: -0.2px;
+  }
+
+  .card p, .card-desc {
+    font-size: 15px;
+    color: #9ca3af;
+    line-height: 1.65;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 36px 0;
+  }
+
+  .summary-box {
+    background: #111220;
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .summary-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00d4ff, #a855f7);
+  }
+
+  .summary-box p {
+    font-size: 16px;
+    color: #9ca3af;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .summary-box p:last-child { margin-bottom: 0; }
+
+  .footer {
+    margin-top: 52px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-brand {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 6px;
+  }
+
+  .footer-sub {
+    font-size: 13px;
+    color: #4b5072;
+    line-height: 1.7;
+  }
+
+  .footer-sub a { color: #9ca3af; text-decoration: none; }
+
+  @media (min-width: 580px) {
+    .page { padding: 52px 36px 80px; }
+    .score-card { flex-direction: row; align-items: flex-start; text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+<div class="page">
+
+  <div class="brand-badge"><span class="dot"></span>Santiago Guy Films · BizAudit</div>
+
+  <h1>Experior<br><span class="gradient-text">Financial Group</span></h1>
+
+  <div class="meta-grid">
+    <div><div class="meta-label">Contact</div><div class="meta-value">Jo St. Jacques</div></div>
+    <div><div class="meta-label">Title</div><div class="meta-value">Director of Marketing</div></div>
+    <div><div class="meta-label">Report Date</div><div class="meta-value">April 6, 2026</div></div>
+    <div><div class="meta-label">Content Score</div><div class="meta-value" style="color:#00d4ff;">94% — Strong</div></div>
+  </div>
+
+  <div class="score-card">
+    <div class="score-circle">
+      <span class="score-num">94</span>
+      <span class="score-pct">%</span>
+    </div>
+    <div class="score-body">
+      <div class="score-tag">Strong — Near the Top</div>
+      <div class="score-headline">You're already doing a lot right.</div>
+      <p class="score-desc">A 94% score reflects genuine investment in content and digital strategy. Experior has an active presence across LinkedIn, Instagram, Facebook, YouTube, TikTok, and X — with a robust website and real content marketing behind it. The two gaps that kept this from a perfect score point to specific nuances worth exploring.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>A note on this audit:</strong> Experior Financial Group is a national IMO with 16,000+ licensed agents across the US and Canada. This audit looks at the corporate digital presence and the opportunity gap between a strong national brand and thin local agent-level presence. The biggest white space for a company like Experior is often what individual agents look like in their own local markets.
+  </div>
+
+  <div class="section">
+    <div class="section-label">Platform by Platform</div>
+    <h2 class="section-title">Where Experior Stands Online</h2>
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">🌐</span>Website</span>
+          <span class="badge b-strong">Robust</span>
+        </div>
+        <p class="card-desc">usa.experiorfinancial.com is comprehensive and well-maintained — blog, press releases, agent resources, leadership pages, and a full content hub. Jo is credited as author on numerous articles. The content marketing infrastructure here is more developed than companies three times this size. This is a genuine strength.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">💼</span>LinkedIn</span>
+          <span class="badge b-strong">Active</span>
+        </div>
+        <p class="card-desc">Active company page with agent spotlights, convention highlights, and leadership content. Jo's personal profile has 500+ connections as Marketing & Growth Leader. Being used well for professional credibility and agent recruitment.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">📸</span>Instagram</span>
+          <span class="badge b-good">Consistent</span>
+        </div>
+        <p class="card-desc">@experiorfinancialgroupinc has 6,600+ followers and 1,768 posts. Content covers agent milestones, motivation, and company culture. The focus is agent-facing rather than client-facing — appropriate for an IMO, but it leaves a consumer audience gap worth considering.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">▶️</span>YouTube</span>
+          <span class="badge b-good">Active</span>
+        </div>
+        <p class="card-desc">Long-form video is active — convention talks, leadership interviews, and agent features. Strong asset for recruiting. Production value from the 2023 convention series is solid. This content converts well for agent prospects who want to understand the culture before committing.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">🎵</span>TikTok</span>
+          <span class="badge b-fair">Emerging</span>
+        </div>
+        <p class="card-desc">Listed as an active channel across all communications. For a financial services company, having TikTok at all shows forward-thinking. The opportunity: financial education content in plain language that demystifies life insurance for younger audiences who need it and don't know it yet.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">📘</span>Facebook</span>
+          <span class="badge b-good">Active</span>
+        </div>
+        <p class="card-desc">Active and referenced in all company communications. Given Experior's demographic — agents who often serve family and community clients — Facebook remains important, especially for agent-level local content that the corporate account can't generate at scale.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">🐦</span>X / Twitter</span>
+          <span class="badge b-fair">Listed</span>
+        </div>
+        <p class="card-desc">Consistently listed across press releases and communications. Activity level is harder to assess, but X has become less essential for financial services over the past two years. Energy is better directed toward LinkedIn and TikTok for the agent demographic.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">What's Working</div>
+    <h2 class="section-title">Real Strengths Worth Protecting</h2>
+    <div class="card-list">
+
+      <div class="card strength">
+        <span class="card-icon">✍️</span>
+        <h4>Content marketing is genuinely strong</h4>
+        <p>The Experior blog and news hub are actively maintained with well-written, SEO-aware content on IMO structure, agent careers, and financial education. Jo is credited as author or director on many pieces. This is a real content operation — not just a press release machine. A competitive advantage in a space where most IMOs have weak digital content.</p>
+      </div>
+
+      <div class="card strength">
+        <span class="card-icon">🏆</span>
+        <h4>Leadership storytelling is working at scale</h4>
+        <p>Experior consistently highlights agent milestones and success stories — promotions, team growth, convention achievements. This serves as social proof for recruiting, motivation for existing agents, and brand content all at once. Few companies in this industry do this as consistently or as well.</p>
+      </div>
+
+      <div class="card strength">
+        <span class="card-icon">📣</span>
+        <h4>Multi-channel distribution is already in place</h4>
+        <p>LinkedIn, Instagram, Facebook, YouTube, TikTok, and X — the infrastructure exists. This is not a company building from scratch. The channels are there; the opportunity is in ensuring each one has a distinct strategy rather than cross-posting the same message everywhere.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">The Two Gaps</div>
+    <h2 class="section-title">Where the Score Fell Short</h2>
+    <div class="card-list">
+
+      <div class="card weakness">
+        <span class="card-icon">📍</span>
+        <h4>Local presence at the agent level is nearly invisible</h4>
+        <p>Experior's national brand is solid — but when someone in Miami, Houston, or Phoenix searches for a financial advisor, they find individual agents, not IMOs. A company with 16,000+ agents has enormous potential local reach — but only if agents know how to show up in their own markets. That support infrastructure appears thin right now.</p>
+      </div>
+
+      <div class="card weakness">
+        <span class="card-icon">🎯</span>
+        <h4>Content is agent-facing, not client-facing</h4>
+        <p>Most of Experior's content is written for current and prospective agents. But there is a large consumer education audience being underserved — people who have never thought about life insurance and don't know why they need it. Content that demystifies financial protection in plain language would generate demand that agents can then convert. That funnel is largely missing.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Growth Angles</div>
+    <h2 class="section-title">Where the Upside Lives</h2>
+    <div class="card-list">
+
+      <div class="card opportunity">
+        <span class="card-icon">📱</span>
+        <h4>Agent content playbook for local markets</h4>
+        <p>A branded content system agents can use locally — templates, captions, short-form video scripts — would turn 16,000 agents into 16,000 local content machines. Built once, deployed everywhere. The impact on recruiting, brand awareness, and local lead generation would be significant and compounding.</p>
+      </div>
+
+      <div class="card opportunity">
+        <span class="card-icon">🎬</span>
+        <h4>Consumer-facing short-form video series</h4>
+        <p>TikTok and Reels are where the next generation of insurance clients lives. A consistent series — "What life insurance actually does," "Why your employer's policy isn't enough," "The thing nobody tells you about final expense coverage" — builds trust and generates inbound leads before anyone ever talks to an agent.</p>
+      </div>
+
+      <div class="card opportunity">
+        <span class="card-icon">🤝</span>
+        <h4>UGC from agents as authentic recruiting content</h4>
+        <p>Agent testimonials shot on a phone — why they joined Experior, what their business looks like now, what changed — outperform polished corporate video for recruiting. A structured UGC program with simple prompts and guidelines would generate authentic content at scale without requiring a production budget.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">The Bottom Line</div>
+    <h2 class="section-title">Where Things Stand</h2>
+    <div class="summary-box">
+      <p>Experior Financial Group has built a content marketing infrastructure that most financial services companies only dream about. The blog is active, the social channels are established, leadership storytelling is working, and the website reflects real investment. A 94% content score is hard-earned.</p>
+      <p>The next layer of growth lives at the edges — in local markets where individual agents need digital presence support, in consumer-facing content that builds demand before the sales conversation starts, and in short-form video that meets the next generation of clients where they already are. The foundation is there. What comes next is building the systems that multiply it.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Santiago Guy Films</div>
+    <div class="footer-sub">Content Creation & AI Automation · Miami, FL<br>
+    <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a> · <a href="https://santiagoguyfilms.com">santiagoguyfilms.com</a></div>
+  </div>
+
+</div>
+</body>
+</html>
