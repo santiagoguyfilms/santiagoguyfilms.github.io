@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizAudit Report — Chichi Bail Bonds</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0b14;
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .top-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #00d4ff, #a855f7, #ec4899);
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 36px 20px 64px;
+  }
+
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 24px;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    background: #00d4ff;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-size: clamp(38px, 10vw, 60px);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.0;
+    margin-bottom: 24px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #00d4ff, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4b5072;
+    margin-bottom: 3px;
+  }
+
+  .meta-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #9ca3af;
+  }
+
+  /* SCORE */
+  .score-card {
+    background: #111220;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .score-circle {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: rgba(236,72,153,0.1);
+    border: 2px solid rgba(236,72,153,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .score-num {
+    font-size: 44px;
+    font-weight: 900;
+    color: #ec4899;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .score-pct {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(236,72,153,0.6);
+  }
+
+  .score-body { text-align: left; }
+
+  .score-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ec4899;
+    margin-bottom: 10px;
+  }
+
+  .score-headline {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .score-desc {
+    font-size: 15px;
+    color: #9ca3af;
+    line-height: 1.7;
+  }
+
+  /* SECTIONS */
+  .section { margin-bottom: 44px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 6vw, 34px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  /* CARDS */
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card {
+    background: #111220;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 22px 20px;
+  }
+
+  .card.strength { border-left: 3px solid #34d399; }
+  .card.weakness { border-left: 3px solid #ec4899; }
+  .card.opportunity { border-left: 3px solid #00d4ff; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .platform-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .platform-icon { font-size: 17px; }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .b-weak { background: rgba(236,72,153,0.12); color: #ec4899; border: 1px solid rgba(236,72,153,0.25); }
+  .b-fair { background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+  .b-good { background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+  .b-none { background: rgba(75,80,114,0.3); color: #4b5072; border: 1px solid rgba(75,80,114,0.4); }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .card h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 7px;
+    letter-spacing: -0.2px;
+  }
+
+  .card p, .card-desc {
+    font-size: 15px;
+    color: #9ca3af;
+    line-height: 1.65;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 36px 0;
+  }
+
+  /* SUMMARY */
+  .summary-box {
+    background: #111220;
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .summary-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00d4ff, #a855f7);
+  }
+
+  .summary-box p {
+    font-size: 16px;
+    color: #9ca3af;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .summary-box p:last-child { margin-bottom: 0; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 52px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-brand {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 6px;
+  }
+
+  .footer-sub {
+    font-size: 13px;
+    color: #4b5072;
+    line-height: 1.7;
+  }
+
+  .footer-sub a { color: #9ca3af; text-decoration: none; }
+
+  @media (min-width: 580px) {
+    .page { padding: 52px 36px 80px; }
+    .score-card { flex-direction: row; align-items: flex-start; text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+<div class="page">
+
+  <div class="brand-badge"><span class="dot"></span>Santiago Guy Films · BizAudit</div>
+
+  <h1>Chichi<br><span class="gradient-text">Bail Bonds</span></h1>
+
+  <div class="meta-grid">
+    <div><div class="meta-label">Location</div><div class="meta-value">Hialeah, FL</div></div>
+    <div><div class="meta-label">Industry</div><div class="meta-value">Bail Bonds</div></div>
+    <div><div class="meta-label">Report Date</div><div class="meta-value">April 6, 2026</div></div>
+    <div><div class="meta-label">Content Score</div><div class="meta-value" style="color:#ec4899;">47% — Fair</div></div>
+  </div>
+
+  <div class="score-card">
+    <div class="score-circle">
+      <span class="score-num">47</span>
+      <span class="score-pct">%</span>
+    </div>
+    <div class="score-body">
+      <div class="score-tag">Fair — Room to Grow</div>
+      <div class="score-headline">There's a big opportunity here.</div>
+      <p class="score-desc">Chichi Bail Bonds has something most businesses would kill for — a rock-solid reputation built on real results. But that reputation is nearly invisible online. The score reflects the gap between how good this business is and how it shows up where people search in a panic at 2am.</p>
+    </div>
+  </div>
+
+  <!-- PLATFORMS -->
+  <div class="section">
+    <div class="section-label">Platform by Platform</div>
+    <h2 class="section-title">Where You Stand Online</h2>
+    <div class="card-list">
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">⭐</span>Google Business</span>
+          <span class="badge b-good">Active</span>
+        </div>
+        <p class="card-desc">Your strongest asset. Active listing at 1581 W 49th, Hialeah. This is the platform driving your 2am calls — keep it updated, respond to reviews, and add photos consistently. Protect this above all else.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">⭕</span>Yelp</span>
+          <span class="badge b-good">Strong</span>
+        </div>
+        <p class="card-desc">73 reviews, 5-star average, updated March 2026. The review quality is remarkable — clients describe 4am answers, coming to their home, and finding loved ones in two minutes. Some listings appear unclaimed which limits your ability to respond and update details.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">📘</span>Facebook</span>
+          <span class="badge b-fair">Fragmented</span>
+        </div>
+        <p class="card-desc">Two separate pages exist — one with 44 likes and one with 69 — splitting your audience and confusing potential clients. Neither shows consistent content. Consolidating into one well-maintained page is a straightforward fix with real impact.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">📸</span>Instagram</span>
+          <span class="badge b-weak">Inactive</span>
+        </div>
+        <p class="card-desc">@chichibailbonds exists but shows no meaningful activity. Instagram could be a powerful trust-building platform — client story highlights, short legal education clips, and availability content perform well in this niche. Currently dormant.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">🎵</span>TikTok</span>
+          <span class="badge b-none">Not Found</span>
+        </div>
+        <p class="card-desc">No presence found. Bail bond and legal content does exceptionally well on TikTok, and competition in South Florida is nearly zero in this niche. This is the biggest untapped channel available to this business right now.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">💼</span>LinkedIn</span>
+          <span class="badge b-fair">Minimal</span>
+        </div>
+        <p class="card-desc">A profile exists for Chichi Infante. Underused in the bail bonds space — which is actually an advantage. Attorneys and paralegals who refer clients respond well to professional presence here. An underexplored channel with real referral potential.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="platform-name"><span class="platform-icon">🌐</span>Website</span>
+          <span class="badge b-weak">Placeholder</span>
+        </div>
+        <p class="card-desc">chichibailbonds.com is a Wix template with no real content — copyright 2023. When someone Googles you and clicks through, they hit a dead end. This is the single biggest gap. Every click that bounces is a potential client lost at the worst moment.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- STRENGTHS -->
+  <div class="section">
+    <div class="section-label">What's Working</div>
+    <h2 class="section-title">Your Real Strengths</h2>
+    <div class="card-list">
+
+      <div class="card strength">
+        <span class="card-icon">⭐</span>
+        <h4>The reviews are extraordinary</h4>
+        <p>73 five-star reviews describing someone who answers at 4am, comes to your house, and gets loved ones out faster than anyone in Miami. This level of earned trust is rare — and it's the foundation everything else can be built on.</p>
+      </div>
+
+      <div class="card strength">
+        <span class="card-icon">📞</span>
+        <h4>24/7 availability is a real differentiator</h4>
+        <p>Bail bonds is panic-driven and time-sensitive. The fact that Chichi answers at 4am and physically comes to your home is the entire value proposition — mentioned in almost every review. But it's barely communicated anywhere online.</p>
+      </div>
+
+      <div class="card strength">
+        <span class="card-icon">🗣️</span>
+        <h4>Bilingual service in a bilingual market</h4>
+        <p>In Hialeah and Miami-Dade, Spanish service is essential for a large portion of the market. "Español disponible" needs to be front and center on every platform — not buried on a Facebook page with 69 followers.</p>
+      </div>
+
+      <div class="card strength">
+        <span class="card-icon">🔗</span>
+        <h4>Organic legal and paralegal referral network</h4>
+        <p>Multiple reviews come from paralegals recommending Chichi to clients. This referral channel is currently passive — but it's worth cultivating deliberately. A LinkedIn presence targeting South Florida legal professionals could systematize it.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WEAKNESSES -->
+  <div class="section">
+    <div class="section-label">What Needs Attention</div>
+    <h2 class="section-title">The Gaps Worth Fixing</h2>
+    <div class="card-list">
+
+      <div class="card weakness">
+        <span class="card-icon">🌐</span>
+        <h4>The website is doing more harm than good</h4>
+        <p>A placeholder site signals to potential clients that the business is inactive or unprofessional. A simple one-page site with your phone number, services, coverage areas, and a few real reviews would close this gap completely — and stop losing leads at the worst possible moment.</p>
+      </div>
+
+      <div class="card weakness">
+        <span class="card-icon">📱</span>
+        <h4>Duplicate Facebook pages splitting your presence</h4>
+        <p>Two pages, neither strong enough to build momentum. Consolidating into a single well-maintained page is a basic fix that would immediately improve reach and credibility.</p>
+      </div>
+
+      <div class="card weakness">
+        <span class="card-icon">🔇</span>
+        <h4>Social content is nearly nonexistent</h4>
+        <p>Bail bond clients refer friends and family when similar situations arise. Social media is what keeps you top-of-mind when those moments happen. Currently there's almost nothing for an interested person to find or share.</p>
+      </div>
+
+      <div class="card weakness">
+        <span class="card-icon">📋</span>
+        <h4>Unclaimed directory listings</h4>
+        <p>Multiple directories show Chichi as unclaimed — which means outdated info, no review responses, and no control over first impressions. Claiming these is low-effort with meaningful local SEO impact.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- OPPORTUNITIES -->
+  <div class="section">
+    <div class="section-label">Growth Angles</div>
+    <h2 class="section-title">Where the Real Upside Is</h2>
+    <div class="card-list">
+
+      <div class="card opportunity">
+        <span class="card-icon">🎯</span>
+        <h4>Turn your reviews into content</h4>
+        <p>70+ reviews describe specific emotional moments — 4am calls, coming to someone's home, getting a husband out before he missed work. Each one is a piece of content waiting to happen. A simple graphic or short testimonial post builds trust faster than any ad. You already have the material.</p>
+      </div>
+
+      <div class="card opportunity">
+        <span class="card-icon">🎬</span>
+        <h4>Short-form video for legal education</h4>
+        <p>Videos explaining the bail process in plain English and Spanish perform exceptionally well on TikTok and Reels. "What happens after an arrest in Florida," "How bail bonds actually work" — this content reaches exactly the audience that will eventually need a bondsman. Zero competitors in South Florida are doing this well.</p>
+      </div>
+
+      <div class="card opportunity">
+        <span class="card-icon">⚖️</span>
+        <h4>Build the attorney referral channel</h4>
+        <p>Legal professionals actively look for reliable bondsmen to recommend. A professional LinkedIn presence and a simple one-pager would systematize what is already happening informally — turning it into a structured, predictable pipeline.</p>
+      </div>
+
+      <div class="card opportunity">
+        <span class="card-icon">🔄</span>
+        <h4>Automate the follow-up after every bond</h4>
+        <p>After a client is released, there is a natural moment to ask for a review or referral. A simple follow-up text sequence could turn every completed bond into a future Google review and referral source. Most bondsmen have no follow-up system at all.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-label">The Bottom Line</div>
+    <h2 class="section-title">Where Things Stand</h2>
+    <div class="summary-box">
+      <p>Chichi Bail Bonds is a genuinely excellent service operating with a nearly invisible online presence. The reputation is real — the reviews prove it. What's missing is a digital presence that matches the quality of the actual service.</p>
+      <p>When someone needs a bondsman in Hialeah at 3am, they're Googling frantically. Right now Chichi shows up — but the website and social pages don't close the deal the way the service itself does. The foundation is there. What comes next is making sure that story is easy to find, easy to trust, and impossible to ignore.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Santiago Guy Films</div>
+    <div class="footer-sub">Content Creation & AI Automation · Miami, FL<br>
+    <a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a> · <a href="https://santiagoguyfilms.com">santiagoguyfilms.com</a></div>
+  </div>
+
+</div>
+</body>
+</html>
