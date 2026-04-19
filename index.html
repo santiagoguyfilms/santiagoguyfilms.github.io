@@ -39,7 +39,7 @@
     .hamburger span{width:22px;height:1.5px;background:var(--fg);display:block;}
 
     .hero{min-height:100vh;background:var(--bg);position:relative;overflow:hidden;padding:140px 52px 100px;display:flex;flex-direction:column;justify-content:flex-end;}
-    .hero-miami-bg{position:absolute;inset:0;background:url('miami-bg.jpg') center bottom/cover no-repeat;z-index:0;}
+    .hero-miami-bg{position:absolute;inset:0;background:var(--miami-bg-tmp) center bottom/cover no-repeat;z-index:0;}
     .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,10,31,0.55) 0%,rgba(26,10,31,0.25) 30%,rgba(26,10,31,0.70) 70%,rgba(26,10,31,0.92) 100%);pointer-events:none;z-index:1;}
     .hero>*{position:relative;z-index:2;}
     .hero-bg-word{position:absolute;bottom:-20px;right:-10px;font-family:'Orbitron',sans-serif;font-size:clamp(6rem,18vw,16rem);font-weight:900;letter-spacing:-4px;line-height:.85;color:rgba(255,255,255,0.018);pointer-events:none;user-select:none;white-space:nowrap;z-index:2;}
@@ -299,10 +299,10 @@
 <section class="hero">
   <div class="hero-miami-bg"></div>
   <div class="hero-bg-word">MIAMI</div>
-  <img class="fl mega fl-floatR" src="flamingo.png" alt="" style="width:480px;right:-60px;bottom:-60px;">
-  <img class="fl glow fl-float" src="flamingo.png" alt="" style="width:110px;right:14%;top:48%;">
-  <img class="fl soft fl-float" src="flamingo.png" alt="" style="width:56px;left:6%;bottom:20%;animation-delay:1.5s;">
-  <img class="fl visible-fl fl-floatR" src="flamingo.png" alt="" style="width:38px;right:5%;top:18%;animation-delay:2.2s;">
+  <img class="fl mega fl-floatR" data-fl="1" src="" alt="" style="width:480px;right:-60px;bottom:-60px;">
+  <img class="fl glow fl-float" data-fl="1" src="" alt="" style="width:110px;right:14%;top:48%;">
+  <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:56px;left:6%;bottom:20%;animation-delay:1.5s;">
+  <img class="fl visible-fl fl-floatR" data-fl="1" src="" alt="" style="width:38px;right:5%;top:18%;animation-delay:2.2s;">
   <div>
     <div class="hero-status reveal"><span class="dot"></span>Miami &middot; Your Local Marketing Guy</div>
     <h1 class="hero-headline reveal d1">
@@ -339,8 +339,8 @@
 </div>
 
 <section class="brands section-light" id="brands">
-  <img class="fl graphic fl-floatR" src="flamingo.png" alt="" style="width:280px;right:-30px;bottom:-30px;">
-  <img class="fl soft fl-float" src="flamingo.png" alt="" style="width:64px;left:2%;top:28%;animation-delay:1s;">
+  <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:280px;right:-30px;bottom:-30px;">
+  <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:64px;left:2%;top:28%;animation-delay:1s;">
   <div class="brands-inner">
     <div class="brands-slabel reveal">Trusted By</div>
     <h2 class="brands-headline reveal d1">Brands We've Worked With</h2>
@@ -370,8 +370,8 @@
 </section>
 
 <section class="video-section" id="work" style="position:relative;overflow:hidden;">
-  <img class="fl soft fl-floatR" src="flamingo.png" alt="" style="width:180px;right:-20px;top:40px;">
-  <img class="fl faint fl-float" src="flamingo.png" alt="" style="width:52px;left:2%;bottom:15%;animation-delay:3s;">
+  <img class="fl soft fl-floatR" data-fl="1" src="" alt="" style="width:180px;right:-20px;top:40px;">
+  <img class="fl faint fl-float" data-fl="1" src="" alt="" style="width:52px;left:2%;bottom:15%;animation-delay:3s;">
   <div class="video-inner" style="position:relative;z-index:1;">
     <div class="video-header">
       <div>
@@ -405,8 +405,8 @@
 </section>
 
 <section class="solutions section-light" id="solutions" style="position:relative;overflow:hidden;">
-  <img class="fl graphic fl-float" src="flamingo.png" alt="" style="width:220px;left:-25px;bottom:-20px;animation-delay:.8s;">
-  <img class="fl visible-fl fl-floatR" src="flamingo.png" alt="" style="width:46px;right:3%;top:22%;animation-delay:2s;">
+  <img class="fl graphic fl-float" data-fl="1" src="" alt="" style="width:220px;left:-25px;bottom:-20px;animation-delay:.8s;">
+  <img class="fl visible-fl fl-floatR" data-fl="1" src="" alt="" style="width:46px;right:3%;top:22%;animation-delay:2s;">
   <div class="solutions-inner" style="position:relative;z-index:1;">
     <div class="solutions-header">
       <div><div class="slabel reveal">What I Can Build For You</div><h2 class="solutions-headline reveal d1">Whatever you need.<br><span class="blue">I got you.</span></h2></div>
@@ -436,8 +436,8 @@
 </section>
 
 <section class="process">
-  <img class="fl graphic fl-floatR" src="flamingo.png" alt="" style="width:320px;left:-35px;top:0;animation-delay:1.2s;">
-  <img class="fl soft fl-float" src="flamingo.png" alt="" style="width:72px;right:4%;bottom:12%;animation-delay:2.5s;">
+  <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:320px;left:-35px;top:0;animation-delay:1.2s;">
+  <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:72px;right:4%;bottom:12%;animation-delay:2.5s;">
   <div class="process-inner">
     <div class="process-header">
       <div><div class="slabel reveal">How It Works</div><h2 class="process-headline reveal d1">Simple as a<br><span class="blue">conversation.</span></h2></div>
@@ -452,8 +452,8 @@
 </section>
 
 <section class="testimonial section-light">
-  <img class="fl graphic fl-floatR" src="flamingo.png" alt="" style="width:240px;right:4%;top:-15px;animation-delay:.4s;">
-  <img class="fl soft fl-float" src="flamingo.png" alt="" style="width:50px;left:2%;bottom:15%;animation-delay:3.5s;">
+  <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:240px;right:4%;top:-15px;animation-delay:.4s;">
+  <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:50px;left:2%;bottom:15%;animation-delay:3.5s;">
   <div class="testimonial-inner">
     <div class="slabel pink reveal">In Their Words</div>
     <blockquote class="testimonial-quote reveal d1">"He's a true creative. I highly recommend him. Most talented I've met. Our content was more than we expected &mdash; and he made the whole process feel easy to understand from start to finish."</blockquote>
@@ -463,7 +463,7 @@
 
 <section class="about" id="about">
   <div class="about-left reveal">
-    <img class="fl graphic fl-floatR" src="flamingo.png" alt="" style="width:300px;right:-40px;bottom:-30px;animation-delay:1.4s;">
+    <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:300px;right:-40px;bottom:-30px;animation-delay:1.4s;">
     <div class="slabel">Your Local Marketing Guy</div>
     <h2 class="about-headline">Local roots.<br><span class="blue">Agency-level</span><br>results.</h2>
     <p class="about-body">Miami business owners kept telling me the same thing &mdash; they wished there was someone local who actually understood marketing. Not a faceless agency. Someone who could sit across the table, explain the strategy in plain English, and then actually execute it.</p>
@@ -472,7 +472,7 @@
     <div class="about-cta"><a href="mailto:santiagoguyfilms@gmail.com" class="btn">Let's Grab a Coffee &amp; Talk</a></div>
   </div>
   <div class="about-right reveal">
-    <img src="franco-headshot.jpg" alt="Franco - Santiago Guy Films" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+    <img id="headshot-img" src="" alt="Franco - Santiago Guy Films" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
     <div class="about-photo-placeholder" style="display:none;">
       <div style="text-align:center;"><div style="font-size:52px;margin-bottom:16px;">&#x1F4CD;</div><div style="font-family:'Orbitron';font-size:22px;font-weight:900;color:var(--pink);text-shadow:var(--glow-pk);margin-bottom:8px;">FRANCO</div><div style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);">Miami, FL</div></div>
     </div>
@@ -480,10 +480,10 @@
 </section>
 
 <section class="cta-section">
-  <img class="fl mega fl-float" src="flamingo.png" alt="" style="width:520px;left:-70px;bottom:-60px;animation-delay:.3s;">
-  <img class="fl mega fl-floatR" src="flamingo.png" alt="" style="width:460px;right:-55px;bottom:-50px;animation-delay:1s;">
-  <img class="fl glow fl-floatR" src="flamingo.png" alt="" style="width:190px;right:5%;top:5%;animation-delay:2.2s;">
-  <img class="fl graphic fl-float" src="flamingo.png" alt="" style="width:80px;right:20%;bottom:10%;animation-delay:1.7s;">
+  <img class="fl mega fl-float" data-fl="1" src="" alt="" style="width:520px;left:-70px;bottom:-60px;animation-delay:.3s;">
+  <img class="fl mega fl-floatR" data-fl="1" src="" alt="" style="width:460px;right:-55px;bottom:-50px;animation-delay:1s;">
+  <img class="fl glow fl-floatR" data-fl="1" src="" alt="" style="width:190px;right:5%;top:5%;animation-delay:2.2s;">
+  <img class="fl graphic fl-float" data-fl="1" src="" alt="" style="width:80px;right:20%;bottom:10%;animation-delay:1.7s;">
   <div class="cta-inner">
     <div class="slabel pink reveal" style="justify-content:center;">Miami &middot; Let's Talk</div>
     <h2 class="cta-headline reveal d1">You found your<br><span class="blue">local guy.</span></h2>
@@ -525,6 +525,15 @@
   function toggleBrands(){const b=document.getElementById('seeAllBtn'),g=document.getElementById('allBrandsGrid'),o=g.classList.contains('visible');g.classList.toggle('visible');b.classList.toggle('open');b.firstChild.textContent=o?'See All 50+ Brands':'Show Less';}
   const nav=document.getElementById('mainNav');
   window.addEventListener('scroll',()=>{const m=window.innerWidth<=960;nav.style.padding=window.scrollY>50?(m?'12px 20px':'12px 36px'):(m?'16px 20px':'18px 36px');},{passive:true});
+</script>
+
+<script>
+(function(){
+  function loadImg(url,type,apply){fetch(url).then(function(r){return r.text();}).then(function(b64){apply('data:'+type+';base64,'+b64);});}
+  loadImg('flamingo-b64.txt','image/webp',function(src){document.querySelectorAll('[data-fl]').forEach(function(e){e.src=src;});});
+  loadImg('headshot-b64.txt','image/jpeg',function(src){var h=document.getElementById('headshot-img');if(h)h.src=src;});
+  loadImg('miami-b64.txt','image/jpeg',function(src){var bg=document.querySelector('.hero-miami-bg');if(bg)bg.style.backgroundImage="url('"+src+"')";});
+})();
 </script>
 </body>
 </html>
