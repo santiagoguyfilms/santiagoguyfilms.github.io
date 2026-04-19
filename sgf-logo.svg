@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#080808"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="white" stroke-width="2.5"/>
+  <text x="100" y="117" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="400" fill="white" letter-spacing="2">SGF</text>
+</svg>
