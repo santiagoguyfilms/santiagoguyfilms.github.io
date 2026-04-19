@@ -38,8 +38,8 @@
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
     .hamburger span{width:22px;height:1.5px;background:var(--fg);display:block;}
 
-    .hero{min-height:100vh;background:var(--bg) url('flamingo.png'),var(--bg) url('miami-bg.png') center bottom/cover no-repeat;background:var(--bg);position:relative;overflow:hidden;padding:140px 52px 100px;display:flex;flex-direction:column;justify-content:flex-end;}
-    .hero-miami-bg{position:absolute;inset:0;background:url('miami-bg.png') center bottom/cover no-repeat;z-index:0;}
+    .hero{min-height:100vh;background:var(--bg);position:relative;overflow:hidden;padding:140px 52px 100px;display:flex;flex-direction:column;justify-content:flex-end;}
+    .hero-miami-bg{position:absolute;inset:0;background:url('miami-bg.jpg') center bottom/cover no-repeat;z-index:0;}
     .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,10,31,0.55) 0%,rgba(26,10,31,0.25) 30%,rgba(26,10,31,0.70) 70%,rgba(26,10,31,0.92) 100%);pointer-events:none;z-index:1;}
     .hero>*{position:relative;z-index:2;}
     .hero-bg-word{position:absolute;bottom:-20px;right:-10px;font-family:'Orbitron',sans-serif;font-size:clamp(6rem,18vw,16rem);font-weight:900;letter-spacing:-4px;line-height:.85;color:rgba(255,255,255,0.018);pointer-events:none;user-select:none;white-space:nowrap;z-index:2;}
@@ -196,7 +196,7 @@
 
     @keyframes flamWander{0%{transform:translate(0,0) rotate(0deg);}15%{transform:translate(8px,-18px) rotate(2deg);}30%{transform:translate(-6px,-30px) rotate(-1.5deg);}45%{transform:translate(14px,-20px) rotate(3deg);}60%{transform:translate(-4px,-10px) rotate(-2deg);}75%{transform:translate(10px,-25px) rotate(1.5deg);}100%{transform:translate(0,0) rotate(0deg);}}
     @keyframes flamWanderFlip{0%{transform:scaleX(-1) translate(0,0) rotate(0deg);}15%{transform:scaleX(-1) translate(8px,-18px) rotate(-2deg);}30%{transform:scaleX(-1) translate(-6px,-30px) rotate(1.5deg);}45%{transform:scaleX(-1) translate(14px,-20px) rotate(-3deg);}60%{transform:scaleX(-1) translate(-4px,-10px) rotate(2deg);}75%{transform:scaleX(-1) translate(10px,-25px) rotate(-1.5deg);}100%{transform:scaleX(-1) translate(0,0) rotate(0deg);}}
-    @keyframes flamDrift{0%{transform:translate(0,0) rotate(0deg);}25%{transform:translate(20px,-28px) rotate(4deg);}50%{transform:translate(-12px,-15px) rotate(-2deg);}75%{transform:translate(16px,-35px) rotate(3deg);}100%{transform:translate(0,0) rotate(0deg);}}
+    @keyframes flamDrift{0%{transform:translate(0,0) rotate(0deg);}25%{transform:translate(20px,-28px) rotate(4deg);}50%{transform:translate(-12px,-15px) rotate(-2deg);}75%{transform:translate(16px,-35px) rotate(-35deg);}100%{transform:translate(0,0) rotate(0deg);}}
     @keyframes flamDriftFlip{0%{transform:scaleX(-1) translate(0,0) rotate(0deg);}25%{transform:scaleX(-1) translate(20px,-28px) rotate(-4deg);}50%{transform:scaleX(-1) translate(-12px,-15px) rotate(2deg);}75%{transform:scaleX(-1) translate(16px,-35px) rotate(-3deg);}100%{transform:scaleX(-1) translate(0,0) rotate(0deg);}}
     .fl-float{animation:flamWander 10s ease-in-out infinite;}
     .fl-floatR{animation:flamWanderFlip 13s ease-in-out infinite;}
@@ -304,16 +304,16 @@
   <img class="fl soft fl-float" src="flamingo.png" alt="" style="width:56px;left:6%;bottom:20%;animation-delay:1.5s;">
   <img class="fl visible-fl fl-floatR" src="flamingo.png" alt="" style="width:38px;right:5%;top:18%;animation-delay:2.2s;">
   <div>
-    <div class="hero-status reveal"><span class="dot"></span>Miami &#xB7; Your Local Marketing Guy</div>
+    <div class="hero-status reveal"><span class="dot"></span>Miami &middot; Your Local Marketing Guy</div>
     <h1 class="hero-headline reveal d1">
       Miami needed<br><span class="thin">a local guy</span><br>who gets<br><span class="blue">marketing.</span>
     </h1>
   </div>
   <div class="hero-bottom">
-    <p class="hero-sub reveal d2">You've been looking for someone who knows Miami, knows how to make content go viral, and can actually sit down and explain your marketing strategy in plain English. Local enough to grab coffee. Powerful enough to compete with any agency. Supercharged by AI &#x2014; half the cost, twice the speed.</p>
+    <p class="hero-sub reveal d2">You've been looking for someone who knows Miami, knows how to make content go viral, and can actually sit down and explain your marketing strategy in plain English. Local enough to grab coffee. Powerful enough to compete with any agency. Supercharged by AI &mdash; half the cost, twice the speed.</p>
     <div class="hero-actions reveal d3">
       <a href="mailto:santiagoguyfilms@gmail.com" class="btn">Let's Sit Down &amp; Talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
-      <a href="#work" class="btn-teal">See the work &#x2192;</a>
+      <a href="#work" class="btn-teal">See the work &rarr;</a>
     </div>
   </div>
 </section>
@@ -378,28 +378,28 @@
         <div class="slabel reveal">UGC That Converts</div>
         <h2 class="video-headline reveal d1">Real brands.<br><span class="blue">Real results.</span></h2>
       </div>
-      <p class="video-sub reveal">Every video was built for performance &#x2014; not just views. Hooks engineered for the first 3 seconds. Native-feeling content that stops the scroll and sells without screaming.</p>
+      <p class="video-sub reveal">Every video was built for performance &mdash; not just views. Hooks engineered for the first 3 seconds. Native-feeling content that stops the scroll and sells without screaming.</p>
     </div>
     <div class="video-grid reveal d1">
       <div class="video-card tall">
         <video autoplay muted loop playsinline><source src="https://santiagoguyfilms.com/media-kit/rex-md.mp4" type="video/mp4"></video>
-        <div class="video-card-meta"><span class="video-brand">Rex MD</span><span class="video-type">Health &amp; Wellness &#xB7; UGC Ad</span></div>
+        <div class="video-card-meta"><span class="video-brand">Rex MD</span><span class="video-type">Health &amp; Wellness &middot; UGC Ad</span></div>
       </div>
       <div class="video-card">
         <video autoplay muted loop playsinline><source src="https://santiagoguyfilms.com/media-kit/honeybook.mp4" type="video/mp4"></video>
-        <div class="video-card-meta"><span class="video-brand">HoneyBook</span><span class="video-type">SaaS &#xB7; Paid Ad</span></div>
+        <div class="video-card-meta"><span class="video-brand">HoneyBook</span><span class="video-type">SaaS &middot; Paid Ad</span></div>
       </div>
       <div class="video-card">
         <video autoplay muted loop playsinline><source src="https://santiagoguyfilms.com/media-kit/ridge.mp4" type="video/mp4"></video>
-        <div class="video-card-meta"><span class="video-brand">Ridge</span><span class="video-type">Apparel &#xB7; TikTok</span></div>
+        <div class="video-card-meta"><span class="video-brand">Ridge</span><span class="video-type">Apparel &middot; TikTok</span></div>
       </div>
       <div class="video-card wide">
         <video autoplay muted loop playsinline><source src="https://santiagoguyfilms.com/media-kit/hempvana.mp4" type="video/mp4"></video>
-        <div class="video-card-meta"><span class="video-brand">Hempvana</span><span class="video-type">Health &amp; Wellness &#xB7; UGC Ad</span></div>
+        <div class="video-card-meta"><span class="video-brand">Hempvana</span><span class="video-type">Health &amp; Wellness &middot; UGC Ad</span></div>
       </div>
     </div>
     <div style="text-align:center;margin-top:40px;" class="reveal d2">
-      <a href="https://santiagoguyfilms.com/media-kit/" target="_blank" rel="noopener" class="btn-outline-white">See all 12 brand videos on the media kit &#x2192;</a>
+      <a href="https://santiagoguyfilms.com/media-kit/" target="_blank" rel="noopener" class="btn-outline-white">See all 12 brand videos on the media kit &rarr;</a>
     </div>
   </div>
 </section>
@@ -410,7 +410,7 @@
   <div class="solutions-inner" style="position:relative;z-index:1;">
     <div class="solutions-header">
       <div><div class="slabel reveal">What I Can Build For You</div><h2 class="solutions-headline reveal d1">Whatever you need.<br><span class="blue">I got you.</span></h2></div>
-      <p class="solutions-sub reveal">Website. UGC video. AI automation. Content strategy. Social media. You shouldn't have to go to five different vendors to market your business. Tell me what you need &#x2014; I'll build it, explain every step, and make it perform.</p>
+      <p class="solutions-sub reveal">Website. UGC video. AI automation. Content strategy. Social media. You shouldn't have to go to five different vendors to market your business. Tell me what you need &mdash; I'll build it, explain every step, and make it perform.</p>
     </div>
     <div class="solutions-grid">
       <a href="mailto:santiagoguyfilms@gmail.com" class="sol-card reveal">
@@ -441,11 +441,11 @@
   <div class="process-inner">
     <div class="process-header">
       <div><div class="slabel reveal">How It Works</div><h2 class="process-headline reveal d1">Simple as a<br><span class="blue">conversation.</span></h2></div>
-      <p class="process-sub reveal">Most agencies make marketing feel complicated because complexity justifies their fees. I keep it simple. We sit down, I listen, I explain everything in plain English &#x2014; then I go build it. That's it.</p>
+      <p class="process-sub reveal">Most agencies make marketing feel complicated because complexity justifies their fees. I keep it simple. We sit down, I listen, I explain everything in plain English &mdash; then I go build it. That's it.</p>
     </div>
     <div class="steps">
       <div class="step reveal"><div class="step-num">01</div><div class="step-icon">&#x2615;</div><div class="step-title">We sit down and talk</div><p class="step-desc">Tell me your business, your goals, what's been frustrating you about marketing. I'll break it down in plain English and tell you exactly what I'd do. No jargon. No pitch deck.</p></div>
-      <div class="step reveal d1"><div class="step-num">02</div><div class="step-icon">&#x26A1;</div><div class="step-title">I build it &#x2014; fast</div><p class="step-desc">Website, videos, automations, content strategy &#x2014; whatever we agreed on. AI-powered workflow means I deliver in days what a traditional agency takes weeks to produce, at a fraction of the cost.</p></div>
+      <div class="step reveal d1"><div class="step-num">02</div><div class="step-icon">&#x26A1;</div><div class="step-title">I build it &mdash; fast</div><p class="step-desc">Website, videos, automations, content strategy &mdash; whatever we agreed on. AI-powered workflow means I deliver in days what a traditional agency takes weeks to produce, at a fraction of the cost.</p></div>
       <div class="step reveal d2"><div class="step-num">03</div><div class="step-icon">&#x1F4C8;</div><div class="step-title">Your business grows</div><p class="step-desc">Content goes live. Systems run. Your brand shows up where your customers are. We track what works, cut what doesn't, and keep building on what hits.</p></div>
     </div>
   </div>
@@ -456,8 +456,8 @@
   <img class="fl soft fl-float" src="flamingo.png" alt="" style="width:50px;left:2%;bottom:15%;animation-delay:3.5s;">
   <div class="testimonial-inner">
     <div class="slabel pink reveal">In Their Words</div>
-    <blockquote class="testimonial-quote reveal d1">"He's a true creative. I highly recommend him. Most talented I've met. Our content was more than we expected &#x2014; and he made the whole process feel easy to understand from start to finish."</blockquote>
-    <div class="testimonial-author reveal d2"><div class="author-dot">S</div><div><div class="author-name">Sheena E.</div><div class="author-role">Verified Client &#xB7; &#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div></div></div>
+    <blockquote class="testimonial-quote reveal d1">"He's a true creative. I highly recommend him. Most talented I've met. Our content was more than we expected &mdash; and he made the whole process feel easy to understand from start to finish."</blockquote>
+    <div class="testimonial-author reveal d2"><div class="author-dot">S</div><div><div class="author-name">Sheena E.</div><div class="author-role">Verified Client &middot; &#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div></div></div>
   </div>
 </section>
 
@@ -466,8 +466,8 @@
     <img class="fl graphic fl-floatR" src="flamingo.png" alt="" style="width:300px;right:-40px;bottom:-30px;animation-delay:1.4s;">
     <div class="slabel">Your Local Marketing Guy</div>
     <h2 class="about-headline">Local roots.<br><span class="blue">Agency-level</span><br>results.</h2>
-    <p class="about-body">Miami business owners kept telling me the same thing &#x2014; they wished there was someone local who actually understood marketing. Not a faceless agency. Someone who could sit across the table, explain the strategy in plain English, and then actually execute it.</p>
-    <p class="about-body">That's exactly what I built. I've worked with local Miami brands and international agencies. I know what makes content go viral here. I know the culture, the market, the people. And now I'm supercharged by AI &#x2014; I can produce at half the cost and twice the speed of a traditional shop.</p>
+    <p class="about-body">Miami business owners kept telling me the same thing &mdash; they wished there was someone local who actually understood marketing. Not a faceless agency. Someone who could sit across the table, explain the strategy in plain English, and then actually execute it.</p>
+    <p class="about-body">That's exactly what I built. I've worked with local Miami brands and international agencies. I know what makes content go viral here. I know the culture, the market, the people. And now I'm supercharged by AI &mdash; I can produce at half the cost and twice the speed of a traditional shop.</p>
     <p class="about-body">No hand-offs. No middlemen. Just you and me, building something that works.</p>
     <div class="about-cta"><a href="mailto:santiagoguyfilms@gmail.com" class="btn">Let's Grab a Coffee &amp; Talk</a></div>
   </div>
@@ -485,11 +485,11 @@
   <img class="fl glow fl-floatR" src="flamingo.png" alt="" style="width:190px;right:5%;top:5%;animation-delay:2.2s;">
   <img class="fl graphic fl-float" src="flamingo.png" alt="" style="width:80px;right:20%;bottom:10%;animation-delay:1.7s;">
   <div class="cta-inner">
-    <div class="slabel pink reveal" style="justify-content:center;">Miami &#xB7; Let's Talk</div>
+    <div class="slabel pink reveal" style="justify-content:center;">Miami &middot; Let's Talk</div>
     <h2 class="cta-headline reveal d1">You found your<br><span class="blue">local guy.</span></h2>
-    <p class="cta-sub reveal d2">Stop paying agencies that don't know your city, can't explain what they're doing, and charge you three times as much to do it. Let's sit down. I'll explain everything in plain English &#x2014; then build it faster and cheaper than anyone else in Miami.</p>
+    <p class="cta-sub reveal d2">Stop paying agencies that don't know your city, can't explain what they're doing, and charge you three times as much to do it. Let's sit down. I'll explain everything in plain English &mdash; then build it faster and cheaper than anyone else in Miami.</p>
     <div class="reveal d3"><a href="mailto:santiagoguyfilms@gmail.com" class="btn btn-lg">Let's Grab a Coffee &amp; Talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a></div>
-    <p class="cta-note reveal d4">Local &#xB7; AI-powered &#xB7; Half the cost &#xB7; Twice the speed</p>
+    <p class="cta-note reveal d4">Local &middot; AI-powered &middot; Half the cost &middot; Twice the speed</p>
   </div>
 </section>
 
@@ -498,7 +498,7 @@
     <div>
       <a href="#" class="footer-brand"><img src="sgf-logo.svg" alt="SGF">Santiago Guy<span class="pk"> Films</span></a>
       <p class="footer-tagline">Content that works as hard as you do. Miami's AI creative studio.</p>
-      <a href="mailto:santiagoguyfilms@gmail.com" class="footer-email">santiagoguyfilms@gmail.com &#x2192;</a>
+      <a href="mailto:santiagoguyfilms@gmail.com" class="footer-email">santiagoguyfilms@gmail.com &rarr;</a>
     </div>
     <div>
       <div class="footer-col-head">Solutions</div>
@@ -509,7 +509,7 @@
       <ul class="footer-links"><li><a href="https://instagram.com/santiagoguyfilms" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://tiktok.com/@santiagoguyfilms" target="_blank" rel="noopener">TikTok</a></li><li><a href="mailto:santiagoguyfilms@gmail.com">Email</a></li><li><a href="#about">About SGF</a></li></ul>
     </div>
   </div>
-  <div class="footer-bottom"><span>&#xa9; 2025 Santiago Guy Films &#xB7; Miami, FL</span><span>Built with AI. Designed with intention.</span></div>
+  <div class="footer-bottom"><span>&copy; 2025 Santiago Guy Films &middot; Miami, FL</span><span>Built with AI. Designed with intention.</span></div>
 </footer>
 
 <script>
