@@ -135,6 +135,59 @@ section{padding:60px 0;position:relative;overflow:hidden}
   .brand-logo-grid{grid-template-columns:repeat(2,1fr)!important}
   .cta-box{padding:32px 24px}
 }
+
+/* Homepage-aligned shell */
+.container{max-width:1200px}
+section{padding:100px 0}
+.btn{padding:12px 24px;border:0;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;transition:all .25s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-glow{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 20px rgba(0,212,255,.25)}
+.btn-glow:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,.35)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.15)}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn-lg{padding:16px 32px;font-size:16px;border-radius:10px}
+.btn-sm{padding:8px 16px;font-size:13px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(10,11,20,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px;color:var(--text)}
+.nav-brand span{background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{color:var(--text2);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.mobile-toggle{display:none;background:none;border:0;color:var(--text);font-size:22px;cursor:pointer}
+.header{padding:160px 0 50px;text-align:left}
+.header::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,255,.08) 0%,transparent 70%);pointer-events:none}
+.header::after{content:'';position:absolute;bottom:-260px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(168,85,247,.06) 0%,transparent 70%);pointer-events:none}
+.header .container{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(168,85,247,.1));border:1px solid rgba(0,212,255,.2);padding:8px 18px;border-radius:24px;font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:20px}
+.header h1{font-size:clamp(2.4rem,5vw,3.35rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:20px}
+.header p{margin:0;color:var(--text2);font-size:18px;max-width:540px}
+.header-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero-card{background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:28px;position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink))}
+.proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+.proof-cell{background:var(--bg);border:1px solid rgba(255,255,255,.04);border-radius:10px;padding:16px}
+.proof-cell .num{font-size:28px;font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.proof-cell .lbl{font-size:11px;color:var(--text3);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:6px}
+.stats-bar{background:var(--bg2);border-top:1px solid rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.03);padding:48px 20px}
+.brand-logo-grid>div,.logo-cell,.brand-chip,.t-card,.press-card,.cta-box{border-radius:16px}
+.cta-section{padding:100px 20px}
+.cta-box{background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(168,85,247,.08));border:1px solid rgba(0,212,255,.15)}
+.footer{text-align:left;padding:48px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-brand{font-size:18px;font-weight:800;letter-spacing:0;text-transform:none;color:var(--text);margin-bottom:8px}
+.footer-brand span{background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-links{display:flex;justify-content:flex-start;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:13px}
+@media(max-width:960px){
+  .header .container{grid-template-columns:1fr}
+  .header-visual{display:none}
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+}
+@media(max-width:600px){
+  section{padding:60px 0}
+  .header{padding:120px 0 40px}
+}
 </style>
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPT65Y49Y5"></script>
@@ -146,21 +199,43 @@ section{padding:60px 0;position:relative;overflow:hidden}
 </script>
 </head>
 <body>
-<div class="top-bar"></div>
-<div id="sgf-nav" style="position:fixed;top:0;left:0;right:0;z-index:9999;padding:14px 24px;display:flex;justify-content:center;align-items:center;background:rgba(10,11,20,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.12);font-family:'Inter',system-ui,sans-serif;">
-  <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center;">
-    <a href="https://santiagoguyfilms.com/links/" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-weight:600;">Home</a>
-    <a href="https://santiagoguyfilms.com/media-kit/" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-weight:600;">Media Kit</a>
-    <a href="https://santiagoguyfilms.com/results/" style="color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;">Results</a>
-    <a href="https://calendly.com/welcome-santiagoguyfilms/30min" target="_blank" style="color:#0a0b14;background:#00d4ff;text-decoration:none;font-size:13px;font-weight:700;padding:9px 18px;border-radius:8px;">Book a Consultation</a>
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="nav-brand">SGF <span>Studio</span></a>
+    <div class="nav-links">
+      <a href="/#services">What We Do</a>
+      <a href="/results/" class="active">Results</a>
+      <a href="/media-kit/">Media Kit</a>
+      <a href="#reviews">Reviews</a>
+      <a href="https://calendly.com/welcome-santiagoguyfilms/30min" target="_blank" class="btn btn-glow btn-sm">Book a Consultation</a>
+    </div>
+    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'"><i class="fas fa-bars"></i></button>
   </div>
-</div>
-<div style="height:52px;"></div>
+</nav>
 
 <div class="header">
-  <div class="label">Results</div>
-  <h1>Real Clients. <span class="g">Real Results.</span></h1>
-  <p>50+ brand partnerships. 157k+ followers. AI-powered content and digital strategy that actually delivers. Here's the proof.</p>
+  <div class="container">
+    <div>
+      <div class="hero-badge"><i class="fas fa-chart-line"></i> Results</div>
+      <h1>Real Clients. <span class="g">Real Results.</span></h1>
+      <p>50+ brand partnerships. 157k+ followers. AI-powered content and digital strategy that actually delivers. Here's the proof.</p>
+      <div class="header-ctas">
+        <a href="https://calendly.com/welcome-santiagoguyfilms/30min" target="_blank" class="btn btn-glow btn-lg"><i class="fas fa-calendar"></i> Book a Consultation</a>
+        <a href="/media-kit/" class="btn btn-outline btn-lg"><i class="fas fa-play"></i> View Media Kit</a>
+      </div>
+    </div>
+    <div class="header-visual">
+      <div class="hero-card">
+        <div class="section-label">Proof Snapshot</div>
+        <div class="proof-grid">
+          <div class="proof-cell"><div class="num">157k+</div><div class="lbl">TikTok Followers</div></div>
+          <div class="proof-cell"><div class="num">9.9M+</div><div class="lbl">Content Views</div></div>
+          <div class="proof-cell"><div class="num">50+</div><div class="lbl">Brands Served</div></div>
+          <div class="proof-cell"><div class="num">5.0</div><div class="lbl">Client Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="stats-bar reveal">
@@ -240,7 +315,7 @@ section{padding:60px 0;position:relative;overflow:hidden}
 <style>.show{display:block!important}</style>
 
 <!-- REVIEWS -->
-<section style="background:var(--bg2)">
+<section id="reviews" style="background:var(--bg2)">
   <div class="container">
     <div class="section-label reveal">Client Reviews</div>
     <div class="rating-badge reveal"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0 average across all platforms</div>
@@ -318,13 +393,18 @@ section{padding:60px 0;position:relative;overflow:hidden}
 </section>
 
 <footer class="footer">
-  <div class="footer-brand">Santiago Guy Films</div>
-  <div class="footer-links">
-    <a href="https://santiagoguyfilms.com">Home</a>
-    <a href="/offers/">Services</a>
-    <a href="/score/">Content Score</a>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">SGF <span>Studio</span></div>
+      <div class="footer-copy">&copy; 2026 Santiago Guy Films · Miami's AI-Powered Content Agency</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://santiagoguyfilms.com">Home</a>
+      <a href="/media-kit/">Media Kit</a>
+      <a href="/offers/">Services</a>
+      <a href="/score/">Content Score</a>
+    </div>
   </div>
-  <div class="footer-copy">&copy; 2026 Santiago Guy Films &mdash; Miami's AI-Powered Content Agency</div>
 </footer>
 
 <script>
