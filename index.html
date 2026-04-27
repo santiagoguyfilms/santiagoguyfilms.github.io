@@ -347,7 +347,7 @@
   <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:64px;left:2%;top:28%;animation-delay:1s;">
   <div class="brands-inner">
     <div class="brands-slabel reveal">Trusted By</div>
-    <h2 class="brands-headline reveal d1">Brands We've Worked With</h2>
+    <h2 class="brands-headline reveal d1">Brands I've Worked With</h2>
     <div class="logo-img-grid reveal d2">
       <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/ridge.png" alt="Ridge"></div>
       <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/honeybook.svg" alt="HoneyBook"></div>
@@ -476,7 +476,7 @@
     <div class="about-cta"><a href="mailto:santiagoguyfilms@gmail.com" class="btn">Let's Grab a Coffee &amp; Talk</a></div>
   </div>
   <div class="about-right reveal">
-    <img id="headshot-img" src="" alt="Franco - Santiago Guy Films" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+    <img id="headshot-img" src="media-kit/profile-pic.png" alt="Franco - Santiago Guy Films" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
     <div class="about-photo-placeholder" style="display:none;">
       <div style="text-align:center;"><div style="font-size:52px;margin-bottom:16px;">&#x1F4CD;</div><div style="font-family:'Orbitron';font-size:22px;font-weight:900;color:var(--pink);text-shadow:var(--glow-pk);margin-bottom:8px;">FRANCO</div><div style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);">Miami, FL</div></div>
     </div>
@@ -535,7 +535,7 @@
 (function(){
   function loadImg(url,type,apply){fetch(url).then(function(r){return r.text();}).then(function(b64){apply('data:'+type+';base64,'+b64);});}
   loadImg('flamingo-b64.txt','image/webp',function(src){document.querySelectorAll('[data-fl]').forEach(function(e){e.src=src;});});
-  loadImg('headshot-b64.txt','image/jpeg',function(src){var h=document.getElementById('headshot-img');if(h)h.src=src;});
+  loadImg('headshot-b64.txt','image/jpeg',function(src){var h=document.getElementById('headshot-img');if(h&&!h.getAttribute('src'))h.src=src;});
   loadImg('miami-b64.txt','image/jpeg',function(src){var bg=document.querySelector('.hero-miami-bg');if(bg)bg.style.backgroundImage="url('"+src+"')";});
 })();
 </script>
