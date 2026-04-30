@@ -663,7 +663,14 @@
   }
   // Note: file:// previews can block fetch(). Fall back to local assets so you can preview the page before deploying.
   loadImg('flamingo-b64.txt','image/webp',function(src){document.querySelectorAll('[data-fl]').forEach(function(e){e.src=src;});},'flamingo.png');
-  loadImg('headshot-b64.txt','image/jpeg',function(src){var h=document.getElementById('headshot-img');if(h)h.src=src;},'franco-headshot.jpg');
+  // Only set the headshot src if the page doesn't already point to a specific photo.
+  // This prevents overwriting the chosen profile image (e.g. media-kit/profile-pic.png).
+  loadImg('headshot-b64.txt','image/jpeg',function(src){
+    var h=document.getElementById('headshot-img');
+    if(!h) return;
+    var current=(h.getAttribute('src')||'').trim();
+    if(!current) h.src=src;
+  },'franco-headshot.jpg');
 })();
 </script>
 </body>
