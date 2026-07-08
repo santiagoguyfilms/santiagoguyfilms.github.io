@@ -3,675 +3,467 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Santiago Guy Films — Brand-level content + systems</title>
-	  <meta name="description" content="Miami-based creator, filmmaker, and AI creative studio. Brand-level content plus landing pages and follow-up automation that turn attention into leads and sales.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>Santiago Guy Films — UGC for Brands & Agencies, On Retainer</title>
+  <meta name="description" content="Miami-based UGC creator for brands and agencies. 70+ brand campaigns, first-round approvals, whitelisting-ready. Monthly content retainers with creator-direct communication.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:#1a0a1f; --bg2:#251030; --bg3:#2e163a; --fg:#ffffff;
-      --pink:#ff2e93; --pink-lt:#ff5fb0; --teal:#3df0d8; --teal-lt:#7ff5e3;
-      --border:rgba(255,255,255,0.10); --border-pk:rgba(255,46,147,0.45); --border-tl:rgba(61,240,216,0.45);
-      --muted:rgba(255,255,255,0.62); --dim:rgba(255,255,255,0.38); --dimmer:rgba(255,255,255,0.18);
-      --glow-pk:0 0 24px rgba(255,46,147,.65),0 0 60px rgba(255,46,147,.30);
-      --glow-tl:0 0 24px rgba(61,240,216,.55),0 0 60px rgba(61,240,216,.25);
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#16121a; --ink-soft:#4c4454; --ink-dim:#8b8393;
+      --paper:#ffffff; --paper-warm:#faf7fb; --line:#ece7ef;
+      --pink:#e91e7d; --pink-soft:rgba(233,30,125,.08);
     }
-    html{scroll-behavior:smooth;}
-    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;-webkit-font-smoothing:antialiased;background-image:radial-gradient(ellipse at top,rgba(255,46,147,.18) 0%,transparent 55%),radial-gradient(ellipse at bottom,rgba(61,240,216,.12) 0%,transparent 60%);background-attachment:fixed;}
-    h1,h2,h3,.font-orb{font-family:'Orbitron',sans-serif;letter-spacing:-0.01em;}
-    @keyframes neonPulse{0%,100%{text-shadow:0 0 8px rgba(255,46,147,.6),0 0 20px rgba(255,46,147,.3);}50%{text-shadow:0 0 18px rgba(255,46,147,.9),0 0 40px rgba(255,46,147,.6);}}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.7);}}
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
-    .reveal.visible{opacity:1;transform:none;}
-    .d1{transition-delay:.10s;}.d2{transition-delay:.20s;}.d3{transition-delay:.30s;}.d4{transition-delay:.40s;}.d5{transition-delay:.50s;}
-    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img,video{max-width:100%;display:block}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 36px;display:flex;align-items:center;justify-content:space-between;background:rgba(26,10,31,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s;}
-    .nav-brand{display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-weight:900;font-size:13px;letter-spacing:.18em;color:var(--fg);text-decoration:none;text-transform:uppercase;}
-    .nav-brand .pk{color:var(--pink);text-shadow:0 0 12px rgba(255,46,147,.7);}
-    .nav-brand img{width:34px;height:34px;border-radius:50%;}
-    .nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
-    .nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;}
-    .nav-links a:hover{color:var(--pink);text-shadow:0 0 12px rgba(255,46,147,.6);}
-    .nav-cta{background:var(--pink)!important;color:#fff!important;font-weight:700!important;font-size:13px!important;padding:10px 22px!important;border-radius:999px!important;box-shadow:var(--glow-pk)!important;transition:transform .2s!important;letter-spacing:0!important;text-transform:none!important;}
-    .nav-cta:hover{transform:scale(1.05)!important;color:#fff!important;text-shadow:none!important;}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
-    .hamburger span{width:22px;height:1.5px;background:var(--fg);display:block;}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-    .hero{min-height:100vh;background:var(--bg);position:relative;overflow:hidden;padding:140px 52px 100px;display:flex;flex-direction:column;justify-content:flex-end;}
-    .hero-miami-bg{position:absolute;inset:0;background:url('assets/miami-gradient-backdrop.jpg') center 48%/min(100vw,1024px) auto no-repeat;z-index:0;opacity:1;filter:saturate(1.12) contrast(1.08);-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.16) 0%,rgba(0,0,0,.38) 26%,rgba(0,0,0,.92) 54%,#000 100%);mask-image:linear-gradient(90deg,rgba(0,0,0,.16) 0%,rgba(0,0,0,.38) 26%,rgba(0,0,0,.92) 54%,#000 100%);}
-    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,10,31,.95) 0%,rgba(26,10,31,.72) 35%,rgba(26,10,31,.14) 62%,rgba(26,10,31,.18) 100%),linear-gradient(to bottom,rgba(26,10,31,0.32) 0%,rgba(26,10,31,0.06) 38%,rgba(26,10,31,0.50) 78%,rgba(26,10,31,0.90) 100%);pointer-events:none;z-index:1;}
-    .hero > :not(.hero-miami-bg){position:relative;z-index:2;}
-    .hero-bg-word{position:absolute;bottom:-20px;right:-10px;font-family:'Orbitron',sans-serif;font-size:clamp(6rem,18vw,16rem);font-weight:900;letter-spacing:-4px;line-height:.85;color:rgba(255,255,255,0.018);pointer-events:none;user-select:none;white-space:nowrap;z-index:2;}
-    .hero-status{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--pink);text-shadow:0 0 12px rgba(255,46,147,.7);border:1px solid rgba(255,46,147,.4);background:rgba(26,10,31,.4);padding:6px 18px;border-radius:999px;margin-bottom:32px;backdrop-filter:blur(8px);width:fit-content;}
-    .hero-status .dot{width:7px;height:7px;border-radius:50%;background:var(--pink);animation:pulse 1.6s ease-in-out infinite;flex-shrink:0;}
-    .hero-headline{font-size:clamp(3.8rem,10vw,9rem);font-weight:900;line-height:1.0;letter-spacing:-2px;color:var(--fg);}
-    .hero-headline .thin{font-family:'Inter',sans-serif;font-weight:200;font-style:italic;color:rgba(255,255,255,0.55);letter-spacing:-1px;}
-    .hero-headline .blue{color:var(--pink);text-shadow:0 0 18px rgba(255,46,147,.6),0 0 40px rgba(255,46,147,.3);}
-    .hero-bottom{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;border-top:1px solid var(--border);padding-top:44px;}
-    .hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.72;max-width:48ch;}
-    .hero-actions{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap;}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+    .nav-brand img{width:34px;height:34px;border-radius:50%;background:#1a0a1f;padding:3px;box-shadow:0 1px 6px rgba(22,18,26,.18)}
+    .nav-brand .pk{color:var(--pink)}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff!important;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 14px rgba(233,30,125,.22)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(233,30,125,.3)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--ink-soft);padding:13px 10px;transition:color .2s}
+    .btn-ghost:hover{color:var(--pink)}
+    .nav-cta{padding:9px 20px!important;font-size:13px!important}
 
-    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;box-shadow:var(--glow-pk);transition:transform .2s;border:none;cursor:pointer;}
-    .btn:hover{transform:scale(1.05);color:#fff;}
-    .btn-lg{padding:18px 44px;font-size:16px;}
-    .btn-teal{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(61,240,216,.6);color:var(--teal);font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;text-shadow:0 0 12px rgba(61,240,216,.6);transition:background .2s;}
-    .btn-teal:hover{background:rgba(61,240,216,.1);color:var(--teal);}
-    .btn-outline-white{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(61,240,216,.5);color:var(--teal);font-size:13px;font-weight:700;text-decoration:none;padding:10px 22px;border-radius:999px;text-shadow:0 0 10px rgba(61,240,216,.5);transition:background .2s;}
-    .btn-outline-white:hover{background:rgba(61,240,216,.08);color:var(--teal);}
-    .media-kit-cta{background:var(--pink);border-color:var(--pink);color:#fff;font-family:'Orbitron',sans-serif;font-size:15px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:16px 34px;box-shadow:var(--glow-pk);text-shadow:none;}
-    .media-kit-cta:hover{background:var(--pink);color:#fff;transform:scale(1.05);}
+    .hero{padding:96px 0 64px;text-align:center}
+    .hero-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);background:var(--pink-soft);padding:7px 16px;border-radius:999px;margin-bottom:28px}
+    h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:850;letter-spacing:-.03em;line-height:1.08;max-width:20ch;margin:0 auto}
+    h1 .pk{color:var(--pink)}
+    .hero-sub{font-size:1.1rem;color:var(--ink-soft);max-width:56ch;margin:24px auto 36px;line-height:1.75}
+    .hero-actions{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+    .hero-stats{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin-top:56px;border-top:1px solid var(--line);padding-top:32px}
+    .hstat{padding:0 32px;text-align:center;border-right:1px solid var(--line)}
+    .hstat:last-child{border-right:0}
+    .hstat b{display:block;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+    .hstat span{font-size:12.5px;color:var(--ink-dim)}
 
-    .slabel{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);text-shadow:0 0 10px rgba(61,240,216,.5);margin-bottom:20px;}
-    .slabel.pink{color:var(--pink);text-shadow:0 0 10px rgba(255,46,147,.6);}
-    .slabel.subtle{color:rgba(255,255,255,0.35);text-shadow:none;}
+    .logos{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0;text-align:center}
+    .sec-label{font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:34px}
+    .logo-img-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:900px;margin:0 auto}
+    .logo-img-cell{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;display:flex;align-items:center;justify-content:center;transition:all .25s}
+    .logo-img-cell:hover{transform:translateY(-3px);border-color:rgba(233,30,125,.35);box-shadow:0 8px 28px rgba(233,30,125,.12)}
+    .logo-img-cell img{width:90px;height:44px;object-fit:contain}
+    .logos-more{margin-top:26px;font-size:13.5px;color:var(--ink-dim)}
+    .logos-more a,.logos-toggle{color:var(--pink);font-weight:600;background:none;border:none;font-size:13.5px;font-family:inherit;cursor:pointer;padding:0}
+    .logos-toggle:hover{text-decoration:underline}
+    .all-brands{display:none;max-width:900px;margin:34px auto 0;text-align:left}
+    .all-brands.open{display:block}
+    .brand-cat{margin-bottom:22px}
+    .brand-cat-name{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
+    .brand-chips{display:flex;flex-wrap:wrap;gap:7px}
+    .brand-chip{font-size:12.5px;font-weight:500;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px}
 
-    .stats-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(37,16,48,.55);backdrop-filter:blur(8px);}
-	    .stats-bar-inner{display:grid;grid-template-columns:repeat(5,1fr);max-width:1280px;margin:0 auto;}
-    .sbar-item{padding:44px 40px;border-right:1px solid var(--border);position:relative;}
-	    .sbar-item:last-child{border-right:none;}
-	    .sbar-num{font-family:'Orbitron',sans-serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:900;letter-spacing:-1px;line-height:.9;color:var(--teal);text-shadow:0 0 14px rgba(61,240,216,.5);margin-bottom:10px;}
-	    .sbar-num .counting{display:inline-block;min-width:3ch;font-variant-numeric:tabular-nums;}
-	    .sbar-label{font-size:12px;color:var(--muted);font-weight:500;line-height:1.4;}
+    section{padding:88px 0}
+    h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;letter-spacing:-.025em;line-height:1.15}
+    h2 .pk{color:var(--pink)}
+    .sec-head{max-width:640px;margin-bottom:44px}
+    .sec-head p{color:var(--ink-soft);margin-top:14px;font-size:1rem;line-height:1.75}
+    .center{text-align:center}.center .sec-head{margin-left:auto;margin-right:auto}
 
-	    .featured-proof{margin-top:40px;margin-bottom:42px;}
-	    .featured-proof-card{position:relative;overflow:hidden;border-radius:22px;border:1px solid rgba(255,46,147,.35);background:linear-gradient(135deg,rgba(255,46,147,.12),rgba(37,16,48,.62),rgba(61,240,216,.08));box-shadow:0 22px 80px rgba(255,46,147,.18), inset 0 0 0 1px rgba(255,255,255,.04);}
-	    .featured-proof-card::before{content:"";position:absolute;inset:-2px;opacity:.15;background:radial-gradient(ellipse at top left,rgba(255,46,147,.55),transparent 52%),radial-gradient(ellipse at bottom right,rgba(61,240,216,.45),transparent 55%);pointer-events:none}
-	    .featured-proof-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:34px;padding:36px;}
-	    .featured-proof-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.78);}
-	    .featured-proof-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:var(--glow-pk);}
-	    .featured-proof-title{margin-top:14px;font-family:'Orbitron',sans-serif;font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:900;letter-spacing:-1px;line-height:1.05;}
-	    .featured-proof-title .pink{color:var(--pink);text-shadow:0 0 18px rgba(255,46,147,.6);}
-	    .featured-proof-copy{margin-top:16px;color:var(--muted);font-size:14.5px;line-height:1.78;max-width:52ch;}
-	    .featured-proof-support{margin-top:14px;font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;}
-	    .featured-proof-badges{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;}
-	    .featured-proof-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid rgba(61,240,216,.45);background:rgba(26,10,31,.25);color:var(--teal);font-weight:800;font-size:12px;}
-	    .featured-proof-badge .mini{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:800;}
-	    .featured-proof-quote{margin-top:18px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(26,10,31,.28);color:rgba(255,255,255,.75);font-size:13px;line-height:1.55;}
-	    .featured-proof-quote strong{color:var(--fg);font-weight:800;}
-	    .featured-proof-actions{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
-	    .featured-proof-actions .btn-teal{padding:12px 22px;font-size:13px;}
-	    .featured-label-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
-	    .featured-brand-label{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);}
-	    .featured-brand-label .pk{color:var(--pink);text-shadow:0 0 12px rgba(255,46,147,.6);}
-	    .featured-media{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:rgba(37,16,48,.65);}
-	    .featured-media video{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;background:var(--bg);}
-	    .featured-placeholder{display:none;aspect-ratio:16/9;align-items:center;justify-content:center;padding:24px;text-align:center;background:linear-gradient(135deg,rgba(255,46,147,.10),rgba(26,10,31,.82),rgba(61,240,216,.08));}
-	    .featured-placeholder .ph-inner{max-width:34ch;}
-	    .featured-placeholder .ph-title{font-family:'Orbitron',sans-serif;font-weight:900;font-size:16px;color:var(--fg);margin-bottom:10px;}
-	    .featured-placeholder .ph-copy{font-size:13px;line-height:1.65;color:var(--muted);}
-	    .featured-placeholder .ph-copy code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px;color:rgba(255,255,255,.75);}
-	    .featured-proof-card.is-missing video{display:none;}
-	    .featured-proof-card.is-missing .featured-placeholder{display:flex;}
+    .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .video-card{position:relative;border-radius:16px;overflow:hidden;background:#0d0a10;aspect-ratio:16/9;border:1px solid var(--line)}
+    .video-card.tall{grid-row:span 2;aspect-ratio:unset}
+    .video-card.wide{grid-column:span 2;aspect-ratio:21/9}
+    .video-card video{width:100%;height:100%;object-fit:cover}
+    .video-meta{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;background:linear-gradient(to top,rgba(13,10,16,.85),transparent);display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+    .video-brand{font-weight:800;font-size:14px;color:#fff;letter-spacing:-.01em}
+    .video-type{font-size:11px;font-weight:600;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.08em}
+    .feature-card{margin-bottom:44px;background:var(--paper-warm);border:1px solid rgba(233,30,125,.25);border-radius:20px;overflow:hidden;box-shadow:0 14px 44px rgba(233,30,125,.08)}
+    .feature-inner{display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:36px;align-items:center}
+    .feature-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+    .feature-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--pink)}
+    .feature-title{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:850;letter-spacing:-.02em;line-height:1.15;margin:12px 0 14px}
+    .feature-copy{font-size:14.5px;color:var(--ink-soft);line-height:1.75}
+    .feature-quote{margin-top:16px;padding:14px 16px;border-left:3px solid var(--pink);background:#fff;border-radius:0 12px 12px 0;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+    .feature-quote b{color:var(--ink)}
+    .feature-media{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0d0a10;position:relative}
+    .feature-media video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+    .feature-placeholder{display:none;aspect-ratio:16/9;align-items:center;justify-content:center;padding:24px;text-align:center;background:linear-gradient(135deg,#f6eef5,#fdf8fc)}
+    .feature-placeholder .ph-title{font-weight:800;font-size:15px;margin-bottom:8px}
+    .feature-placeholder .ph-copy{font-size:13px;color:var(--ink-dim);line-height:1.6}
+    .feature-card.is-missing video{display:none}
+    .feature-card.is-missing .feature-placeholder{display:flex}
+    .feature-brand-label{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
+    .feature-brand-label .pk{color:var(--pink)}
 
-    .proof-bar{background:rgba(26,10,31,.4);border-bottom:1px solid var(--border);padding:18px 52px;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;}
-    .proof-item{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
-    .proof-stars{color:var(--pink);font-size:12px;letter-spacing:1px;}
-    .proof-rating{font-size:15px;font-weight:900;color:var(--fg);}
-    .proof-divider{width:1px;height:20px;background:var(--border);}
+    .review-profile{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px;border:1px solid var(--line);background:var(--paper-warm);border-radius:12px}
+    .review-avatar-img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
+    .review-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#3dd6c0,var(--pink));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;flex-shrink:0}
+    .review-profile-name{font-weight:800;font-size:13.5px;line-height:1.2;display:flex;align-items:center;gap:5px}
+    .verified{width:14px;height:14px;flex-shrink:0}
+    .review-handle{font-size:11.5px;color:var(--ink-dim);margin-top:2px}
+    .review-logo-row{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line)}
+    .review-logo-label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-dim)}
+    .review-brand-logo{max-height:22px;max-width:104px;object-fit:contain}
+    .tiktok-logo{display:inline-flex;align-items:center;gap:7px;color:var(--ink);font-weight:800;font-size:13.5px}
+    .tiktok-mark{width:18px;height:18px;flex-shrink:0}
+    .text-mark{font-size:13.5px;font-weight:800;color:var(--ink)}
 
-    .brands{background:rgba(37,16,48,.55);padding:100px 52px;position:relative;overflow:hidden;}
-	    .brands-inner{max-width:1100px;margin:0 auto;text-align:center;}
-	    .brands-slabel{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);text-shadow:0 0 10px rgba(61,240,216,.5);margin-bottom:14px;}
-	    .brands-headline{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-1px;color:var(--fg);margin-bottom:44px;}
-	    .brands-copy{max-width:62ch;margin:0 auto 24px;color:var(--muted);font-size:14px;line-height:1.75;}
-    .logo-img-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:900px;margin:0 auto;}
-    .logo-img-cell{background:rgba(255,255,255,0.94);border:1px solid var(--border);border-radius:14px;padding:18px 22px;display:flex;align-items:center;justify-content:center;transition:all .25s;}
-    .logo-img-cell:hover{transform:translateY(-3px);border-color:rgba(255,46,147,.5);box-shadow:0 8px 32px rgba(255,46,147,.3);}
-    .logo-img-cell img{width:90px;height:44px;object-fit:contain;}
-	    .see-all-btn,.all-brands-grid,.brand-chip{display:none!important;}
+    .retainers-sec{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .tier-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:stretch}
+    .tier{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:all .25s}
+    .tier:hover{transform:translateY(-3px);box-shadow:0 10px 34px rgba(22,18,26,.07)}
+    .tier.featured{border-color:rgba(233,30,125,.4);box-shadow:0 12px 40px rgba(233,30,125,.1)}
+    .tier-flag{position:absolute;top:-11px;left:26px;background:var(--pink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+    .tier-name{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)}
+    .tier.featured .tier-name{color:var(--pink)}
+    .tier-vol{font-size:1.9rem;font-weight:850;letter-spacing:-.02em;margin:14px 0 2px}
+    .tier-vol small{font-size:.55em;font-weight:700;color:var(--ink-dim)}
+    .tier-tag{font-size:13px;color:var(--ink-dim);margin-bottom:18px}
+    .tier ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+    .tier li{font-size:13.5px;color:var(--ink-soft);padding-left:20px;position:relative;line-height:1.5}
+    .tier li::before{content:'✓';position:absolute;left:0;color:var(--pink);font-weight:700}
+    .tier-fit{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-dim);line-height:1.6}
+    .tier-cta-row{text-align:center;margin-top:36px}
+    .tier-note{margin-top:14px;font-size:12.5px;color:var(--ink-dim)}
 
-    .video-section{background:var(--bg);padding:120px 52px;}
-    .video-inner{max-width:1280px;margin:0 auto;}
-    .video-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:56px;}
-    .video-headline{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-1px;line-height:1.05;color:var(--fg);}
-    .video-headline .blue{color:var(--pink);text-shadow:0 0 16px rgba(255,46,147,.6);}
-    .video-sub{font-size:15px;color:var(--muted);line-height:1.78;}
-    .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-    .video-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:18px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;transition:all .25s;}
-    .video-card:hover{border-color:rgba(255,46,147,.6);box-shadow:0 0 40px rgba(255,46,147,.3);}
-    .video-card.tall{grid-row:span 2;aspect-ratio:unset;}
-    .video-card.wide{grid-column:span 2;aspect-ratio:21/9;}
-    .video-card video{width:100%;height:100%;border:0;display:block;object-fit:cover;}
-    .video-card-meta{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(26,10,31,0.95),transparent);display:flex;align-items:flex-end;justify-content:space-between;}
-    .video-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;color:var(--pink);text-shadow:0 0 12px rgba(255,46,147,.6);}
-    .video-type{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+    .quotes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+    .quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column}
+    .quote .stars{color:var(--pink);font-size:13px;letter-spacing:2px;margin-bottom:12px}
+    .quote p{font-size:14px;color:var(--ink-soft);line-height:1.7;margin-bottom:16px}
+    .quote b{font-size:13.5px}
+    .quote span{display:block;font-size:12px;color:var(--ink-dim);margin-top:2px}
 
-    .solutions{background:rgba(37,16,48,.3);padding:120px 52px;border-top:1px solid rgba(26,10,31,0.10);}
-    .solutions-inner{max-width:1280px;margin:0 auto;}
-    .solutions-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:56px;}
-    .solutions-headline{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:900;letter-spacing:-1px;line-height:1.0;color:var(--fg);}
-    .solutions-headline .blue{color:var(--pink);text-shadow:0 0 16px rgba(255,46,147,.6);}
-    .solutions-sub{font-size:15px;color:var(--muted);line-height:1.78;}
-    .solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-    .sol-card{background:rgba(37,16,48,.6);border:1px solid var(--border);border-radius:18px;padding:32px 28px;text-decoration:none;color:var(--fg);transition:all .25s;display:block;backdrop-filter:blur(6px);}
-    .sol-card:hover{transform:translateY(-4px);border-color:rgba(255,46,147,.6);box-shadow:0 12px 50px rgba(255,46,147,.3);color:var(--fg);}
-    .sol-num{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.3em;color:var(--pink);text-shadow:0 0 10px rgba(255,46,147,.6);}
-    .sol-num.teal{color:var(--teal);text-shadow:0 0 10px rgba(61,240,216,.6);}
-    .sol-icon{font-size:32px;margin-top:20px;}
-    .sol-name{font-size:1.15rem;font-weight:900;letter-spacing:-.3px;color:var(--fg);margin-top:16px;margin-bottom:12px;}
-    .sol-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
-    .sol-tags{display:flex;flex-wrap:wrap;gap:6px;}
-    .sol-tag{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--muted);border-radius:999px;}
+    .about-sec{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .about-grid{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;max-width:840px;margin:0 auto}
+    .about-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:center;border:4px solid #fff;box-shadow:0 8px 30px rgba(22,18,26,.12)}
+    .about-grid h2{margin-bottom:14px}
+    .about-grid p{color:var(--ink-soft);font-size:15px;line-height:1.8;margin-bottom:12px}
+    .about-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .badge{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);background:#fff;padding:6px 14px;border-radius:999px}
 
-    .process{padding:120px 52px;border-top:1px solid var(--border);background:rgba(37,16,48,.3);position:relative;overflow:hidden;}
-    .process::before{content:'';position:absolute;inset:0;opacity:.05;background-image:linear-gradient(rgba(255,46,147,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(61,240,216,.5) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
-    .process-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1;}
-    .process-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:56px;}
-    .process-headline{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-1px;line-height:1.05;color:var(--fg);}
-    .process-headline .blue{color:var(--pink);text-shadow:0 0 16px rgba(255,46,147,.6);}
-    .process-sub{font-size:15px;color:var(--muted);line-height:1.78;}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-    .step{background:rgba(26,10,31,.55);border:1px solid var(--border);border-radius:18px;padding:32px 28px;backdrop-filter:blur(8px);}
-    .step-num{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.3em;color:var(--teal);text-shadow:0 0 10px rgba(61,240,216,.6);margin-bottom:0;}
-    .step-icon{font-size:28px;margin-top:18px;margin-bottom:16px;}
-    .step-title{font-size:1.1rem;font-weight:900;color:var(--fg);margin-bottom:12px;}
-    .step-desc{font-size:14px;color:var(--muted);line-height:1.72;}
+    .cta-sec{text-align:center;padding:110px 0}
+    .cta-sec h2{font-size:clamp(2.2rem,5vw,3.4rem);max-width:18ch;margin:0 auto 18px}
+    .cta-sec p{color:var(--ink-soft);max-width:52ch;margin:0 auto 36px;font-size:1.05rem;line-height:1.75}
+    .cta-meta{margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
 
-    .testimonial{padding:120px 52px;border-top:1px solid rgba(26,10,31,0.10);border-bottom:1px solid rgba(26,10,31,0.10);background:rgba(37,16,48,.3);position:relative;overflow:hidden;}
-    .testimonial::before{content:'';position:absolute;inset:0;opacity:.06;background-image:linear-gradient(rgba(255,46,147,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(61,240,216,.4) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
-    .testimonial-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;text-align:center;}
-    .testimonial-headline{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;letter-spacing:-1px;line-height:1.05;color:var(--fg);margin-top:12px;margin-bottom:14px;}
-    .testimonial-headline .blue{color:var(--pink);text-shadow:0 0 16px rgba(255,46,147,.45);}
-    .testimonial-sub{font-size:15px;color:rgba(26,10,31,.62);line-height:1.7;max-width:58ch;margin:0 auto 38px;}
-    .review-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:left;}
-    .review-card{background:rgba(255,255,255,.82);border:1px solid rgba(26,10,31,.12);border-radius:16px;padding:22px;box-shadow:0 18px 50px rgba(26,10,31,.10);display:flex;flex-direction:column;min-height:300px;}
-    .review-profile{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px;border:1px solid rgba(26,10,31,.10);background:rgba(26,10,31,.04);border-radius:12px;}
-    .review-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--pink));display:flex;align-items:center;justify-content:center;color:white;font-family:'Orbitron',sans-serif;font-weight:900;box-shadow:0 0 18px rgba(255,46,147,.24);flex-shrink:0;}
-    .review-avatar-img{width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(255,46,147,.24);flex-shrink:0;}
-    .review-profile-name{font-weight:900;color:var(--bg);font-size:13px;line-height:1.2;}
-    .review-handle{font-size:11px;color:rgba(26,10,31,.55);margin-top:2px;}
-    .review-stars{font-size:12px;letter-spacing:.08em;color:var(--pink);text-shadow:0 0 10px rgba(255,46,147,.35);margin-bottom:14px;}
-    .review-quote{font-size:13.5px;line-height:1.62;color:rgba(26,10,31,.74);margin-bottom:18px;}
-    .review-name{font-weight:900;color:var(--bg);font-size:14px;}
-    .review-role{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:rgba(26,10,31,.48);margin-top:4px;}
-    .review-logo-row{margin-top:auto;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(26,10,31,.10);}
-    .review-logo-label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:rgba(26,10,31,.42);}
-    .review-brand-logo{max-height:24px;max-width:112px;object-fit:contain;}
-    .tiktok-logo{display:inline-flex;align-items:center;gap:6px;color:#0b0b12;font-weight:900;font-size:14px;letter-spacing:-.02em;}
-    .tiktok-note{width:22px;height:22px;border-radius:6px;background:#0b0b12;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;text-shadow:1px 0 #25f4ee,-1px 0 #fe2c55;}
-    .text-mark{font-size:14px;font-weight:900;color:var(--bg);letter-spacing:-.02em;}
-    .testimonial-quote{font-family:'Orbitron',sans-serif;font-size:clamp(1.3rem,2.6vw,2.1rem);font-weight:500;line-height:1.4;letter-spacing:-.2px;color:var(--fg);margin-bottom:44px;margin-top:20px;}
-    .testimonial-author{display:flex;align-items:center;justify-content:center;gap:14px;}
-    .author-dot{width:48px;height:48px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:16px;color:white;flex-shrink:0;box-shadow:var(--glow-pk);}
-    .author-name{font-size:15px;font-weight:700;color:var(--fg);text-align:left;}
-    .author-role{font-size:12px;color:var(--muted);margin-top:2px;text-align:left;}
+    footer{border-top:1px solid var(--line);padding:36px 0;background:var(--paper-warm)}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-dim)}
+    .footer-links{display:flex;gap:22px;list-style:none}
+    .footer-links a{color:var(--ink-soft);font-weight:500}
+    .footer-links a:hover{color:var(--pink)}
 
-    .about{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);}
-    .about-left{background:var(--bg);padding:100px 72px;display:flex;flex-direction:column;justify-content:center;min-height:80vh;position:relative;overflow:hidden;}
-    .about-right{background:rgba(37,16,48,.4);padding:0;display:flex;flex-direction:column;justify-content:stretch;min-height:80vh;overflow:hidden;border-left:1px solid var(--border);}
-    .about-photo{width:100%;height:100%;min-height:80vh;object-fit:cover;object-position:center top;display:block;}
-    .about-photo-placeholder{width:100%;height:100%;min-height:80vh;background:linear-gradient(135deg,rgba(255,46,147,.25),var(--bg),rgba(61,240,216,.2));border:1px solid rgba(255,46,147,.4);box-shadow:inset 0 0 60px rgba(255,46,147,.15);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;}
-    .about-headline{font-size:clamp(2.2rem,3.8vw,3.2rem);font-weight:900;letter-spacing:-1px;line-height:1.05;color:var(--fg);margin-bottom:28px;}
-    .about-headline .blue{color:var(--pink);text-shadow:0 0 16px rgba(255,46,147,.6);}
-    .about-body{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px;max-width:44ch;}
-    .about-cta{margin-top:44px;}
-
-    .cta-section{padding:160px 52px;text-align:center;position:relative;overflow:hidden;}
-    .cta-section::before{content:'';position:absolute;inset:0;opacity:.3;background:linear-gradient(180deg,rgba(74,30,90,.6) 0%,rgba(255,46,147,.4) 40%,rgba(61,240,216,.4) 100%);pointer-events:none;}
-    .cta-inner{position:relative;z-index:1;max-width:800px;margin:0 auto;}
-    .cta-headline{font-size:clamp(3rem,8vw,8rem);font-weight:900;letter-spacing:-2px;line-height:1.0;color:var(--fg);margin-bottom:32px;}
-    .cta-headline .blue{color:var(--pink);text-shadow:0 0 24px rgba(255,46,147,.7),0 0 60px rgba(255,46,147,.4);}
-    .cta-sub{font-size:1.05rem;color:var(--muted);line-height:1.78;margin-bottom:52px;max-width:52ch;margin-left:auto;margin-right:auto;}
-    .cta-note{margin-top:24px;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,0.2);text-transform:uppercase;}
-
-    footer{background:rgba(26,10,31,.8);border-top:1px solid var(--border);padding:72px 52px 48px;backdrop-filter:blur(8px);}
-    .footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:80px;padding-bottom:52px;border-bottom:1px solid var(--border);}
-    .footer-brand{display:flex;align-items:center;gap:12px;font-family:'Orbitron';font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);margin-bottom:16px;text-decoration:none;}
-    .footer-brand .pk{color:var(--pink);text-shadow:0 0 10px rgba(255,46,147,.6);}
-    .footer-brand img{width:32px;height:32px;border-radius:50%;}
-    .footer-tagline{font-size:14px;color:var(--muted);line-height:1.65;max-width:280px;margin-bottom:24px;}
-    .footer-email{font-size:14px;color:var(--teal);text-decoration:none;font-weight:700;text-shadow:0 0 10px rgba(61,240,216,.5);transition:opacity .2s;}
-    .footer-email:hover{opacity:.7;}
-    .footer-col-head{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--dimmer);margin-bottom:20px;}
-    .footer-links{list-style:none;display:flex;flex-direction:column;gap:14px;}
-    .footer-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s;}
-    .footer-links a:hover{color:var(--pink);}
-    .footer-bottom{max-width:1280px;margin:24px auto 0;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.2);}
-
-    .fl{position:absolute;pointer-events:none;user-select:none;z-index:3;filter:sepia(1) saturate(6) hue-rotate(282deg) brightness(1.1);}
-    .fl.faint{opacity:.05;}.fl.soft{opacity:.10;}.fl.visible-fl{opacity:.15;}
-    .fl.graphic{opacity:.20;filter:sepia(1) saturate(6) hue-rotate(282deg) brightness(1.1) drop-shadow(0 0 12px rgba(255,46,147,.5));}
-    .fl.glow{opacity:.26;filter:sepia(1) saturate(6) hue-rotate(282deg) brightness(1.2) drop-shadow(0 0 20px rgba(255,46,147,.6));}
-    .fl.mega{opacity:.16;filter:sepia(1) saturate(6) hue-rotate(282deg) brightness(1.1) drop-shadow(0 0 28px rgba(255,46,147,.5));}
-    .section-light .fl{filter:sepia(1) saturate(5) hue-rotate(282deg) brightness(0.55);}
-    .section-light .fl.faint{opacity:.07;}.section-light .fl.soft{opacity:.12;}.section-light .fl.visible-fl{opacity:.18;}
-    .section-light .fl.graphic{opacity:.22;filter:sepia(1) saturate(5) hue-rotate(282deg) brightness(0.55) drop-shadow(0 0 10px rgba(255,46,147,.3));}
-    .section-light .fl.glow{opacity:.28;filter:sepia(1) saturate(5) hue-rotate(282deg) brightness(0.6) drop-shadow(0 0 16px rgba(255,46,147,.35));}
-    .section-light .fl.mega{opacity:.16;filter:sepia(1) saturate(5) hue-rotate(282deg) brightness(0.55) drop-shadow(0 0 22px rgba(255,46,147,.3));}
-
-    @keyframes flamWander{0%{transform:translate(0,0) rotate(0deg);}15%{transform:translate(8px,-18px) rotate(2deg);}30%{transform:translate(-6px,-30px) rotate(-1.5deg);}45%{transform:translate(14px,-20px) rotate(3deg);}60%{transform:translate(-4px,-10px) rotate(-2deg);}75%{transform:translate(10px,-25px) rotate(1.5deg);}100%{transform:translate(0,0) rotate(0deg);}}
-    @keyframes flamWanderFlip{0%{transform:scaleX(-1) translate(0,0) rotate(0deg);}15%{transform:scaleX(-1) translate(8px,-18px) rotate(-2deg);}30%{transform:scaleX(-1) translate(-6px,-30px) rotate(1.5deg);}45%{transform:scaleX(-1) translate(14px,-20px) rotate(-3deg);}60%{transform:scaleX(-1) translate(-4px,-10px) rotate(2deg);}75%{transform:scaleX(-1) translate(10px,-25px) rotate(-1.5deg);}100%{transform:scaleX(-1) translate(0,0) rotate(0deg);}}
-    @keyframes flamDrift{0%{transform:translate(0,0) rotate(0deg);}25%{transform:translate(20px,-28px) rotate(4deg);}50%{transform:translate(-12px,-15px) rotate(-2deg);}75%{transform:translate(16px,-35px) rotate(-35deg);}100%{transform:translate(0,0) rotate(0deg);}}
-    @keyframes flamDriftFlip{0%{transform:scaleX(-1) translate(0,0) rotate(0deg);}25%{transform:scaleX(-1) translate(20px,-28px) rotate(-4deg);}50%{transform:scaleX(-1) translate(-12px,-15px) rotate(2deg);}75%{transform:scaleX(-1) translate(16px,-35px) rotate(-3deg);}100%{transform:scaleX(-1) translate(0,0) rotate(0deg);}}
-    .fl-float{animation:flamWander 10s ease-in-out infinite;}
-    .fl-floatR{animation:flamWanderFlip 13s ease-in-out infinite;}
-    .fl.mega.fl-float{animation:flamDrift 16s ease-in-out infinite;}
-    .fl.mega.fl-floatR{animation:flamDriftFlip 20s ease-in-out infinite;}
-
-    .section-light{background:#fdf8ff!important;color:#1a0a1f;}
-    .section-light .brands-slabel,.section-light .slabel{color:var(--pink);text-shadow:none;}
-    .section-light .slabel.subtle{color:rgba(26,10,31,0.35);}
-    .section-light h2,.section-light .brands-headline,.section-light .video-headline,.section-light .solutions-headline,.section-light .testimonial-quote{color:#1a0a1f;}
-    .section-light .hero-sub,.section-light .video-sub,.section-light .solutions-sub,.section-light .process-sub,.section-light .sol-desc,.section-light .step-desc,.section-light .about-body{color:rgba(26,10,31,0.65);}
-    .section-light .logo-img-cell{background:white;border-color:rgba(26,10,31,0.10);box-shadow:0 2px 12px rgba(26,10,31,0.06);}
-    .section-light .logo-img-cell:hover{border-color:var(--pink);box-shadow:0 8px 32px rgba(255,46,147,.2);}
-    .section-light .see-all-btn{color:var(--pink);border-color:rgba(255,46,147,.5);text-shadow:none;}
-    .section-light .see-all-btn:hover{background:rgba(255,46,147,.06);}
-    .section-light .brand-chip{background:rgba(26,10,31,.05);border-color:rgba(26,10,31,.15);color:rgba(26,10,31,.65);}
-    .section-light .brand-chip:hover{border-color:var(--pink);color:#1a0a1f;}
-    .section-light .sol-card{background:white;border-color:rgba(26,10,31,.10);box-shadow:0 2px 16px rgba(26,10,31,.06);}
-    .section-light .sol-card:hover{border-color:var(--pink);box-shadow:0 12px 40px rgba(255,46,147,.18);}
-    .section-light .sol-name{color:#1a0a1f;}
-    .section-light .sol-tag{border-color:rgba(26,10,31,.18);color:rgba(26,10,31,.5);}
-    .section-light .step{background:white;border-color:rgba(26,10,31,.10);box-shadow:0 2px 16px rgba(26,10,31,.06);}
-    .section-light .step:hover{border-color:var(--pink);box-shadow:0 8px 32px rgba(255,46,147,.15);}
-    .section-light .step-title{color:#1a0a1f;}
-    .section-light .testimonial-quote{color:#1a0a1f;}
-    .section-light .author-name{color:#1a0a1f;}
-    .section-light .author-role{color:rgba(26,10,31,.55);}
-    .section-light::before{opacity:.04!important;}
-
-    .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(26,10,31,.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:28px;backdrop-filter:blur(20px);}
-    .mobile-overlay.open{display:flex;}
-    .mobile-overlay a{font-family:'Orbitron';font-size:clamp(1.8rem,8vw,2.8rem);font-weight:900;color:var(--fg);text-decoration:none;transition:color .2s;letter-spacing:.05em;}
-    .mobile-overlay a:hover{color:var(--pink);}
-    .mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--pink);}
-
-	    @media(max-width:960px){
-      nav{padding:16px 20px;}
-      .nav-links{display:none;}
-      .hamburger{display:flex;}
-      .hero{padding:120px 24px 72px;}
-      .hero-miami-bg{background-position:62% bottom;opacity:.9;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.58) 0%,#000 45%,rgba(0,0,0,.82) 100%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.58) 0%,#000 45%,rgba(0,0,0,.82) 100%);}
-      .hero::after{background:linear-gradient(to bottom,rgba(26,10,31,.60) 0%,rgba(26,10,31,.35) 44%,rgba(26,10,31,.78) 78%,rgba(26,10,31,.96) 100%);}
-      .hero-headline{letter-spacing:-2px;}
-      .hero-bottom{grid-template-columns:1fr;gap:28px;}
-      .hero-actions{justify-content:flex-start;}
-	      .stats-bar-inner{grid-template-columns:1fr 1fr;}
-	      .featured-proof-inner{grid-template-columns:1fr;gap:22px;padding:28px;}
-	      .sbar-item{border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
-	      .sbar-item:nth-child(2n){border-right:none;}
-	      .sbar-item:last-child{border-right:none;border-bottom:none;}
-	      .proof-bar{padding:18px 24px;}
-      .brands{padding:64px 24px;}
-      .logo-img-grid{grid-template-columns:repeat(2,1fr);}
-      .video-section{padding:80px 24px;}
-      .video-header{grid-template-columns:1fr;gap:24px;}
-      .video-grid{grid-template-columns:1fr;}
-      .video-card.tall{grid-row:auto;aspect-ratio:16/9;}
-      .video-card.wide{grid-column:span 1;aspect-ratio:16/9;}
-      .solutions{padding:80px 24px;}
-      .solutions-header{grid-template-columns:1fr;gap:24px;}
-      .solutions-grid{grid-template-columns:1fr;}
-      .process{padding:80px 24px;}
-      .process-header{grid-template-columns:1fr;gap:24px;}
-      .steps{grid-template-columns:1fr;}
-      .testimonial{padding:80px 24px;}
-      .review-grid{grid-template-columns:1fr;}
-      .about{grid-template-columns:1fr;}
-      .about-left{padding:80px 24px;min-height:auto;}
-      .about-body{max-width:none;}
-      .about-right{min-height:60vw;border-left:none;border-top:1px solid var(--border);}
-      .about-photo{min-height:60vw;}
-      .about-photo-placeholder{min-height:60vw;}
-      .cta-section{padding:100px 24px;}
-      footer{padding:52px 24px;}
-      .footer-inner{grid-template-columns:1fr;gap:40px;}
-      .footer-bottom{flex-direction:column;gap:10px;text-align:center;}
+    @media(max-width:860px){
+      .nav-links{display:none}
+      .hero{padding:72px 0 48px}
+      .hstat{padding:0 18px}
+      .hero-stats{gap:14px 0}
+      .logo-img-grid{grid-template-columns:repeat(2,1fr)}
+      .video-grid{grid-template-columns:1fr}
+      .video-card.tall{grid-row:auto;aspect-ratio:16/9}
+      .video-card.wide{grid-column:span 1;aspect-ratio:16/9}
+      .feature-inner{grid-template-columns:1fr;padding:26px;gap:22px}
+      .tier-grid,.quotes{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr;text-align:center;gap:28px}
+      .about-photo{margin:0 auto}
+      .about-badges{justify-content:center}
+      section{padding:64px 0}
     }
   </style>
 </head>
 <body>
 
-<nav id="mainNav">
-  <a href="#" class="nav-brand">
-    <img src="sgf-logo.svg" alt="SGF">
-    <span>Santiago Guy<span class="pk"> Films</span></span>
-  </a>
-	  <ul class="nav-links">
-	    <li><a href="#work">Work</a></li>
-	    <li><a href="#solutions">Solutions</a></li>
-	    <li><a href="#about">About</a></li>
-	    <li><a href="/media-kit/">Media Kit</a></li>
-	    <li><a href="/results/">Results</a></li>
-	    <li><a href="#book" class="nav-cta">Book a Call</a></li>
-	  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand"><img src="https://santiagoguyfilms.com/sgf-logo.svg" alt="SGF">Santiago Guy<span class="pk">&nbsp;Films</span></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#retainers">Retainers</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=brand" target="_blank" rel="noopener" class="btn nav-cta">Book a Brand Call</a></li>
+    </ul>
+  </div>
 </nav>
 
-<div class="mobile-overlay" id="mobileOverlay">
-  <button class="mobile-close" id="mobileClose">&#x2715;</button>
-  <a href="#work" class="mob-link">Work</a>
-	  <a href="#solutions" class="mob-link">Solutions</a>
-	  <a href="#about" class="mob-link">About</a>
-	  <a href="/media-kit/">Media Kit</a>
-	  <a href="/results/">Results</a>
-	  <a href="#book" style="color:var(--pink)">Book a Call &#x2192;</a>
-	</div>
-
-<section class="hero">
-  <div class="hero-miami-bg"></div>
-  <div class="hero-bg-word">MIAMI</div>
-  <div>
-    <div class="hero-status reveal"><span class="dot"></span>Miami &middot; Creator-led content + systems</div>
-    <h1 class="hero-headline reveal d1">
-      Brand-level<br><span class="thin">creator content</span><br>+ systems<br><span class="blue">that convert.</span>
-    </h1>
-  </div>
-  <div class="hero-bottom">
-    <p class="hero-sub reveal d2">Big brands use creator-led content because it works. I’ve built performance creative for 70+ brands &mdash; and I bring that same playbook to businesses ready to grow: scroll-stopping video, landing pages that convert, and follow-up automation that turns attention into leads and sales. Miami-based, creator-led, AI-powered. No hand-offs.</p>
-    <div class="hero-actions reveal d3">
-      <a href="#book" class="btn">Book a Call <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
-      <a href="#work" class="btn-outline-white">See the Work &rarr;</a>
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker reveal">Miami · UGC for Brands &amp; Agencies</div>
+    <h1 class="reveal">UGC your brand approves, runs, and <span class="pk">re-books monthly.</span></h1>
+    <p class="hero-sub reveal">I'm Franco — creator behind Santiago Guy Films. 70+ brand campaigns, first-round approvals, and content strong enough that one brand turned it into a TV commercial. I plug into your creative pipeline as a monthly content partner. Creator-direct. No middle layer.</p>
+    <div class="hero-actions reveal">
+      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=brand" target="_blank" rel="noopener" class="btn">Book a Brand Call</a>
+      <a href="#work" class="btn-ghost">See the work &darr;</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hstat"><b>70+</b><span>brand campaigns</span></div>
+      <div class="hstat"><b>5.0</b><span>client rating</span></div>
+      <div class="hstat"><b>157K+</b><span>TikTok · whitelisting-ready</span></div>
+      <div class="hstat"><b>24h</b><span>creator-direct response</span></div>
     </div>
   </div>
-</section>
+</header>
 
-	<div class="stats-bar">
-	  <div class="stats-bar-inner">
-	    <div class="sbar-item reveal"><div class="sbar-num">157K+</div><div class="sbar-label">TikTok followers<br>@santiagoguyfilms</div></div>
-	    <div class="sbar-item reveal d1"><div class="sbar-num">9.9M+</div><div class="sbar-label">TikTok likes<br>across creator content</div></div>
-	    <div class="sbar-item reveal d2"><div class="sbar-num">7K+</div><div class="sbar-label">Instagram followers<br>@santiagoguyfilms</div></div>
-	    <div class="sbar-item reveal d3"><div class="sbar-num">70+</div><div class="sbar-label">Brand/product campaigns<br>across multiple industries</div></div>
-	    <div class="sbar-item reveal d4"><div class="sbar-num">5.0</div><div class="sbar-label">Client rating<br>from review work</div></div>
-	  </div>
-	</div>
-
-<div class="proof-bar">
-  <div class="proof-item"><span class="proof-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span><span class="proof-rating">5.0</span><span>Client Rating</span></div>
-  <div class="proof-divider"></div>
-  <div class="proof-item">As featured in</div>
-  <div class="proof-item"><a href="https://shoutoutmiami.com/meet-santiago-guy-wedding-filmmaker/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);text-decoration:none;font-weight:700" onmouseover="this.style.color='var(--pink)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">ShoutOut Miami</a></div>
-  <div class="proof-divider"></div>
-  <div class="proof-item"><a href="https://www.peerspace.com/resources/best-wedding-videographers-miami/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);text-decoration:none;font-weight:700" onmouseover="this.style.color='var(--pink)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Peerspace</a></div>
-  <div class="proof-divider"></div>
-  <div class="proof-item"><a href="https://www.zola.com/wedding-vendors/wedding-videographers/santiago-guy-films" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);text-decoration:none;font-weight:700" onmouseover="this.style.color='var(--pink)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Zola</a></div>
+<div class="logos">
+  <div class="wrap">
+    <div class="sec-label">Trusted by brands across tech, wellness, SaaS, home &amp; lifestyle</div>
+    <div class="logo-img-grid reveal">
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/ridge.png" alt="Ridge"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/honeybook.svg" alt="HoneyBook"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/rexmd.svg" alt="Rex MD"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/insurify.svg" alt="Insurify"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/boldify.png" alt="Boldify"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/pennstatehealth.png" alt="Penn State Health"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/coppercompression.png" alt="Copper Compression"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/cbdmd.png" alt="cbdMD"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/compare.svg" alt="Compare.com"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/thinoptics.png" alt="ThinOptics"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/peteandpedro.png" alt="Pete &amp; Pedro"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/hempvana.png" alt="Hempvana"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/buzzrx.svg" alt="BuzzRx"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/frogfuel.png" alt="Frog Fuel"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/filtereasy.svg" alt="FilterEasy"></div>
+      <div class="logo-img-cell"><img src="https://santiagoguyfilms.com/logos/driscollchildrens.svg" alt="Driscoll Children's"></div>
+    </div>
+    <div class="logos-more">70+ campaigns total &middot; <button class="logos-toggle" id="brandsToggle" aria-expanded="false" aria-controls="allBrands">expand the full client list &darr;</button></div>
+    <div class="all-brands" id="allBrands">
+      <div class="brand-cat"><div class="brand-cat-name">Health, Wellness &amp; Supplements</div><div class="brand-chips"><span class="brand-chip">Rex MD</span><span class="brand-chip">BuzzRx</span><span class="brand-chip">Seven Cells</span><span class="brand-chip">Seven Cells Semaglutide</span><span class="brand-chip">Science and Humans</span><span class="brand-chip">AgelessRX</span><span class="brand-chip">Clean Nutra Sea Moss</span><span class="brand-chip">Dose</span><span class="brand-chip">Rugiet</span><span class="brand-chip">Frog Fuel</span><span class="brand-chip">Flow Mushroom Packs</span><span class="brand-chip">CBD Gummies</span><span class="brand-chip">Hempvana</span><span class="brand-chip">Rizen</span><span class="brand-chip">Density Hair</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Technology, Electronics &amp; Smart Devices</div><div class="brand-chips"><span class="brand-chip">Anker</span><span class="brand-chip">Eufy Solar Camera</span><span class="brand-chip">Psync Camera</span><span class="brand-chip">Kodak Mini Printer</span><span class="brand-chip">Yahoo Power Bank</span><span class="brand-chip">3-in-1 Charger</span><span class="brand-chip">Tire Inflator</span><span class="brand-chip">BLCKTEC 430</span><span class="brand-chip">Blaze AI</span><span class="brand-chip">DoiTX</span><span class="brand-chip">Kraken</span><span class="brand-chip">Yaber</span><span class="brand-chip">Crypto.com</span><span class="brand-chip">Stockpile</span><span class="brand-chip">YNAB</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Home, Kitchen &amp; Lifestyle</div><div class="brand-chips"><span class="brand-chip">Orii Spice Rack</span><span class="brand-chip">Kerdom</span><span class="brand-chip">White Chair</span><span class="brand-chip">FilterEasy</span><span class="brand-chip">Travel Bag</span><span class="brand-chip">Pocket Hose Copper Head</span><span class="brand-chip">Bull Shot BBQ</span><span class="brand-chip">Upkeep</span><span class="brand-chip">Giddy Up</span><span class="brand-chip">Artuvate Neck Pillow</span><span class="brand-chip">Nuzzle Pillow</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Apparel, Accessories &amp; Fashion</div><div class="brand-chips"><span class="brand-chip">Ridge</span><span class="brand-chip">Njord Watch</span><span class="brand-chip">Indestructible Watch</span><span class="brand-chip">Skechers</span><span class="brand-chip">Weathershield Jacket</span><span class="brand-chip">Freebird</span><span class="brand-chip">ThinOptics</span><span class="brand-chip">Lunisk Glasses</span><span class="brand-chip">Hushed Socks</span><span class="brand-chip">Footstr Socks</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Beauty &amp; Grooming</div><div class="brand-chips"><span class="brand-chip">Boldify</span><span class="brand-chip">Pete &amp; Pedro</span><span class="brand-chip">Trimmer</span><span class="brand-chip">Usmile</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Pet Products</div><div class="brand-chips"><span class="brand-chip">Yak Chews</span><span class="brand-chip">Dog Supplements</span><span class="brand-chip">SafeDog</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Food &amp; Beverage</div><div class="brand-chips"><span class="brand-chip">Ka Chava</span><span class="brand-chip">Yak Foods</span><span class="brand-chip">Joymode</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Finance, SaaS &amp; Platforms</div><div class="brand-chips"><span class="brand-chip">HoneyBook</span><span class="brand-chip">SelectQuote</span><span class="brand-chip">Insurify</span><span class="brand-chip">Workleap</span><span class="brand-chip">Growth Hub ROI</span><span class="brand-chip">Stash</span><span class="brand-chip">Wise Bank</span></div></div>
+      <div class="brand-cat"><div class="brand-cat-name">Nonprofit, Education &amp; Healthcare</div><div class="brand-chips"><span class="brand-chip">Operation Smile</span><span class="brand-chip">Penn State</span><span class="brand-chip">Driscoll Children's</span><span class="brand-chip">Ophthalmology Partners</span></div></div>
+    </div>
+  </div>
 </div>
 
-<section class="brands section-light" id="brands">
-  <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:280px;right:-30px;bottom:-30px;">
-  <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:64px;left:2%;top:28%;animation-delay:1s;">
-	  <div class="brands-inner">
-	    <div class="brands-slabel reveal">Trusted By</div>
-	    <h2 class="brands-headline reveal d1">Brands I've Worked With</h2>
-	    <p class="brands-copy reveal d2">Brand and agency experience across UGC, tech, wellness, home, SaaS, finance, and lifestyle &mdash; with performance standards that translate anywhere.</p>
-	    <div class="logo-img-grid reveal d2">
-	      <div class="logo-img-cell"><img src="logos/ridge.png" alt="Ridge"></div>
-	      <div class="logo-img-cell"><img src="logos/honeybook.svg" alt="HoneyBook"></div>
-	      <div class="logo-img-cell"><img src="logos/rexmd.svg" alt="Rex MD"></div>
-	      <div class="logo-img-cell"><img src="logos/insurify.svg" alt="Insurify"></div>
-	      <div class="logo-img-cell"><img src="logos/boldify.png" alt="Boldify"></div>
-	      <div class="logo-img-cell"><img src="logos/pennstatehealth.png" alt="Penn State Health"></div>
-	      <div class="logo-img-cell"><img src="logos/coppercompression.png" alt="Copper Compression"></div>
-	      <div class="logo-img-cell"><img src="logos/cbdmd.png" alt="cbdMD"></div>
-	      <div class="logo-img-cell"><img src="logos/compare.svg" alt="Compare.com"></div>
-	      <div class="logo-img-cell"><img src="logos/thinoptics.png" alt="ThinOptics"></div>
-	      <div class="logo-img-cell"><img src="logos/peteandpedro.png" alt="Pete &amp; Pedro"></div>
-	      <div class="logo-img-cell"><img src="logos/hempvana.png" alt="Hempvana"></div>
-	      <div class="logo-img-cell"><img src="logos/buzzrx.svg" alt="BuzzRx"></div>
-	      <div class="logo-img-cell"><img src="logos/frogfuel.png" alt="Frog Fuel"></div>
-	      <div class="logo-img-cell"><img src="logos/filtereasy.svg" alt="FilterEasy"></div>
-	      <div class="logo-img-cell"><img src="logos/driscollchildrens.svg" alt="Driscoll Children's"></div>
-	    </div>
-	    <div style="text-align:center;margin-top:28px;" class="reveal d3">
-	      <a href="/media-kit/" class="btn-outline-white media-kit-cta">See Full Media Kit &rarr;</a>
-	      <div style="margin-top:14px;"><a href="/media-kit/#brands" style="color:var(--teal);font-weight:800;text-decoration:none;">See all 70+ campaigns &rarr;</a></div>
-	    </div>
-	  </div>
-	</section>
-
-<section class="video-section" id="work" style="position:relative;overflow:hidden;">
-  <img class="fl soft fl-floatR" data-fl="1" src="" alt="" style="width:180px;right:-20px;top:40px;">
-  <img class="fl faint fl-float" data-fl="1" src="" alt="" style="width:52px;left:2%;bottom:15%;animation-delay:3s;">
-  <div class="video-inner" style="position:relative;z-index:1;">
-	    <div class="video-header">
-	      <div>
-	        <div class="slabel reveal">Live Brand Ads / Published Creative</div>
-	        <h2 class="video-headline reveal d1">Real brands.<br><span class="blue">Real results.</span></h2>
-	      </div>
-	      <p class="video-sub reveal">UGC is the credibility engine &mdash; built for performance (hooks, demos, and native delivery). When you need a more polished, commercial-style finish, I can deliver that too.<span style="display:block;margin-top:10px;color:rgba(255,255,255,.42);font-size:13px;">As published by the brand.</span></p>
-	    </div>
-	    <div class="featured-proof reveal d1" id="featured-bulbhead">
-	      <div class="featured-proof-card" data-video-src="/public/videos/bulbhead-bullshot-tv-commercial.mp4">
-	        <div class="featured-proof-inner">
-	          <div>
-	            <div class="featured-proof-eyebrow"><span class="dot"></span>Featured Result</div>
-	            <h3 class="featured-proof-title">UGC That Became a<br><span class="pink">TV Commercial</span></h3>
-	            <p class="featured-proof-copy">Created directly for Bulbhead’s Bull Shot BBQ, this video started as creator-shot UGC. Bulbhead loved the piece, requested permission, and turned it into a finished TV commercial with added graphics, edits, and broadcast-ready polish.</p>
-	            <div class="featured-proof-support">Original creator concept. Final TV ad by Bulbhead.</div>
-	            <div class="featured-proof-badges">
-	              <div class="featured-proof-badge"><span class="mini">Selected by</span> Bulbhead for TV advertising</div>
-	            </div>
-	            <div class="featured-proof-quote"><strong>Client note:</strong> “Your Bull Shot Oven content is approved. First time! Thank you! We can't wait for the next one.”</div>
-	            <div class="featured-proof-actions">
-	              <a href="#bulbhead-tv-commercial" class="btn-teal" data-play-target="bulbhead-tv-commercial">Watch the TV commercial <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
-	              <a href="/media-kit/" class="btn-outline-white">See Full Media Kit &rarr;</a>
-	            </div>
-	          </div>
-	          <div>
-	            <div class="featured-label-row">
-	              <div class="featured-brand-label"><span class="pk">Bulbhead</span> / Bull Shot BBQ</div>
-	            </div>
-	            <div class="featured-media">
-	              <video id="bulbhead-tv-commercial" controls playsinline preload="metadata">
-	                <!-- TODO: Add the final TV commercial file here: /public/videos/bulbhead-bullshot-tv-commercial.mp4 -->
-	                <source src="public/videos/bulbhead-bullshot-tv-commercial.mp4" type="video/mp4">
-	              </video>
-	              <div class="featured-placeholder" role="status" aria-live="polite">
-	                <div class="ph-inner">
-	                  <div class="ph-title">TV commercial coming soon</div>
-	                  <div class="ph-copy">Place the final file at <code>/public/videos/bulbhead-bullshot-tv-commercial.mp4</code> to enable playback here.</div>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="video-grid reveal d1">
-	      <div class="video-card tall">
-	        <video autoplay muted loop playsinline><source src="media-kit/zeffy.mp4" type="video/mp4"></video>
-	        <div class="video-card-meta"><span class="video-brand">Zeffy</span><span class="video-type">SaaS &middot; Published Creative</span></div>
-	      </div>
-	      <div class="video-card">
-	        <video autoplay muted loop playsinline><source src="media-kit/hempvana.mp4" type="video/mp4"></video>
-	        <div class="video-card-meta"><span class="video-brand">Hempvana</span><span class="video-type">Health &amp; Wellness &middot; Published Creative</span></div>
-	      </div>
-	      <div class="video-card">
-	        <video autoplay muted loop playsinline><source src="media-kit/nord-watch.mp4" type="video/mp4"></video>
-	        <div class="video-card-meta"><span class="video-brand">Njord Watch</span><span class="video-type">Apparel &amp; Accessories &middot; Published Creative</span></div>
-	      </div>
-	      <div class="video-card wide">
-	        <video autoplay muted loop playsinline><source src="media-kit/safedog.mp4" type="video/mp4"></video>
-	        <div class="video-card-meta"><span class="video-brand">SafeDog</span><span class="video-type">Pet Products &middot; Published Creative</span></div>
-	      </div>
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Real brands. <span class="pk">Published creative.</span></h2>
+      <p>Hooks, demos, and native-feeling delivery — as published by the brands themselves.</p>
     </div>
-    <div style="text-align:center;margin-top:40px;" class="reveal d2">
-      <a href="/media-kit/" class="btn-outline-white media-kit-cta">See Full Media Kit &rarr;</a>
+    <div class="feature-card reveal" id="featured-bulbhead">
+      <div class="feature-inner">
+        <div>
+          <div class="feature-eyebrow"><span class="dot"></span>Featured Result</div>
+          <div class="feature-title">UGC that became a TV commercial.</div>
+          <p class="feature-copy">Created for Bulbhead's Bull Shot BBQ as creator-shot UGC. Bulbhead loved the piece, requested permission, and turned it into a finished TV commercial with broadcast-ready polish. That's the bar: content strong enough to reuse, repurpose, and put media dollars behind.</p>
+          <div class="feature-quote"><b>Client note:</b> "Your Bull Shot Oven content is approved. First time! Thank you! We can't wait for the next one."</div>
+        </div>
+        <div>
+          <div class="feature-brand-label"><span class="pk">Bulbhead</span> / Bull Shot BBQ · The TV Commercial</div>
+          <div class="feature-media">
+            <video id="bulbhead-tv" controls autoplay muted loop playsinline preload="auto">
+              <source src="https://santiagoguyfilms.com/media-kit/bulbhead-bullshot-tv-commercial.mp4" type="video/mp4">
+            </video>
+            <div class="feature-placeholder" role="status" aria-live="polite">
+              <div>
+                <div class="ph-title">Video loading</div>
+                <div class="ph-copy">The Bull Shot BBQ TV commercial &mdash; ask me for the file at <a href="mailto:welcome@santiagoguyfilms.com" style="color:var(--pink);font-weight:600">welcome@santiagoguyfilms.com</a>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="video-grid reveal">
+      <div class="video-card tall">
+        <video autoplay muted loop playsinline preload="auto"><source src="https://santiagoguyfilms.com/media-kit/zeffy.mp4" type="video/mp4"></video>
+        <div class="video-meta"><span class="video-brand">Zeffy</span><span class="video-type">SaaS</span></div>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline preload="auto"><source src="https://santiagoguyfilms.com/media-kit/hempvana.mp4" type="video/mp4"></video>
+        <div class="video-meta"><span class="video-brand">Hempvana</span><span class="video-type">Health &amp; Wellness</span></div>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline preload="auto"><source src="https://santiagoguyfilms.com/media-kit/nord-watch.mp4" type="video/mp4"></video>
+        <div class="video-meta"><span class="video-brand">Njord Watch</span><span class="video-type">Accessories</span></div>
+      </div>
+      <div class="video-card wide">
+        <video autoplay muted loop playsinline preload="auto"><source src="https://santiagoguyfilms.com/media-kit/safedog.mp4" type="video/mp4"></video>
+        <div class="video-meta"><span class="video-brand">SafeDog</span><span class="video-type">Pet Products</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="solutions section-light" id="solutions" style="position:relative;overflow:hidden;">
-  <img class="fl graphic fl-float" data-fl="1" src="" alt="" style="width:220px;left:-25px;bottom:-20px;animation-delay:.8s;">
-  <img class="fl visible-fl fl-floatR" data-fl="1" src="" alt="" style="width:46px;right:3%;top:22%;animation-delay:2s;">
-  <div class="solutions-inner" style="position:relative;z-index:1;">
-	    <div class="solutions-header">
-	      <div><div class="slabel reveal">What I Can Build For You</div><h2 class="solutions-headline reveal d1">Content is the engine.<br><span class="blue">Systems make it pay you back.</span></h2></div>
-	      <p class="solutions-sub reveal">Content gets attention. A landing page captures it. Automation follows up. Together, they turn views into leads and sales &mdash; without juggling five different vendors.</p>
-	    </div>
-	    <div class="solutions-grid">
-	      <a href="#book" class="sol-card reveal">
-	        <div class="sol-num">01</div><div class="sol-icon">&#x1F3AC;</div>
-	        <div class="sol-name">UGC &amp; Brand Content</div>
-	        <p class="sol-desc">Short-form video built for performance: hooks, product demos, testimonials, TikTok Shop/Amazon-style content, and premium social when the brief calls for it.</p>
-	        <div class="sol-tags"><span class="sol-tag">UGC</span><span class="sol-tag">Paid Ads</span><span class="sol-tag">TikTok Shop</span><span class="sol-tag">Amazon</span><span class="sol-tag">Testimonials</span></div>
-	      </a>
-	      <a href="#book" class="sol-card reveal d1">
-	        <div class="sol-num teal">02</div><div class="sol-icon">&#x26A1;</div>
-	        <div class="sol-name">Landing Pages &amp; Websites</div>
-	        <p class="sol-desc">Mobile-first pages that match the content, explain the offer fast, and make the next step obvious (book, call, buy, visit).</p>
-	        <div class="sol-tags"><span class="sol-tag">Landing Pages</span><span class="sol-tag">Websites</span><span class="sol-tag">Messaging</span><span class="sol-tag">Offers</span><span class="sol-tag">SEO</span></div>
-	      </a>
-	      <a href="#book" class="sol-card reveal d2">
-	        <div class="sol-num">03</div><div class="sol-icon">&#x2728;</div>
-	        <div class="sol-name">Follow-Up Automation</div>
-	        <p class="sol-desc">Email/SMS follow-up, lead routing, reminders, and reactivation so interested people don’t slip through the cracks.</p>
-	        <div class="sol-tags"><span class="sol-tag">Automation</span><span class="sol-tag">Email</span><span class="sol-tag">SMS</span><span class="sol-tag">CRM</span><span class="sol-tag">AI</span></div>
-	      </a>
-	    </div>
-	  </div>
-	</section>
-
-<section class="process">
-  <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:320px;left:-35px;top:0;animation-delay:1.2s;">
-  <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:72px;right:4%;bottom:12%;animation-delay:2.5s;">
-  <div class="process-inner">
-	    <div class="process-header">
-	      <div><div class="slabel reveal">How It Works</div><h2 class="process-headline reveal d1">Simple as a conversation.<br><span class="blue">Built like a system.</span></h2></div>
-	      <p class="process-sub reveal">We align on the offer and the outcome, build the assets, then set up the follow-through so your content turns into action.</p>
-	    </div>
-	    <div class="steps">
-	      <div class="step reveal"><div class="step-num">01</div><div class="step-icon">&#x2615;</div><div class="step-title">We align</div><p class="step-desc">Audience, offer, angles, and what success looks like &mdash; in plain English.</p></div>
-	      <div class="step reveal d1"><div class="step-num">02</div><div class="step-icon">&#x26A1;</div><div class="step-title">I build</div><p class="step-desc">Creator-led content + a conversion page that matches the message. Fast turnaround, clean communication.</p></div>
-	      <div class="step reveal d2"><div class="step-num">03</div><div class="step-icon">&#x1F4C8;</div><div class="step-title">We launch</div><p class="step-desc">Automation runs, we track what hits, cut what doesn’t, and keep improving what works.</p></div>
-	    </div>
-  </div>
-</section>
-
-<section class="testimonial section-light">
-  <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:240px;right:4%;top:-15px;animation-delay:.4s;">
-  <img class="fl soft fl-float" data-fl="1" src="" alt="" style="width:50px;left:2%;bottom:15%;animation-delay:3.5s;">
-  <div class="testimonial-inner">
-    <div class="slabel pink reveal">In Their Words</div>
-    <h2 class="testimonial-headline reveal d1">Easy to work with.<br><span class="blue">Built to deliver.</span></h2>
-    <p class="testimonial-sub reveal d2">A few quick notes from creators, brands, and clients who needed clean communication, strong creative, and content that matched the brief.</p>
-    <div class="review-grid reveal d3">
-      <div class="review-card"><div class="review-profile"><img class="review-avatar-img" src="assets/yoeslan-profile.jpg" alt="Yoeslan TikTok profile image"><div><div class="review-profile-name">Yoeslan</div><div class="review-handle">@yoeslan &middot; 21M TikTok followers</div></div></div><div class="review-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><p class="review-quote">"Franco was amazing. Very communicative, professional, and he really understood what we needed. The final videos were exactly what we were looking for."</p><div class="review-name">Yoeslan</div><div class="review-role">TikTok creator</div><div class="review-logo-row"><span class="review-logo-label">Creator proof</span><span class="tiktok-logo"><span class="tiktok-note">&#9834;</span>TikTok</span></div></div>
-	      <div class="review-card"><div class="review-profile"><div class="review-avatar">A</div><div><div class="review-profile-name">Angela Tomaselli</div><div class="review-handle">Creator Manager &middot; Darkroom</div></div></div><div class="review-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><p class="review-quote">"Your Bull Shot Oven content is approved. First time! Thank you! We can't wait for the next one."</p><div class="review-name">Angela Tomaselli</div><div class="review-role">Brand partner</div><div class="review-logo-row"><span class="review-logo-label">Partner proof</span><img class="review-brand-logo" src="assets/darkroom-logo.png" alt="Darkroom logo"></div></div>
-      <div class="review-card"><div class="review-profile"><div class="review-avatar">S</div><div><div class="review-profile-name">Roselle May</div><div class="review-handle">UGC Creator Manager &middot; Steadfast</div></div></div><div class="review-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><p class="review-quote">"Everything looks great and aligned on our end. Looking forward to it and excited to work together."</p><div class="review-name">Roselle May</div><div class="review-role">Steadfast partnerships</div><div class="review-logo-row"><span class="review-logo-label">Brand proof</span><span class="text-mark">Steadfast</span></div></div>
-	      <div class="review-card"><div class="review-profile"><div class="review-avatar">H</div><div><div class="review-profile-name">Harlene</div><div class="review-handle">Creative Director &middot; Brand Lux Media</div></div></div><div class="review-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><p class="review-quote">"Overall, it's one of the best UGC we've gotten so far. Please tell him that he's fantastic."</p><div class="review-name">Harlene</div><div class="review-role">Brand partner</div><div class="review-logo-row"><span class="review-logo-label">Partner proof</span><span class="text-mark">Brand Lux</span></div></div>
+<section class="retainers-sec" id="retainers">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>One-off videos test. <span class="pk">Retainers scale.</span></h2>
+      <p>A standing monthly pipeline of creator content — briefed, shot, delivered, iterated. Month one I learn your brand; month two I'm iterating on proven hooks instead of starting cold.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier reveal">
+        <div class="tier-name">Starter</div>
+        <div class="tier-vol">4 <small>videos/mo</small></div>
+        <div class="tier-tag">Test the fit</div>
+        <ul>
+          <li>3 hook variations per concept</li>
+          <li>1 revision round per video</li>
+          <li>Organic + paid usage rights</li>
+          <li>Raw footage included</li>
+        </ul>
+        <div class="tier-fit">Best for first campaigns, TikTok Shop / Amazon tests.</div>
+      </div>
+      <div class="tier featured reveal">
+        <div class="tier-flag">Most booked</div>
+        <div class="tier-name">Partner</div>
+        <div class="tier-vol">8&ndash;12 <small>videos/mo</small></div>
+        <div class="tier-tag">Core creative engine</div>
+        <ul>
+          <li>Hook + variation matrix for testing</li>
+          <li>Monthly iteration on winning ads</li>
+          <li>Whitelisting / Spark codes included</li>
+          <li>2 revision rounds, 24h priority comms</li>
+          <li>Monthly performance sync</li>
+        </ul>
+        <div class="tier-fit">Best for brands scaling paid social.</div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Scale</div>
+        <div class="tier-vol">16+ <small>videos/mo</small></div>
+        <div class="tier-tag">Full creative pipeline</div>
+        <ul>
+          <li>Multi-product / multi-angle coverage</li>
+          <li>Whitelisting + extended usage bundle</li>
+          <li>Dedicated turnaround SLA</li>
+          <li>Agency-friendly delivery &amp; reporting</li>
+        </ul>
+        <div class="tier-fit">Best for agencies and always-on UGC programs.</div>
+      </div>
+    </div>
+    <div class="tier-cta-row reveal">
+      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=retainer" target="_blank" rel="noopener" class="btn">Let's Scope Your Retainer</a>
+      <div class="tier-note">Volume and scope set the number — we'll map it on a 30-min call. No long-term lock-in to start.</div>
     </div>
   </div>
 </section>
 
-<section class="about" id="about">
-  <div class="about-left reveal">
-    <img class="fl graphic fl-floatR" data-fl="1" src="" alt="" style="width:300px;right:-40px;bottom:-30px;animation-delay:1.4s;">
-    <div class="slabel">About Franco</div>
-    <h2 class="about-headline">Miami-based.<br><span class="blue">Brand-level</span><br>execution.</h2>
-    <p class="about-body">I’m Franco &mdash; a creator, filmmaker, and the owner of Santiago Guy Films. I’ve produced performance-focused content for brands and agencies, and I bring that same standard to businesses that want growth you can measure.</p>
-    <p class="about-body">UGC is how I earn trust: real deliverables, real approvals, real campaigns. For local businesses, I extend that into the full conversion system: content + a page that captures leads + follow-up automation that keeps prospects moving.</p>
-    <p class="about-body">One point of contact. Clear strategy. Clean execution.</p>
-    <div class="about-cta"><a href="#book" class="btn">Let's Grab a Coffee &amp; Talk</a></div>
-  </div>
-  <div class="about-right reveal">
-    <img id="headshot-img" src="media-kit/profile-pic.png" alt="Franco - Santiago Guy Films" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <div class="about-photo-placeholder" style="display:none;">
-      <div style="text-align:center;"><div style="font-size:52px;margin-bottom:16px;">&#x1F4CD;</div><div style="font-family:'Orbitron';font-size:22px;font-weight:900;color:var(--pink);text-shadow:var(--glow-pk);margin-bottom:8px;">FRANCO</div><div style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);">Miami, FL</div></div>
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Easy to brief. <span class="pk">Easy to trust.</span></h2>
+    </div>
+    <div class="quotes reveal">
+      <div class="quote">
+        <div class="review-profile">
+          <img class="review-avatar-img" src="https://santiagoguyfilms.com/assets/yoeslan-profile.jpg" alt="Yoeslan TikTok profile image">
+          <div>
+            <div class="review-profile-name">Yoeslan <svg class="verified" viewBox="0 0 24 24" fill="#20d5ec" aria-label="Verified"><path d="M12 0l2.8 2.9 4-.8.8 4L22.5 9l-2.9 2.8.8 4-4 .8-2.4 3.4-3.6-2-3.6 2-2.4-3.4-4-.8.8-4L1.5 9l2.9-2.9-.8-4 4 .8L12 0z"/><path fill="#fff" d="M10.6 15.4l-3.3-3.2 1.4-1.4 1.9 1.8 4.7-4.7 1.4 1.4-6.1 6.1z"/></svg></div>
+            <div class="review-handle">@yoeslan · 21M TikTok followers · Verified creator</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>"Franco was amazing. Very communicative, professional, and he really understood what we needed. The final videos were exactly what we were looking for."</p>
+        <div class="review-logo-row"><span class="review-logo-label">Creator proof</span><span class="tiktok-logo"><svg class="tiktok-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#25f4ee" d="M11.9.6c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03C2.6 22.35 1.18 20.17.97 17.83c-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fe2c55" d="M13.1 1.4c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#0b0b12" d="M12.53 1c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok</span></div>
+      </div>
+      <div class="quote">
+        <div class="review-profile">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-profile-name">Angela Tomaselli</div>
+            <div class="review-handle">Creator Manager · Darkroom</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>"Your Bull Shot Oven content is approved. First time! Thank you! We can't wait for the next one."</p>
+        <div class="review-logo-row"><span class="review-logo-label">Partner proof</span><img class="review-brand-logo" src="https://santiagoguyfilms.com/assets/darkroom-logo.png" alt="Darkroom logo"></div>
+      </div>
+      <div class="quote">
+        <div class="review-profile">
+          <div class="review-avatar">H</div>
+          <div>
+            <div class="review-profile-name">Harlene</div>
+            <div class="review-handle">Creative Director · Brand Lux Media</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>"Overall, it's one of the best UGC we've gotten so far. Please tell him that he's fantastic."</p>
+        <div class="review-logo-row"><span class="review-logo-label">Partner proof</span><span class="text-mark">Brand Lux</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cta-section" id="book">
-  <img class="fl mega fl-float" data-fl="1" src="" alt="" style="width:520px;left:-70px;bottom:-60px;animation-delay:.3s;">
-  <img class="fl mega fl-floatR" data-fl="1" src="" alt="" style="width:460px;right:-55px;bottom:-50px;animation-delay:1s;">
-  <img class="fl glow fl-floatR" data-fl="1" src="" alt="" style="width:190px;right:5%;top:5%;animation-delay:2.2s;">
-  <img class="fl graphic fl-float" data-fl="1" src="" alt="" style="width:80px;right:20%;bottom:10%;animation-delay:1.7s;">
-  <div class="cta-inner">
-    <div class="slabel pink reveal" style="justify-content:center;">Miami &middot; Let's Talk</div>
-    <h2 class="cta-headline reveal d1">Ready to turn<br><span class="blue">content into customers?</span></h2>
-	    <p class="cta-sub reveal d2">If you’re a <strong>brand/agency</strong>, let’s talk creative, deliverables, and timelines. If you’re a <strong>local business</strong>, let’s map the content + landing page + follow-up system that drives leads.</p>
-    <div class="hero-actions reveal d3" style="justify-content:center;">
-      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=brand" target="_blank" rel="noopener" class="btn btn-lg">Book a Brand Call <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
-      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=growth" target="_blank" rel="noopener" class="btn-outline-white" style="padding:18px 28px;font-size:15px;">Book a Growth Call &rarr;</a>
+<section class="about-sec" id="about">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <img src="https://santiagoguyfilms.com/media-kit/profile-pic.png" alt="Franco — Santiago Guy Films" class="about-photo">
+      <div>
+        <h2>The perspective brands <span class="pk">struggle to cast.</span></h2>
+        <p>Bilingual, Miami-based, tech-comfortable, wellness-minded — a professional adult who delivers scripts naturally on camera. That's why my content works for tech, wellness, finance, and lifestyle products that need trust more than hype.</p>
+        <p>One point of contact. Clear strategy. Clean execution.</p>
+        <div class="about-badges">
+          <span class="badge">Bilingual EN/ES</span><span class="badge">UGC</span><span class="badge">TikTok Shop</span><span class="badge">Amazon</span><span class="badge">Whitelisting</span><span class="badge">24h Response</span>
+        </div>
+      </div>
     </div>
-	    <p class="cta-note reveal d4">Local &middot; Creator-led &middot; AI-powered &middot; Built fast</p>
+  </div>
+</section>
+
+<section class="cta-sec" id="book">
+  <div class="wrap">
+    <h2 class="reveal">Need a content partner, <span class="pk">not a vendor?</span></h2>
+    <p class="reveal">30 minutes: your products, your funnel, your creative gaps — and the retainer volume that fits. Come with a brief or just a goal.</p>
+    <div class="reveal">
+      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=brand" target="_blank" rel="noopener" class="btn" style="padding:16px 36px;font-size:15px">Book a Brand Call</a>
+      &nbsp;&nbsp;<a href="mailto:welcome@santiagoguyfilms.com" class="btn-ghost">or email me &rarr;</a>
+    </div>
+    <div class="cta-meta reveal">Creator-direct · 24h response · Whitelisting-ready · Miami, FL</div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div>
-      <a href="#" class="footer-brand"><img src="sgf-logo.svg" alt="SGF">Santiago Guy<span class="pk"> Films</span></a>
-      <p class="footer-tagline">Brand-level content and systems for businesses ready to grow.</p>
-      <a href="mailto:santiagoguyfilms@gmail.com" class="footer-email">santiagoguyfilms@gmail.com &rarr;</a>
-    </div>
-    <div>
-      <div class="footer-col-head">Solutions</div>
-      <ul class="footer-links"><li><a href="#solutions">UGC &amp; Brand Content</a></li><li><a href="#solutions">Landing Pages &amp; Websites</a></li><li><a href="#solutions">Follow-Up Automation</a></li></ul>
-    </div>
-    <div>
-      <div class="footer-col-head">Connect</div>
-      <ul class="footer-links"><li><a href="https://instagram.com/santiagoguyfilms" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://tiktok.com/@santiagoguyfilms" target="_blank" rel="noopener">TikTok</a></li><li><a href="mailto:santiagoguyfilms@gmail.com">Email</a></li><li><a href="#about">About SGF</a></li></ul>
-    </div>
+    <span>&copy; 2026 Santiago Guy Films · Miami, FL</span>
+    <ul class="footer-links">
+      <li><a href="https://instagram.com/santiagoguyfilms" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://tiktok.com/@santiagoguyfilms" target="_blank" rel="noopener">TikTok</a></li>
+      <li><a href="mailto:welcome@santiagoguyfilms.com">welcome@santiagoguyfilms.com</a></li>
+    </ul>
   </div>
-	  <div class="footer-bottom"><span>&copy; 2026 Santiago Guy Films &middot; Miami, FL</span><span>Built with AI. Designed with intention.</span></div>
 </footer>
 
 <script>
-  const revObs=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07,rootMargin:'0px 0px -32px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
-	  // Stats are rendered as final text (no counter gaps/spaces).
-  const ham=document.getElementById('hamburger'),ov=document.getElementById('mobileOverlay'),cl=document.getElementById('mobileClose');
-  ham.addEventListener('click',()=>ov.classList.add('open'));
-  cl.addEventListener('click',()=>ov.classList.remove('open'));
-  document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>ov.classList.remove('open')));
-	  // Brand list stays expanded on the Media Kit page. Homepage stays focused.
-	  const nav=document.getElementById('mainNav');
-	  window.addEventListener('scroll',()=>{const m=window.innerWidth<=960;nav.style.padding=window.scrollY>50?(m?'12px 20px':'12px 36px'):(m?'16px 20px':'18px 36px');},{passive:true});
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-	  (function(){
-	    function markFeaturedMissing(card){card.classList.add('is-missing');}
-	    function initFeaturedProof(){
-	      const card=document.querySelector('.featured-proof-card[data-video-src]');
-	      if(!card) return;
-	      const video=card.querySelector('video');
-	      if(!video) return;
-	      const src=card.getAttribute('data-video-src');
-	      if(src){
-	        const source=video.querySelector('source');
-	        if(source){ source.src=src.replace(/^\//,''); video.load(); }
-	      }
-	      video.addEventListener('error',function(){ markFeaturedMissing(card); },{once:true});
-	    }
-	    function initPlayButtons(){
-	      document.querySelectorAll('[data-play-target]').forEach(function(btn){
-	        btn.addEventListener('click',function(){
-	          const id=btn.getAttribute('data-play-target');
-	          const v=document.getElementById(id);
-	          if(!v) return;
-	          setTimeout(function(){ try{v.play();}catch(_){ } },100);
-	        });
-	      });
-	    }
-	    initFeaturedProof();
-	    initPlayButtons();
-	  })();
-	</script>
+  // Bulbhead TV spot: hide the player gracefully until the file exists.
+  (function(){
+    var card=document.getElementById('featured-bulbhead');
+    var v=document.getElementById('bulbhead-tv');
+    if(card&&v){ v.addEventListener('error',function(){card.classList.add('is-missing');},true); }
+  })();
 
-<script>
-(function(){
-  function loadImg(url,type,apply,fallbackSrc){
-    fetch(url)
-      .then(function(r){return r.text();})
-      .then(function(b64){apply('data:'+type+';base64,'+b64);})
-      .catch(function(){
-        if(fallbackSrc) apply(fallbackSrc);
+  // Expandable full client list.
+  (function(){
+    var t=document.getElementById('brandsToggle'), list=document.getElementById('allBrands');
+    if(t&&list){
+      t.addEventListener('click',function(){
+        var open=list.classList.toggle('open');
+        t.setAttribute('aria-expanded',open);
+        t.innerHTML=open?'collapse the list &uarr;':'expand the full client list &darr;';
       });
-  }
-  // Note: file:// previews can block fetch(). Fall back to local assets so you can preview the page before deploying.
-  loadImg('flamingo-b64.txt','image/webp',function(src){document.querySelectorAll('[data-fl]').forEach(function(e){e.src=src;});},'flamingo.png');
-  // Only set the headshot src if the page doesn't already point to a specific photo.
-  // This prevents overwriting the chosen profile image (e.g. media-kit/profile-pic.png).
-  loadImg('headshot-b64.txt','image/jpeg',function(src){
-    var h=document.getElementById('headshot-img');
-    if(!h) return;
-    var current=(h.getAttribute('src')||'').trim();
-    if(!current) h.src=src;
-  },'franco-headshot.jpg');
-})();
+    }
+  })();
+
+  // Autoplay insurance: some browsers pause muted autoplay until interaction — retry when visible.
+  (function(){
+    var vids=document.querySelectorAll('.video-card video');
+    var vo=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ var p=e.target.play(); if(p&&p.catch)p.catch(function(){}); }
+        else{ e.target.pause(); }
+      });
+    },{threshold:.25});
+    vids.forEach(function(v){ v.muted=true; vo.observe(v); });
+  })();
 </script>
 </body>
 </html>
