@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santiago Guy Films — pick a door</title>
+  <meta name="description" content="Franco Lopez. UGC for brands, or websites, email, AI, and video for Miami businesses. Pick the one that fits.">
+  <link rel="canonical" href="https://santiagoguyfilms.com/go/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#16121a; --ink-soft:#4c4454; --ink-dim:#8b8393;
+      --paper:#ffffff; --paper-warm:#faf7fb; --line:#ece7ef;
+      --pink:#e91e7d; --pink-soft:rgba(233,30,125,.08);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+    .nav-brand img{width:34px;height:34px;border-radius:50%;background:#1a0a1f;padding:3px;box-shadow:0 1px 6px rgba(22,18,26,.18)}
+    .nav-brand .pk{color:var(--pink)}
+    .hero{flex:1;padding:88px 28px 72px;text-align:center}
+    .hero-inner{max-width:880px;margin:0 auto}
+    .hero-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);background:var(--pink-soft);padding:7px 16px;border-radius:999px;margin-bottom:28px}
+    h1{font-size:clamp(2.4rem,5.6vw,4rem);font-weight:850;letter-spacing:-.03em;line-height:1.08;max-width:16ch;margin:0 auto}
+    h1 .pk{color:var(--pink)}
+    .hero-sub{font-size:1.1rem;color:var(--ink-soft);max-width:42ch;margin:22px auto 48px;line-height:1.75}
+    .doors{display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
+    .door{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;min-height:280px;transition:all .25s}
+    .door:hover{transform:translateY(-3px);box-shadow:0 10px 34px rgba(22,18,26,.07);border-color:rgba(233,30,125,.35)}
+    .door-name{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+    .door h2{font-size:1.55rem;font-weight:850;letter-spacing:-.02em;line-height:1.2;margin:12px 0 10px}
+    .door p{font-size:14.5px;color:var(--ink-soft);line-height:1.7;margin-bottom:22px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff!important;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 14px rgba(233,30,125,.22);margin-top:auto;align-self:flex-start}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(233,30,125,.3)}
+    .note{margin-top:36px;font-size:13px;color:var(--ink-dim)}
+    .note a{color:var(--ink-soft);font-weight:600}
+    .note a:hover{color:var(--pink)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--ink-soft);padding:13px 22px;border-radius:999px;border:1px solid var(--line);margin-top:14px;transition:color .2s,border-color .2s}
+    .btn-ghost:hover{color:var(--pink);border-color:rgba(233,30,125,.35)}
+    footer{border-top:1px solid var(--line);padding:36px 0;background:var(--paper-warm)}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-dim)}
+    .footer-links{display:flex;gap:22px;list-style:none}
+    .footer-links a{color:var(--ink-soft);font-weight:500}
+    .footer-links a:hover{color:var(--pink)}
+    @media(max-width:720px){
+      .hero{padding:64px 20px 56px}
+      .doors{grid-template-columns:1fr}
+      .door{min-height:0}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><img src="https://santiagoguyfilms.com/sgf-logo.svg" alt="SGF">Santiago Guy<span class="pk">&nbsp;Films</span></a>
+  </div>
+</nav>
+
+<main class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Miami · two offers</div>
+    <h1>What do you need <span class="pk">working?</span></h1>
+    <p class="hero-sub">I'm Franco. Pick the door that matches you. One tap. No maze.</p>
+    <div class="doors">
+      <a class="door" href="/">
+        <div class="door-name">Brands &amp; agencies</div>
+        <h2>UGC on retainer</h2>
+        <p>Monthly video for brands that already run ads. Hooks, iterations, whitelisting. The site you already know.</p>
+        <span class="btn">See the UGC work</span>
+      </a>
+      <a class="door" href="/miami">
+        <div class="door-name">Miami businesses</div>
+        <h2>Site, email, AI, video</h2>
+        <p>For shops that are busy in real life and quiet online. A site that books, follow-up that lands, short video that looks local.</p>
+        <span class="btn">See the local offer</span>
+      </a>
+    </div>
+    <p class="note">Or email me directly</p>
+    <a class="btn-ghost" href="mailto:santiagoguyfilms@gmail.com">santiagoguyfilms@gmail.com</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 Santiago Guy Films · Miami, FL</span>
+    <ul class="footer-links">
+      <li><a href="/">UGC for brands</a></li>
+      <li><a href="/miami">Miami businesses</a></li>
+      <li><a href="mailto:santiagoguyfilms@gmail.com">santiagoguyfilms@gmail.com</a></li>
+      <li><a href="https://instagram.com/santiagoguyfilms" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
