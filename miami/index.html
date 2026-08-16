@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miami businesses — websites, email, AI, UGC | Santiago Guy Films</title>
+  <meta name="description" content="Franco Lopez helps Miami businesses with websites that convert, email campaigns, AI follow-up, and UGC video. Book 15 minutes.">
+  <link rel="canonical" href="https://santiagoguyfilms.com/miami/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#16121a; --ink-soft:#4c4454; --ink-dim:#8b8393;
+      --paper:#ffffff; --paper-warm:#faf7fb; --line:#ece7ef;
+      --pink:#e91e7d; --pink-soft:rgba(233,30,125,.08);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+    .nav-brand img{width:34px;height:34px;border-radius:50%;background:#1a0a1f;padding:3px;box-shadow:0 1px 6px rgba(22,18,26,.18)}
+    .nav-brand .pk{color:var(--pink)}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff!important;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 14px rgba(233,30,125,.22)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(233,30,125,.3)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--ink-soft);padding:13px 10px;transition:color .2s}
+    .btn-ghost:hover{color:var(--pink)}
+    .nav-cta{padding:9px 20px!important;font-size:13px!important}
+    .hero{padding:96px 0 64px;text-align:center}
+    .hero-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);background:var(--pink-soft);padding:7px 16px;border-radius:999px;margin-bottom:28px}
+    h1{font-size:clamp(2.4rem,5.6vw,4rem);font-weight:850;letter-spacing:-.03em;line-height:1.08;max-width:18ch;margin:0 auto}
+    h1 .pk{color:var(--pink)}
+    .hero-sub{font-size:1.1rem;color:var(--ink-soft);max-width:54ch;margin:24px auto 36px;line-height:1.75}
+    .hero-actions{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+    .hero-stats{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin-top:56px;border-top:1px solid var(--line);padding-top:32px}
+    .hstat{padding:0 32px;text-align:center;border-right:1px solid var(--line)}
+    .hstat:last-child{border-right:0}
+    .hstat b{display:block;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+    .hstat span{font-size:12.5px;color:var(--ink-dim)}
+    section{padding:88px 0}
+    h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;letter-spacing:-.025em;line-height:1.15}
+    h2 .pk{color:var(--pink)}
+    .sec-head{max-width:640px;margin-bottom:44px}
+    .sec-head p{color:var(--ink-soft);margin-top:14px;font-size:1rem;line-height:1.75}
+    .center{text-align:center}.center .sec-head{margin-left:auto;margin-right:auto}
+    .tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .tier{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;transition:all .25s}
+    .tier:hover{transform:translateY(-3px);box-shadow:0 10px 34px rgba(22,18,26,.07)}
+    .tier-name{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+    .tier-vol{font-size:1.45rem;font-weight:850;letter-spacing:-.02em;margin:12px 0 10px}
+    .tier p{font-size:14.5px;color:var(--ink-soft);line-height:1.7}
+    .about-sec{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .about-grid{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;max-width:840px;margin:0 auto}
+    .about-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:center;border:4px solid #fff;box-shadow:0 8px 30px rgba(22,18,26,.12)}
+    .about-grid p{color:var(--ink-soft);font-size:15px;line-height:1.8;margin-bottom:12px}
+    .about-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .badge{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);background:#fff;padding:6px 14px;border-radius:999px}
+    .quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px;max-width:720px;margin:0 auto}
+    .quote .stars{color:var(--pink);font-size:13px;letter-spacing:2px;margin-bottom:12px}
+    .quote p{font-size:14.5px;color:var(--ink-soft);line-height:1.7;margin-bottom:12px}
+    .quote span{display:block;font-size:12px;color:var(--ink-dim)}
+    .cta-sec{text-align:center;padding:110px 0}
+    .cta-sec h2{font-size:clamp(2.2rem,5vw,3.4rem);max-width:16ch;margin:0 auto 18px}
+    .cta-sec p{color:var(--ink-soft);max-width:52ch;margin:0 auto 36px;font-size:1.05rem;line-height:1.75}
+    .cta-meta{margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
+    footer{border-top:1px solid var(--line);padding:36px 0;background:var(--paper-warm)}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-dim)}
+    .footer-links{display:flex;gap:22px;list-style:none}
+    .footer-links a{color:var(--ink-soft);font-weight:500}
+    .footer-links a:hover{color:var(--pink)}
+    @media(max-width:860px){
+      .nav-links li:not(:last-child){display:none}
+      .hero{padding:72px 0 48px}
+      .hstat{padding:0 18px}
+      .tier-grid{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr;text-align:center;gap:28px}
+      .about-photo{margin:0 auto}
+      .about-badges{justify-content:center}
+      section{padding:64px 0}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><img src="https://santiagoguyfilms.com/sgf-logo.svg" alt="SGF">Santiago Guy<span class="pk">&nbsp;Films</span></a>
+    <ul class="nav-links">
+      <li><a href="#offer">What I do</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="/" style="font-size:13px">UGC for brands</a></li>
+      <li><a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=miami" target="_blank" rel="noopener" class="btn nav-cta">Book 15 minutes</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker reveal">Miami · local businesses</div>
+    <h1 class="reveal">Your site, your follow-up, and the video. <span class="pk">Working.</span></h1>
+    <p class="hero-sub reveal">I'm Franco. I help Miami shops that are busy in real life and quiet online: a site that converts, email that follows up, AI that catches the leads, and short video that looks like a real customer.</p>
+    <div class="hero-actions reveal">
+      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=miami" target="_blank" rel="noopener" class="btn">Book 15 minutes</a>
+      <a href="mailto:santiagoguyfilms@gmail.com" class="btn-ghost">or email me &rarr;</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hstat"><b>Miami</b><span>based, bilingual EN/ES</span></div>
+      <div class="hstat"><b>70+</b><span>brand campaigns</span></div>
+      <div class="hstat"><b>15 min</b><span>straight conversation</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="offer">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Four things that actually <span class="pk">move a local shop.</span></h2>
+      <p>We pick the one that hurts first. The rest can wait.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier reveal">
+        <div class="tier-name">Website</div>
+        <div class="tier-vol">A site that books</div>
+        <p>Mobile, clear offer, real booking. Not a leftover Wix page or a phone-only contact form.</p>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Email</div>
+        <div class="tier-vol">Campaigns that follow up</div>
+        <p>Welcome, no-show, win-back, monthly. The list you already wish you had.</p>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">AI automation</div>
+        <div class="tier-vol">Leads that don't die in DMs</div>
+        <p>Booking, FAQs, reminders, review asks. The work that still lives in voicemail.</p>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">UGC</div>
+        <div class="tier-vol">Video as a real customer</div>
+        <p>I film it. Short, local, usable on Instagram and your site. Same craft brands already hire me for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap center">
+    <div class="sec-head reveal">
+      <h2>Proof I already have. <span class="pk">Not a fake case study.</span></h2>
+    </div>
+    <div class="quote reveal">
+      <div class="stars">★★★★★</div>
+      <p>One brand took a piece I shot as UGC and turned it into a TV commercial. That's the bar I bring to a Kendall salon or a Hialeah med spa: content strong enough to reuse.</p>
+      <span>Bulbhead / Bull Shot BBQ · 70+ campaigns · Miami</span>
+    </div>
+  </div>
+</section>
+
+<section class="about-sec" id="about">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <img src="https://santiagoguyfilms.com/media-kit/profile-pic.png" alt="Franco — Santiago Guy Films" class="about-photo">
+      <div>
+        <h2>Local. Bilingual. <span class="pk">Direct.</span></h2>
+        <p>Franco Lopez. Santiago Guy Films. I live here. I work in English and Spanish. I don't send you a junior and disappear.</p>
+        <p>Mindset is part of the conversation: how to grow in the age of AI without looking dated or getting left behind. That's a call, not a course.</p>
+        <div class="about-badges">
+          <span class="badge">Bilingual EN/ES</span>
+          <span class="badge">Miami</span>
+          <span class="badge">Websites</span>
+          <span class="badge">Email</span>
+          <span class="badge">AI</span>
+          <span class="badge">UGC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec" id="book">
+  <div class="wrap">
+    <h2 class="reveal">15 minutes. <span class="pk">One next step.</span></h2>
+    <p class="reveal">Bring the site, the Instagram, or just the problem. I'll tell you what I'd fix first.</p>
+    <div class="reveal">
+      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=miami" target="_blank" rel="noopener" class="btn" style="padding:16px 36px;font-size:15px">Book 15 minutes</a>
+      &nbsp;&nbsp;<a href="mailto:santiagoguyfilms@gmail.com" class="btn-ghost">or email me &rarr;</a>
+    </div>
+    <div class="cta-meta reveal">Franco Lopez · Santiago Guy Films · Miami</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 Santiago Guy Films · Miami, FL</span>
+    <ul class="footer-links">
+      <li><a href="/">UGC for brands</a></li>
+      <li><a href="https://instagram.com/santiagoguyfilms" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="mailto:santiagoguyfilms@gmail.com">santiagoguyfilms@gmail.com</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
