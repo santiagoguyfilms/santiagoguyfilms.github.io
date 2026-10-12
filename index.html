@@ -129,6 +129,22 @@
     .tier-cta-row{text-align:center;margin-top:36px}
     .tier-note{margin-top:14px;font-size:12.5px;color:var(--ink-dim)}
 
+    .sprint-panel{background:#fff;border:1px solid rgba(233,30,125,.45);box-shadow:0 14px 44px rgba(233,30,125,.12);border-radius:18px;padding:38px 34px;margin-bottom:30px;position:relative}
+    .sprint-flag{position:absolute;top:-11px;left:26px;background:var(--pink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+    .sprint-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start}
+    .sprint-name{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+    .sprint-price{font-size:2.6rem;font-weight:850;letter-spacing:-.02em;margin:12px 0 2px}
+    .sprint-price small{font-size:.5em;font-weight:700;color:var(--ink-dim)}
+    .sprint-tag{font-size:13px;color:var(--ink-dim);margin-bottom:6px}
+    .sprint-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:18px 0 24px}
+    .sprint-list li{font-size:13.5px;color:var(--ink-soft);padding-left:20px;position:relative;line-height:1.5}
+    .sprint-list li::before{content:'✓';position:absolute;left:0;color:var(--pink);font-weight:700}
+    .sprint-why h4{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-bottom:12px}
+    .sprint-why p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px}
+    .sprint-bi{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-size:12.5px;font-weight:700;color:var(--ink);border:1px solid var(--line);background:var(--paper-warm);padding:8px 14px;border-radius:999px}
+    .sprint-bi a{color:var(--pink);font-weight:700}
+    @media(max-width:860px){.sprint-grid{grid-template-columns:1fr}}
+
     .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column}
     .quote .stars{color:var(--pink);font-size:13px;letter-spacing:2px;margin-bottom:12px}
@@ -194,7 +210,7 @@
   <div class="wrap">
     <div class="hero-kicker reveal">Miami · UGC for Brands &amp; Agencies</div>
     <h1 class="reveal">The 50+ male UGC creator brands whitelist — and <span class="pk">re-book.</span></h1>
-    <p class="hero-sub reveal">I'm Franco — creator behind Santiago Guy Films. Not another 20-something: I’m the 50+ male creator brands struggle to cast, and I know how to make the ad. 70+ campaigns, first-round approvals, whitelist/Spark-ready files against 157K+ TikTok reach — content strong enough that one brand turned it into a TV commercial. Creator-direct monthly partner. No middle layer.</p>
+    <p class="hero-sub reveal">I'm Franco — creator behind Santiago Guy Films. I make UGC for brands. I'm the 50+ male creator brands struggle to cast, and the guy you call so you never run out of fresh content to test. 70+ campaigns, first-round approvals, whitelist/Spark-ready files — content strong enough that one brand turned it into a TV commercial. Creator-direct. No middle layer.</p>
     <div class="hero-actions reveal">
       <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=brand" target="_blank" rel="noopener" class="btn">Book a Brand Call</a>
       <a href="#work" class="btn-ghost">See the work &darr;</a>
@@ -304,8 +320,33 @@
 <section class="retainers-sec" id="retainers">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2>One-off videos work. <span class="pk">Retainers scale.</span></h2>
-      <p>One-off campaigns are welcome — send a brief and I’ll shoot it. Retainers are for brands that want a standing monthly pipeline: briefed, shot, delivered, iterated. Month one I learn your brand; month two I'm iterating on proven hooks instead of starting cold.</p>
+      <h2>Stop guessing. <span class="pk">Start testing.</span></h2>
+      <p>Most brands launch one creative and hope. That is an expensive guess. I work like a consultant, not a vendor: we find your winning asset with data first, then build your content engine around what actually converts. One-off campaigns are welcome. Retainers are for brands that want a standing monthly pipeline.</p>
+    </div>
+    <div class="sprint-panel reveal">
+      <div class="sprint-flag">Start here · $1,000 flat</div>
+      <div class="sprint-grid">
+        <div>
+          <div class="sprint-name">Creative Testing Sprint</div>
+          <div class="sprint-price">$1,000 <small>one time</small></div>
+          <div class="sprint-tag">Find your winner before you scale</div>
+          <ul class="sprint-list">
+            <li>18 video variations: 3 hooks × 2 bodies × 3 CTAs, plus B-roll</li>
+            <li>You test all 18 against real audiences</li>
+            <li>We identify the winning asset together</li>
+            <li>The winner becomes the blueprint for your retainer</li>
+            <li>No long term commitment to start</li>
+          </ul>
+          <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=sprint" target="_blank" rel="noopener" class="btn">Book a sprint call</a>
+          <div><span class="sprint-bi">As featured in Business Insider · <a href="https://www.businessinsider.com/father-uses-meta-muse-kids-quiz-study-tool-2026-10" target="_blank" rel="noopener">Read the story</a></span></div>
+        </div>
+        <div class="sprint-why">
+          <h4>Why this works</h4>
+          <p>Paid social rewards the creative, not the budget. But most brands test one video at a time, learn slowly, and burn spend finding out what resonates.</p>
+          <p>The sprint compresses months of testing into one engagement. Eighteen systematic variations go live at once, real audience data picks the winner in days, and you stop paying to guess. Nobody gets you from brief to proven winner faster.</p>
+          <p>Then the retainer keeps you supplied: fresh content to test every month, so you never run dry and the winners keep coming. That is the difference between content and a content engine.</p>
+        </div>
+      </div>
     </div>
     <div class="tier-grid">
       <div class="tier reveal">
