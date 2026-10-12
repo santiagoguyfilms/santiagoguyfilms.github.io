@@ -129,21 +129,30 @@
     .tier-cta-row{text-align:center;margin-top:36px}
     .tier-note{margin-top:14px;font-size:12.5px;color:var(--ink-dim)}
 
-    .sprint-panel{background:#fff;border:1px solid rgba(233,30,125,.45);box-shadow:0 14px 44px rgba(233,30,125,.12);border-radius:18px;padding:38px 34px;margin-bottom:30px;position:relative}
-    .sprint-flag{position:absolute;top:-11px;left:26px;background:var(--pink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
-    .sprint-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start}
-    .sprint-name{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
-    .sprint-price{font-size:2.6rem;font-weight:850;letter-spacing:-.02em;margin:12px 0 2px}
-    .sprint-price small{font-size:.5em;font-weight:700;color:var(--ink-dim)}
-    .sprint-tag{font-size:13px;color:var(--ink-dim);margin-bottom:6px}
-    .sprint-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:18px 0 24px}
-    .sprint-list li{font-size:13.5px;color:var(--ink-soft);padding-left:20px;position:relative;line-height:1.5}
-    .sprint-list li::before{content:'✓';position:absolute;left:0;color:var(--pink);font-weight:700}
-    .sprint-why h4{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-bottom:12px}
-    .sprint-why p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px}
-    .sprint-bi{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-size:12.5px;font-weight:700;color:var(--ink);border:1px solid var(--line);background:var(--paper-warm);padding:8px 14px;border-radius:999px}
+    .path-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;align-items:stretch}
+    .path-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 30px;display:flex;flex-direction:column;position:relative}
+    .path-card.featured{border-color:rgba(233,30,125,.45);box-shadow:0 14px 44px rgba(233,30,125,.12)}
+    .path-flag{position:absolute;top:-11px;left:26px;background:var(--pink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+    .path-name{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)}
+    .path-card.featured .path-name{color:var(--pink)}
+    .path-card h3{font-size:1.6rem;font-weight:850;letter-spacing:-.02em;margin:12px 0 8px}
+    .path-desc{font-size:14px;color:var(--ink-soft);line-height:1.7;margin-bottom:6px}
+    .path-card h4{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);margin:18px 0 10px}
+    .path-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .path-list li{font-size:13.5px;color:var(--ink-soft);padding-left:20px;position:relative;line-height:1.5}
+    .path-list li::before{content:'✓';position:absolute;left:0;color:var(--pink);font-weight:700}
+    .path-note{margin-top:auto;padding-top:18px;font-size:13px;color:var(--ink-soft);line-height:1.65}
+    .path-card .btn{margin-top:18px;align-self:flex-start}
+    .var-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 6px}
+    .var-tier{background:var(--paper-warm);border:1px solid var(--line);border-radius:12px;padding:16px 8px 14px;text-align:center;position:relative}
+    .var-tier.pop{border-color:rgba(233,30,125,.55);background:#fff;box-shadow:0 6px 20px rgba(233,30,125,.1)}
+    .var-tier b{display:block;font-size:1.5rem;font-weight:850;letter-spacing:-.02em}
+    .var-tier span{display:block;font-size:10px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.08em;margin:2px 0 6px}
+    .var-tier i{display:block;font-style:normal;font-size:13.5px;font-weight:800;color:var(--pink)}
+    .var-tag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:8.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+    .sprint-bi{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:12.5px;font-weight:700;color:var(--ink);border:1px solid var(--line);background:var(--paper-warm);padding:8px 14px;border-radius:999px;align-self:flex-start}
     .sprint-bi a{color:var(--pink);font-weight:700}
-    @media(max-width:860px){.sprint-grid{grid-template-columns:1fr}}
+    @media(max-width:860px){.path-grid{grid-template-columns:1fr}.var-grid{grid-template-columns:repeat(2,1fr)}}
 
     .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column}
@@ -198,7 +207,7 @@
     <a href="#" class="nav-brand"><img src="https://santiagoguyfilms.com/sgf-logo.svg" alt="SGF">Santiago Guy<span class="pk">&nbsp;Films</span></a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
-      <li><a href="#retainers">Retainers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="/miami">Miami</a></li>
       <li><a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=brand" target="_blank" rel="noopener" class="btn nav-cta">Book a Brand Call</a></li>
@@ -313,84 +322,64 @@
         <video autoplay muted loop playsinline preload="auto"><source src="https://santiagoguyfilms.com/media-kit/safedog.mp4" type="video/mp4"></video>
         <div class="video-meta"><span class="video-brand">SafeDog</span><span class="video-type">Pet Products</span></div>
       </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline preload="auto"><source src="https://santiagoguyfilms.com/media-kit/ridge.mp4" type="video/mp4"></video>
+        <div class="video-meta"><span class="video-brand">Ridge</span><span class="video-type">Accessories</span></div>
+      </div>
+      <div class="video-card">
+        <video autoplay muted loop playsinline preload="auto"><source src="https://santiagoguyfilms.com/media-kit/boldify.mp4" type="video/mp4"></video>
+        <div class="video-meta"><span class="video-brand">Boldify</span><span class="video-type">Beauty</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="retainers-sec" id="retainers">
+<section class="retainers-sec" id="pricing">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2>Stop guessing. <span class="pk">Start testing.</span></h2>
-      <p>Most brands launch one creative and hope. That is an expensive guess. I work like a consultant, not a vendor: we find your winning asset with data first, then build your content engine around what actually converts. One-off campaigns are welcome. Retainers are for brands that want a standing monthly pipeline.</p>
+      <h2>Two ways to work <span class="pk">together.</span></h2>
+      <p>Need a single video? Order it a la carte and pay for exactly what you need. Need to win paid social? I build you a package of variations so you test your way to a winner instead of guessing. Either way, you work directly with me.</p>
     </div>
-    <div class="sprint-panel reveal">
-      <div class="sprint-flag">Start here · $1,000 flat</div>
-      <div class="sprint-grid">
-        <div>
-          <div class="sprint-name">Creative Testing Sprint</div>
-          <div class="sprint-price">$1,000 <small>one time</small></div>
-          <div class="sprint-tag">Find your winner before you scale</div>
-          <ul class="sprint-list">
-            <li>18 video variations: 3 hooks × 2 bodies × 3 CTAs, plus B-roll</li>
-            <li>You test all 18 against real audiences</li>
-            <li>We identify the winning asset together</li>
-            <li>The winner becomes the blueprint for your retainer</li>
-            <li>No long term commitment to start</li>
-          </ul>
-          <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=sprint" target="_blank" rel="noopener" class="btn">Book a sprint call</a>
-          <div><span class="sprint-bi">As featured in Business Insider · <a href="https://www.businessinsider.com/father-uses-meta-muse-kids-quiz-study-tool-2026-10" target="_blank" rel="noopener">Read the story</a></span></div>
+    <div class="path-grid">
+      <div class="path-card reveal">
+        <div class="path-name">A la carte</div>
+        <h3>Need a video?</h3>
+        <p class="path-desc">One video, done right. Pick a format, add what you need, and I will price it by the brief. I am flexible on just about anything.</p>
+        <h4>Formats</h4>
+        <ul class="path-list">
+          <li>Talking head</li>
+          <li>Talking head with B-roll</li>
+          <li>Testimonial</li>
+          <li>Explainer</li>
+          <li>Skit</li>
+          <li>Unboxing and demo</li>
+        </ul>
+        <h4>Add-ons</h4>
+        <ul class="path-list">
+          <li>Whitelisting</li>
+          <li>Spark codes</li>
+          <li>Raw footage</li>
+          <li>Extra B-roll</li>
+          <li>Paid usage rights</li>
+        </ul>
+        <p class="path-note">Send the brief and I will quote it fast. No bloated packages for a simple ask.</p>
+        <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=alacarte" target="_blank" rel="noopener" class="btn">Send a brief</a>
+      </div>
+      <div class="path-card featured reveal">
+        <div class="path-flag">Where winners come from</div>
+        <div class="path-name">Creative testing packages</div>
+        <h3>Need a winner?</h3>
+        <p class="path-desc">One video is a guess. I build you a package of variations &mdash; hooks, bodies, and CTAs combined into a testing matrix &mdash; and deliver them as organized assets in a folder, ready for you to run. Real data picks the winner. Nobody gets you from brief to proven winner faster.</p>
+        <div class="var-grid">
+          <div class="var-tier"><b>10</b><span>variations</span><i>$750</i></div>
+          <div class="var-tier pop"><div class="var-tag">Most popular</div><b>15</b><span>variations</span><i>$1,000</i></div>
+          <div class="var-tier"><b>20</b><span>variations</span><i>$1,350</i></div>
+          <div class="var-tier"><b>30</b><span>variations</span><i>$1,800</i></div>
         </div>
-        <div class="sprint-why">
-          <h4>Why this works</h4>
-          <p>Paid social rewards the creative, not the budget. But most brands test one video at a time, learn slowly, and burn spend finding out what resonates.</p>
-          <p>The sprint compresses months of testing into one engagement. Eighteen systematic variations go live at once, real audience data picks the winner in days, and you stop paying to guess. Nobody gets you from brief to proven winner faster.</p>
-          <p>Then the retainer keeps you supplied: fresh content to test every month, so you never run dry and the winners keep coming. That is the difference between content and a content engine.</p>
-        </div>
+        <p class="path-note">Tell me how many hooks, bodies, and CTAs you want to test and I will build the matrix. Run it once, or monthly &mdash; so you never run out of fresh content to test.</p>
+        <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=testing" target="_blank" rel="noopener" class="btn">Book a testing call</a>
+        <div><span class="sprint-bi">As featured in Business Insider &middot; <a href="https://www.businessinsider.com/father-uses-meta-muse-kids-quiz-study-tool-2026-10" target="_blank" rel="noopener">Read the story</a></span></div>
       </div>
-    </div>
-    <div class="tier-grid">
-      <div class="tier reveal">
-        <div class="tier-name">Starter</div>
-        <div class="tier-vol">4 <small>videos/mo</small></div>
-        <div class="tier-tag">Test the fit</div>
-        <ul>
-          <li>3 hook variations per concept</li>
-          <li>1 revision round per video</li>
-          <li>Organic + paid usage rights</li>
-          <li>Raw footage included</li>
-        </ul>
-        <div class="tier-fit">Best for first campaigns, TikTok Shop / Amazon tests.</div>
-      </div>
-      <div class="tier featured reveal">
-        <div class="tier-flag">Most booked</div>
-        <div class="tier-name">Partner</div>
-        <div class="tier-vol">8&ndash;12 <small>videos/mo</small></div>
-        <div class="tier-tag">Core creative engine</div>
-        <ul>
-          <li>Hook + variation matrix for testing</li>
-          <li>Monthly iteration on winning ads</li>
-          <li>Whitelisting / Spark codes included</li>
-          <li>2 revision rounds, 24h priority comms</li>
-          <li>Monthly performance sync</li>
-        </ul>
-        <div class="tier-fit">Best for brands scaling paid social.</div>
-      </div>
-      <div class="tier reveal">
-        <div class="tier-name">Scale</div>
-        <div class="tier-vol">16+ <small>videos/mo</small></div>
-        <div class="tier-tag">Full creative pipeline</div>
-        <ul>
-          <li>Multi-product / multi-angle coverage</li>
-          <li>Whitelisting + extended usage bundle</li>
-          <li>Dedicated turnaround SLA</li>
-          <li>Agency-friendly delivery &amp; reporting</li>
-        </ul>
-        <div class="tier-fit">Best for agencies and always-on UGC programs.</div>
-      </div>
-    </div>
-    <div class="tier-cta-row reveal">
-      <a href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=retainer" target="_blank" rel="noopener" class="btn">Book a call — one-off or monthly</a>
-      <div class="tier-note">One-off or monthly — volume and scope set the number. We'll map it on a 30-min call. No long-term lock-in to start.</div>
     </div>
   </div>
 </section>
