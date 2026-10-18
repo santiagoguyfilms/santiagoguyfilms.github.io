@@ -1,166 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Founding Clubs · Club Hubs for Youth Soccer Clubs · Santiago Guy Films</title>
-<meta name="description" content="Ten founding club places for the Club Hub by Santiago Guy Films: a page, a table, a scouting report and La Previa for every team at your club, at introductory pricing locked for as long as you stay a member.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Narrow:wght@500;600;700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#edf1fa; --surface:#ffffff; --surface-2:#e2eafb; --ink:#0e1e4b; --ink-soft:#45557e;
-  --line:#c6d2ee; --royal:#123ea6; --royal-deep:#0a2470; --royal-dark:#071a52; --yellow:#ffd21f;
-  --win:#0d9b47; --loss:#dd3524; --chip-bg:#e2eafb; --stripe:rgba(18,62,166,.045); --slash:#d99a00;
-  --shadow:0 2px 0 rgba(10,36,112,.07),0 10px 24px rgba(10,36,112,.10); color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#050c22; --surface:#0c1d47; --surface-2:#0a1738; --ink:#eef3ff; --ink-soft:#a3b4dd;
-    --line:#27408a; --chip-bg:#16295c; --stripe:rgba(120,150,255,.05);
-    --shadow:0 2px 0 rgba(0,0,0,.3),0 10px 24px rgba(0,0,0,.35); color-scheme:dark;
-  }
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-html,body{overflow-x:clip}
-body{margin:0;background:var(--bg);background-image:repeating-linear-gradient(45deg,var(--stripe) 0 2px,transparent 2px 16px);
-  color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-::selection{background:var(--yellow);color:var(--royal-dark)}
-a{color:var(--royal)}
-.wrap{max-width:1060px;margin:0 auto;padding:0 18px 56px}
-.topnav{background:var(--royal-dark);color:#d7e3ff;font-size:13.5px}
-.topnav .inner{max-width:1060px;margin:0 auto;padding:9px 18px;display:flex;justify-content:space-between;gap:10px 18px;flex-wrap:wrap;align-items:center}
-.topnav a{color:#fff;font-weight:700;text-decoration:none}
-.topnav a:hover{text-decoration:underline}
-.topnav .tn-right{display:flex;gap:18px;flex-wrap:wrap}
-.club-head{position:relative;overflow:hidden;background:linear-gradient(115deg,var(--royal-dark) 0%,var(--royal-deep) 55%,var(--royal) 100%);
-  color:#fff;border-bottom:6px solid var(--yellow)}
-.club-head::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:repeating-linear-gradient(115deg,transparent 0 46px,rgba(255,255,255,.055) 46px 48px)}
-.club-head::after{content:"";position:absolute;top:0;right:-30px;width:170px;height:100%;pointer-events:none;
-  background:repeating-linear-gradient(115deg,var(--yellow) 0 13px,transparent 13px 30px);opacity:.18}
-.club-head .inner{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:30px 18px 26px;
-  display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.crest-mono{flex:0 0 auto;height:112px;width:112px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:14px;
-  box-shadow:0 6px 0 rgba(0,0,0,.22);transform:rotate(-2deg);font-family:"Archivo Black","Archivo Narrow",sans-serif;
-  font-size:34px;color:var(--royal-deep);letter-spacing:.02em}
-.club-head h1{font-family:"Archivo Black","Archivo Narrow",sans-serif;font-weight:400;font-size:clamp(30px,5.4vw,48px);
-  line-height:1.02;margin:0;letter-spacing:.01em;text-transform:uppercase}
-.club-head .sub{margin:6px 0 0;color:#d7e3ff;font-size:15px;font-weight:600}
-.club-head .sub strong{color:var(--yellow);font-weight:800}
-.intro{padding:28px 0 4px;max-width:720px}
-.intro p{margin:0;color:var(--ink-soft);font-size:17px}
-.intro p + p{margin-top:10px}
-.intro p strong{color:var(--ink)}
-.group-label{font-family:"Archivo Black","Archivo Narrow",sans-serif;text-transform:uppercase;letter-spacing:.04em;
-  font-size:17px;font-weight:400;color:var(--royal);margin:34px 0 14px;display:flex;align-items:center;gap:12px}
-.group-label::before{content:"///";color:var(--slash);letter-spacing:.05em}
-.group-label::after{content:"";flex:1;height:3px;background:var(--line);border-radius:2px}
-.group-note{color:var(--ink-soft);font-size:14.5px;margin:-4px 0 14px;max-width:720px}
-.card{background:var(--surface);border:2px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px}
-.card p{margin:0 0 10px}
-.card p:last-child{margin-bottom:0}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.feat-card{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
-.feat-card h4{font-family:"Archivo Black","Archivo Narrow",sans-serif;font-weight:400;text-transform:uppercase;
-  font-size:19px;color:var(--royal);margin:0 0 8px;line-height:1.15}
-.feat-card p{margin:0;color:var(--ink-soft);font-size:14.5px}
-.feat-card .tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-  background:var(--yellow);color:var(--royal-dark);border-radius:999px;padding:3px 10px;margin-bottom:10px}
-.price-card{background:var(--surface);border:2px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
-.price-head{background:linear-gradient(90deg,var(--royal-deep),var(--royal));color:#fff;padding:15px 20px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.price-head .ph-title{font-family:"Archivo Black","Archivo Narrow",sans-serif;text-transform:uppercase;font-size:19px;letter-spacing:.02em}
-.price-head .ph-chip{background:var(--yellow);color:var(--royal-dark);font-size:12.5px;font-weight:800;letter-spacing:.05em;
-  text-transform:uppercase;border-radius:999px;padding:4px 12px}
-.price-row{display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap;padding:18px 20px;border-bottom:2px solid var(--line)}
-.price-row:last-child{border-bottom:none}
-.price-row .p-main{flex:1 1 250px;min-width:0}
-.price-row .p-name{font-family:"Archivo Black","Archivo Narrow",sans-serif;font-weight:400;text-transform:uppercase;
-  font-size:19px;color:var(--royal);line-height:1.15}
-.price-row .p-desc{color:var(--ink-soft);font-size:14px;margin-top:3px}
-.price-row .p-figs{flex:0 0 auto;text-align:right;margin-left:auto}
-.was{display:block;color:var(--ink-soft);font-size:14px;font-weight:600}
-.was s{font-size:17px;font-weight:700}
-.now{display:block;font-family:"Archivo Black","Archivo Narrow",sans-serif;font-size:32px;line-height:1.05;color:var(--royal)}
-.now .per{font-family:"Public Sans",sans-serif;font-size:15px;font-weight:700;color:var(--ink-soft)}
-.now-note{display:block;font-family:"Archivo Black","Archivo Narrow",sans-serif;font-size:21px;line-height:1.15;color:var(--royal);text-transform:uppercase}
-.table-note{font-size:13.5px;color:var(--ink-soft);margin:12px 2px 0}
-.trust{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.trust img{flex:0 0 auto;width:112px;height:112px;object-fit:cover;border-radius:14px;box-shadow:0 6px 0 rgba(7,26,82,.18);background:#fff}
-.trust .t-main{flex:1 1 300px;min-width:0}
-.trust .t-main p{margin:0 0 8px}
-.trust .t-main p:last-child{margin-bottom:0}
-.cta-row{margin-top:34px;text-align:center}
-.cta-btn{display:inline-block;background:var(--yellow);color:var(--royal-dark);font-family:"Archivo Black","Archivo Narrow",sans-serif;
-  font-size:20px;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;padding:16px 34px;border-radius:999px;
-  box-shadow:0 6px 0 rgba(7,26,82,.25)}
-.cta-sub{color:var(--ink-soft);font-size:14px;margin-top:14px}
-.source-note{margin-top:36px;background:var(--surface);border:2px solid var(--line);border-radius:14px;
-  padding:16px 18px;font-size:14px;color:var(--ink-soft)}
-.source-note p{margin:0 0 8px}
-.source-note p:last-child{margin-bottom:0}
-.source-note strong{color:var(--ink)}
-[hidden]{display:none!important}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-@media (max-width:560px){
-  .crest-mono{height:84px;width:84px;font-size:26px}
-  .now{font-size:27px}
-  .now-note{font-size:18px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founding Clubs · Club Hubs for Youth Soccer Clubs · Santiago Guy Films</title>
+  <meta name="description" content="Ten founding club places for the Club Hub by Santiago Guy Films: a page of its own, a league table, a scouting report and La Previa for every team at your club, at introductory pricing locked for as long as you stay a member.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#16121a; --ink-soft:#4c4454; --ink-dim:#8b8393;
+      --paper:#ffffff; --paper-warm:#faf7fb; --line:#ece7ef;
+      --pink:#e91e7d; --pink-soft:rgba(233,30,125,.08);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img,video{max-width:100%;display:block}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+    .nav-brand img{width:34px;height:34px;border-radius:50%;background:#1a0a1f;padding:3px;box-shadow:0 1px 6px rgba(22,18,26,.18)}
+    .nav-brand .pk{color:var(--pink)}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .2s}
+    .nav-links a:hover{color:var(--pink)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff!important;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 14px rgba(233,30,125,.22)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(233,30,125,.3)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--ink-soft);padding:13px 10px;transition:color .2s}
+    .btn-ghost:hover{color:var(--pink)}
+    .nav-cta{padding:9px 20px!important;font-size:13px!important}
+
+    .hero{padding:96px 0 64px;text-align:center}
+    .hero-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);background:var(--pink-soft);padding:7px 16px;border-radius:999px;margin-bottom:28px}
+    h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:850;letter-spacing:-.03em;line-height:1.08;max-width:20ch;margin:0 auto}
+    h1 .pk{color:var(--pink)}
+    .hero-sub{font-size:1.1rem;color:var(--ink-soft);max-width:56ch;margin:24px auto 36px;line-height:1.75}
+    .hero-actions{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+    .hero-stats{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin-top:56px;border-top:1px solid var(--line);padding-top:32px}
+    .hstat{padding:0 32px;text-align:center;border-right:1px solid var(--line)}
+    .hstat:last-child{border-right:0}
+    .hstat b{display:block;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+    .hstat span{font-size:12.5px;color:var(--ink-dim)}
+
+    section{padding:88px 0}
+    h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;letter-spacing:-.025em;line-height:1.15}
+    h2 .pk{color:var(--pink)}
+    .sec-head{max-width:640px;margin-bottom:44px}
+    .sec-head p{color:var(--ink-soft);margin-top:14px;font-size:1rem;line-height:1.75}
+    .center{text-align:center}.center .sec-head{margin-left:auto;margin-right:auto}
+
+    .feature-card{background:var(--paper-warm);border:1px solid rgba(233,30,125,.25);border-radius:20px;overflow:hidden;box-shadow:0 14px 44px rgba(233,30,125,.08)}
+    .feature-inner{display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:36px;align-items:center}
+    .feature-inner.single{grid-template-columns:1fr}
+    .feature-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+    .feature-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--pink)}
+    .feature-title{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:850;letter-spacing:-.02em;line-height:1.15;margin:12px 0 14px}
+    .feature-copy{font-size:14.5px;color:var(--ink-soft);line-height:1.75}
+    .feature-actions{margin-top:22px}
+
+    .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+    .feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:all .25s}
+    .feat:hover{transform:translateY(-3px);border-color:rgba(233,30,125,.35);box-shadow:0 8px 28px rgba(233,30,125,.12)}
+    .feat h3{font-size:1.05rem;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+    .feat p{font-size:14px;color:var(--ink-soft);line-height:1.7}
+    .mini-label{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+    .feat-subhead{font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim);margin:40px 0 18px}
+
+    .band{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .tier-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:stretch}
+    .tier{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:all .25s}
+    .tier:hover{transform:translateY(-3px);box-shadow:0 10px 34px rgba(22,18,26,.07)}
+    .tier.featured{border-color:rgba(233,30,125,.4);box-shadow:0 12px 40px rgba(233,30,125,.1)}
+    .tier-flag{position:absolute;top:-11px;left:26px;background:var(--pink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+    .tier-name{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)}
+    .tier.featured .tier-name{color:var(--pink)}
+    .step-title{font-size:1.3rem;font-weight:850;letter-spacing:-.02em;line-height:1.2;margin:12px 0 8px}
+    .step-copy{font-size:14px;color:var(--ink-soft);line-height:1.7}
+    .tier-was{font-size:13px;color:var(--ink-dim);margin-top:16px}
+    .tier-was s{font-weight:600}
+    .tier-vol{font-size:1.9rem;font-weight:850;letter-spacing:-.02em;margin:4px 0 2px}
+    .tier-vol small{font-size:.55em;font-weight:700;color:var(--ink-dim)}
+    .tier-tag{font-size:13px;color:var(--ink-dim);margin-bottom:18px}
+    .tier ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+    .tier li{font-size:13.5px;color:var(--ink-soft);padding-left:20px;position:relative;line-height:1.5}
+    .tier li::before{content:'✓';position:absolute;left:0;color:var(--pink);font-weight:700}
+    .tier-fit{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-dim);line-height:1.6}
+    .tier-note{text-align:center;margin-top:26px;font-size:12.5px;color:var(--ink-dim)}
+    .setup-fig{text-align:left}
+    .setup-fig .was{display:block;font-size:13.5px;color:var(--ink-dim)}
+    .setup-fig .was s{font-weight:600}
+    .setup-fig .now{display:block;font-size:2rem;font-weight:850;letter-spacing:-.02em;color:var(--pink);margin-top:2px}
+    .setup-fig .note{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px}
+
+    .wide-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 32px}
+    .wide-card p{font-size:15px;color:var(--ink-soft);line-height:1.8;max-width:72ch}
+    .wide-card p + p{margin-top:12px}
+    .wide-card p b{color:var(--ink)}
+
+    .about-sec{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .about-grid{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;max-width:840px;margin:0 auto}
+    .about-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:center;border:4px solid #fff;box-shadow:0 8px 30px rgba(22,18,26,.12)}
+    .about-grid h2{margin-bottom:14px}
+    .about-grid p{color:var(--ink-soft);font-size:15px;line-height:1.8;margin-bottom:12px}
+    .about-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .badge{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);background:#fff;padding:6px 14px;border-radius:999px}
+    .about-link{margin-top:18px}
+
+    .cta-sec{text-align:center;padding:110px 0}
+    .cta-sec h2{font-size:clamp(2.2rem,5vw,3.4rem);max-width:18ch;margin:0 auto 18px}
+    .cta-sec p{color:var(--ink-soft);max-width:52ch;margin:0 auto 36px;font-size:1.05rem;line-height:1.75}
+    .cta-meta{margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
+
+    footer{border-top:1px solid var(--line);padding:36px 0;background:var(--paper-warm)}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-dim)}
+    .footer-links{display:flex;gap:22px;list-style:none}
+    .footer-links a{color:var(--ink-soft);font-weight:500}
+    .footer-links a:hover{color:var(--pink)}
+
+    @media(max-width:860px){
+      .nav-links{display:none}
+      .hero{padding:72px 0 48px}
+      .hstat{padding:0 18px}
+      .hero-stats{gap:14px 0}
+      .feature-inner{grid-template-columns:1fr;padding:26px;gap:22px}
+      .tier-grid{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr;text-align:center;gap:28px}
+      .about-photo{margin:0 auto}
+      .about-badges{justify-content:center}
+      .about-link{text-align:center}
+      section{padding:64px 0}
+    }
+  </style>
 </head>
 <body>
-<nav class="topnav"><div class="inner"><a href="https://santiagoguyfilms.com/">&#8592; Santiago Guy Films</a><span class="tn-right"><a href="https://santiagoguyfilms.com/clubs/">The Club Hub</a><a href="https://santiagoguyfilms.com/sunblazer/">Live Sunblazer Hub</a></span></div></nav>
-<header class="club-head"><div class="inner"><div class="crest-mono">SGF</div><div><h1>Club Hubs for Youth Soccer Clubs</h1><p class="sub">The Club Hub <strong>·</strong> Founding Clubs <strong>·</strong> by Santiago Guy Films <strong>·</strong> Miami, Florida</p></div></div></header>
-<div class="wrap">
-  <div class="intro">
-    <p>The Club Hub gives every team at your club its own page: record, league table, results and upcoming fixtures,
-    a scouting report on the next opponent, and a weekly preview show called La Previa. It is in full operation
-    today at <strong>South Kendall Sunblazer Soccer Club</strong>, all 11 teams across three leagues, updated every
-    Sunday night during the season from the official league data.</p>
-    <p>We are opening the product to <strong>ten founding clubs</strong>. Founding clubs join at introductory pricing
-    and keep that pricing for as long as they stay members. When the ten places close, standard pricing applies
-    to every club that follows.</p>
+<div class="bi-banner" style="background:#0a1628;color:#fff;text-align:center;padding:10px 16px;font-size:14px;">📰 Interviewed by <a href="https://www.businessinsider.com/father-uses-meta-muse-kids-quiz-study-tool-2026-10" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:underline;"><strong>Business Insider</strong></a> &nbsp;·&nbsp; <a href="https://voyagemia.com/interview/meet-franco-lopez-santiago-guy-photography-south-miami/" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:underline;">Voyage MIA</a> &nbsp;·&nbsp; <a href="https://shoutoutmiami.com/meet-santiago-guy-wedding-filmmaker/" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:underline;">Shoutout Miami</a></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://santiagoguyfilms.com/" class="nav-brand"><img src="https://santiagoguyfilms.com/sgf-logo.svg" alt="SGF">Santiago Guy<span class="pk">&nbsp;Films</span></a>
+    <ul class="nav-links">
+      <li><a href="https://santiagoguyfilms.com/">Home</a></li>
+      <li><a href="https://santiagoguyfilms.com/clubs/">The Club Hub</a></li>
+      <li><a href="https://santiagoguyfilms.com/sunblazer/">Live Sample</a></li>
+      <li><a href="https://calendly.com/santiagoguyfilms/kickoff-meeting" target="_blank" rel="noopener" class="btn nav-cta">Book the Call</a></li>
+    </ul>
   </div>
-  <h2 class="group-label">See It Running</h2>
-  <div class="card"><p><strong>South Kendall Sunblazer</strong> runs on the Club Hub today: 11 teams across three
-  leagues, the SFPL, the Florida Girls League and the EDP Florida League, with every page live and updated weekly.
-  This is the exact product a founding club receives, running in the open.</p>
-  <p><a href="https://santiagoguyfilms.com/sunblazer/"><strong>See the live Sunblazer hub</strong></a></p></div>
-  <h2 class="group-label">What Every Team Gets</h2>
-  <div class="feat-grid"><div class="feat-card"><h4>A page of its own</h4><p>Every team gets its own page with its record, standings, results and upcoming fixtures, updated weekly from the official league data your club already plays in.</p></div><div class="feat-card"><h4>Scouting report</h4><p>Before every match, a written report on the next opponent: their record, their recent form, their goals for and against, and where the game will be won.</p></div><div class="feat-card"><h4>La Previa</h4><p>A weekly preview show for every team, with two hosts breaking down the coming match the way the pro game gets covered. Ready to share with your families before matchday.</p></div><div class="feat-card"><h4>Your colors, one link</h4><p>Every page wears your club colors and your crest, at one link your families can open anywhere. No app to install, nothing for parents to learn.</p></div><div class="feat-card"><span class="tag">Coming next</span><h4>Video commentators</h4><p>The preview show grows a picture: weekly video commentary on your featured fixtures.</p></div><div class="feat-card"><span class="tag">Coming next</span><h4>Deeper game analysis</h4><p>More on every match: form lines, head to head history, and the numbers hiding inside the table.</p></div><div class="feat-card"><span class="tag">Coming next</span><h4>Post game interviews</h4><p>On site post game player interviews, filmed at your fields after the final whistle.</p></div><div class="feat-card"><span class="tag">Coming next</span><h4>Slow motion highlights</h4><p>Edited match highlights with slow motion replays, cut for sharing with your families and your feeds.</p></div></div>
-  <h2 class="group-label">How It Works</h2>
-  <div class="feat-grid"><div class="feat-card"><span class="tag">Step One</span><h4>Book a short call</h4><p>A video call of about 15 minutes. Pick any time that suits you on the calendar below and we will take it from there.</p></div><div class="feat-card"><span class="tag">Step Two</span><h4>See your preview edition</h4><p>Your preview edition is presented live on the call: one featured team in your colors and crest, with its page, its scouting report and its La Previa, exactly as your families would see it.</p></div><div class="feat-card"><span class="tag">Step Three</span><h4>Membership starts</h4><p>If it serves your club, membership starts and the build extends to your full organization: every team, every league, one hub your families can follow all season.</p></div></div>
-  <h2 class="group-label">Founding Clubs Pricing</h2>
-  <p class="group-note">Ten places only. Founding clubs lock the introductory price for as long as they stay members,
-  and setup is waived in full. The standard price is shown struck through beside each founding price. When the
-  ten places close, standard pricing applies.</p>
-  <div class="price-card">
-    <div class="price-head"><span class="ph-title">Founding Clubs</span><span class="ph-chip">10 places</span></div>
-    <div class="price-row"><div class="p-main"><div class="p-name">Single Team</div><div class="p-desc">One team with the full treatment: its page, its table, its scouting report and its La Previa.</div></div><div class="p-figs"><span class="was">Standard <s>$79/mo</s></span><span class="now">$59<span class="per">/mo founding</span></span></div></div>
-    <div class="price-row"><div class="p-main"><div class="p-name">Club · Up to 12 Teams</div><div class="p-desc">Every team at the club, every league, one hub at your club address.</div></div><div class="p-figs"><span class="was">Standard <s>$169/mo</s></span><span class="now">$129<span class="per">/mo founding</span></span></div></div>
-    <div class="price-row"><div class="p-main"><div class="p-name">Club Plus · Up to 25 Teams</div><div class="p-desc">The whole organization, academies included, covered the same way all season long.</div></div><div class="p-figs"><span class="was">Standard <s>$249/mo</s></span><span class="now">$199<span class="per">/mo founding</span></span></div></div>
-    <div class="price-row"><div class="p-main"><div class="p-name">Setup</div><div class="p-desc">Your hub built for you: pages, colors, crest and league connections, done before your first match week.</div></div><div class="p-figs"><span class="was">Standard <s>$250</s></span><span class="now-note">Waived for founding clubs</span></div></div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker reveal">Club Hubs · Founding Clubs · Miami</div>
+    <h1 class="reveal">Every team. One hub. <span class="pk">Live today.</span></h1>
+    <p class="hero-sub reveal">The Club Hub gives every team at your club a page of its own: record, standings, results and fixtures, a scouting report on the next opponent, and a weekly preview show called La Previa. It runs today at South Kendall Sunblazer Soccer Club, all 11 teams across three leagues, updated every Sunday night from the official league data.</p>
+    <div class="hero-actions reveal">
+      <a href="https://santiagoguyfilms.com/sunblazer/" class="btn">See the Live Sunblazer Hub</a>
+      <a href="#pricing" class="btn-ghost">Founding pricing &darr;</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hstat"><b>11</b><span>teams live at Sunblazer</span></div>
+      <div class="hstat"><b>3</b><span>leagues covered</span></div>
+      <div class="hstat"><b>10</b><span>founding places</span></div>
+      <div class="hstat"><b>$0</b><span>setup for founders</span></div>
+    </div>
   </div>
-  <p class="table-note">Billed monthly, in season only. Nothing is billed in the summer off months, and founding
-  pricing stays locked for as long as your club remains a member.</p>
-  <h2 class="group-label">The Founding Exchange</h2>
-  <div class="card"><p>Founding clubs help shape this product. Your feedback decides what gets built next, and new
-  features reach your hub first. In return, all we ask is this: if you are satisfied, Franco will ask you for a
-  testimonial, and for an introduction to one other club that could use a hub of its own. That is the whole
-  exchange, stated plainly.</p></div>
-  <h2 class="group-label">Built by Santiago Guy Films</h2>
-  <div class="card"><div class="trust"><img src="https://santiagoguyfilms.com/media-kit/profile-pic.png" alt="Franco Lopez, Santiago Guy Films"><div class="t-main"><p>The Club Hub is built and run by <strong>Franco Lopez</strong> of Santiago Guy Films, a bilingual
-  UGC creator in Miami: <strong>157K+ TikTok followers, 9.9M+ likes, and 70+ brand collaborations</strong> across
-  tech, wellness, home and lifestyle. Interviewed by Business Insider.</p>
-  <p>Check the work and the man behind it: <a href="https://santiagoguyfilms.com/"><strong>Meet Franco at santiagoguyfilms.com</strong></a></p></div></div></div>
-  <div class="cta-row">
-    <a class="cta-btn" href="https://calendly.com/santiagoguyfilms/kickoff-meeting">Book the 15 Minute Call</a>
-    <p class="cta-sub">Fifteen minutes on video. We will show you the live Sunblazer hub and your preview edition, and walk through the founding pricing. No obligation.</p>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>See it <span class="pk">running.</span></h2>
+      <p>This is not a plan on paper. One full club already lives on the hub, in the open, updated every week of the season.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-inner single">
+        <div>
+          <div class="feature-eyebrow"><span class="dot"></span>Live Sample</div>
+          <div class="feature-title">South Kendall Sunblazer, on the Club Hub today.</div>
+          <p class="feature-copy">All 11 teams across three leagues: the SFPL, the Florida Girls League and the EDP Florida League. Every page live, every table current, every team with its scouting report and its La Previa. This is the exact product a founding club receives.</p>
+          <div class="feature-actions">
+            <a href="https://santiagoguyfilms.com/sunblazer/" class="btn">See the Live Sunblazer Hub</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="source-note"><p>The Club Hub is a <strong>Santiago Guy Films</strong> product, built and run in Miami, Florida.</p>
-  <p><a href="https://santiagoguyfilms.com/">santiagoguyfilms.com</a> · <a href="https://santiagoguyfilms.com/clubs/">The Club Hub</a> · <a href="https://santiagoguyfilms.com/sunblazer/">Live Sunblazer hub</a></p></div>
-</div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>What every team <span class="pk">gets.</span></h2>
+      <p>No app to install. Nothing for parents to learn. One link, in your colors, updated every week of the season.</p>
+    </div>
+    <div class="feat-grid reveal">
+      <div class="feat">
+        <h3>A page of its own</h3>
+        <p>Record, standings, results and upcoming fixtures, updated weekly from the official league data your club already plays in.</p>
+      </div>
+      <div class="feat">
+        <h3>A scouting report</h3>
+        <p>Before every match, a written report on the next opponent: their record, their recent form, their goals for and against, and where the game will be won.</p>
+      </div>
+      <div class="feat">
+        <h3>La Previa</h3>
+        <p>A weekly preview show for the team, with two hosts breaking down the coming match the way the pro game gets covered. Ready to share before matchday.</p>
+      </div>
+      <div class="feat">
+        <h3>Your colors, one link</h3>
+        <p>Every page wears your club colors and your crest, at one link your families can open anywhere.</p>
+      </div>
+    </div>
+    <div class="feat-subhead reveal">Coming next</div>
+    <div class="feat-grid reveal">
+      <div class="feat">
+        <span class="mini-label">Coming next</span>
+        <h3>Video commentators</h3>
+        <p>The preview show grows a picture: weekly video commentary on your featured fixtures.</p>
+      </div>
+      <div class="feat">
+        <span class="mini-label">Coming next</span>
+        <h3>Deeper game analysis</h3>
+        <p>More on every match: form lines, past meetings between the two teams, and the numbers hiding inside the table.</p>
+      </div>
+      <div class="feat">
+        <span class="mini-label">Coming next</span>
+        <h3>Post game interviews</h3>
+        <p>On site post game player interviews, filmed at your fields after the final whistle.</p>
+      </div>
+      <div class="feat">
+        <span class="mini-label">Coming next</span>
+        <h3>Slow motion highlights</h3>
+        <p>Edited match highlights with slow motion replays, cut for sharing with your families and your feeds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>How it <span class="pk">works.</span></h2>
+      <p>Three steps between this page and a hub your families follow all season.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier reveal">
+        <div class="tier-name">Step One</div>
+        <div class="step-title">Book a short call</div>
+        <p class="step-copy">A video call of about 15 minutes. Pick any time that suits you on the calendar and we take it from there.</p>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Step Two</div>
+        <div class="step-title">See your preview edition</div>
+        <p class="step-copy">Your preview edition is presented live on the call: one featured team in your colors and crest, with its page, its scouting report and its La Previa, exactly as your families would see it.</p>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Step Three</div>
+        <div class="step-title">Membership starts</div>
+        <p class="step-copy">If it serves your club, membership starts and the build extends to your full organization: every team, every league, one hub your families can follow all season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Founding Clubs <span class="pk">pricing.</span></h2>
+      <p>Ten places only. Founding clubs lock the introductory price for as long as they stay members, and setup is waived in full. The standard price sits struck through beside each founding price. When the ten places close, standard pricing applies to every club that follows.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier reveal">
+        <div class="tier-name">Single Team</div>
+        <div class="tier-was">Standard <s>$79/mo</s></div>
+        <div class="tier-vol">$59<small>/mo</small></div>
+        <div class="tier-tag">Founding price, locked while a member</div>
+        <ul>
+          <li>One team, the full treatment</li>
+          <li>Its page, table and fixtures</li>
+          <li>Scouting report before every match</li>
+          <li>Its own La Previa every week</li>
+        </ul>
+        <div class="tier-fit">Best for one team that wants its whole season covered.</div>
+      </div>
+      <div class="tier featured reveal">
+        <div class="tier-flag">The full club</div>
+        <div class="tier-name">Club · Up to 12 Teams</div>
+        <div class="tier-was">Standard <s>$169/mo</s></div>
+        <div class="tier-vol">$129<small>/mo</small></div>
+        <div class="tier-tag">Founding price, locked while a member</div>
+        <ul>
+          <li>Every team at the club</li>
+          <li>Every league you play in</li>
+          <li>One hub at your club address</li>
+          <li>Every page updated weekly</li>
+        </ul>
+        <div class="tier-fit">The Sunblazer shape: the whole club on one hub.</div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Club Plus · Up to 25 Teams</div>
+        <div class="tier-was">Standard <s>$249/mo</s></div>
+        <div class="tier-vol">$199<small>/mo</small></div>
+        <div class="tier-tag">Founding price, locked while a member</div>
+        <ul>
+          <li>The whole organization</li>
+          <li>Academies included</li>
+          <li>Every team covered the same way</li>
+          <li>All season long</li>
+        </ul>
+        <div class="tier-fit">For larger clubs and academies with many teams.</div>
+      </div>
+    </div>
+    <div class="feature-card reveal" style="margin-top:16px">
+      <div class="feature-inner">
+        <div>
+          <div class="feature-eyebrow"><span class="dot"></span>Setup</div>
+          <div class="feature-title">Your hub, built for you.</div>
+          <p class="feature-copy">Pages, colors, crest and league connections, done before your first match week. Founding clubs pay no setup at all.</p>
+        </div>
+        <div class="setup-fig">
+          <span class="was">Standard <s>$250</s></span>
+          <span class="now">Waived</span>
+          <span class="note">for founding clubs</span>
+        </div>
+      </div>
+    </div>
+    <p class="tier-note reveal">Billed monthly, in season only. Nothing is billed in the summer off months, and founding pricing stays locked for as long as your club remains a member.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>The founding <span class="pk">exchange.</span></h2>
+    </div>
+    <div class="wide-card reveal">
+      <p>Founding clubs help shape this product. Your feedback decides what gets built next, and new features reach your hub first.</p>
+      <p>In return, all we ask is this: <b>if you are satisfied</b>, Franco will ask you for a testimonial, and for an introduction to one other club that could use a hub of its own. That is the whole exchange, stated plainly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-sec">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <img src="https://santiagoguyfilms.com/media-kit/profile-pic.png" alt="Franco — Santiago Guy Films" class="about-photo">
+      <div>
+        <h2>Built by <span class="pk">Santiago Guy Films.</span></h2>
+        <p>The Club Hub is built and run by Franco Lopez of Santiago Guy Films, a bilingual UGC creator in Miami: 157K+ TikTok followers, 9.9M+ likes, and 70+ brand collaborations across tech, wellness, home and lifestyle. Interviewed by Business Insider.</p>
+        <p>One point of contact. The product, the build and the weekly updates all run through the same person.</p>
+        <div class="about-badges">
+          <span class="badge">Bilingual EN/ES</span><span class="badge">Miami, FL</span><span class="badge">70+ Brand Collabs</span><span class="badge">Business Insider</span>
+        </div>
+        <div class="about-link">
+          <a href="https://santiagoguyfilms.com/" class="btn-ghost" style="padding-left:0">Meet Franco at santiagoguyfilms.com &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="wrap">
+    <h2 class="reveal">See your club <span class="pk">on the hub.</span></h2>
+    <p class="reveal">Fifteen minutes on video. We show you the live Sunblazer hub and your preview edition, and walk through the founding pricing. No obligation.</p>
+    <div class="reveal">
+      <a href="https://calendly.com/santiagoguyfilms/kickoff-meeting" target="_blank" rel="noopener" class="btn" style="padding:16px 36px;font-size:15px">Book the 15 Minute Call</a>
+    </div>
+    <div class="cta-meta reveal">Founding Clubs · 10 places · Miami, FL</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 Santiago Guy Films · Miami, FL</span>
+    <ul class="footer-links">
+      <li><a href="https://instagram.com/santiagoguyfilms" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://tiktok.com/@santiagoguyfilms" target="_blank" rel="noopener">TikTok</a></li>
+      <li><a href="mailto:santiagoguyfilms@gmail.com">santiagoguyfilms@gmail.com</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
