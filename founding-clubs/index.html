@@ -37,7 +37,14 @@
     .btn-ghost:hover{color:var(--pink)}
     .nav-cta{padding:9px 20px!important;font-size:13px!important}
 
-    .hero{padding:96px 0 64px;text-align:center}
+    .hero{padding:96px 0 64px;text-align:center;position:relative;overflow:hidden}
+    .hero .wrap{position:relative;z-index:1}
+    .pitch-lines{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0}
+    .pitch-lines svg{width:min(1060px,130%);height:auto;flex:none}
+    .ball{display:inline-block;flex:none}
+    .ball-k{width:15px;height:15px;vertical-align:-2px;margin-right:2px}
+    .ball-h{width:.82em;height:.82em;vertical-align:-.06em;margin-right:.18em}
+    .ball-mc{width:17px;height:17px;vertical-align:-3px}
     .hero-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);background:var(--pink-soft);padding:7px 16px;border-radius:999px;margin-bottom:28px}
     h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:850;letter-spacing:-.03em;line-height:1.08;max-width:20ch;margin:0 auto}
     h1 .pk{color:var(--pink)}
@@ -118,6 +125,39 @@
     .cta-sec p{color:var(--ink-soft);max-width:52ch;margin:0 auto 36px;font-size:1.05rem;line-height:1.75}
     .cta-meta{margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
 
+
+    .mc{padding:0}
+    .mc-top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px 30px;border-bottom:1px solid var(--line)}
+    .mc-label{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)}
+    .mc-meta{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+    .mc-body{padding:30px}
+    .mc-teamrow{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .mc-name{font-size:clamp(1.35rem,2.6vw,1.8rem);font-weight:850;letter-spacing:-.015em;text-transform:uppercase;line-height:1.15}
+    .mc-sub{font-size:12.5px;color:var(--ink-dim);margin-top:5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .form{display:flex;align-items:center;gap:6px}
+    .form .flabel{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);margin-right:4px}
+    .chip{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:8px;font-size:12px;font-weight:800}
+    .chip.w{background:var(--pink);color:#fff}
+    .chip.d{background:var(--line);color:var(--ink-soft)}
+    .chip.l{background:#fff;border:1px solid var(--line);color:var(--ink-dim)}
+    .mc-stats{display:flex;flex-wrap:wrap;margin-top:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .mc-stat{padding:16px 26px 16px 0;margin-right:26px}
+    .mc-stat b{display:block;font-size:1.65rem;font-weight:850;letter-spacing:-.02em;line-height:1.1}
+    .mc-stat b.pk{color:var(--pink)}
+    .mc-stat span{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
+    .mc-fixture{margin-top:26px}
+    .fx-label{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+    .fx-line{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .fx-team{font-size:clamp(1.2rem,2.8vw,1.7rem);font-weight:850;letter-spacing:-.015em;text-transform:uppercase;line-height:1.2}
+    .fx-vs{color:var(--pink);font-weight:850;font-size:1.1rem}
+    .fx-note{font-size:14px;color:var(--ink-soft);line-height:1.7;margin-top:10px;max-width:64ch}
+    .mc-previa{margin-top:26px;background:var(--paper-warm);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+    .pv-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .pv-badge{display:inline-block;background:var(--ink);color:#fff;font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;padding:6px 13px;border-radius:999px}
+    .pv-meta{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+    .pv-match{font-size:1.12rem;font-weight:800;letter-spacing:-.01em;margin-top:13px}
+    .pv-copy{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin-top:5px}
+    .mc-foot{font-size:14.5px;color:var(--ink-soft);line-height:1.75;margin-top:26px;max-width:68ch}
     footer{border-top:1px solid var(--line);padding:36px 0;background:var(--paper-warm)}
     .footer-inner{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-dim)}
     .footer-links{display:flex;gap:22px;list-style:none}
@@ -136,10 +176,38 @@
       .about-badges{justify-content:center}
       .about-link{text-align:center}
       section{padding:64px 0}
+      .pitch-lines svg{width:175%;opacity:.5}
+      .mc-top{padding:16px 22px}
+      .mc-body{padding:24px 22px}
+      .mc-stat{padding:14px 18px 14px 0;margin-right:18px}
     }
   </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="sgf-ball-clip"><circle cx="50" cy="50" r="46"/></clipPath>
+    <symbol id="sgf-ball" viewBox="0 0 100 100">
+      <g clip-path="url(#sgf-ball-clip)">
+        <polygon points="66.8,26.9 62.2,13.0 74.1,4.3 86.0,13.0 81.4,26.9" fill="#16121a"/>
+        <polygon points="77.1,58.8 89.0,50.2 100.9,58.8 96.3,72.8 81.6,72.8" fill="#16121a"/>
+        <polygon points="50.0,78.5 61.9,87.1 57.3,101.1 42.7,101.1 38.1,87.1" fill="#16121a"/>
+        <polygon points="22.9,58.8 18.4,72.8 3.7,72.8 -0.9,58.8 11.0,50.2" fill="#16121a"/>
+        <polygon points="33.2,26.9 18.6,26.9 14.0,13.0 25.9,4.3 37.8,13.0" fill="#16121a"/>
+        <g stroke="#16121a" stroke-width="2.4">
+          <line x1="50.0" y1="34.0" x2="50.0" y2="4.0"/>
+          <line x1="65.2" y1="45.1" x2="93.7" y2="35.8"/>
+          <line x1="59.4" y1="62.9" x2="77.0" y2="87.2"/>
+          <line x1="40.6" y1="62.9" x2="23.0" y2="87.2"/>
+          <line x1="34.8" y1="45.1" x2="6.3" y2="35.8"/>
+        </g>
+        <polygon points="50.0,34.0 65.2,45.1 59.4,62.9 40.6,62.9 34.8,45.1" fill="#16121a"/>
+      </g>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#16121a" stroke-width="3"/>
+    </symbol>
+  </defs>
+</svg>
 <div class="bi-banner" style="background:#0a1628;color:#fff;text-align:center;padding:10px 16px;font-size:14px;">📰 Interviewed by <a href="https://www.businessinsider.com/father-uses-meta-muse-kids-quiz-study-tool-2026-10" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:underline;"><strong>Business Insider</strong></a> &nbsp;·&nbsp; <a href="https://voyagemia.com/interview/meet-franco-lopez-santiago-guy-photography-south-miami/" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:underline;">Voyage MIA</a> &nbsp;·&nbsp; <a href="https://shoutoutmiami.com/meet-santiago-guy-wedding-filmmaker/" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:underline;">Shoutout Miami</a></div>
 
 <nav>
@@ -155,8 +223,22 @@
 </nav>
 
 <header class="hero">
+  <div class="pitch-lines" aria-hidden="true">
+    <svg viewBox="0 0 900 560" fill="none" stroke="rgba(139,131,147,.20)" stroke-width="2">
+      <rect x="30" y="30" width="840" height="500"/>
+      <line x1="450" y1="30" x2="450" y2="530"/>
+      <circle cx="450" cy="280" r="88"/>
+      <circle cx="450" cy="280" r="4" fill="rgba(139,131,147,.20)" stroke="none"/>
+      <rect x="30" y="130" width="150" height="300"/>
+      <rect x="30" y="200" width="62" height="160"/>
+      <path d="M 180 205 A 84 84 0 0 1 180 355"/>
+      <rect x="720" y="130" width="150" height="300"/>
+      <rect x="808" y="200" width="62" height="160"/>
+      <path d="M 720 205 A 84 84 0 0 0 720 355"/>
+    </svg>
+  </div>
   <div class="wrap">
-    <div class="hero-kicker reveal">Club Hubs · Founding Clubs · Miami</div>
+    <div class="hero-kicker reveal"><svg class="ball ball-k" aria-hidden="true"><use href="#sgf-ball"/></svg>Club Hubs · Founding Clubs · Miami</div>
     <h1 class="reveal">Every team. One hub. <span class="pk">Live today.</span></h1>
     <p class="hero-sub reveal">The Club Hub gives every team at your club a page of its own: record, standings, results and fixtures, a scouting report on the next opponent, and a weekly preview show called La Previa. It runs today at South Kendall Sunblazer Soccer Club, all 11 teams across three leagues, updated every Sunday night from the official league data.</p>
     <div class="hero-actions reveal">
@@ -178,15 +260,40 @@
       <h2>See it <span class="pk">running.</span></h2>
       <p>This is not a plan on paper. One full club already lives on the hub, in the open, updated every week of the season.</p>
     </div>
-    <div class="feature-card reveal">
-      <div class="feature-inner single">
-        <div>
-          <div class="feature-eyebrow"><span class="dot"></span>Live Sample</div>
-          <div class="feature-title">South Kendall Sunblazer, on the Club Hub today.</div>
-          <p class="feature-copy">All 11 teams across three leagues: the SFPL, the Florida Girls League and the EDP Florida League. Every page live, every table current, every team with its scouting report and its La Previa. This is the exact product a founding club receives.</p>
-          <div class="feature-actions">
-            <a href="https://santiagoguyfilms.com/sunblazer/" class="btn">See the Live Sunblazer Hub</a>
+    <div class="feature-card mc reveal">
+      <div class="mc-top">
+        <span class="mc-label"><svg class="ball ball-mc" aria-hidden="true"><use href="#sgf-ball"/></svg>Match Center</span>
+        <span class="mc-meta">SFPL · U11 Boys D3 Red · Bracket A</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-teamrow">
+          <div>
+            <div class="mc-name">SK Sunblazer U11 Gold</div>
+            <div class="mc-sub">South Kendall Sunblazer SC · Featured Team</div>
           </div>
+          <div class="form"><span class="flabel">Last Five</span><span class="chip l">L</span><span class="chip w">W</span><span class="chip l">L</span><span class="chip w">W</span><span class="chip d">D</span></div>
+        </div>
+        <div class="mc-stats">
+          <div class="mc-stat"><b>3rd</b><span>of 9 · Bracket A</span></div>
+          <div class="mc-stat"><b>5</b><span>Played</span></div>
+          <div class="mc-stat"><b>2-2-1</b><span>Won Drawn Lost</span></div>
+          <div class="mc-stat"><b>14-11</b><span>Goals For Against</span></div>
+          <div class="mc-stat"><b class="pk">7</b><span>Points</span></div>
+        </div>
+        <p class="fx-note" style="margin-top:14px">Latest: Sunblazer 3-3 Albion SC Miami, Sat Oct 17 at Kendall Indian Hammocks.</p>
+        <div class="mc-fixture">
+          <div class="fx-label">Next Fixture · Sat, Oct 24 · 10:00 AM · Kendall Indian Hammocks</div>
+          <div class="fx-line"><span class="fx-team">Sunblazer U11 Gold</span><span class="fx-vs">v</span><span class="fx-team">South Miami United Green DG</span></div>
+          <p class="fx-note">Green DG sit second on nine points. A win on Saturday moves Sunblazer past them into second place.</p>
+        </div>
+        <div class="mc-previa">
+          <div class="pv-head"><span class="pv-badge">La Previa</span><span class="pv-meta">The Preview Show · Sofia &amp; Jeff</span></div>
+          <div class="pv-match">Sunblazer U11 Gold v South Miami United Green DG</div>
+          <p class="pv-copy">Every match week, La Previa breaks down the featured game: the table, the form, and where the match will be won.</p>
+        </div>
+        <p class="mc-foot">All 11 Sunblazer teams across three leagues live on the hub the same way: the SFPL, the Florida Girls League and the EDP Florida League. This is the exact product a founding club receives.</p>
+        <div class="feature-actions">
+          <a href="https://santiagoguyfilms.com/sunblazer/" class="btn">See the Live Sunblazer Hub</a>
         </div>
       </div>
     </div>
@@ -272,7 +379,7 @@
 <section id="pricing">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2>Founding Clubs <span class="pk">pricing.</span></h2>
+      <h2><svg class="ball ball-h" aria-hidden="true"><use href="#sgf-ball"/></svg>Founding Clubs <span class="pk">pricing.</span></h2>
       <p>Ten places only. Founding clubs lock the introductory price for as long as they stay members, and setup is waived in full. The standard price sits struck through beside each founding price. When the ten places close, standard pricing applies to every club that follows.</p>
     </div>
     <div class="tier-grid">
