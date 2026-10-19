@@ -342,6 +342,11 @@
         background: var(--chip-bg); border-radius: 999px; padding: 5px 13px;
         font-weight: 700; text-decoration: none;
       }
+      .team-foot a.hub-fix-link {
+        background: none; border-radius: 0; padding: 0;
+        color: inherit; font-weight: 400; text-decoration: underline;
+      }
+      .site-foot a.hub-fix-link { color: #fff; text-decoration: underline; }
 
       /* ---------- Site footer ---------- */
       .site-foot {
@@ -680,6 +685,7 @@
       <div class="inner">
         <p class="foot-title">How this hub is put together</p>
         <p>The scores, standings, fixtures and previews on this hub are compiled from many sources and confirmed before they go up — league records, information and reports from the teams themselves, and word from coaches and club families. We gather it from a bunch of different places and do the legwork, so everything you need to follow the season lives in one place.</p>
+        <p><a class="hub-fix-link" href="mailto:santiagoguyfilms@gmail.com?subject=Hub%20correction%3A%20Club%20hub">See something off? Tell us and we will fix it.</a></p>
         <p class="foot-club">South Kendall Sunblazer Soccer Club · Fall 2026 Season</p>
       </div>
     </footer>
@@ -2425,6 +2431,8 @@
         h += '<p class="chart-note">Only confirmed fixtures and results appear here — the rest of the run-in posts week by week.</p></div></div></section>';
 
         h += '<div class="team-foot"><span>' + (t.sourceNote ? esc(t.sourceNote) : 'Compiled by the club · standings and results checked ' + esc(t.checked)) + '</span>'
+          + '<span class="fixtures-confirmed">Fixtures confirmed October 19, 2026</span>'
+          + '<a class="hub-fix-link" href="mailto:santiagoguyfilms@gmail.com?subject=' + encodeURIComponent('Hub correction: ' + (t.pageName || t.name)) + '">See something off? Tell us and we will fix it.</a>'
           + '<span>Registered as ' + esc(t.regName) + '</span></div>';
         return h;
       }
