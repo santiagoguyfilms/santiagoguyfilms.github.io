@@ -115,7 +115,7 @@
       .group-label::after { content: ""; flex: 1; height: 3px; background: var(--line); border-radius: 2px; }
       .group-note { color: var(--ink-soft); font-size: 14.5px; margin: -4px 0 14px; max-width: 700px; }
       .team-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px;
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px;
       }
       .team-card {
         position: relative; display: block; text-decoration: none; color: var(--ink);
@@ -141,11 +141,43 @@
         display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: .02em;
         background: var(--royal-dark); color: var(--yellow); border-radius: 999px; padding: 4px 11px; margin-left: 6px;
       }
-      .team-card .tgo {
-        display: inline-block; margin-top: 15px; font-size: 13px; font-weight: 800; color: #fff;
-        background: var(--royal); padding: 7px 16px 7px 13px;
-        clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 100%, 0 100%);
+      .team-card .tgo-big {
+        display: flex; align-items: center; justify-content: center; text-align: center;
+        margin-top: 16px; min-height: 56px; padding: 14px 18px;
+        background: var(--royal); color: #fff; text-decoration: none;
+        font-family: "Archivo Narrow", sans-serif; font-weight: 700; font-size: 20px;
+        letter-spacing: .02em; text-transform: uppercase; line-height: 1.15;
+        border-radius: 12px; box-shadow: 0 4px 0 rgba(7, 26, 82, .28);
       }
+      .team-card .tgo-big:hover { background: var(--royal-deep); }
+      .team-card .tgo-big:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+      .team-card audio { width: 100%; }
+      .dir-line { font-size: 14.5px; margin: 0 0 9px; }
+      .dir-line .k {
+        display: block; font-size: 11px; font-weight: 800; letter-spacing: .06em;
+        text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1px;
+      }
+      .dir-previa-k {
+        font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+        color: var(--ink-soft); margin: 13px 0 4px;
+      }
+
+      /* ---------- Add to Calendar ---------- */
+      .cal-row { display: inline-flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; margin-top: 10px; }
+      .match .cal-row { flex: 1 1 100%; margin-top: 2px; padding-left: 56px; }
+      .week-cal { margin-top: 16px; }
+      .week-cal .cal-row { margin-top: 0; }
+      .cal-btn {
+        appearance: none; border: 0; cursor: pointer; font-family: inherit;
+        display: inline-flex; align-items: center; gap: 7px;
+        background: var(--royal); color: #fff; font-size: 13.5px; font-weight: 800;
+        padding: 9px 15px; border-radius: 999px; box-shadow: var(--shadow);
+      }
+      .cal-btn:hover { background: var(--royal-deep); }
+      .cal-btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+      .cal-btn svg { flex: 0 0 auto; display: block; }
+      .cal-g { font-size: 13px; font-weight: 700; color: var(--royal); white-space: nowrap; }
+      @media (max-width: 560px) { .match .cal-row { padding-left: 0; } }
       .source-note {
         margin-top: 36px; background: var(--surface); border: 2px solid var(--line);
         border-radius: 14px; padding: 16px 18px; font-size: 14px; color: var(--ink-soft);
@@ -567,11 +599,15 @@
     <!-- ============ HOME / DIRECTORY ============ -->
     <main class="wrap" id="home-view">
       <div class="intro">
-        <p>Every Sunblazer team registered for the fall league season, in one place. Pick your team for its record, results, fixtures, league table and match preview show — all of it compiled and kept current by the club.</p>
+        <p>Every Sunblazer team registered for the fall league season, in one place. Open any team's page below for its record, results, fixtures, league table and match preview show — all of it compiled and kept current by the club.</p>
       </div>
 
-      <h2 class="group-label">My Teams</h2>
-      <div id="my-teams"></div>
+      <!-- My Teams (first-visit picker, pinned cards, family timeline and
+           play-all) is parked for now: the section markup is removed so the
+           home opens on the full directory. The code path — renderMyTeams(),
+           pick storage and play-all — is left dormant in the script below and
+           no-ops without this host element; restore the "My Teams" heading
+           and <div id="my-teams"></div> here to bring it back. -->
 
       <h2 class="group-label">Boys</h2>
       <p class="group-note">The U-9, U-10, U-11, U-12, U-13, U-15 and U-16 boys play in the club’s fall league season; the U-14 boys play in the South Flight 1.</p>
@@ -1685,19 +1721,151 @@
         return String(gd);
       }
 
+      /* ================= Add to Calendar ================= */
+      // Every fixture rendered from fixture data carries an Add to Calendar
+      // control: a button that downloads an .ics for that one game, plus a
+      // Google Calendar template link. Fixtures with no posted kickoff
+      // ("Time TBC", minutes null) become all-day events flagged
+      // "Kickoff time to be confirmed" — applied consistently everywhere.
+      var HUB_URL = "https://santiagoguyfilms.com/sunblazer/";
+      var CAL_ICON = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>';
+
+      function teamPageUrl(t) { return HUB_URL + "#/team/" + t.id; }
+      function calTitle(t, f) {
+        return "Sunblazer " + (t.pageName || t.name) + (f.ha === "Home" ? " vs " : " at ") + f.opp;
+      }
+      function calLocation(f) {
+        if (!f.venue || f.venue === "Venue not yet confirmed") return "";
+        return f.venue + (f.field ? ", " + f.field : "");
+      }
+      function calDesc(t, f) {
+        var d = "";
+        if (f.minutes === null || f.minutes === undefined) d += "Kickoff time to be confirmed. ";
+        d += "Times as posted. For late changes, your coach has the last word.";
+        d += "\nTeam page: " + teamPageUrl(t);
+        return d;
+      }
+      function pad2(n) { return (n < 10 ? "0" : "") + n; }
+      function isoPlusDays(iso, days) {
+        var p = iso.split("-");
+        var d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]) + days * 86400000);
+        return d.getUTCFullYear() + "-" + pad2(d.getUTCMonth() + 1) + "-" + pad2(d.getUTCDate());
+      }
+      function compactDate(iso) { return iso.replace(/-/g, ""); }
+      function clockStamp(minutes) {
+        return pad2(Math.floor(minutes / 60)) + pad2(minutes % 60) + "00";
+      }
+      // Wall-clock minutes in America/New_York on `iso` -> UTC milliseconds,
+      // used only for the Google Calendar template link (the .ics itself
+      // carries TZID=America/New_York and needs no conversion).
+      function nyToUtcMs(iso, minutes) {
+        var p = iso.split("-");
+        var guess = Date.UTC(+p[0], +p[1] - 1, +p[2]) + minutes * 60000;
+        var d = new Date(guess);
+        try {
+          var ny = new Date(d.toLocaleString("en-US", { timeZone: "America/New_York" }));
+          var utc = new Date(d.toLocaleString("en-US", { timeZone: "UTC" }));
+          return guess - (ny - utc);
+        } catch (e) { return guess; }
+      }
+      function utcBasic(ms) {
+        var d = new Date(ms);
+        return d.getUTCFullYear() + pad2(d.getUTCMonth() + 1) + pad2(d.getUTCDate())
+          + "T" + pad2(d.getUTCHours()) + pad2(d.getUTCMinutes()) + pad2(d.getUTCSeconds()) + "Z";
+      }
+      function icsEscape(s) {
+        return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r\n|\r|\n/g, "\\n");
+      }
+      function buildIcs(t, f) {
+        var lines = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "PRODID:-//SK Sunblazer Club Hub//Fixtures//EN",
+          "CALSCALE:GREGORIAN",
+          "METHOD:PUBLISH",
+          "BEGIN:VEVENT",
+          "UID:" + t.id + "-" + f.iso + "-" + (f.minutes === null || f.minutes === undefined ? "tbc" : f.minutes) + "@santiagoguyfilms.com",
+          "DTSTAMP:" + utcBasic(Date.now())
+        ];
+        if (f.minutes === null || f.minutes === undefined) {
+          lines.push("DTSTART;VALUE=DATE:" + compactDate(f.iso));
+          lines.push("DTEND;VALUE=DATE:" + compactDate(isoPlusDays(f.iso, 1)));
+        } else {
+          var endMin = f.minutes + 60;
+          var endIso = endMin >= 1440 ? isoPlusDays(f.iso, 1) : f.iso;
+          if (endMin >= 1440) endMin -= 1440;
+          lines.push("DTSTART;TZID=America/New_York:" + compactDate(f.iso) + "T" + clockStamp(f.minutes));
+          lines.push("DTEND;TZID=America/New_York:" + compactDate(endIso) + "T" + clockStamp(endMin));
+        }
+        lines.push("SUMMARY:" + icsEscape(calTitle(t, f)));
+        var loc = calLocation(f);
+        if (loc) lines.push("LOCATION:" + icsEscape(loc));
+        lines.push("DESCRIPTION:" + icsEscape(calDesc(t, f)));
+        lines.push("END:VEVENT", "END:VCALENDAR");
+        return lines.join("\r\n");
+      }
+      function downloadIcs(t, f) {
+        var blob = new Blob([buildIcs(t, f)], { type: "text/calendar;charset=utf-8" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "sunblazer-" + t.id + "-" + f.iso + ".ics";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+      }
+      function googleCalUrl(t, f) {
+        var dates;
+        if (f.minutes === null || f.minutes === undefined) {
+          dates = compactDate(f.iso) + "/" + compactDate(isoPlusDays(f.iso, 1));
+        } else {
+          dates = utcBasic(nyToUtcMs(f.iso, f.minutes)) + "/" + utcBasic(nyToUtcMs(f.iso, f.minutes + 60));
+        }
+        var u = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+          + "&text=" + encodeURIComponent(calTitle(t, f))
+          + "&dates=" + dates
+          + "&details=" + encodeURIComponent(calDesc(t, f));
+        var loc = calLocation(f);
+        if (loc) u += "&location=" + encodeURIComponent(loc);
+        return u;
+      }
+      function calControls(t, idx) {
+        var f = t.fixtures[idx];
+        if (!f) return "";
+        return '<span class="cal-row"><button class="cal-btn" type="button" data-cal-team="' + t.id + '" data-cal-idx="' + idx + '" aria-label="Add ' + esc(calTitle(t, f)) + ' to your calendar">' + CAL_ICON + 'Add to Calendar</button>'
+          + '<a class="cal-g" href="' + googleCalUrl(t, f) + '" target="_blank" rel="noopener">Google Calendar</a></span>';
+      }
+
       /* ================= Directory ================= */
       function renderDirectory() {
         var grid = document.getElementById("team-grid");
         var girlsGrid = document.getElementById("girls-grid");
         var boysHtml = "", girlsHtml = "";
         TEAMS.forEach(function (t) {
-          var card = '<a class="team-card" href="#/team/' + t.id + '">'
-            + '<p class="tname">' + esc(t.name) + '</p>'
+          var displayName = t.pageName || t.name;
+          var lr = latestResult(t);
+          var nf = nextFixture(t);
+          var card = '<div class="team-card">'
+            + '<p class="tname">' + esc(displayName) + '</p>'
             + '<p class="tmeta">' + esc(t.group) + ' · Birth years ' + esc(t.years) + '</p>'
             + '<span class="tdiv">' + esc(t.divShort) + ' · ' + esc(t.bracket) + '</span>'
-            + (t.recordChip ? '<span class="trec">' + esc(t.recordChip) + '</span>' : '')
-            + '<span class="tgo">Open team page →</span>'
-            + '</a>';
+            + (t.recordChip ? '<span class="trec">' + esc(t.recordChip) + '</span>' : '');
+          if (lr) {
+            card += '<p class="dir-line" style="margin-top:14px;"><span class="k">Latest result · ' + esc(lr.m.date) + '</span>' + esc(lr.text) + '</p>';
+          }
+          if (nf) {
+            card += '<p class="dir-line"><span class="k">Next match · ' + esc(nf.date) + '</span>'
+              + (nf.ha === "Home" ? "vs " : "at ") + esc(nf.opp) + ' · ' + esc(nf.time)
+              + (nf.venue && nf.venue !== "Venue not yet confirmed" ? ' · ' + esc(nf.venue) : '') + '</p>'
+              + calControls(t, 0);
+          }
+          if (t.podcast) {
+            card += '<p class="dir-previa-k">La Previa — this week\'s preview</p>'
+              + '<audio controls preload="none" src="' + t.podcast.src + '" aria-label="' + esc(t.podcast.title) + '"></audio>';
+          }
+          card += '<a class="tgo-big" href="#/team/' + t.id + '">Open the ' + esc(displayName) + ' page →</a>'
+            + '</div>';
           if (t.group === "Girls") { girlsHtml += card; } else { boysHtml += card; }
         });
         grid.innerHTML = boysHtml;
@@ -1918,7 +2086,7 @@
         var list = [];
         t.form.forEach(function (m) { list.push({ kind: "played", m: m }); });
         (t.unposted || []).forEach(function (m) { list.push({ kind: "unposted", m: m }); });
-        t.fixtures.forEach(function (m) { list.push({ kind: "upcoming", m: m }); });
+        t.fixtures.forEach(function (m, i) { list.push({ kind: "upcoming", m: m, idx: i }); });
         list.sort(function (a, b) { return a.m.iso < b.m.iso ? -1 : (a.m.iso > b.m.iso ? 1 : 0); });
         return list;
       }
@@ -2083,6 +2251,7 @@
           + '<div class="detail"><b>' + esc(f0.time) + '</b><span>Kickoff</span></div>'
           + '<div class="detail"><b>' + esc(f0.venue) + '</b><span>' + esc(f0.field || (f0.ha === "Home" ? "Home" : "Away")) + '</span></div>'
           + '</div></div>'
+          + '<div class="week-cal">' + calControls(t, 0) + '</div>'
           + '<div class="win-meter"><div class="meter-head"><b>Win Meter</b><span>Hub estimate · never odds</span></div>'
           + '<div class="meter-bar" role="img" aria-label="Win meter estimate: Sunblazer win ' + t.meter.us + ' percent, draw ' + t.meter.draw + ' percent, ' + esc(t.meter.themLabel) + ' ' + t.meter.them + ' percent">'
           + '<div class="meter-seg us" style="width:' + t.meter.us + '%">' + t.meter.us + '%</div>'
@@ -2151,7 +2320,8 @@
             h += '<li class="match" data-status="upcoming"><span class="badge up">Upcoming</span>'
               + '<div class="m-main"><div class="m-score">' + (m.ha === "Home" ? "vs " : "at ") + esc(m.opp) + '</div>'
               + '<div class="m-detail">' + esc(m.ha) + ' · Kickoff ' + esc(m.time) + ' · ' + esc(m.venue) + (m.field ? ', ' + esc(m.field) : '') + '</div></div>'
-              + '<span class="m-date">' + esc(m.date) + '</span></li>';
+              + '<span class="m-date">' + esc(m.date) + '</span>'
+              + calControls(t, item.idx) + '</li>';
           }
         });
         h += '</ul><p class="table-note">' + esc(t.matchesNote) + '</p></section>';
@@ -2396,6 +2566,16 @@
         }
         window.scrollTo(0, 0);
       }
+
+      // Add to Calendar buttons are rendered in several views; one delegated
+      // listener covers them all, including re-rendered team pages.
+      document.addEventListener("click", function (e) {
+        var btn = e.target && e.target.closest ? e.target.closest("[data-cal-team]") : null;
+        if (!btn) return;
+        var t = teamById(btn.getAttribute("data-cal-team"));
+        var f = t && t.fixtures[+btn.getAttribute("data-cal-idx")];
+        if (t && f) downloadIcs(t, f);
+      });
 
       loadPicks();
       renderDirectory();
