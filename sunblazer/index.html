@@ -115,7 +115,7 @@
       .group-label::after { content: ""; flex: 1; height: 3px; background: var(--line); border-radius: 2px; }
       .group-note { color: var(--ink-soft); font-size: 14.5px; margin: -4px 0 14px; max-width: 700px; }
       .team-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px;
+        display: flex; flex-direction: column; gap: 9px;
       }
       .team-card {
         position: relative; display: block; text-decoration: none; color: var(--ink);
@@ -161,6 +161,39 @@
         font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
         color: var(--ink-soft); margin: 13px 0 4px;
       }
+
+      /* ---------- Home directory: slim tappable rows (approved mockup) ---------- */
+      .team-row {
+        position: relative; display: flex; align-items: center; height: 88px;
+        padding: 12px 14px 2px 20px; overflow: hidden;
+        background: #0c1d47; border: 2px solid #27408a; border-radius: 16px;
+        box-shadow: var(--shadow); text-decoration: none; color: #eef3ff;
+        transition: transform .14s ease, border-color .14s ease;
+      }
+      .team-row::before {
+        content: ""; position: absolute; top: 0; left: 0; right: 0; height: 10px;
+        background: linear-gradient(90deg, #2f5fe0 0 62%, var(--yellow) 62% 100%);
+      }
+      .team-row:hover { transform: translateY(-2px); border-color: #2f5fe0; }
+      .team-row:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+      .team-row .txt { flex: 1; min-width: 0; position: relative; z-index: 1; }
+      .team-row .tname {
+        display: block; font-family: "Archivo Black", "Archivo Narrow", sans-serif; font-weight: 400;
+        font-size: 27px; line-height: .95; letter-spacing: .01em; text-transform: uppercase; color: #fff;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      }
+      .team-row .tid { display: block; margin-top: 5px; font-size: 12.5px; font-weight: 600; color: #a3b4dd; }
+      .team-row .go { position: relative; flex: none; width: 58px; height: 58px; }
+      .team-row .ball-mark { position: absolute; inset: 0; width: 58px; height: 58px; transform: rotate(-10deg); }
+      .team-row .ball-mark .bbase { fill: rgba(47, 95, 224, .10); }
+      .team-row .ball-mark .bpent { fill: rgba(47, 95, 224, .38); }
+      .team-row .ball-mark .bseam line { stroke: rgba(163, 180, 221, .38); stroke-width: 2.6; }
+      .team-row .ball-mark .bout { fill: none; stroke: rgba(47, 95, 224, .45); stroke-width: 2.8; }
+      .team-row.hot .ball-mark .bbase { fill: rgba(47, 95, 224, .18); }
+      .team-row.hot .ball-mark .bpent { fill: rgba(47, 95, 224, .66); }
+      .team-row.hot .ball-mark .bseam line { stroke: rgba(163, 180, 221, .55); }
+      .team-row.hot .ball-mark .bout { stroke: rgba(47, 95, 224, .75); }
+      .team-row .chev { position: absolute; left: 50%; top: 50%; transform: translate(-38%, -50%); z-index: 1; }
 
       /* ---------- Add to Calendar ---------- */
       .cal-row { display: inline-flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; margin-top: 10px; }
@@ -563,6 +596,8 @@
         html { scroll-behavior: auto; }
         .team-card { transition: none; }
         .team-card:hover { transform: none; }
+        .team-row { transition: none; }
+        .team-row:hover { transform: none; }
       }
       @media (max-width: 820px) {
         .week-grid { grid-template-columns: 104px minmax(0, 1fr); }
@@ -655,6 +690,8 @@
     <script src="audio-4.js"></script>
     <script src="audio-5.js"></script>
     <script src="audio-6.js"></script>
+    
+
     <script>
       // ============================================================
       // Data compiled by the club from the verified season record
@@ -749,7 +786,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-9 vs South Miami United Green",
             desc: "Sofia and Jeff preview Saturday, October 24 at Kendall Indian Hammocks — a home date with South Miami United Green AR, the thinnest scouting tape in the club, and a first win and first points of the season on the line.",
-            src: __AUDIO_1,
+            src: "__AUDIO_1",
             len: "2:01 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: null
@@ -840,7 +877,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-10 at AC Miami Academy",
             desc: "Sofia and Jeff preview the busiest weekend in the club — away at AC Miami Academy on Saturday, October 24, then home Sunday against South Miami United Green — and why AC Miami's goal-filled games make Saturday a shootout waiting to happen.",
-            src: __AUDIO_2,
+            src: "__AUDIO_2",
             len: "2:06 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: null
@@ -938,7 +975,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: SK Sunblazer U-11 Gold vs South Miami United Green DG",
             desc: "Sofia and Jeff preview Saturday, October 24 at Kendall Indian Hammocks — second place on the line as the U-11 Gold host South Miami United Green DG, unbeaten away, with a win lifting the Sunblazers past them in the table.",
-            src: __AUDIO_3,
+            src: "__AUDIO_3",
             len: "2:24 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: null
@@ -1032,7 +1069,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-12 at Forge La Cantera",
             desc: "Sofia and Jeff preview Saturday, October 24 at Archbishop Coleman Carroll — the hunt for a first point of the season against fourth-place Forge La Cantera, a scoring team that can be scored on.",
-            src: __AUDIO_4,
+            src: "__AUDIO_4",
             len: "2:00 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: null
@@ -1119,7 +1156,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-13 vs Cooper City Cobras",
             desc: "Sofia and Jeff preview Saturday, November 7 at Kendall Indian Hammocks — first in Bracket A vs first in Bracket B, as the unbeaten U-13s host the Cooper City Cobras and an attack that has not been shut out all season.",
-            src: __AUDIO_5,
+            src: "__AUDIO_5",
             len: "2:04 · Hosts Sofia & Jeff · November 7 match preview"
           },
           checked: "October 18, 2026", sourceNote: null
@@ -1221,7 +1258,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: SK Sunblazer U-14 vs Elite Soccer Academy Black",
             desc: "Sofia and Jeff preview Saturday, October 24 at Kendall Indian Hammocks — fourth vs fifth against unbeaten Elite Soccer Academy Black, the bracket's stingiest defense, and a Sunblazer attack that has scored in every match it has played.",
-            src: __AUDIO_6,
+            src: "__AUDIO_6",
             len: "1:57 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: "Compiled by the club · South Flight 1 · checked October 18, 2026"
@@ -1308,7 +1345,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-15 vs Forge Miami Soccer Academy",
             desc: "Sofia and Jeff preview Saturday, October 24 at Kendall Indian Hammocks — sixth vs seventh, zero points vs zero points, as the U-15s host Forge Miami Soccer Academy with somebody's first points of the season guaranteed.",
-            src: __AUDIO_7,
+            src: "__AUDIO_7",
             len: "2:06 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: null
@@ -1402,7 +1439,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-16 vs South Miami United White",
             desc: "Sofia and Jeff preview Saturday, October 24 at Kendall Indian Hammocks — ninth vs seventh against South Miami United White, and why one goal might be enough for a Sunblazer side whose trend line points up.",
-            src: __AUDIO_8,
+            src: "__AUDIO_8",
             len: "1:57 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: null
@@ -1502,7 +1539,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: SK Sunblazer U-10 Girls at PPO Heat Strikers",
             desc: "Sofia and Jeff preview Saturday, October 24 at Maxwell Park — the U-10 Girls' away rematch with PPO Heat Strikers, the side they beat 2–1 on Oct 4, with 2nd place and a tie at the top on the line.",
-            src: __AUDIO_9,
+            src: "__AUDIO_9",
             len: "2:12 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: "Compiled by the club · girls fall league · checked October 18, 2026"
@@ -1599,7 +1636,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-11 Girls at Miami Premier",
             desc: "Sofia and Jeff preview Saturday, October 24 at Flagler Grove — the U-11 Girls away at Miami Premier, a 10th-vs-6th matchup that the shared Miami Springs results and the games in hand say is much closer than the table.",
-            src: __AUDIO_10,
+            src: "__AUDIO_10",
             len: "2:12 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: "Compiled by the club · girls fall league · checked October 18, 2026"
@@ -1700,7 +1737,7 @@
             show: "La Previa · The Sunblazer preview show",
             title: "La Previa: U-12 Girls at Miami Premier R",
             desc: "Sofia and Jeff preview Saturday, October 24 at Flagler Grove — the U-12 Girls away at Miami Premier R, a low-scoring grind against the flight's most patient team, where the first goal is everything.",
-            src: __AUDIO_11,
+            src: "__AUDIO_11",
             len: "2:15 · Hosts Sofia & Jeff · October 24 match preview"
           },
           checked: "October 18, 2026", sourceNote: "Compiled by the club · girls fall league · checked October 18, 2026"
@@ -1838,35 +1875,45 @@
       }
 
       /* ================= Directory ================= */
+      /* Home entries are slim tappable rows (approved mockup): the whole row
+         is the link into the team page. Records, fixtures, calendar controls
+         and the La Previa player live on the team pages, not here. */
+      function ballMarkSvg(clipId) {
+        return '<svg class="ball-mark" viewBox="0 0 100 100" aria-hidden="true">'
+          + '<defs><clipPath id="' + clipId + '"><circle cx="50" cy="50" r="47"/></clipPath></defs>'
+          + '<g clip-path="url(#' + clipId + ')">'
+          + '<circle class="bbase" cx="50" cy="50" r="47"/>'
+          + '<g class="bseam">'
+          + '<line x1="50" y1="33.5" x2="50" y2="24.6"/>'
+          + '<line x1="65.7" y1="44.9" x2="74.2" y2="42.2"/>'
+          + '<line x1="59.7" y1="63.3" x2="64.9" y2="70.5"/>'
+          + '<line x1="40.3" y1="63.3" x2="35.1" y2="70.5"/>'
+          + '<line x1="34.3" y1="44.9" x2="25.8" y2="42.2"/>'
+          + '</g>'
+          + '<g class="bpent">'
+          + '<polygon points="50.0,33.5 65.7,44.9 59.7,63.3 40.3,63.3 34.3,44.9"/>'
+          + '<polygon points="50.0,0.0 62.8,9.3 57.9,24.4 42.1,24.4 37.2,9.3"/>'
+          + '<polygon points="97.6,34.5 92.6,49.6 76.8,49.6 71.9,34.5 84.7,25.2"/>'
+          + '<polygon points="79.4,90.5 63.5,90.5 58.6,75.4 71.5,66.0 84.3,75.4"/>'
+          + '<polygon points="20.6,90.5 15.7,75.4 28.5,66.0 41.4,75.4 36.5,90.5"/>'
+          + '<polygon points="2.4,34.5 15.3,25.2 28.1,34.5 23.2,49.6 7.4,49.6"/>'
+          + '</g>'
+          + '<circle class="bout" cx="50" cy="50" r="47"/>'
+          + '</g></svg>';
+      }
       function renderDirectory() {
         var grid = document.getElementById("team-grid");
         var girlsGrid = document.getElementById("girls-grid");
         var boysHtml = "", girlsHtml = "";
         TEAMS.forEach(function (t) {
           var displayName = t.pageName || t.name;
-          var lr = latestResult(t);
-          var nf = nextFixture(t);
-          var card = '<div class="team-card">'
-            + '<p class="tname">' + esc(displayName) + '</p>'
-            + '<p class="tmeta">' + esc(t.group) + ' · Birth years ' + esc(t.years) + '</p>'
-            + '<span class="tdiv">' + esc(t.divShort) + ' · ' + esc(t.bracket) + '</span>'
-            + (t.recordChip ? '<span class="trec">' + esc(t.recordChip) + '</span>' : '');
-          if (lr) {
-            card += '<p class="dir-line" style="margin-top:14px;"><span class="k">Latest result · ' + esc(lr.m.date) + '</span>' + esc(lr.text) + '</p>';
-          }
-          if (nf) {
-            card += '<p class="dir-line"><span class="k">Next match · ' + esc(nf.date) + '</span>'
-              + (nf.ha === "Home" ? "vs " : "at ") + esc(nf.opp) + ' · ' + esc(nf.time)
-              + (nf.venue && nf.venue !== "Venue not yet confirmed" ? ' · ' + esc(nf.venue) : '') + '</p>'
-              + calControls(t, 0);
-          }
-          if (t.podcast) {
-            card += '<p class="dir-previa-k">La Previa — this week\'s preview</p>'
-              + '<audio controls preload="none" src="' + t.podcast.src + '" aria-label="' + esc(t.podcast.title) + '"></audio>';
-          }
-          card += '<a class="tgo-big" href="#/team/' + t.id + '">Open the ' + esc(displayName) + ' page →</a>'
-            + '</div>';
-          if (t.group === "Girls") { girlsHtml += card; } else { boysHtml += card; }
+          var row = '<a class="team-row' + (t.id === "u11-gold" ? " hot" : "") + '" href="#/team/' + t.id + '" aria-label="Open the ' + esc(displayName) + ' page">'
+            + '<span class="txt"><span class="tname">' + esc(displayName) + '</span>'
+            + '<span class="tid">' + esc(t.group) + ' · Birth years ' + esc(t.years) + '</span></span>'
+            + '<span class="go">' + ballMarkSvg("bclip-" + t.id)
+            + '<svg class="chev" width="17" height="22" viewBox="0 0 17 22" aria-hidden="true"><path d="M3 2.5 L12.5 11 L3 19.5" fill="none" stroke="#ffd21f" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+            + '</a>';
+          if (t.group === "Girls") { girlsHtml += row; } else { boysHtml += row; }
         });
         grid.innerHTML = boysHtml;
         if (girlsGrid) { girlsGrid.innerHTML = girlsHtml; }
