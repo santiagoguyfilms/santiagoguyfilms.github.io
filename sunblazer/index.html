@@ -622,8 +622,10 @@
     <script>
       // ============================================================
       // Data compiled by the club from the verified season record
-      // (checked October 18, 2026). Lines that could not be verified
-      // are left blank on the page rather than guessed.
+      // (checked October 18, 2026). The standings tables carry the
+      // complete published bracket tables, pulled October 19, 2026 —
+      // every team in the bracket, full line, goal difference exactly
+      // as published.
       // ============================================================
       var TEAMS = [
         {
@@ -675,13 +677,18 @@
             ]
           },
           standings: [
-            { pos: 8, team: "South Miami United U9B Green AR", mp: 2, w: 1, l: 1, d: 0, gf: 2, ga: 4, pts: 3 },
-            { pos: 10, team: "U-9", mp: 1, w: 0, l: 1, d: 0, gf: 0, ga: 4, pts: 0, us: true },
-            { pos: null, team: "Southern Homestead 2018 Elite" },
-            { pos: null, team: "Miami Stars Deportivo Cali Montero" },
-            { pos: null, team: "Pinecrest Premier 2018 Boys Black" },
-            { pos: null, team: "Albion SC Miami BU9 Academy" },
-            { pos: null, team: "CTC Bandits Hialeah City White" }
+            { pos: 1, team: "South Dade United MK PB Knights U9B", mp: 5, w: 4, l: 1, d: 0, gf: 19, ga: 9, gd: 13, pts: 12 },
+            { pos: 2, team: "Southern Homestead Soccer Academy 2018 Elite", mp: 4, w: 3, l: 1, d: 0, gf: 12, ga: 5, gd: 7, pts: 9 },
+            { pos: 3, team: "Miami Stars Soccer Deportivo Cali U9 Montero", mp: 2, w: 2, l: 0, d: 0, gf: 4, ga: 0, gd: 4, pts: 6 },
+            { pos: 4, team: "ALBION SC Miami BU9 Academy", mp: 3, w: 2, l: 1, d: 0, gf: 9, ga: 9, gd: 1, pts: 6 },
+            { pos: 5, team: "Wild About Sports Academy LLC WASA U9 Rise", mp: 4, w: 2, l: 2, d: 0, gf: 9, ga: 10, gd: -1, pts: 6 },
+            { pos: 6, team: "Miami Athletic Club U9 Sky Blue", mp: 5, w: 2, l: 3, d: 0, gf: 9, ga: 12, gd: -3, pts: 6 },
+            { pos: 7, team: "Miami Stars Soccer HOMESTEAD LIONS U9 BOYS", mp: 3, w: 1, l: 2, d: 0, gf: 4, ga: 6, gd: -2, pts: 3 },
+            { pos: 8, team: "South Miami United FC U9B 2017/18 Green AR", mp: 2, w: 1, l: 1, d: 0, gf: 2, ga: 4, gd: -2, pts: 3 },
+            { pos: 9, team: "CTC Bandits FC 2018-19 Hialeah City White", mp: 1, w: 0, l: 1, d: 0, gf: 0, ga: 3, gd: -3, pts: 0 },
+            { pos: 10, team: "South Kendall Sunblazer Soccer Club SK U9", mp: 1, w: 0, l: 1, d: 0, gf: 0, ga: 4, gd: -4, pts: 0, us: true },
+            { pos: 11, team: "Pinecrest Premier Soccer 2018 Boys Black", mp: 4, w: 0, l: 4, d: 0, gf: 7, ga: 13, gd: -10, pts: 0 }
+
           ],
           standingsNote: "Only one of Sunblazer's five fixtures has a score reported so far, and the table counts reported scores only. League rule: a maximum of 4 goals per game count toward the table, for and against — that's why the October 3 match, which finished 0–9, reads 0–4 here.",
           tableSoWhat: "So what: with four scores unposted, nobody actually knows where this team sits yet. The two compiled lines say Saturday is 10th against 8th — the most winnable fixture on the U-9 schedule so far, with first points on the line.",
@@ -759,16 +766,19 @@
             ]
           },
           standings: [
-            { pos: 4, team: "AC Miami Academy BU10", mp: 5, w: 2, l: 2, d: 1, gf: null, ga: null, pts: 7 },
-            { pos: 5, team: "South Miami United Green VS", mp: 5, w: 2, l: 2, d: 1, gf: null, ga: null, pts: 7 },
-            { pos: 6, team: "U-10", mp: 2, w: 1, l: 1, d: 0, gf: 7, ga: 5, pts: 3, us: true },
-            { pos: null, team: "West Kendall Optimist U10" },
-            { pos: null, team: "Miami Futbol Academy Rush 2017 Yellow" },
-            { pos: null, team: "KHO Lions Hornets 2017" },
-            { pos: null, team: "S5A Kendall U10 Black" },
-            { pos: null, team: "South Dade United Miami Krew U10" }
+            { pos: 1, team: "West Kendall Optimist U10 Boys", mp: 5, w: 3, l: 1, d: 1, gf: 17, ga: 14, gd: 6, pts: 10 },
+            { pos: 2, team: "MILAN OF MIAMI F.C INC KM Soccer Club 2017", mp: 3, w: 3, l: 0, d: 0, gf: 10, ga: 3, gd: 7, pts: 9 },
+            { pos: 3, team: "Miami Futbol Academy Rush 2017 (U10) Yellow", mp: 5, w: 3, l: 2, d: 0, gf: 14, ga: 7, gd: 8, pts: 9 },
+            { pos: 4, team: "Athletic Club Florida AC Miami Academy BU10", mp: 5, w: 2, l: 2, d: 1, gf: 15, ga: 12, gd: 1, pts: 7 },
+            { pos: 5, team: "South Miami United FC U10B 2016/17 Green VS", mp: 5, w: 2, l: 2, d: 1, gf: 12, ga: 12, gd: 1, pts: 7 },
+            { pos: 6, team: "South Kendall Sunblazer Soccer Club SK 16 Gold", mp: 2, w: 1, l: 1, d: 0, gf: 7, ga: 5, gd: 2, pts: 3, us: true },
+            { pos: 7, team: "Pinecrest Premier Soccer 2017 Boys Navy", mp: 2, w: 1, l: 1, d: 0, gf: 4, ga: 6, gd: -1, pts: 3 },
+            { pos: 8, team: "Soccer 5 Academy S5A KENDALL U10 BLACK", mp: 2, w: 1, l: 1, d: 0, gf: 4, ga: 7, gd: -2, pts: 3 },
+            { pos: 9, team: "KHO Lions Hornets 2017", mp: 3, w: 0, l: 2, d: 1, gf: 5, ga: 12, gd: -8, pts: 1 },
+            { pos: 10, team: "South Dade United Miami Krew U10", mp: 4, w: 0, l: 4, d: 0, gf: 5, ga: 15, gd: -14, pts: 0 }
+
           ],
-          standingsNote: "AC Miami and South Miami United Green both moved to 2-2-1 on 7 points in the latest check — their full goal lines are still being compiled, so those cells show blank rather than a guess. League rule: a maximum of 4 goals per game count toward the table, for and against — that's why Sunblazer's two reported scores (5–1 and 3–5) read 7–5 here.",
+          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against — that's why Sunblazer's two reported scores (5–1 and 3–5) read 7–5 here.",
           tableSoWhat: "So what: the league table says 6th, four points off 4th. The true table says the Sunblazers own the best points rate of the three compiled lines — 1.50 a game — because they have played two matches to everyone else's five. The games in hand are the story of this bracket.",
           bracketResults: [
             { home: "AC Miami Academy", hs: 4, as: 0, away: "KHO Lions Hornets 2017" },
@@ -847,17 +857,18 @@
             ]
           },
           standings: [
-            { pos: 1, team: "SMU Green AR", mp: null, w: null, l: null, d: null, gf: null, ga: null, pts: null },
-            { pos: 2, team: "South Miami United Green DG", mp: 4, w: 3, l: 1, d: 0, gf: 12, ga: 8, pts: 9 },
-            { pos: 3, team: "U-11", mp: 5, w: 2, l: 2, d: 1, gf: 14, ga: 11, pts: 7, us: true },
-            { pos: null, team: "Albion BU11 Premier" },
-            { pos: null, team: "Homestead Lions U11" },
-            { pos: null, team: "Miami Stars U11 SFK" },
-            { pos: null, team: "Pinecrest Lions White" },
-            { pos: null, team: "Southern Homestead 2016 Blue" },
-            { pos: null, team: "Virginia Key 2016" }
+            { pos: 1, team: "South Miami United FC U11B 2015/16 Green AR", mp: 4, w: 4, l: 0, d: 0, gf: 14, ga: 2, gd: 13, pts: 12 },
+            { pos: 2, team: "South Miami United FC U11B 2015/16 Green DG", mp: 4, w: 3, l: 1, d: 0, gf: 12, ga: 8, gd: 5, pts: 9 },
+            { pos: 3, team: "South Kendall Sunblazer Soccer Club SK U11 Gold", mp: 5, w: 2, l: 2, d: 1, gf: 14, ga: 11, gd: 3, pts: 7, us: true },
+            { pos: 4, team: "Pinecrest Premier Soccer Lions U11 White", mp: 4, w: 2, l: 2, d: 0, gf: 10, ga: 9, gd: 2, pts: 6 },
+            { pos: 5, team: "Southern Homestead Soccer Academy 2016 Blue", mp: 4, w: 2, l: 2, d: 0, gf: 11, ga: 11, gd: 1, pts: 6 },
+            { pos: 6, team: "Miami Stars Soccer U11 SFK", mp: 4, w: 2, l: 2, d: 0, gf: 9, ga: 13, gd: -3, pts: 6 },
+            { pos: 7, team: "ALBION SC Miami BU11 Premier", mp: 5, w: 1, l: 3, d: 1, gf: 16, ga: 19, gd: -4, pts: 4 },
+            { pos: 8, team: "Miami Stars Soccer HOMESTEAD LIONS U11", mp: 2, w: 1, l: 1, d: 0, gf: 5, ga: 7, gd: -1, pts: 3 },
+            { pos: 9, team: "Miami Stars Soccer Virginia Key S.C. 2016", mp: 4, w: 0, l: 4, d: 0, gf: 5, ga: 16, gd: -16, pts: 0 }
+
           ],
-          standingsNote: "The full line is back — played, won, drawn, lost, goals for, goals against, goal difference, points, with goals counted under the league's 4-goal cap per game. SMU Green AR's place at the top is confirmed, but their full line is still being compiled, so it shows blank rather than guessed — the same goes for the rest of the bracket below the divider. The compiled lines so far are Green DG's and ours.",
+          standingsNote: "The full line — played, won, drawn, lost, goals for, goals against, goal difference, points — with goals counted under the league's 4-goal cap per game.",
           tableSoWhat: "So what: the league table says 3rd and two points off 2nd — close. The true table says Green DG earn 2.25 points a game to our 1.40 and still hold a game in hand, so on pace 2nd place is further away than the league table makes it look. Saturday is the exception that fixes both tables at once: beat them, and we jump past them into 2nd on 10 points.",
           bracketResults: [
             { home: "Miami Stars U11 SFK", hs: 3, as: 2, away: "SK U11 Gold", ours: true },
@@ -945,18 +956,20 @@
             ]
           },
           standings: [
-            { pos: 4, team: "Forge La Cantera U12", mp: 4, w: 2, l: 1, d: 1, gf: 12, ga: 7, pts: 7 },
-            { pos: 10, team: "U-12", mp: 3, w: 0, l: 3, d: 0, gf: 3, ga: 11, pts: 0, us: true },
-            { pos: null, team: "WASA SC U12 Rise" },
-            { pos: null, team: "Miami Breakers U-12B White" },
-            { pos: null, team: "South Miami United U12B White AR" },
-            { pos: null, team: "Miami Athletic Club U12 Sky Blue" },
-            { pos: null, team: "Miami Sharkies 2014/15" },
-            { pos: null, team: "S5A Tropical U12 White" },
-            { pos: null, team: "Miami Stars United FC 2016 Premier" },
-            { pos: null, team: "Doral SC SFPL White" }
+            { pos: 1, team: "Miami Sharkies FC Sharks 2014/15 Boys", mp: 6, w: 5, l: 1, d: 0, gf: 22, ga: 13, gd: 13, pts: 15 },
+            { pos: 2, team: "Miami Athletic Club U12 Sky Blue", mp: 4, w: 4, l: 0, d: 0, gf: 12, ga: 2, gd: 10, pts: 12 },
+            { pos: 3, team: "South Miami United FC U12B 2014/15 White AR", mp: 3, w: 3, l: 0, d: 0, gf: 11, ga: 3, gd: 9, pts: 9 },
+            { pos: 4, team: "Forge FC, Inc. La Cantera U12", mp: 4, w: 2, l: 1, d: 1, gf: 12, ga: 7, gd: 4, pts: 7 },
+            { pos: 5, team: "Soccer 5 Academy S5A TROPICAL U12 WHITE", mp: 4, w: 1, l: 2, d: 1, gf: 11, ga: 10, gd: 0, pts: 4 },
+            { pos: 6, team: "Wild About Sports Academy LLC WASA SC U12 Rise", mp: 3, w: 1, l: 2, d: 0, gf: 5, ga: 9, gd: -2, pts: 3 },
+            { pos: 7, team: "Miami Breakers FC MBFC U-12B WHITE", mp: 2, w: 1, l: 1, d: 0, gf: 3, ga: 5, gd: -2, pts: 3 },
+            { pos: 8, team: "Tropical Soccer U11B Select TN", mp: 1, w: 0, l: 1, d: 0, gf: 0, ga: 3, gd: -3, pts: 0 },
+            { pos: 9, team: "Miami Stars Soccer UNITED FC 2016 PREMIER", mp: 2, w: 0, l: 2, d: 0, gf: 2, ga: 7, gd: -5, pts: 0 },
+            { pos: 10, team: "South Kendall Sunblazer Soccer Club SK U12", mp: 3, w: 0, l: 3, d: 0, gf: 3, ga: 11, gd: -10, pts: 0, us: true },
+            { pos: 11, team: "Doral SC SFPL White B2014/15", mp: 4, w: 0, l: 4, d: 0, gf: 4, ga: 15, gd: -14, pts: 0 }
+
           ],
-          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against. Several early fixtures across the bracket still have no score reported — including two of Sunblazer's — so full lines for the rest of the bracket are still being compiled and show blank rather than guessed.",
+          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against.",
           tableSoWhat: "So what: two compiled lines, two stories — La Cantera score at 1.75 points a game in the top four; the Sunblazers are still waiting on a first point in the posted record, with two scores unposted. Saturday at ACC is where the second story can change.",
           bracketResults: [
             { home: "Forge La Cantera", hs: 2, as: 2, away: "S5A Tropical U12 White" },
@@ -1037,16 +1050,17 @@
             ]
           },
           standings: [
-            { pos: 1, team: "Weston Select U12B Beckenbauer", mp: 3, w: 3, l: 0, d: 0, gf: null, ga: null, pts: 9 },
-            { pos: 2, team: "U-13", mp: 3, w: 2, l: 0, d: 1, gf: 8, ga: 3, pts: 7, us: true },
-            { pos: 3, team: "Albion BU13 Premier", mp: 4, w: 2, l: 1, d: 1, gf: null, ga: null, pts: 7 },
-            { pos: 4, team: "Pinecrest Lions U13 Red", mp: 3, w: 2, l: 1, d: 0, gf: null, ga: null, pts: 6 },
-            { pos: 5, team: "West Kendall Optimist U13", mp: 4, w: 2, l: 2, d: 0, gf: null, ga: null, pts: 6 },
-            { pos: 6, team: "Miami Breakers U-13 B White", mp: 3, w: 1, l: 2, d: 0, gf: null, ga: null, pts: 3 },
-            { pos: 7, team: "Homestead Lions U13", mp: 4, w: 1, l: 3, d: 0, gf: null, ga: null, pts: 3 },
-            { pos: 8, team: "South Dade United Miami Krew U13", mp: 5, w: 0, l: 5, d: 0, gf: null, ga: null, pts: 0 }
+            { pos: 1, team: "Weston Select Soccer Club U12B Beckenbauer", mp: 3, w: 3, l: 0, d: 0, gf: 12, ga: 1, gd: 12, pts: 9 },
+            { pos: 2, team: "South Kendall Sunblazer Soccer Club SK U/13", mp: 3, w: 2, l: 0, d: 1, gf: 8, ga: 3, gd: 5, pts: 7, us: true },
+            { pos: 3, team: "ALBION SC Miami BU13 Premier", mp: 4, w: 2, l: 1, d: 1, gf: 9, ga: 5, gd: 4, pts: 7 },
+            { pos: 4, team: "Pinecrest Premier Soccer Lions U13 Red", mp: 3, w: 2, l: 1, d: 0, gf: 5, ga: 3, gd: 2, pts: 6 },
+            { pos: 5, team: "West Kendall Optimist U13 Boys", mp: 4, w: 2, l: 2, d: 0, gf: 4, ga: 10, gd: -6, pts: 6 },
+            { pos: 6, team: "Miami Breakers FC MBFC U-13 B WHITE", mp: 3, w: 1, l: 2, d: 0, gf: 6, ga: 4, gd: 2, pts: 3 },
+            { pos: 7, team: "Miami Stars Soccer HOMESTEAD LIONS U13", mp: 4, w: 1, l: 3, d: 0, gf: 8, ga: 14, gd: -5, pts: 3 },
+            { pos: 8, team: "South Dade United Miami Krew U13", mp: 5, w: 0, l: 5, d: 0, gf: 3, ga: 18, gd: -17, pts: 0 }
+
           ],
-          standingsNote: "Positions, records and points are as compiled in the latest check; goal lines for the rest of the bracket are still being compiled, so those cells show blank rather than a guess. League rule: a maximum of 4 goals per game count toward the table, for and against.",
+          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against.",
           tableSoWhat: "So what: the league table moved this week — Weston Select's third straight win took them top on 9 points, and the Sunblazers slipped to 2nd without playing. The true table tells the fuller story: on points per game the Sunblazers (2.33) sit clear of everyone except Weston (3.00), with two unposted scores still to land.",
           bracketResults: [
             { home: "SK U-13", hs: 3, as: 2, away: "Miami Breakers U-13 B White", ours: true },
@@ -1127,16 +1141,17 @@
             ]
           },
           standings: [
-            { pos: 1, team: "Atletico Fortaleza 2014 RED H", mp: 3, w: 3, l: 0, d: 0, gf: 12, ga: 4, pts: 9 },
-            { pos: 2, team: "Pinecrest Premier 2013 Boys White", mp: 6, w: 3, l: 3, d: 0, gf: 13, ga: 17, pts: 9 },
-            { pos: 3, team: "Southern Homestead 2013 Reserve", mp: 3, w: 2, l: 0, d: 1, gf: 9, ga: 4, pts: 7 },
-            { pos: 4, team: "SK Sunblazer U-14", mp: 5, w: 2, l: 2, d: 1, gf: 12, ga: 10, pts: 7, us: true },
-            { pos: 5, team: "Elite Soccer Academy N1 B2012/13 Black", mp: 2, w: 2, l: 0, d: 0, gf: 7, ga: 1, pts: 6 },
-            { pos: 6, team: "Lake Worth Sharks U14", mp: 3, w: 2, l: 1, d: 0, gf: 7, ga: 6, pts: 6 },
-            { pos: 7, team: "Miami Stars Deportivo Cali U14", mp: 3, w: 2, l: 1, d: 0, gf: 5, ga: 5, pts: 6 },
-            { pos: 8, team: "Athletum SC 2013B Gatti", mp: 5, w: 1, l: 4, d: 0, gf: 7, ga: 15, pts: 3 },
-            { pos: 9, team: "Forge FC Key West U14", mp: 2, w: 0, l: 1, d: 1, gf: 3, ga: 5, pts: 1 },
-            { pos: 10, team: "Weston FC 2013 Boys Blue", mp: 6, w: 0, l: 5, d: 1, gf: 9, ga: 17, pts: 1 }
+            { pos: 1, team: "Atletico Fortaleza 2014 RED H", mp: 3, w: 3, l: 0, d: 0, gf: 12, ga: 4, gd: 17, pts: 9 },
+            { pos: 2, team: "Pinecrest Premier Soccer 2013 Boys White", mp: 6, w: 3, l: 3, d: 0, gf: 13, ga: 17, gd: -5, pts: 9 },
+            { pos: 3, team: "Southern Homestead Soccer Academy 2013 Reserve", mp: 3, w: 2, l: 0, d: 1, gf: 9, ga: 4, gd: 8, pts: 7 },
+            { pos: 4, team: "South Kendall Sunblazer Soccer Club SK 13-Gold", mp: 5, w: 2, l: 2, d: 1, gf: 12, ga: 10, gd: 1, pts: 7, us: true },
+            { pos: 5, team: "Elite Soccer Academy (FL) N1 B2012/13 Black", mp: 2, w: 2, l: 0, d: 0, gf: 7, ga: 1, gd: 6, pts: 6 },
+            { pos: 6, team: "Lake Worth Sharks Boys U14", mp: 3, w: 2, l: 1, d: 0, gf: 7, ga: 6, gd: 1, pts: 6 },
+            { pos: 7, team: "Miami Stars Soccer Deportivo Cali U14 Arboleda Elite", mp: 3, w: 2, l: 1, d: 0, gf: 5, ga: 5, gd: 0, pts: 6 },
+            { pos: 8, team: "Athletum SC 2013B Gatti (Doral)", mp: 5, w: 1, l: 4, d: 0, gf: 7, ga: 15, gd: -17, pts: 3 },
+            { pos: 9, team: "Forge FC, Inc. Key West U14 Boys", mp: 2, w: 0, l: 1, d: 1, gf: 3, ga: 5, gd: -3, pts: 1 },
+            { pos: 10, team: "Weston FC 2013 Boys Blue", mp: 6, w: 0, l: 5, d: 1, gf: 9, ga: 17, gd: -8, pts: 1 }
+
           ],
           standingsNote: "Table shown as compiled by the club — every line in this bracket is compiled. Teams have played between two and six matches: Elite Soccer Academy and Forge FC Key West hold games in hand on the sides above them.",
           tableSoWhat: "So what: this is the table where the two views disagree most. The league table says 4th, two points off the top. The true table says the pace is set by Fortaleza and Elite at a perfect 3.00 a game — and the Sunblazers, at 1.40, have ground to make up. Saturday, against Elite themselves, is the fastest way to make it.",
@@ -1224,15 +1239,17 @@
             ]
           },
           standings: [
-            { pos: 1, team: "Albion SC Miami BU15 EA", mp: 6, w: 6, l: 0, d: 0, gf: 23, ga: 1, pts: 18 },
-            { pos: 6, team: "U-15", mp: 1, w: 0, l: 1, d: 0, gf: 0, ga: 4, pts: 0, us: true },
-            { pos: 7, team: "Forge Miami Soccer Academy U15", mp: 2, w: 0, l: 2, d: 0, gf: 2, ga: 8, pts: 0 },
-            { pos: null, team: "Miami Stars Homestead Lions U15" },
-            { pos: null, team: "South Miami United U15B White" },
-            { pos: null, team: "South Dade United Miami Krew U15" },
-            { pos: null, team: "Miami Breakers U-15B White" }
+            { pos: 1, team: "ALBION SC Miami BU15 EA", mp: 6, w: 6, l: 0, d: 0, gf: 23, ga: 1, gd: 22, pts: 18 },
+            { pos: 2, team: "Miami Stars Soccer HOMESTEAD LIONS U15 BOYS", mp: 3, w: 2, l: 1, d: 0, gf: 8, ga: 5, gd: 4, pts: 6 },
+            { pos: 3, team: "South Dade United Miami Krew U15", mp: 3, w: 2, l: 1, d: 0, gf: 8, ga: 6, gd: 4, pts: 6 },
+            { pos: 4, team: "South Miami United FC U15B 2011/12 White", mp: 5, w: 2, l: 3, d: 0, gf: 6, ga: 14, gd: -9, pts: 6 },
+            { pos: 5, team: "MILAN OF MIAMI F.C INC DE RUBI 2012", mp: 3, w: 1, l: 2, d: 0, gf: 4, ga: 5, gd: -1, pts: 3 },
+            { pos: 6, team: "South Kendall Sunblazer Soccer Club SK U15 Royal", mp: 1, w: 0, l: 1, d: 0, gf: 0, ga: 4, gd: -4, pts: 0, us: true },
+            { pos: 7, team: "Forge FC, Inc. Miami Soccer Academy U15", mp: 2, w: 0, l: 2, d: 0, gf: 2, ga: 8, gd: -6, pts: 0 },
+            { pos: 8, team: "Miami Breakers FC MBFC U-15B WHITE", mp: 3, w: 0, l: 3, d: 0, gf: 3, ga: 11, gd: -10, pts: 0 }
+
           ],
-          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against — Sunblazer's one reported match finished 0–5 and reads 0–4 here. Most of this bracket's early fixtures still have no score reported, so the remaining lines are still being compiled and show blank rather than guessed.",
+          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against — Sunblazer's one reported match finished 0–5 and reads 0–4 here.",
           tableSoWhat: "So what: three compiled lines, and the table is upside down — Albion are perfect at the top, and the Sunblazers and Forge sit pointless at the bottom with four and three unposted scores between them. Positions 6 and 7 say almost nothing yet. Saturday starts the correction.",
           bracketResults: [
             { home: "Forge Miami SA", hs: 0, as: 5, away: "Homestead Lions U15" },
@@ -1310,17 +1327,19 @@
             ]
           },
           standings: [
-            { pos: 1, team: "Tropical Soccer Hodler Miami FC", mp: null, w: null, l: null, d: null, gf: null, ga: null, pts: null },
-            { pos: 7, team: "South Miami United U16B White", mp: 3, w: 1, l: 2, d: 0, gf: 6, ga: 6, pts: 3 },
-            { pos: 9, team: "U-16", mp: 4, w: 0, l: 3, d: 1, gf: 6, ga: 14, pts: 1, us: true },
-            { pos: null, team: "Miami Stars Inter de Miami 2011" },
-            { pos: null, team: "Miami Stars Union Deportiva 2011" },
-            { pos: null, team: "Weston Select U16 Boys" },
-            { pos: null, team: "Albion BU15-16 Academy" },
-            { pos: null, team: "S5A Amelia U16 Red" },
-            { pos: null, team: "South Dade United Miami Krew U16" }
+            { pos: 1, team: "Tropical Soccer Hodler Miami FC", mp: 4, w: 2, l: 0, d: 2, gf: 8, ga: 3, gd: 5, pts: 8 },
+            { pos: 2, team: "Weston Select Soccer Club U16 Boys", mp: 2, w: 2, l: 0, d: 0, gf: 8, ga: 1, gd: 7, pts: 6 },
+            { pos: 3, team: "Forge FC, Inc. Miami Soccer Academy U16", mp: 2, w: 2, l: 0, d: 0, gf: 6, ga: 0, gd: 6, pts: 6 },
+            { pos: 4, team: "Miami Stars Soccer Union Deportiva 2011", mp: 3, w: 2, l: 1, d: 0, gf: 8, ga: 4, gd: 4, pts: 6 },
+            { pos: 5, team: "Miami Stars Soccer INTER DE 2011", mp: 2, w: 1, l: 0, d: 1, gf: 5, ga: 4, gd: 4, pts: 4 },
+            { pos: 6, team: "Soccer 5 Academy S5A AMELIA U16 RED", mp: 2, w: 1, l: 0, d: 1, gf: 2, ga: 1, gd: 1, pts: 4 },
+            { pos: 7, team: "South Miami United FC U16B 2010/11 White", mp: 3, w: 1, l: 2, d: 0, gf: 6, ga: 6, gd: 0, pts: 3 },
+            { pos: 8, team: "ALBION SC Miami BU15-16 Academy", mp: 4, w: 0, l: 3, d: 1, gf: 2, ga: 10, gd: -8, pts: 1 },
+            { pos: 9, team: "South Kendall Sunblazer Soccer Club SK 11B-Gold", mp: 4, w: 0, l: 3, d: 1, gf: 6, ga: 14, gd: -11, pts: 1, us: true },
+            { pos: 10, team: "South Dade United Miami Krew U16", mp: 2, w: 0, l: 2, d: 0, gf: 0, ga: 8, gd: -8, pts: 0 }
+
           ],
-          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against — that's why Sunblazer's four reported scores (3–9, 1–4, 0–8, 2–2) read 6–14 here. Hodler's place at the top is confirmed; the rest of the bracket's full lines are still being compiled and show blank rather than guessed.",
+          standingsNote: "League rule: a maximum of 4 goals per game count toward the table, for and against — that's why Sunblazer's four reported scores (3–9, 1–4, 0–8, 2–2) read 6–14 here.",
           tableSoWhat: "So what: the compiled lines say 9th vs 7th is a two-point game — and the true table agrees, South Miami's 1.00 a game against our 0.25. But rates built on three and four matches swing fast: one win Saturday levels the points and rewrites both views.",
           bracketResults: [
             { home: "Albion BU15-16 Academy", hs: 0, as: 6, away: "SMU U16B White" },
@@ -1404,14 +1423,15 @@
             ]
           },
           standings: [
-            { pos: 1, team: "Homestead Lions U09 Girls", mp: 4, w: 4, l: 0, d: 0, gf: null, ga: null, pts: 12 },
-            { pos: 2, team: "PPO Heat Strikers G-U10", mp: 7, w: 3, l: 3, d: 1, gf: 12, ga: 14, pts: 10 },
-            { pos: 3, team: "U-10 Girls", mp: 5, w: 3, l: 2, d: 0, gf: 13, ga: 16, pts: 9, us: true },
-            { pos: 4, team: "Hollywood FC U10 Girls", mp: 4, w: 2, l: 2, d: 0, gf: null, ga: null, pts: 6 },
-            { pos: 5, team: "Florida Royal FC U10 Nova", mp: 5, w: 1, l: 3, d: 1, gf: null, ga: null, pts: 4 },
-            { pos: 6, team: "West Pines Florida Fire U9 Girls", mp: 5, w: 1, l: 4, d: 0, gf: null, ga: null, pts: 3 }
+            { pos: 1, team: "Miami Stars Soccer HOMESTEAD LIONS U09 GIRLS", mp: 4, w: 4, l: 0, d: 0, gf: 20, ga: 1, gd: 14, pts: 12 },
+            { pos: 2, team: "Pembroke Pines Optimist PPO Heat Strikers G-U10", mp: 7, w: 3, l: 3, d: 1, gf: 12, ga: 14, gd: -2, pts: 10 },
+            { pos: 3, team: "South Kendall Sunblazer Soccer Club SK U10 Girls", mp: 5, w: 3, l: 2, d: 0, gf: 13, ga: 16, gd: 1, pts: 9, us: true },
+            { pos: 4, team: "Hollywood FC HFC U10 Girls (2017/16)", mp: 4, w: 2, l: 2, d: 0, gf: 16, ga: 11, gd: 4, pts: 6 },
+            { pos: 5, team: "Miami Stars Soccer FLORIDA ROYAL FC U10 NOVA", mp: 5, w: 1, l: 3, d: 1, gf: 9, ga: 24, gd: -8, pts: 4 },
+            { pos: 6, team: "West Pines United FC Florida Fire U9 Girls", mp: 5, w: 1, l: 4, d: 0, gf: 15, ga: 19, gd: -9, pts: 3 }
+
           ],
-          standingsNote: "Table shown as compiled by the club — positions, records and points for the whole bracket; goal lines beyond the Sunblazers' and PPO's are still being compiled, so those cells show blank rather than a guess. The Sunblazers sit 3rd on 9 points, one behind PPO and three behind leaders Homestead.",
+          standingsNote: "Table shown as compiled by the club — positions, records and points for the whole bracket. The Sunblazers sit 3rd on 9 points, one behind PPO and three behind leaders Homestead.",
           tableSoWhat: "So what: the league table says 3rd — but PPO have played seven matches to the Sunblazers' five. On points per game the true table already has the Sunblazers 2nd, at 1.80 a match against PPO's 1.43. Saturday's rematch settles it in the official view too.",
           bracketResults: [
             { home: "Homestead Lions U09", hs: 8, as: 0, away: "SK U-10 Girls", ours: true },
@@ -1502,22 +1522,23 @@
             ]
           },
           standings: [
-            { pos: 1, team: "South Miami White BR", mp: 5, w: 4, l: 0, d: 1, gf: null, ga: null, pts: 13 },
-            { pos: 2, team: "Pinecrest Blue", mp: 4, w: 4, l: 0, d: 0, gf: null, ga: null, pts: 12 },
-            { pos: 3, team: "Miami Shores U11G", mp: 3, w: 3, l: 0, d: 0, gf: null, ga: null, pts: 9 },
-            { pos: 4, team: "Pinecrest White", mp: 5, w: 2, l: 1, d: 2, gf: null, ga: null, pts: 8 },
-            { pos: 5, team: "South Miami White FH", mp: 5, w: 2, l: 1, d: 2, gf: null, ga: null, pts: 8 },
-            { pos: 6, team: "Miami Premier", mp: 3, w: 2, l: 1, d: 0, gf: 10, ga: 7, pts: 6 },
-            { pos: 7, team: "South Dade MK Knights", mp: 4, w: 2, l: 2, d: 0, gf: null, ga: null, pts: 6 },
-            { pos: 8, team: "Southern Homestead 2016", mp: 5, w: 1, l: 1, d: 3, gf: null, ga: null, pts: 6 },
-            { pos: 9, team: "South Miami Green", mp: 3, w: 1, l: 1, d: 1, gf: null, ga: null, pts: 4 },
-            { pos: 10, team: "U-11 Girls", mp: 2, w: 1, l: 1, d: 0, gf: 8, ga: 11, pts: 3, us: true },
-            { pos: 11, team: "Miami Springs MSVG", mp: 4, w: 0, l: 3, d: 1, gf: null, ga: null, pts: 1 },
-            { pos: 12, team: "Key Biscayne G-Elite", mp: 2, w: 0, l: 2, d: 0, gf: null, ga: null, pts: 0 },
-            { pos: 13, team: "Athletum 2016G", mp: 4, w: 0, l: 4, d: 0, gf: null, ga: null, pts: 0 },
-            { pos: 14, team: "Miami Breakers Black", mp: 5, w: 0, l: 5, d: 0, gf: null, ga: null, pts: 0 }
+            { pos: 1, team: "South Miami United FC U11G 2015/16 White BR", mp: 5, w: 4, l: 0, d: 1, gf: 16, ga: 2, gd: 10, pts: 13 },
+            { pos: 2, team: "Pinecrest Premier Soccer 16/17 Girls Blue", mp: 4, w: 4, l: 0, d: 0, gf: 38, ga: 1, gd: 16, pts: 12 },
+            { pos: 3, team: "Miami Shores Soccer Club U11G FGL (FL)", mp: 4, w: 4, l: 0, d: 0, gf: 18, ga: 6, gd: 9, pts: 12 },
+            { pos: 4, team: "Pinecrest Premier Soccer 16/17 Girls White", mp: 6, w: 2, l: 2, d: 2, gf: 19, ga: 11, gd: 4, pts: 8 },
+            { pos: 5, team: "South Miami United FC U11G 2015/16 White FH", mp: 5, w: 2, l: 1, d: 2, gf: 7, ga: 4, gd: 2, pts: 8 },
+            { pos: 6, team: "Miami Premier Soccer MPS2015/16", mp: 3, w: 2, l: 1, d: 0, gf: 10, ga: 7, gd: 3, pts: 6 },
+            { pos: 7, team: "South Dade United MK PB Knights U11G", mp: 4, w: 2, l: 2, d: 0, gf: 17, ga: 19, gd: 1, pts: 6 },
+            { pos: 8, team: "Southern Homestead Soccer Academy 2016 Girls", mp: 5, w: 1, l: 1, d: 3, gf: 4, ga: 6, gd: -2, pts: 6 },
+            { pos: 9, team: "South Miami United FC U11G 2016/17 Green", mp: 3, w: 1, l: 1, d: 1, gf: 5, ga: 4, gd: 1, pts: 4 },
+            { pos: 10, team: "South Kendall Sunblazer Soccer Club SK Girls 16", mp: 2, w: 1, l: 1, d: 0, gf: 8, ga: 11, gd: 0, pts: 3, us: true },
+            { pos: 11, team: "Miami Springs Soccer MSVG 2015/16 Girls", mp: 4, w: 0, l: 3, d: 1, gf: 6, ga: 16, gd: -9, pts: 1 },
+            { pos: 12, team: "Key Biscayne SC KBSC G-Elite 2015/16", mp: 2, w: 0, l: 2, d: 0, gf: 0, ga: 5, gd: -5, pts: 0 },
+            { pos: 13, team: "Athletum SC 2016G Lehmann (Doral)", mp: 4, w: 0, l: 4, d: 0, gf: 2, ga: 27, gd: -11, pts: 0 },
+            { pos: 14, team: "Miami Breakers FC MBFC U-11G BLACK", mp: 5, w: 0, l: 5, d: 0, gf: 2, ga: 33, gd: -19, pts: 0 }
+
           ],
-          standingsNote: "Table shown as compiled by the club — positions, records and points for the whole flight; goal lines beyond the Sunblazers' and Miami Premier's are still being compiled, so those cells show blank rather than a guess. The Sunblazers have played the fewest scored matches in the flight, so the table understates where this team actually sits.",
+          standingsNote: "Table shown as compiled by the club — positions, records and points for the whole flight. The Sunblazers have played the fewest scored matches in the flight, so the table understates where this team actually sits.",
           tableSoWhat: "So what: 10th sounds distant — until the true table. On points per game the Sunblazers jump to 8th, because two matches is the smallest sample in the flight. The two unposted home scores are worth more here than anywhere else in the club: post them as wins and this side is mid-table overnight.",
           bracketResults: [
             { home: "Pinecrest Blue", hs: 9, as: 1, away: "SK U-11 Girls", ours: true },
@@ -1598,20 +1619,21 @@
             ]
           },
           standings: [
-            { pos: 1, team: "Miami Springs U11/U12", mp: 5, w: 4, l: 0, d: 1, gf: null, ga: null, pts: 13 },
-            { pos: 2, team: "Miami Shores U12G", mp: 3, w: 3, l: 0, d: 0, gf: null, ga: null, pts: 9 },
-            { pos: 3, team: "Pinecrest 14/15 White", mp: 3, w: 2, l: 0, d: 1, gf: null, ga: null, pts: 7 },
-            { pos: 4, team: "Miami Premier R", mp: 4, w: 2, l: 2, d: 0, gf: 6, ga: 7, pts: 6 },
-            { pos: 5, team: "South Miami White VC", mp: 3, w: 2, l: 1, d: 0, gf: null, ga: null, pts: 6 },
-            { pos: 6, team: "Southern Homestead 2015", mp: 4, w: 2, l: 2, d: 0, gf: 13, ga: 8, pts: 6 },
-            { pos: 7, team: "Miami Breakers Elite", mp: 5, w: 2, l: 3, d: 0, gf: null, ga: null, pts: 6 },
-            { pos: 8, team: "South Miami White JC", mp: 3, w: 1, l: 2, d: 0, gf: null, ga: null, pts: 3 },
-            { pos: 9, team: "Key Biscayne G-Premier", mp: 3, w: 1, l: 2, d: 0, gf: null, ga: null, pts: 3 },
-            { pos: 10, team: "U-12 Girls", mp: 4, w: 1, l: 3, d: 0, gf: 2, ga: 17, pts: 3, us: true },
-            { pos: 11, team: "CTC Bandits", mp: 2, w: 0, l: 2, d: 0, gf: null, ga: null, pts: 0 },
-            { pos: 12, team: "Miami Athletic Sky Blue", mp: 3, w: 0, l: 3, d: 0, gf: null, ga: null, pts: 0 }
+            { pos: 1, team: "Miami Springs Soccer MSVG U11/U12 Girls", mp: 5, w: 4, l: 0, d: 1, gf: 23, ga: 5, gd: 12, pts: 13 },
+            { pos: 2, team: "Miami Shores Soccer Club U12G FGL (FL)", mp: 3, w: 3, l: 0, d: 0, gf: 13, ga: 0, gd: 9, pts: 9 },
+            { pos: 3, team: "Pinecrest Premier Soccer 14/15 Girls White", mp: 3, w: 2, l: 0, d: 1, gf: 16, ga: 2, gd: 8, pts: 7 },
+            { pos: 4, team: "Miami Premier Soccer MPS2014/15R", mp: 4, w: 2, l: 2, d: 0, gf: 6, ga: 7, gd: -1, pts: 6 },
+            { pos: 5, team: "South Miami United FC U12G 2014/15 White VC", mp: 3, w: 2, l: 1, d: 0, gf: 12, ga: 7, gd: 5, pts: 6 },
+            { pos: 6, team: "Southern Homestead Soccer Academy 2015 Girls", mp: 4, w: 2, l: 2, d: 0, gf: 13, ga: 8, gd: 2, pts: 6 },
+            { pos: 7, team: "Miami Breakers FC MBFC U12G ELITE", mp: 5, w: 2, l: 3, d: 0, gf: 10, ga: 15, gd: -2, pts: 6 },
+            { pos: 8, team: "South Miami United FC U12G 2014/15 White JC", mp: 3, w: 1, l: 2, d: 0, gf: 7, ga: 9, gd: -2, pts: 3 },
+            { pos: 9, team: "Key Biscayne SC KBSC G-Premier 2014/15", mp: 3, w: 1, l: 2, d: 0, gf: 3, ga: 13, gd: -7, pts: 3 },
+            { pos: 10, team: "South Kendall Sunblazer Soccer Club SK G 15", mp: 4, w: 1, l: 3, d: 0, gf: 2, ga: 17, gd: -9, pts: 3, us: true },
+            { pos: 11, team: "CTC Bandits FC 2014-15 PALAU", mp: 2, w: 0, l: 2, d: 0, gf: 2, ga: 7, gd: -5, pts: 0 },
+            { pos: 12, team: "Miami Athletic Club U12 Girls Sky Blue", mp: 3, w: 0, l: 3, d: 0, gf: 0, ga: 17, gd: -10, pts: 0 }
+
           ],
-          standingsNote: "Table shown as compiled by the club — positions, records and points for the whole flight; goal lines beyond the compiled few show blank rather than a guess. The Oct 17 Southern Homestead score is not reported yet, so this table will move when it goes up.",
+          standingsNote: "Table shown as compiled by the club — positions, records and points for the whole flight. The Oct 17 Southern Homestead score is not reported yet, so this table will move when it goes up.",
           tableSoWhat: "So what: 10th of 12 sounds like the bottom — the true table says the middle of this flight is one result deep. Four teams sit on 6 points, three on 3; a single win moves the Sunblazers past two sides at once. The flight is a ladder, not a cliff.",
           bracketResults: [
             { home: "Miami Premier R", hs: 4, as: 2, away: "Miami Breakers Elite" },
@@ -1656,10 +1678,11 @@
         for (var i = 0; i < TEAMS.length; i++) { if (TEAMS[i].id === id) return TEAMS[i]; }
         return null;
       }
-      function gdText(gf, ga) {
-        if (gf === null || gf === undefined || ga === null || ga === undefined) return "—";
-        var d = gf - ga;
-        return (d > 0 ? "+" + d : String(d));
+      function gdText(gd) {
+        // Goal difference prints exactly as published in the league's
+        // table — never computed from goals for minus goals against.
+        if (gd === null || gd === undefined) return "—";
+        return String(gd);
       }
 
       /* ================= Directory ================= */
@@ -1974,7 +1997,7 @@
           body += '<tr' + (r.us ? ' class="us"' : '') + '><td class="num">' + rank + '</td><td>' + esc(r.team) + '</td>'
             + '<td class="num">' + cell(r.mp) + '</td><td class="num">' + cell(r.w) + '</td><td class="num">' + cell(r.d) + '</td><td class="num">' + cell(r.l) + '</td>';
           if (view === "league") {
-            body += '<td class="num">' + cell(r.gf) + '</td><td class="num">' + cell(r.ga) + '</td><td class="num">' + gdText(r.gf, r.ga) + '</td><td class="num">' + cell(r.pts) + '</td>';
+            body += '<td class="num">' + cell(r.gf) + '</td><td class="num">' + cell(r.ga) + '</td><td class="num">' + gdText(r.gd) + '</td><td class="num">' + cell(r.pts) + '</td>';
           } else {
             body += '<td class="num">' + cell(r.pts) + '</td><td class="num">' + (r.mp > 0 ? (r.pts / r.mp).toFixed(2) : "—") + '</td>';
           }
@@ -2142,7 +2165,6 @@
           + '<div class="card standings-card" style="padding:6px 12px;" id="league-table">' + standingsTable(t, "league") + '</div>'
           + '<p class="table-note" id="league-note"><strong>Reading it:</strong> ' + esc(t.standingsNote) + '</p>'
           + '<div class="card standings-card" style="padding:6px 12px;" id="true-table" hidden>' + standingsTable(t, "true") + '</div>'
-          + '<p class="table-note" id="true-note" hidden><strong>Honest limit:</strong> points per game needs matches played — rows whose line is still being compiled show blank rather than a guessed rate, and join the ranking as soon as their line is compiled.</p>'
           + '<p class="sowhat"><strong>' + esc(t.tableSoWhat) + '</strong></p></section>';
 
         // 7 — Around the Bracket
@@ -2271,7 +2293,6 @@
         var league = document.getElementById("league-table");
         var leagueNote = document.getElementById("league-note");
         var honest = document.getElementById("true-table");
-        var trueNote = document.getElementById("true-note");
         if (toggles.length && league && honest) {
           toggles.forEach(function (button) {
             button.addEventListener("click", function () {
@@ -2280,7 +2301,6 @@
               league.hidden = view !== "league";
               leagueNote.hidden = view !== "league";
               honest.hidden = view !== "true";
-              trueNote.hidden = view !== "true";
             });
           });
         }
