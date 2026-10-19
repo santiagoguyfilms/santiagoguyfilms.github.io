@@ -697,6 +697,22 @@
       // every team in the bracket, full line, goal difference exactly
       // as published.
       // ============================================================
+      // Resolve staged audio placeholders ("__AUDIO_N") to the blob URLs
+      // defined by the staged audio pack files. In this artifact the packs
+      // do not exist and podcast srcs are data URIs, so this is a pass-through.
+      var __AUDIO_REG = {};
+      if (typeof __AUDIO_1 !== "undefined") __AUDIO_REG["__AUDIO_1"] = __AUDIO_1;
+      if (typeof __AUDIO_2 !== "undefined") __AUDIO_REG["__AUDIO_2"] = __AUDIO_2;
+      if (typeof __AUDIO_3 !== "undefined") __AUDIO_REG["__AUDIO_3"] = __AUDIO_3;
+      if (typeof __AUDIO_4 !== "undefined") __AUDIO_REG["__AUDIO_4"] = __AUDIO_4;
+      if (typeof __AUDIO_5 !== "undefined") __AUDIO_REG["__AUDIO_5"] = __AUDIO_5;
+      if (typeof __AUDIO_6 !== "undefined") __AUDIO_REG["__AUDIO_6"] = __AUDIO_6;
+      if (typeof __AUDIO_7 !== "undefined") __AUDIO_REG["__AUDIO_7"] = __AUDIO_7;
+      if (typeof __AUDIO_8 !== "undefined") __AUDIO_REG["__AUDIO_8"] = __AUDIO_8;
+      if (typeof __AUDIO_9 !== "undefined") __AUDIO_REG["__AUDIO_9"] = __AUDIO_9;
+      if (typeof __AUDIO_10 !== "undefined") __AUDIO_REG["__AUDIO_10"] = __AUDIO_10;
+      if (typeof __AUDIO_11 !== "undefined") __AUDIO_REG["__AUDIO_11"] = __AUDIO_11;
+      function podSrc(s) { return (typeof s === "string" && __AUDIO_REG[s]) ? __AUDIO_REG[s] : s; }
       var TEAMS = [
         {
           id: "u9", name: "U-9", group: "Boys", years: "2017/18", regName: "SK U9",
@@ -1967,7 +1983,7 @@
         var t = playAllState.list[playAllState.idx];
         var st = document.getElementById("playall-status");
         if (st) st.textContent = "Now playing: " + (t.pageName || t.name) + " — " + t.podcast.title.replace(/^La Previa: /, "");
-        var a = new Audio(t.podcast.src);
+        var a = new Audio(podSrc(t.podcast.src));
         playAllState.audio = a;
         a.onended = function () { playAllState.idx++; playAllStep(); };
         var p = a.play();
@@ -2058,7 +2074,7 @@
           }
           if (t.podcast) {
             h += '<p class="my-previa-k">La Previa — this week\'s preview</p>'
-              + '<audio controls preload="none" src="' + t.podcast.src + '" aria-label="' + esc(t.podcast.title) + '"></audio>';
+              + '<audio controls preload="none" src="' + podSrc(t.podcast.src) + '" aria-label="' + esc(t.podcast.title) + '"></audio>';
           }
           h += '<p class="my-line" style="margin-top:10px;"><a href="#/team/' + t.id + '">Open the ' + esc(t.pageName || t.name) + ' page →</a></p></div>';
         });
@@ -2280,7 +2296,7 @@
           + '<p class="show">' + esc(p.show) + '</p>'
           + '<h4>' + esc(p.title) + '</h4>'
           + '<p>' + esc(p.desc) + '</p>'
-          + '<audio controls preload="none" src="' + p.src + '" aria-label="' + esc(p.title) + '"></audio>'
+          + '<audio controls preload="none" src="' + podSrc(p.src) + '" aria-label="' + esc(p.title) + '"></audio>'
           + '<p class="len">' + esc(p.len) + '</p>'
           + '</div></div></section>';
 
