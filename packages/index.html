@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creative Testing Packages — Santiago Guy Films</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{ --ink:#16121a; --soft:#4c4454; --dim:#8b8393; --paper:#fff; --warm:#faf7fb; --line:#ece7ef; --pink:#e91e7d; --sky:#0284c7; --teal:#0d9488; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px;}
+a{color:var(--sky);}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);}
+.logo{font-weight:900;letter-spacing:2.5px;font-size:13px;}
+.logo span{color:var(--pink);}
+.topbar .home{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--soft);}
+.hero{padding:38px 0 8px;text-align:left;}
+.kicker{font-size:12px;font-weight:800;letter-spacing:2.5px;color:var(--pink);}
+.hero h1{font-size:40px;line-height:1.12;font-weight:900;margin:10px 0 12px;}
+.hero h1 .pk{color:var(--pink);}
+.hero p{font-size:17px;color:var(--soft);max-width:640px;}
+.hero .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:10px;}
+.btn.pink{background:var(--pink);}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--ink);}
+.stats{font-size:13px;color:var(--dim);margin-top:16px;}
+.video-slot{margin:28px 0 6px;background:var(--ink);border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px;}
+.video-slot .play{width:64px;height:64px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px;}
+.video-slot b{font-size:17px;}
+.video-slot span{font-size:13.5px;color:#cfc4da;}
+.video-wrap{margin:28px 0 6px;text-align:center;}
+.video-wrap iframe{width:100%;max-width:350px;aspect-ratio:9/16;border:0;border-radius:16px;background:#16121a;box-shadow:0 10px 34px rgba(22,18,26,.25);}
+.video-cap{font-size:13px;color:var(--dim);margin-top:9px;}
+section{padding:34px 0 6px;}
+h2{font-size:27px;font-weight:900;line-height:1.2;margin-bottom:10px;}
+h2 .pk{color:var(--pink);}
+p.lede{font-size:16px;color:var(--soft);max-width:700px;}
+p.body{font-size:15.5px;color:var(--soft);max-width:700px;margin-top:10px;}
+.build{display:flex;gap:10px;align-items:stretch;margin-top:18px;flex-wrap:wrap;}
+.bcol{flex:1;min-width:150px;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:var(--warm);}
+.bcol h3{font-size:11.5px;letter-spacing:1.8px;margin-bottom:9px;}
+.bcol.hooks h3{color:var(--sky);} .bcol.bodies h3{color:var(--teal);} .bcol.ctas h3{color:var(--pink);}
+.chip{display:block;background:#fff;border:1.2px solid #ddd3e4;border-radius:8px;padding:7px 10px;font-size:13px;margin-bottom:7px;}
+.bcol .note{font-size:12.5px;color:var(--dim);line-height:1.5;}
+.op{align-self:center;font-size:22px;font-weight:900;}
+.eq{background:var(--ink);color:#fff;border-radius:12px;padding:16px;min-width:150px;flex:1;}
+.eq .big{font-size:27px;font-weight:900;}
+.eq .small{font-size:13px;color:#cfc4da;}
+.math{margin-top:14px;background:#eef7fd;border:1.2px solid #bfe3f7;border-radius:12px;padding:13px 16px;font-size:14.5px;}
+.math b{color:#0369a1;}
+.sample{margin-top:16px;border:1.5px solid var(--line);border-radius:12px;padding:16px 18px;}
+.sample h3{font-size:11.5px;letter-spacing:1.8px;margin-bottom:10px;}
+.sample .row{font-size:14.5px;margin-bottom:7px;}
+.sample .lbl{display:inline-block;min-width:64px;font-weight:800;font-size:11px;letter-spacing:0.6px;}
+.sample .h{color:var(--sky);} .sample .b{color:var(--teal);} .sample .c{color:var(--pink);}
+.sample .note{font-size:13px;color:var(--dim);margin-top:8px;}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+.step{border:1.5px solid var(--line);border-radius:12px;padding:16px;background:var(--warm);}
+.step .num{display:inline-block;background:var(--sky);color:#fff;font-weight:800;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-size:14px;margin-bottom:8px;}
+.step h4{font-size:15.5px;margin-bottom:4px;}
+.step p{font-size:14px;color:var(--soft);}
+.receive{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px;}
+.rcard{border:1.5px solid var(--line);border-radius:12px;padding:16px;}
+.rcard h4{font-size:15px;margin-bottom:5px;}
+.rcard p{font-size:14px;color:var(--soft);}
+.flow{margin-top:16px;border-left:3px solid var(--pink);padding-left:20px;}
+.flow .fstep{margin-bottom:16px;}
+.flow .fstep b{font-size:15.5px;}
+.flow .fstep p{font-size:14.5px;color:var(--soft);max-width:680px;}
+.pkgs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px;}
+.pkg{border:1.5px solid var(--line);border-radius:14px;padding:20px;background:var(--warm);display:flex;flex-direction:column;}
+.pkg.pop{border-color:var(--pink);background:#fff;box-shadow:0 8px 30px rgba(233,30,125,.12);}
+.pkg .name{font-size:11.5px;letter-spacing:1.8px;font-weight:800;}
+.pkg .price{font-size:34px;font-weight:900;margin:6px 0 2px;}
+.pkg .matrix{font-size:14px;color:var(--soft);line-height:1.65;flex:1;}
+.pkg .dep{font-size:13px;color:var(--dim);margin:10px 0 14px;}
+.pkg .btn{text-align:center;}
+.urgency{margin-top:16px;background:#fdf2f8;border:1.2px solid #fbcfe8;border-radius:12px;padding:13px 16px;font-size:14.5px;color:#6d214f;}
+.terms{margin-top:18px;background:var(--ink);color:#e9e4f0;border-radius:14px;padding:20px 22px;font-size:14.5px;line-height:1.9;}
+.terms b{color:#7dd3fc;}
+.finalcta{text-align:center;padding:40px 0 10px;}
+.finalcta h2{margin-bottom:8px;}
+.finalcta p{color:var(--soft);font-size:15.5px;margin-bottom:18px;}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:20px 0 30px;font-size:13px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+@media (max-width:760px){
+  .hero h1{font-size:32px;}
+  .steps,.receive,.pkgs{grid-template-columns:1fr;}
+  .build{flex-direction:column;}
+  .op{transform:rotate(90deg);margin:2px auto;}
+  .video-slot{aspect-ratio:4/3;}
+}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="logo">SANTIAGO GUY <span>FILMS</span></div><a class="home" href="/">Back to home</a></div>
+
+  <div class="hero">
+    <div class="kicker">CREATIVE TESTING PACKAGES</div>
+    <h1>One video is a guess.<br>A batch is a <span class="pk">test.</span></h1>
+    <p>Most brands pay full production price for every video they want to test, then wonder why their creative budget runs dry before they find a winner. My packages film the pieces once and combine them into 10, 20, or 30 finished videos, so you test more, learn faster, and only scale what the data already proved.</p>
+    <div class="cta-row">
+      <a class="btn pink" href="#packages">See the packages</a>
+      <a class="btn ghost" href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=packages" target="_blank" rel="noopener">Book a conversation first</a>
+    </div>
+    <div class="stats">Franco Lopez · Bilingual UGC Creator · 157K+ TikTok · 9.9M+ Likes · 70+ Brand Collabs · Interviewed by Business Insider</div>
+    <div class="video-wrap"><iframe src="https://drive.google.com/file/d/16dZIoCkxdDliYXke5OGq4yyMJ2ZiZvKf/preview" allow="autoplay; fullscreen; encrypted-media" allowfullscreen title="Why Franco built the creative testing packages"></iframe><div class="video-cap">Hear it from Franco: why I built these packages, in 35 seconds.</div></div>
+  </div>
+
+  <section>
+    <h2>Why brands run out of <span class="pk">creative</span></h2>
+    <p class="lede">Paid social eats creative alive. A winning ad tires, a fresh one takes weeks and a full production fee, and every new idea costs the same as the last one whether it works or not. So testing slows down, spend concentrates on tired ads, and results slide.</p>
+    <p class="body">It does not have to work that way. The expensive part of any video is the setup: the shoot, the setting, the product story. The openings and closings are pieces, and pieces can be filmed once and combined. That is the space these packages fill: a creator who builds your testing batch as a system, so you never run out of fresh creative to test and you never pay full production price for a test again.</p>
+  </section>
+
+  <section>
+    <h2>How a package is <span class="pk">built</span></h2>
+    <div class="build">
+      <div class="bcol hooks"><h3>HOOKS · THE OPENING</h3>
+        <span class="chip">Hook 1</span><span class="chip">Hook 2</span><span class="chip">Hook 3</span><span class="chip">Hook 4</span><span class="chip">Hook 5</span></div>
+      <div class="op">×</div>
+      <div class="bcol bodies"><h3>BODIES · THE MIDDLE</h3>
+        <span class="chip">Body 1 · the process story</span><span class="chip">Body 2 · the product story</span>
+        <p class="note">One product story, told more than one way, so the middle gets tested too.</p></div>
+      <div class="op">×</div>
+      <div class="bcol ctas"><h3>CTAS · THE CLOSE</h3>
+        <span class="chip">CTA 1</span>
+        <p class="note">Add a second closing in the bigger packages and every combination doubles.</p></div>
+      <div class="op">=</div>
+      <div class="eq"><div class="big">10 videos</div><div class="small">finished, edited, ready to run as ads</div></div>
+    </div>
+    <div class="math"><b>The math:</b> 5 hooks × 2 bodies × 1 CTA = <b>10 finished videos</b> from 8 filmed pieces. Filmed as separate productions, those same ten tests would cost roughly ten times the production. In a package, the setup is paid once.</div>
+    <div class="sample">
+      <h3>SAMPLE BUILD · ONE PRODUCT, ONE OF ITS TEN COMBINATIONS</h3>
+      <div class="row"><span class="lbl h">HOOK 2</span> “Still fighting with jars every single night? Watch this.”</div>
+      <div class="row"><span class="lbl b">BODY 1</span> “This opener mounts under the cabinet once, and after that any lid twists off with one hand. No grip strength needed, no towel, no running it under hot water.”</div>
+      <div class="row"><span class="lbl c">CTA 1</span> “Grab yours today and make dinner easier tonight.”</div>
+      <div class="note">Swap in Hook 4 and you have a different finished video testing a different opening. Swap in Body 2 and the middle gets its own test. Every piece works in several videos, and no piece is wasted.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How the <span class="pk">testing</span> works</h2>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h4>Film the pieces</h4><p>One focused shoot covers every hook, body, and CTA in the batch. Same product, same setting, nothing repeated that does not need repeating.</p></div>
+      <div class="step"><span class="num">2</span><h4>Combine the batch</h4><p>Pieces are combined into finished videos, each one a real test: a different opening, a different middle, or a different close.</p></div>
+      <div class="step"><span class="num">3</span><h4>Let the spend decide</h4><p>Run the batch and watch the numbers. The market tells you which opening stops the scroll and which story converts, with data instead of opinions.</p></div>
+      <div class="step"><span class="num">4</span><h4>Scale the winner</h4><p>Put budget behind the winning combination. When it tires, refresh it with new hooks from the same system instead of starting over at full price.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What lands in <span class="pk">your folder</span></h2>
+    <div class="receive">
+      <div class="rcard"><h4>Every finished variation</h4><p>All 10, 20, or 30 completed videos, edited and ready to upload to your ad account the day they arrive.</p></div>
+      <div class="rcard"><h4>Every piece, as its own file</h4><p>You also get the hooks, the bodies, and the CTAs as separate files, so your team can build new combinations in house any time.</p></div>
+      <div class="rcard"><h4>Labeled so testing makes sense</h4><p>Every file is named for the exact pieces inside it. When a winner emerges, you know precisely which hook, body, and CTA did it.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How booking <span class="pk">works</span></h2>
+    <div class="flow">
+      <div class="fstep"><b>1. Reserve your production time.</b><p>Pick a package below and place the deposit. That reserves your slot in my production calendar, and slots are limited each month so the 48 hour promise holds.</p></div>
+      <div class="fstep"><b>2. We meet and plan.</b><p>Booking drops a kickoff call on both our calendars automatically. We talk through the project, your goals, and arrange product delivery.</p></div>
+      <div class="fstep"><b>3. Scripts from your brief.</b><p>I develop the hooks, bodies, and CTAs from your brief and your claims, present them to you, and we fine tune together until you approve every line.</p></div>
+      <div class="fstep"><b>4. Filmed and delivered in 48 hours.</b><p>Once the product and the approved scripts are in hand, I film and deliver the full batch within 48 hours, organized in one labeled folder with the finished videos and every individual piece.</p></div>
+      <div class="fstep"><b>5. Test, find the winner, talk usage.</b><p>Every package includes three months of paid usage. When a winner emerges and you want it running longer or wider, we talk about extended usage then, with proof it earns.</p></div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <h2>The <span class="pk">packages</span></h2>
+    <div class="pkgs">
+      <div class="pkg"><div class="name">TESTING · 10 VIDEOS</div><div class="price">$650</div>
+        <div class="matrix">5 hooks × 2 bodies × 1 CTA<br>or 10 hooks × 1 body × 1 CTA</div>
+        <div class="dep">$325 deposit reserves your production time</div>
+        <a class="btn" href="https://buy.stripe.com/cNibJ12zs2LGabW3hbes00D" target="_blank" rel="noopener">Reserve the 10 video package</a></div>
+      <div class="pkg pop"><div class="name">TESTING · 20 VIDEOS</div><div class="price">$1,200</div>
+        <div class="matrix">5 hooks × 2 bodies × 2 CTAs<br>or 20 hooks × 1 body × 1 CTA<br>or 4 hooks × 5 bodies × 1 CTA</div>
+        <div class="dep">$600 deposit reserves your production time</div>
+        <a class="btn pink" href="https://buy.stripe.com/7sY4gz2zsfys2Ju6tnes00C" target="_blank" rel="noopener">Reserve the 20 video package</a></div>
+      <div class="pkg"><div class="name">TESTING · 30 VIDEOS</div><div class="price">$1,500</div>
+        <div class="matrix">5 hooks × 3 bodies × 2 CTAs<br>or 30 hooks × 1 body × 1 CTA<br>or 3 hooks × 5 bodies × 2 CTAs</div>
+        <div class="dep">$750 deposit reserves your production time</div>
+        <a class="btn" href="https://buy.stripe.com/4gMaEX2zsdqkgAk04Zes00E" target="_blank" rel="noopener">Reserve the 30 video package</a></div>
+    </div>
+    <div class="urgency">I take a limited number of packages each month and I am booking quickly right now. If your testing calendar matters this quarter, reserve the slot first and we will work out the details on our call.</div>
+    <div class="terms">
+      <b>Delivery:</b> finished batch within 48 hours once the product and the approved scripts are in hand.<br>
+      <b>Usage:</b> three months of paid usage on all platforms included. Extended usage for winners available.<br>
+      <b>Scope:</b> one product per package. Watermarked previews first, clean files when the balance clears.<br>
+      <b>Booking:</b> the deposit reserves production time. Balance invoiced on approval of the batch.
+    </div>
+  </section>
+
+  <div class="finalcta">
+    <h2>Ready to find your <span class="pk">winner?</span></h2>
+    <p>Reserve a package above, or book a short conversation and we will pick the right batch together.</p>
+    <a class="btn pink" href="https://calendly.com/welcome-santiagoguyfilms/30min?utm_source=site&utm_campaign=packages" target="_blank" rel="noopener">Book a conversation</a>
+  </div>
+
+  <footer><span><b style="color:var(--ink);">Franco Lopez</b> · Santiago Guy Films</span><span>santiagoguyfilms.com · santiagoguyfilms@gmail.com</span></footer>
+</div>
+</body></html>
