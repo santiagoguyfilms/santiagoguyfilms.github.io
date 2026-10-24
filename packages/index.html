@@ -53,6 +53,28 @@ p.body{font-size:15.5px;color:var(--soft);max-width:700px;margin-top:10px;}
 .sample .lbl{display:inline-block;min-width:64px;font-weight:800;font-size:11px;letter-spacing:0.6px;}
 .sample .h{color:var(--sky);} .sample .b{color:var(--teal);} .sample .c{color:var(--pink);}
 .sample .note{font-size:13px;color:var(--dim);margin-top:8px;}
+.shoot{background:var(--ink);color:#fff;border-radius:12px;padding:16px 18px;margin-top:18px;}
+.shoot b{font-size:15.5px;letter-spacing:1.6px;}
+.shoot p{font-size:13.5px;color:#cfc4da;margin-top:2px;}
+.build.stack{flex-direction:column;}
+.build.stack .op{margin:2px auto;transform:none;}
+.gridlabel{font-size:11.5px;letter-spacing:1.8px;font-weight:800;color:var(--dim);margin-top:18px;}
+.vgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px;}
+.vtile{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;}
+.vtile b{display:block;font-size:14.5px;}
+.vtile span{font-size:12px;color:var(--dim);}
+.vtile.hl{border-color:var(--pink);background:#fff0f7;}
+.vtile.hl span{color:var(--pink);font-weight:700;}
+.gridcap{font-size:13.5px;color:var(--dim);margin-top:10px;}
+.samplecap{font-size:11.5px;letter-spacing:1.8px;font-weight:800;color:var(--dim);margin-bottom:12px;}
+.inside{border:1.5px solid var(--line);border-radius:12px;padding:16px 18px;}
+.inside .seg{margin-bottom:14px;}
+.inside .seg:last-child{margin-bottom:0;}
+.inside .lbl{display:block;font-weight:800;font-size:11px;letter-spacing:0.8px;margin-bottom:3px;}
+.inside .h{color:var(--sky);} .inside .b{color:var(--teal);} .inside .c{color:var(--pink);}
+.inside p{font-size:14.5px;}
+.swap{margin-top:10px;background:var(--warm);border:1.5px solid var(--line);border-radius:12px;padding:11px 16px;font-size:14px;}
+@media (max-width:760px){ .vgrid{gap:6px;} .vtile{padding:8px;} .vtile b{font-size:12px;} .vtile span{font-size:10.5px;} }
 .steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
 .step{border:1.5px solid var(--line);border-radius:12px;padding:16px;background:var(--warm);}
 .step .num{display:inline-block;background:var(--sky);color:#fff;font-weight:800;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-size:14px;margin-bottom:8px;}
@@ -107,44 +129,52 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding:20px 0 30px;font
 
   <section>
     <h2>Why brands run out of <span class="pk">creative</span></h2>
-    <p class="lede">Paid social eats creative alive. A winning ad tires, a fresh one takes weeks and a full production fee, and every new idea costs the same as the last one whether it works or not. So testing slows down, spend concentrates on tired ads, and results slide.</p>
-    <p class="body">It does not have to work that way. The expensive part of any video is the setup: the shoot, the setting, the product story. The openings and closings are pieces, and pieces can be filmed once and combined. That is the space these packages fill: a creator who builds your testing batch as a system, so you never run out of fresh creative to test and you never pay full production price for a test again.</p>
+    <p class="lede">Paid social burns through creative fast. A winning ad fades, the next one takes weeks, and every test costs a full production fee whether it works or not.</p>
+    <p class="body">These packages fix the expensive part. The shoot and the setup happen once. Then the openings, middles, and closings are combined into a full batch of tests.</p>
   </section>
 
   <section>
     <h2>How a package is <span class="pk">built</span></h2>
-    <div class="build">
-      <div class="bcol hooks"><h3>HOOKS · THE OPENING</h3>
-        <span class="chip">Hook 1</span><span class="chip">Hook 2</span><span class="chip">Hook 3</span><span class="chip">Hook 4</span><span class="chip">Hook 5</span></div>
+    <div class="shoot"><b>ONE SHOOT · 8 PIECES FILMED</b><p>You are not paying for 10 separate productions. You are paying for 8 pieces, combined with intent.</p></div>
+    <div class="build stack">
+      <div class="bcol hooks"><h3>OPENINGS · CHOOSE 1 OF 5</h3>
+        <span class="chip">Hook 1 · “Tired of jars fighting back?”</span><span class="chip">Hook 2 · “Still fighting with jars every single night?”</span><span class="chip">Hook 3 · “Your towel is not a kitchen tool.”</span><span class="chip">Hook 4 · “Stop running jars under hot water.”</span><span class="chip">Hook 5 · “This mounts under the cabinet.”</span></div>
       <div class="op">×</div>
-      <div class="bcol bodies"><h3>BODIES · THE MIDDLE</h3>
-        <span class="chip">Body 1 · the process story</span><span class="chip">Body 2 · the product story</span>
-        <p class="note">One product story, told more than one way, so the middle gets tested too.</p></div>
+      <div class="bcol bodies"><h3>MIDDLES · CHOOSE 1 OF 2</h3>
+        <span class="chip">Body 1 · the process story, how it mounts and works</span><span class="chip">Body 2 · the product story, why it beats the old way</span>
+        <p class="note">One product story, told two ways, so the middle gets tested too.</p></div>
       <div class="op">×</div>
-      <div class="bcol ctas"><h3>CTAS · THE CLOSE</h3>
-        <span class="chip">CTA 1</span>
-        <p class="note">Add a second closing in the bigger packages and every combination doubles.</p></div>
-      <div class="op">=</div>
-      <div class="eq"><div class="big">10 videos</div><div class="small">finished, edited, ready to run as ads</div></div>
+      <div class="bcol ctas"><h3>CLOSE · THE SAME IN THE 10 VIDEO PACKAGE</h3>
+        <span class="chip">CTA 1 · “Grab yours today and make dinner easier tonight.”</span>
+        <p class="note">Bigger packages add a second close, and every combination doubles.</p></div>
     </div>
-    <div class="math"><b>The math:</b> 5 hooks × 2 bodies × 1 CTA = <b>10 finished videos</b> from 8 filmed pieces. Filmed as separate productions, those same ten tests would cost roughly ten times the production. In a package, the setup is paid once.</div>
-    <div class="sample">
-      <h3>SAMPLE BUILD · ONE PRODUCT, ONE OF ITS TEN COMBINATIONS</h3>
-      <div class="row"><span class="lbl h">HOOK 2</span> “Still fighting with jars every single night? Watch this.”</div>
-      <div class="row"><span class="lbl b">BODY 1</span> “This opener mounts under the cabinet once, and after that any lid twists off with one hand. No grip strength needed, no towel, no running it under hot water.”</div>
-      <div class="row"><span class="lbl c">CTA 1</span> “Grab yours today and make dinner easier tonight.”</div>
-      <div class="note">Swap in Hook 4 and you have a different finished video testing a different opening. Swap in Body 2 and the middle gets its own test. Every piece works in several videos, and no piece is wasted.</div>
+    <div class="math"><b>5 openings × 2 middles × 1 close = 10 finished videos</b> from 8 filmed pieces.</div>
+    <div class="gridlabel">EVERY TILE IS ONE FINISHED VIDEO, READY TO RUN AS AN AD</div>
+    <div class="vgrid">
+      <div class="vtile"><b>H1 · B1</b><span>Video 1</span></div>
+      <div class="vtile hl"><b>H2 · B1</b><span>Video 2 · sample below</span></div>
+      <div class="vtile"><b>H3 · B1</b><span>Video 3</span></div>
+      <div class="vtile"><b>H4 · B1</b><span>Video 4</span></div>
+      <div class="vtile"><b>H5 · B1</b><span>Video 5</span></div>
+      <div class="vtile"><b>H1 · B2</b><span>Video 6</span></div>
+      <div class="vtile"><b>H2 · B2</b><span>Video 7</span></div>
+      <div class="vtile"><b>H3 · B2</b><span>Video 8</span></div>
+      <div class="vtile"><b>H4 · B2</b><span>Video 9</span></div>
+      <div class="vtile"><b>H5 · B2</b><span>Video 10</span></div>
     </div>
+    <p class="gridcap">Change the opening or the middle and you have a different finished video. The shoot never happens twice.</p>
   </section>
 
   <section>
-    <h2>How the <span class="pk">testing</span> works</h2>
-    <div class="steps">
-      <div class="step"><span class="num">1</span><h4>Film the pieces</h4><p>One focused shoot covers every hook, body, and CTA in the batch. Same product, same setting, nothing repeated that does not need repeating.</p></div>
-      <div class="step"><span class="num">2</span><h4>Combine the batch</h4><p>Pieces are combined into finished videos, each one a real test: a different opening, a different middle, or a different close.</p></div>
-      <div class="step"><span class="num">3</span><h4>Let the spend decide</h4><p>Run the batch and watch the numbers. The market tells you which opening stops the scroll and which story converts, with data instead of opinions.</p></div>
-      <div class="step"><span class="num">4</span><h4>Scale the winner</h4><p>Put budget behind the winning combination. When it tires, refresh it with new hooks from the same system instead of starting over at full price.</p></div>
+    <h2>Inside one finished <span class="pk">video</span></h2>
+    <div class="samplecap">THE SAMPLE BUILD, SHOWN AS THE VIDEO ITSELF · VIDEO 2 FROM THE GRID ABOVE</div>
+    <div class="inside">
+      <div class="seg"><span class="lbl h">OPENING · HOOK 2 · FIRST 3 SECONDS</span><p>“Still fighting with jars every single night? Watch this.”</p></div>
+      <div class="seg"><span class="lbl b">MIDDLE · BODY 1 · THE STORY</span><p>“This opener mounts under the cabinet once, and after that any lid twists off with one hand. No grip strength needed, no towel, no running it under hot water.”</p></div>
+      <div class="seg"><span class="lbl c">CLOSE · CTA 1 · LAST 5 SECONDS</span><p>“Grab yours today and make dinner easier tonight.”</p></div>
     </div>
+    <div class="swap">Make another video: keep Body 1 and CTA 1, swap in Hook 4. New opening, new test.</div>
+    <div class="swap">Make another: keep Hook 2 and CTA 1, swap in Body 2. New middle, new test.</div>
   </section>
 
   <section>
