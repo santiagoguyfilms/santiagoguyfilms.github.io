@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Send a Brief — A La Carte Video — Santiago Guy Films</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{ --ink:#16121a; --soft:#4c4454; --dim:#8b8393; --paper:#fff; --warm:#faf7fb; --line:#ece7ef; --pink:#e91e7d; --sky:#0284c7; --teal:#0d9488; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px;}
+a{color:var(--sky);}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);}
+.logo{font-weight:900;letter-spacing:2.5px;font-size:13px;}
+.logo span{color:var(--pink);}
+.topbar .home{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--soft);}
+.hero{padding:38px 0 8px;text-align:left;}
+.kicker{font-size:12px;font-weight:800;letter-spacing:2.5px;color:var(--pink);}
+.hero h1{font-size:40px;line-height:1.12;font-weight:900;margin:10px 0 12px;}
+.hero h1 .pk{color:var(--pink);}
+.hero p{font-size:17px;color:var(--soft);max-width:640px;}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:10px;border:0;cursor:pointer;font-family:inherit;}
+.btn.pink{background:var(--pink);}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--ink);}
+section{padding:26px 0 6px;}
+.stepnum{display:inline-block;background:var(--pink);color:#fff;font-weight:800;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-size:14px;margin-right:9px;vertical-align:2px;}
+h2{font-size:21px;font-weight:900;line-height:1.2;display:inline-block;}
+.hint{font-size:13.5px;color:var(--dim);margin:6px 0 12px 35px;}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-left:35px;}
+.chip{position:relative;}
+.chip input{position:absolute;opacity:0;pointer-events:none;}
+.chip span{display:inline-block;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 15px;font-size:14px;font-weight:600;color:var(--soft);cursor:pointer;}
+.chip input:checked + span{border-color:var(--pink);background:rgba(233,30,125,.08);color:var(--ink);}
+.chip input:focus-visible + span{outline:2px solid var(--sky);outline-offset:2px;}
+.field{margin-left:35px;max-width:700px;}
+textarea,input[type=text],input[type=email],input[type=date]{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;}
+textarea{min-height:130px;resize:vertical;}
+textarea:focus,input:focus{outline:2px solid var(--sky);outline-offset:1px;border-color:transparent;}
+.attach{margin-left:35px;max-width:700px;border:1.5px dashed #cfc4da;border-radius:10px;padding:13px 15px;font-size:14px;color:var(--soft);background:var(--warm);}
+.attach b{color:var(--ink);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-left:35px;max-width:700px;}
+.grid label{font-size:12.5px;font-weight:700;letter-spacing:.4px;color:var(--soft);display:block;}
+.grid label input{margin-top:5px;font-weight:400;}
+.submitrow{margin:30px 0 0 35px;}
+.submitrow .btn{font-size:16.5px;padding:15px 34px;border-radius:999px;}
+.fineprint{font-size:13px;color:var(--dim);margin:10px 0 0 35px;max-width:640px;}
+.altpath{margin:34px 0 0 35px;border-top:1px solid var(--line);padding-top:18px;font-size:14.5px;color:var(--soft);max-width:700px;}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 30px;font-size:13px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+@media (max-width:760px){
+ .hero h1{font-size:32px;}
+ .grid{grid-template-columns:1fr;}
+ .chips,.field,.attach,.grid,.submitrow,.fineprint,.altpath{margin-left:0;}
+ .hint{margin-left:0;}
+}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="logo">SANTIAGO GUY <span>FILMS</span></div><a class="home" href="/">Back to home</a></div>
+
+  <div class="hero">
+    <div class="kicker">A LA CARTE VIDEO</div>
+    <h1>Send a brief.<br>Get a <span class="pk">quote.</span></h1>
+    <p>One video, priced by the brief. Pick what you need from the menu, paste or attach the brief, and the quote comes back from Franco personally, usually the same day. Looking for a batch instead? The <a href="/packages/">creative testing packages</a> convert right on that page.</p>
+  </div>
+
+  <form action="https://formsubmit.co/santiagoguyfilms@gmail.com" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="New a la carte brief from santiagoguyfilms.com">
+    <input type="hidden" name="_next" value="https://santiagoguyfilms.com/brief/thanks/">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" style="display:none">
+
+    <section>
+      <span class="stepnum">1</span><h2>Pick your format</h2>
+      <p class="hint">Pick one, or more than one if the project mixes formats.</p>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="Format" value="Talking head"><span>Talking head</span></label>
+        <label class="chip"><input type="checkbox" name="Format" value="Talking head with B-roll"><span>Talking head with B-roll</span></label>
+        <label class="chip"><input type="checkbox" name="Format" value="Testimonial"><span>Testimonial</span></label>
+        <label class="chip"><input type="checkbox" name="Format" value="Explainer"><span>Explainer</span></label>
+        <label class="chip"><input type="checkbox" name="Format" value="Skit scene"><span>Skit scene</span></label>
+        <label class="chip"><input type="checkbox" name="Format" value="Unboxing and demo"><span>Unboxing and demo</span></label>
+      </div>
+    </section>
+
+    <section>
+      <span class="stepnum">2</span><h2>Production</h2>
+      <p class="hint">Anything beyond one man, one camera, one room.</p>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="Production" value="Two characters"><span>Two characters</span></label>
+        <label class="chip"><input type="checkbox" name="Production" value="More than one location"><span>More than one location</span></label>
+        <label class="chip"><input type="checkbox" name="Production" value="Spanish version"><span>Spanish version</span></label>
+      </div>
+    </section>
+
+    <section>
+      <span class="stepnum">3</span><h2>Extras</h2>
+      <p class="hint">Add only what the video actually needs.</p>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="Extras" value="Extra B-roll"><span>Extra B-roll</span></label>
+        <label class="chip"><input type="checkbox" name="Extras" value="Fast delivery (rush)"><span>Fast delivery (rush)</span></label>
+        <label class="chip"><input type="checkbox" name="Extras" value="Raw footage"><span>Raw footage</span></label>
+        <label class="chip"><input type="checkbox" name="Extras" value="Whitelisting"><span>Whitelisting</span></label>
+        <label class="chip"><input type="checkbox" name="Extras" value="Spark codes"><span>Spark codes</span></label>
+        <label class="chip"><input type="checkbox" name="Extras" value="Paid usage rights"><span>Paid usage rights</span></label>
+      </div>
+    </section>
+
+    <section>
+      <span class="stepnum">4</span><h2>Your brief</h2>
+      <p class="hint">Paste it here, or attach it below. The product, the message, any lines that must be said exactly, and the deadline if you have one.</p>
+      <div class="field"><textarea name="Brief" placeholder="Paste your brief here"></textarea></div>
+      <p class="hint" style="margin-top:12px">Or attach it instead:</p>
+      <div class="attach"><b>Attach the brief</b> (PDF or document) &nbsp;<input type="file" name="Brief attachment" accept=".pdf,.doc,.docx,.txt,.rtf"></div>
+    </section>
+
+    <section>
+      <span class="stepnum">5</span><h2>Where the quote goes</h2>
+      <p class="hint">Your quote and any questions come back to this email.</p>
+      <div class="grid">
+        <label>YOUR NAME *<input type="text" name="name" required autocomplete="name"></label>
+        <label>EMAIL *<input type="email" name="email" required autocomplete="email"></label>
+        <label>BRAND OR COMPANY<input type="text" name="Brand or company" autocomplete="organization"></label>
+        <label>PRODUCT LINK<input type="text" name="Product link" placeholder="https://"></label>
+        <label>DEADLINE, IF ANY<input type="date" name="Deadline"></label>
+      </div>
+    </section>
+
+    <div class="submitrow"><button type="submit" class="btn pink">Submit brief for a quote</button></div>
+    <p class="fineprint">Submitting sends the brief straight to Franco as an email lead. No account, no portal, no obligation. If the project is a fit, the quote includes a deposit link that books your production slot.</p>
+  </form>
+
+  <div class="altpath">Rather build a batch of variations to test? See the <a href="/packages/">creative testing packages</a>. Prefer to talk first? <a href="https://calendly.com/santiagoguyfilms/kickoff-meeting?utm_source=site&utm_campaign=brief" target="_blank" rel="noopener">Book a conversation</a>.</div>
+
+  <footer><span>Santiago Guy Films · Miami, FL</span><span>Interviewed by Business Insider</span></footer>
+</div>
+</body></html>
