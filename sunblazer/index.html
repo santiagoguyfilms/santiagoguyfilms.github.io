@@ -733,6 +733,7 @@
           matchesNote: "Four fixtures have been played with no score posted yet — they join the record as soon as a score goes up.",
           fixtures: [
             { opp: "South Dade United MK PB Knights U9B", oppShort: "South Dade Knights", ha: "Away", date: "Sat, Oct 31", iso: "2026-10-31", time: "10:30 AM", minutes: 630, venue: "Coral Reef Park", field: "Field 1 (7v7)" },
+            { opp: "Pinecrest Premier Soccer 2018 Boys Black", oppShort: "Pinecrest Black", ha: "Away", date: "Sun, Nov 1", iso: "2026-11-01", time: "12:30 PM", minutes: 750, venue: "Evelyn Greer Park", field: "Field EG3 7v7" },
             { opp: "Miami Athletic Club U9 Sky Blue", oppShort: "Miami Athletic Sky Blue", ha: "Home", date: "Sat, Nov 7", iso: "2026-11-07", time: "9:00 AM", minutes: 540, venue: "Kendall Indian Hammocks Park", field: "Field KIH 1" }
           ],
           next: { label: "This week's match", when: "Saturday, October 31 · Away · Bracket A", month: "Oct", day: "31", weekday: "Saturday",
@@ -2449,7 +2450,7 @@
         h += '<p class="chart-note">Only confirmed fixtures and results appear here — the rest of the run-in posts week by week.</p></div></div></section>';
 
         h += '<div class="team-foot"><span>' + (t.sourceNote ? esc(t.sourceNote) : 'Compiled by the club · standings and results checked ' + esc(t.checked)) + '</span>'
-          + '<span class="fixtures-confirmed">Fixtures confirmed October 25, 2026</span>'
+          + '<span class="fixtures-confirmed">Fixtures confirmed October 28, 2026</span>'
           + '<a class="hub-fix-link" href="mailto:santiagoguyfilms@gmail.com?subject=' + encodeURIComponent('Hub correction: ' + (t.pageName || t.name)) + '">See something off? Tell us and we will fix it.</a>'
           + '<span>Registered as ' + esc(t.regName) + '</span></div>';
         return h;
